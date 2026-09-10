@@ -48,7 +48,7 @@ depends_on:
 
 ## Overview
 
-pytm is a [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) library for programmatic threat modeling based on the STRIDE methodology. It enables
+pytm is a [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) library for programmatic threat modeling based on the STRIDE methodology. It enables
 security engineers to define system architecture as code, automatically generate data flow diagrams (DFDs),
 identify security threats across trust boundaries, and produce comprehensive threat reports. This
 approach integrates threat modeling into CI/CD pipelines, enabling shift-left security and continuous
@@ -58,7 +58,7 @@ threat analysis.
 
 Create a basic threat model:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 from pytm import TM, Server, Dataflow, Boundary, Actor
 
@@ -140,7 +140,7 @@ For each identified threat:
 
 Define system architecture programmatically:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor, Lambda
 
 tm = TM("[Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) Architecture")
@@ -197,10 +197,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-        uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v4
+      - name: Set up [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+        uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v4
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.10'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -208,7 +208,7 @@ jobs:
           sudo apt-get install -y graphviz
 
       - name: Generate threat model
-        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) threat_model.py
+        run: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) threat_model.py
 
       - name: Upload DFD diagram
         uses: actions/upload-artifact@v3
@@ -217,7 +217,7 @@ jobs:
           path: '*.png'
 
       - name: Check for unmitigated threats
-        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_mitigations.py threat_model.py
+        run: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_mitigations.py threat_model.py
 ```
 
 ### Workflow 5: Threat Report Generation
@@ -226,7 +226,7 @@ Generate comprehensive threat documentation:
 
 ```bash
 # Run threat model with report generation
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) threat_model.py
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) threat_model.py
 
 # Generate markdown report
 ./scripts/generate_report.py --model threat_model.py --output threat_report.md
@@ -303,7 +303,7 @@ Log the following for security governance:
 
 ### Pattern 1: Web Application Three-Tier Architecture
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor
 
 tm = TM("Three-Tier Web Application")
@@ -346,7 +346,7 @@ tm.process()
 
 ### Pattern 2: Cloud Native [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Lambda, Datastore, Dataflow, Boundary, Actor
 
 tm = TM("Cloud [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)")
@@ -384,7 +384,7 @@ tm.process()
 
 Define organization-specific threats:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Threat
 
 tm = TM("Custom Threat Model")
@@ -408,7 +408,7 @@ web_server.threats.append(custom_threat)
 
 Focus on cross-boundary threats:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Identify all trust boundary crossings
 for flow in tm.dataflows:
     if flow.source.inBoundary != flow.sink.inBoundary:
@@ -478,7 +478,7 @@ brew install graphviz  # macOS
 sudo apt-get install graphviz  # Linux
 
 # Test pytm with simple model
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "from pytm import TM; tm = TM('test'); tm.process()"
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "from pytm import TM; tm = TM('test'); tm.process()"
 ```
 
 ### Issue: Too Many False Positive Threats
@@ -508,7 +508,7 @@ sudo apt-get install graphviz  # Linux
 
 Create organization-specific threat library:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # custom_threats.py
 from pytm import Threat
 
@@ -538,7 +538,7 @@ def add_custom_threats(tm):
 
 Add DREAD scoring to threats:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class ScoredThreat(Threat):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -569,7 +569,7 @@ print(f"DREAD Score: {threat.dread_score()}/10")
 
 [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Set custom colors for trust boundaries
 internet.color = "red"
 dmz.color = "orange"

@@ -81,7 +81,7 @@ sequence where the choice actually diverges.
   different identity models (Azure ML managed identity/datastore RBAC vs.
   Azure AD Workload Identity for AKS pods) that should not be mixed
   mid-project.
-- Azure CLI ≥ 2.60 with the `ml` extension, or the `azureml` [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
+- Azure CLI ≥ 2.60 with the `ml` extension, or the `azureml` [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK
   v2, and Terraform ≥ 1.5 with the `azurerm` provider ≥ 3.x if managing
   the workspace as IaC.
 - GPU VM quota (e.g. `Standard_NC` or `Standard_ND` family) requested and
@@ -151,7 +151,7 @@ integration decisions between phases.
    SDK at the workspace's tracking URI rather than standing up a separate
    MLflow server, applying the logging discipline from
    [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow
    mlflow.set_tracking_uri(azureml_mlflow_tracking_uri)  # from az ml workspace show
    mlflow.set_experiment("fraud-scorer")
@@ -173,7 +173,7 @@ integration decisions between phases.
    DAG using Azure ML Pipelines (`[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml` SDK v2), applying the
    vendor-neutral gate/reproducibility principles from
    [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from azure.ai.ml import dsl, Input
 
    @dsl.pipeline(compute="gpu-training-cluster")

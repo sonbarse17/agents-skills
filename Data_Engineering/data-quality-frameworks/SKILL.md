@@ -64,7 +64,7 @@ great_expectations init
 great_expectations datasource new
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # great_expectations/checkpoints/daily_validation.yml
 import great_expectations as gx
 

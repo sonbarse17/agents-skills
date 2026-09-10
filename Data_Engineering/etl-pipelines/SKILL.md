@@ -34,7 +34,7 @@ flowchart TD
 - **dbt**: Modularize models into `staging`, `intermediate`, and `marts`. Write rigorous tests for uniqueness and not-null constraints.
 
 ## Code Snippet: Airflow DAG calling dbt
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from airflow import DAG
 from airflow.providers.dbt.cloud.operators.dbt import DbtCloudRunJobOperator
 from datetime import datetime

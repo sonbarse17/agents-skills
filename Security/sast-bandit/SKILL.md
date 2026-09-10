@@ -38,15 +38,15 @@ depends_on:
   - jenkins
 ---
 
-# Bandit [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SAST
+# Bandit [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SAST
 
 ## Overview
 
-Bandit is a security-focused static analysis tool for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) that identifies common security vulnerabilities and coding anti-patterns. It parses [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) code into Abstract Syntax Trees (AST) and executes security plugins to detect issues like hardcoded credentials, SQL injection, command injection, weak cryptography, and insecure API usage. Bandit provides actionable reports with severity classifications aligned to industry security standards.
+Bandit is a security-focused static analysis tool for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) that identifies common security vulnerabilities and coding anti-patterns. It parses [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) code into Abstract Syntax Trees (AST) and executes security plugins to detect issues like hardcoded credentials, SQL injection, command injection, weak cryptography, and insecure API usage. Bandit provides actionable reports with severity classifications aligned to industry security standards.
 
 ## Quick Start
 
-Scan a [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) file or directory for security vulnerabilities:
+Scan a [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) file or directory for security vulnerabilities:
 
 ```bash
 # Install Bandit
@@ -56,7 +56,7 @@ pip install bandit
 bandit suspicious_file.py
 
 # Scan entire directory recursively
-bandit -r /path/to/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/project
+bandit -r /path/to/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/project
 
 # Generate JSON report
 bandit -r project/ -f json -o bandit_report.json
@@ -97,7 +97,7 @@ tests:
 
 ### Step 2: Execute Security Scan
 
-Run Bandit against [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) codebase:
+Run Bandit against [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) codebase:
 
 ```bash
 # Basic scan with severity threshold
@@ -164,9 +164,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v4
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v4
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.11'
       - name: Install Bandit
         run: pip install bandit
       - name: Run Bandit
@@ -254,7 +254,7 @@ bandit -r . -l
 
 Document exceptions inline with justification:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Example: Suppressing pickle warning for internal serialization
 import pickle  # nosec B301 - Internal cache, not user input
 
@@ -319,5 +319,5 @@ Install hooks: `pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) in
 - [Bandit [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/PyCQA/bandit)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE Database](https://cwe.mitre.org/)
-- [Python Security Best Practices](https://[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).readthedocs.io/en/stable/library/security_warnings.html)
+- [Python Security Best Practices](https://[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).readthedocs.io/en/stable/library/security_warnings.html)
 

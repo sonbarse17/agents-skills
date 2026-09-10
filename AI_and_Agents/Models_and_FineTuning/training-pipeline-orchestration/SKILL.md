@@ -102,7 +102,7 @@ a fragile script that only the original author can rerun correctly.
    or environment with a locked dependency set; do not rely on a shared
    mutable environment across steps that could drift between runs.
 3. **Implement the DAG** (Airflow TaskFlow example):
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from airflow.decorators import dag, task
    from datetime import datetime
 

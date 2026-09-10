@@ -89,7 +89,7 @@ Detailed pattern documentation lives in `../../../Global_References/details.md`.
 
 The hallmark of correctly applied Clean Architecture is that every use case can be exercised in a plain unit test with no real database, no [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), and no network:
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # tests/unit/test_create_user.py
 import asyncio
 from typing import Dict, Optional
@@ -158,7 +158,7 @@ When the controller grows beyond HTTP parsing and response formatting, extract t
 
 ### Value objects raising errors too late
 
-Validate invariants in `__post_init__` ([Python](../../Languages/python/SKILL.md)) or the constructor so an invalid `Email` or `Money` cannot be constructed at all. This surfaces bad data at the boundary, not deep inside business logic.
+Validate invariants in `__post_init__` ([Python](../../Languages/python/python/SKILL.md)) or the constructor so an invalid `Email` or `Money` cannot be constructed at all. This surfaces bad data at the boundary, not deep inside business logic.
 
 ### Context bleed across bounded contexts
 

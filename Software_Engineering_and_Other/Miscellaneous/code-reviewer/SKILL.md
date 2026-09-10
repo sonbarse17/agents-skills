@@ -69,7 +69,7 @@ Load detailed guidance based on context:
 ## Review Patterns (Quick Reference)
 
 ### N+1 Query — Bad vs Good
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # BAD: query inside loop
 for user in users:
     orders = Order.objects.filter(user=user)  # N+1
@@ -79,7 +79,7 @@ users = User.objects.prefetch_related('orders').all()
 ```
 
 ### Magic Number — Bad vs Good
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # BAD
 if status == 3:
     ...
@@ -91,7 +91,7 @@ if status == ORDER_STATUS_SHIPPED:
 ```
 
 ### Security: SQL Injection — Bad vs Good
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # BAD: string interpolation in query
 cursor.execute(f"SELECT * FROM users WHERE id = {user_id}")
 

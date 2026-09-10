@@ -66,7 +66,7 @@ that was never updated.
 
 - A resolvable dependency manifest/lockfile per ecosystem: `package-lock.json`
   or `yarn.lock`/`pnpm-lock.yaml` (npm/yarn/pnpm), `requirements.txt`/
-  `poetry.lock`/`Pipfile.lock` ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)), `go.sum` (Go), `pom.xml`/
+  `poetry.lock`/`Pipfile.lock` ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)), `go.sum` (Go), `pom.xml`/
   `gradle.lockfile` (Java), `Gemfile.lock` (Ruby), `Cargo.lock` (Rust).
   SCA tools generally need the lockfile, not just the top-level manifest,
   to see transitive dependencies accurately.

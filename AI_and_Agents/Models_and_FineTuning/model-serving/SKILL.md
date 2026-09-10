@@ -45,9 +45,9 @@ Model framework and requirements
   │   └── K8s native → KServe (K8s CRD, auto-scaling to zero)
   ├── TensorFlow model
   │   └── TF Serving (native, best performance, SavedModel format)
-  ├── [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ecosystem (sklearn, XGBoost, custom)
+  ├── [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) ecosystem (sklearn, XGBoost, custom)
   │   ├── Simple API → BentoML (OpenAPI, framework-agnostic)
-  │   └── Distributed, complex → Ray Serve ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
+  │   └── Distributed, complex → Ray Serve ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native)
   ├── Multiple frameworks
   │   ├── K8s → KServe or Seldon Core (multi-framework)
   │   └── MLflow → MLflow Serving (experiment tracking integration)
@@ -145,12 +145,12 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Step 1: Select Serving Framework
 - **TorchServe**: PyTorch-native, built-in model archive, metrics. Best for PyTorch models.
-- **BentoML**: Framework-agnostic, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ML ecosystem.
-- **Ray Serve**: Distributed, composition of models, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native. Best for complex pipelines.
+- **BentoML**: Framework-agnostic, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) ML ecosystem.
+- **Ray Serve**: Distributed, composition of models, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native. Best for complex pipelines.
 - **KServe**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
 - **Seldon Core**: Multi-framework, explainability, outlier detection. Best for advanced ML features.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # BentoML service definition
 import bentoml
 import numpy as np
@@ -170,7 +170,7 @@ class PredictionService:
 ```
 
 ### Step 2: Package Model
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # BentoML packaging
 import bentoml
 import xgboost as xgb
@@ -223,7 +223,7 @@ spec:
 ```
 
 ### Step 5: Inference Optimization
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Dynamic batching in config
 batch_size=32
 max_batch_delay=100
@@ -264,7 +264,7 @@ livenessProbe:
 ```
 
 ### Step 7: A/B Testing Setup
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Traffic routing for A/B testing
 import numpy as np
 
@@ -468,7 +468,7 @@ spec:
 
 ## Response Caching Strategy
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class PredictionCache:
     """LRU cache for frequent prediction requests."""
 

@@ -405,7 +405,7 @@ Carry forward: topic/queue topology, message schemas, consumer group configs, re
 
 ### Kafka Producer/Consumer
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import Dict, Callable, Any, Optional
 import json
 import asyncio

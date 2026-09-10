@@ -99,7 +99,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Quantization**: Compressing FP32 vectors to INT8 to fit massive LLMs and indexes into VRAM.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -147,7 +147,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **RAG Architecture**: Retrieval-Augmented Generation feeding context chunks to LLMs to prevent hallucinations.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -222,7 +222,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Quantization**: Compressing FP32 vectors to INT8 to fit massive LLMs and indexes into VRAM.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension

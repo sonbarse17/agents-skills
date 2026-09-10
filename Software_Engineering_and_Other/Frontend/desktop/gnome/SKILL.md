@@ -38,7 +38,7 @@ Exact user phrases: "GNOME app", "GNOME Shell extension", "libadwaita", "GSettin
 
 ### Input Context
 - App type (application, shell extension, background service)
-- Language (C, Vala, Rust via gtk-rs, [Python](../../../Languages/python/SKILL.md) via PyGObject)
+- Language (C, Vala, Rust via gtk-rs, [Python](../../../Languages/python/python/SKILL.md) via PyGObject)
 - GNOME version target (44+, 46+, 48+)
 - Target distribution (Flatpak, distro packages, GNOME Circle)
 - libadwaita usage (pure GTK vs libadwaita widgets)
@@ -129,8 +129,8 @@ fn build_ui(app: &adw::Application) {
 }
 ```
 
-```[python](../../../Languages/python/SKILL.md)
-# [Python](../../../Languages/python/SKILL.md) with PyGObject
+```[python](../../../Languages/python/python/SKILL.md)
+# [Python](../../../Languages/python/python/SKILL.md) with PyGObject
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')

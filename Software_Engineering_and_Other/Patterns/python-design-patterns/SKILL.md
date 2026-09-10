@@ -18,9 +18,9 @@ depends_on:
   - python-project-structure
 ---
 
-# [Python](../../Languages/python/SKILL.md) Design Patterns
+# [Python](../../Languages/python/python/SKILL.md) Design Patterns
 
-Write maintainable [Python](../../Languages/python/SKILL.md) code using fundamental design principles. These patterns help you build systems that are easy to understand, test, and modify.
+Write maintainable [Python](../../Languages/python/python/SKILL.md) code using fundamental design principles. These patterns help you build systems that are easy to understand, test, and modify.
 
 ## When to Use This Skill
 
@@ -51,7 +51,7 @@ Wait until you have three instances before abstracting. Duplication is often bet
 
 ## Quick Start
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Simple beats clever
 # Instead of a factory/registry pattern:
 FORMATTERS = {"json": JsonFormatter, "csv": CsvFormatter}
@@ -62,7 +62,7 @@ def get_formatter(name: str) -> Formatter:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/[python](../../Languages/python/SKILL.md)-design-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[python](../../Languages/python/python/SKILL.md)-design-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 
@@ -96,6 +96,6 @@ This is a layering violation. The service layer must not import from handlers. I
 
 ## Related Skills
 
-- [python-testing-patterns](../[python-testing-patterns](../../Languages/[python](../../Languages/python/SKILL.md)-testing-patterns/SKILL.md)/SKILL.md) — Test each layer in isolation using the dependency injection structure established here
-- [python-project-structure](../[python-project-structure](../../../AI_and_Agents/Architecture/[python](../../Languages/python/SKILL.md)-project-structure/SKILL.md)/SKILL.md) — Organize modules and directory layout so layer boundaries are explicit from the start
+- [python-testing-patterns](../[python-testing-patterns](../../Languages/[python](../../Languages/python/python/SKILL.md)-testing-patterns/SKILL.md)/SKILL.md) — Test each layer in isolation using the dependency injection structure established here
+- [python-project-structure](../[python-project-structure](../../../AI_and_Agents/Architecture/[python](../../Languages/python/python/SKILL.md)-project-structure/SKILL.md)/SKILL.md) — Organize modules and directory layout so layer boundaries are explicit from the start
 

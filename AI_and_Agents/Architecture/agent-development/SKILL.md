@@ -145,9 +145,9 @@ Read `resources/concurrency.md` for detailed patterns.
 
 ## Implementation Examples
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (SDK-based)
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (SDK-based)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 agent = client.agents.create(
     name="my-agent",
     model="gpt-4o",

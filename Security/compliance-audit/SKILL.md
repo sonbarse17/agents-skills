@@ -311,7 +311,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../AI_a
 - Splunk / ELK for log management and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
 
 ### Automated Compliance Testing Patterns
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # [Compliance-as-Code](../compliance-as-code/SKILL.md): automated control testing
 import subprocess, json, datetime
 
@@ -442,7 +442,7 @@ unified_controls:
 
 ## Code Examples
 
-### Control Mapping Automation ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/YAML)
+### Control Mapping Automation ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/YAML)
 ```yaml
 controls:
   access-control:
@@ -456,7 +456,7 @@ controls:
     enc-2: { framework: gdpr, ref: "Art 32", description: "Data protection measures", evidence: encryption_policy }
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Automated evidence collector
 import hashlib, json, datetime
 

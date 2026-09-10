@@ -230,7 +230,7 @@ spec:
 ```
 
 ### Step 7: Automated Remediation
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Lambda function to stop untagged instances
 def lambda_handler(event, context):
     ec2 = boto3.client('ec2')

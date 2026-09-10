@@ -48,7 +48,7 @@ Insecure output           XSS/SQLi from LLM response     Output encoding, parame
 
 ## Prompt Injection Defense
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 from typing import Optional
 
@@ -91,7 +91,7 @@ def sanitize_user_input(user_input: str, max_length: int = 4000) -> str:
 
 ## Guardrails with NeMo Guardrails
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # guardrails.yaml
 from nemoguardrails import RailsConfig, LLMRails
 
@@ -125,7 +125,7 @@ rails:
 
 ## Output Filtering & PII Scrubbing
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 from presidio_analyzer import AnalyzerEngine
 from presidio_anonymizer import AnonymizerEngine
@@ -161,7 +161,7 @@ def validate_output_safety(output: str) -> bool:
 
 ## API Security for LLM Endpoints
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import jwt
@@ -274,7 +274,7 @@ spec:
 
 ## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 from datetime import datetime, timezone
 

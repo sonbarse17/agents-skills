@@ -165,7 +165,7 @@ and the operational burden each phase adds versus a managed alternative.
    [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)'s
    self-hosted guidance — sized, sharded, and **replicated** from the
    start:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Milvus collection replication (self-hosted — no managed-service
    # durability behind this unless explicitly configured)
    collection: agent_knowledge_base

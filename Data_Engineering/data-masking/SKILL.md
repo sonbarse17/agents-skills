@@ -117,7 +117,7 @@ function maskEmail(email) {
 // j@example.com  -> j******n@example.com
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def mask_email(email: str) -> str:
     local, domain = email.split('@')
     return f"{local[0]}{'*' * max(len(local) - 2, 0)}{local[-1]}@{domain}"
@@ -376,7 +376,7 @@ Carry forward: data classification map, encryption strategy, tokenization approa
 
 ### Data Masker Engine
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Dict, Any, List, Optional, Callable
 from enum import Enum
 import re
@@ -471,7 +471,7 @@ class DataMasker:
 
 ### PII Detection Pipeline
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Dict, List, Optional, Set
 import re
 

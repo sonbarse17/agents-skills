@@ -151,7 +151,7 @@ see
    For multi-line stack traces specifically, use the `multiline` filter
    (or `multiline.parser` on the `tail` input in newer versions) rather
    than a regex parser alone — a plain parser processes line-by-line and
-   cannot join a Java/[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack trace's continuation lines back into
+   cannot join a Java/[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) stack trace's continuation lines back into
    one log entry on its own.
 
 4. **Drop or redact fields that shouldn't be shipped downstream** —
@@ -304,7 +304,7 @@ see
   Bit's own buffer/retry metrics so this is caught before it becomes a
   node-level [incident](../../../common/incident-detection/incident/SKILL.md).
 
-- **Symptom:** Multi-line Java/[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack traces show up in the
+- **Symptom:** Multi-line Java/[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) stack traces show up in the
   destination as dozens of separate single-line log entries instead of
   one coherent trace.
   **Fix:** A `regex`/`json` parser was applied line-by-line without a

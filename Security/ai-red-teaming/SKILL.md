@@ -32,7 +32,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `openai`, `anthropic`, or equivalent SDK installed
+- [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with `openai`, `anthropic`, or equivalent SDK installed
 - Access to the target model endpoint (API key or local deployment)
 - A prompt management tool or spreadsheet for tracking attack payloads
 - Familiarity with OWASP Top 10 for LLM Applications
@@ -102,7 +102,7 @@ categories:
 
 ## Automated Testing Script
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """ai_red_team_runner.py - Automated red team test harness."""
 
@@ -268,7 +268,7 @@ notification_webhook: "https://hooks.slack.com/services/XXX/YYY/ZZZ"
 
 ### Risk Score Calculation
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> dict:
     """Calculate composite risk score (1-125). Higher = more urgent."""
     raw_score = likelihood * impact * detectability
@@ -357,11 +357,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.11'
       - run: pip install -r requirements-redteam.txt
-      - run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) ai_red_team_runner.py
+      - run: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) ai_red_team_runner.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - run: |

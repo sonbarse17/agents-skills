@@ -87,7 +87,7 @@ telemetry_disabled: true
 
 ## Qdrant Collection Management
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance, VectorParams, HnswConfigDiff,
@@ -137,7 +137,7 @@ print(f"Vectors: {info.vectors_count}, Status: {info.status}")
 
 ## Qdrant Filtered Search
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from qdrant_client.models import Filter, FieldCondition, MatchValue, Range
 
 # Tenant-isolated search (multi-tenant RAG)
@@ -255,7 +255,7 @@ pg_restore -h localhost -U postgres -d vectordb documents-backup.dump
 
 ## Performance Tuning
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Qdrant — optimize collection after bulk load
 client.update_collection(
     collection_name="documents",

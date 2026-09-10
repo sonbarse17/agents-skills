@@ -34,10 +34,10 @@ Define Flask backend application architecture: lightweight server setup, bluepri
 ## Agent Protocol
 
 ### Trigger
-User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app factory`, `flask sqlalchemy`, `flask extension`, `flask rest api`, `[python](../../../Languages/python/SKILL.md) flask`.
+User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app factory`, `flask sqlalchemy`, `flask extension`, `flask rest api`, `[python](../../../Languages/python/python/SKILL.md) flask`.
 
 ### Input Context
-- [Python](../../../Languages/python/SKILL.md) version (3.10+)
+- [Python](../../../Languages/python/python/SKILL.md) version (3.10+)
 - Flask version (3.x)
 - Database ORM (SQLAlchemy, Peewee)
 - API style (REST, Flask-RESTx)
@@ -134,7 +134,7 @@ project/
 ```
 
 ### Step 3: Application Factory
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/__init__.py
 from flask import Flask
 
@@ -181,7 +181,7 @@ def register_cli_commands(app: Flask) -> None:
 ```
 
 ### Step 4: Configuration Classes
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/config.py
 import os
 from datetime import timedelta
@@ -220,7 +220,7 @@ config_map = {
 ```
 
 ### Step 5: Blueprint Pattern with Service Layer
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/blueprints/orders/routes.py
 from flask import Blueprint, request, jsonify
 from pydantic import ValidationError
@@ -270,7 +270,7 @@ def delete_order(order_id):
 ```
 
 ### Step 6: Service Layer
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/services/order_service.py
 from app.extensions import db
 from app.models.order import Order
@@ -311,7 +311,7 @@ class OrderService:
 ```
 
 ### Step 7: Pydantic Schemas
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/blueprints/orders/schemas.py
 from pydantic import BaseModel, Field, UUID4
 from typing import List, Optional
@@ -338,7 +338,7 @@ class OrderResponseSchema(BaseModel):
 ```
 
 ### Step 8: Error Handling
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # app/utils/errors.py
 from flask import jsonify
 
@@ -387,7 +387,7 @@ def register_error_handlers(app):
 ```
 
 ### Step 9: Testing
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # tests/conftest.py
 import pytest
 from app import create_app
@@ -469,7 +469,7 @@ Server-rendered HTML?
 
 5. **Not closing database connections**: Flask-SQLAlchemy handles this, but raw connections from `psycopg2` or direct engine usage must be closed.
 
-6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with [python](../../../Languages/python/SKILL.md)-dotenv. Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
+6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with [python](../../../Languages/python/python/SKILL.md)-dotenv. Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
 
 7. **No CORS configuration for API**: API consumed by browser-based SPA needs `flask-cors` with proper origin whitelist.
 

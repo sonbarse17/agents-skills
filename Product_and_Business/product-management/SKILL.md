@@ -212,8 +212,8 @@ curl -H "X-API-Key: $API_KEY" \
      | jq '.'
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) quickstart
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) quickstart
 import os
 from example_api_client import ApiClient
 
@@ -254,7 +254,7 @@ try {
 ### API Monetization
 
 #### Usage Tracking Architecture
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class UsageTracker:
     def record(self, api_key: str, endpoint: str, method: str, status: int, latency_ms: int):
         event = {
@@ -361,7 +361,7 @@ WHERE timestamp BETWEEN NOW() - INTERVAL '60 days' AND NOW() - INTERVAL '30 days
 ```
 
 #### API Product Scorecard
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class ApiProductScorecard:
     def compute(self, metrics: dict) -> dict:
         weights = {
@@ -498,7 +498,7 @@ trade_off_format:
 
   costs:
     - "Developer portal v2 delayed to Q3"
-    - "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK improvements deferred to Q3"
+    - "[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK improvements deferred to Q3"
     - "Mobile SDKs (iOS/[Android](../../Mobile/android/SKILL.md)) deferred to Q1 2027"
 
   risk:

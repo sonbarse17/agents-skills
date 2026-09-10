@@ -47,7 +47,7 @@ Horusec is an open-source security analysis tool that performs static code analy
 
 ## Supported Languages
 
-C#, Java, Kotlin, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
+C#, Java, Kotlin, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
 
 ## Quick Start
 
@@ -346,7 +346,7 @@ Override default security tool images in configuration:
 ```json
 {
   "horusecCliCustomImages": {
-    "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)": "my-registry/custom-bandit:latest",
+    "[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)": "my-registry/custom-bandit:latest",
     "go": "my-registry/custom-gosec:latest"
   }
 }

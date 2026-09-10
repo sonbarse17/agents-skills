@@ -96,7 +96,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Cosine Similarity**: Measuring the angle between embeddings to determine semantic closeness.
 
 ### Core Implementation
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -143,7 +143,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### Core Implementation
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -216,7 +216,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### Core Implementation
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension

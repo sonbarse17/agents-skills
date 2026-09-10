@@ -54,14 +54,14 @@ AZURE_COGNITIVE_SERVICES_KEY=<api-key>  # Only required for the legacy API-key a
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.ai.voicelive.aio import connect
 from azure.identity.aio import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 async with DefaultAzureCredential(require_envvar=True) as credential:
@@ -78,7 +78,7 @@ async with DefaultAzureCredential(require_envvar=True) as credential:
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.voicelive.aio import connect
@@ -93,7 +93,7 @@ async with connect(
 
 ## Quick Start
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import asyncio
 import os
 from azure.ai.voicelive.aio import connect
@@ -141,7 +141,7 @@ The `VoiceLiveConnection` exposes these resources:
 
 ## Session Configuration
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.ai.voicelive.models import RequestSession, FunctionTool
 
 await conn.session.update(session=RequestSession(
@@ -177,7 +177,7 @@ await conn.session.update(session=RequestSession(
 
 ### Send Audio (Base64 PCM16)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import base64
 
 # Read audio chunk (16-bit PCM, 24kHz mono)
@@ -189,7 +189,7 @@ await conn.input_audio_buffer.append(audio=b64_audio)
 
 ### Receive Audio
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async for event in conn:
     if event.type == "response.audio.delta":
         audio_bytes = base64.b64decode(event.delta)
@@ -200,7 +200,7 @@ async for event in conn:
 
 ## Event Handling
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async for event in conn:
     match event.type:
         # Session events
@@ -250,7 +250,7 @@ async for event in conn:
 
 ### Manual Turn Mode (No VAD)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 await conn.session.update(session={"turn_detection": None})
 
 # Manually control turns
@@ -261,7 +261,7 @@ await conn.response.create()  # Trigger response
 
 ### Interrupt Handling
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async for event in conn:
     if event.type == "input_audio_buffer.speech_started":
         # User interrupted - cancel current response
@@ -271,7 +271,7 @@ async for event in conn:
 
 ### Conversation History
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Add system message
 await conn.conversation.item.create(item={
     "type": "message",
@@ -316,7 +316,7 @@ Azure voices: Use `AzureStandardVoice`, `AzureCustomVoice`, or `AzurePersonalVoi
 
 ## Turn Detection Options
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Server VAD (default)
 {"type": "server_vad", "threshold": 0.5, "silence_duration_ms": 500}
 
@@ -328,7 +328,7 @@ Azure voices: Use `AzureStandardVoice`, `AzureCustomVoice`, or `AzurePersonalVoi
 
 ## Error Handling
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.ai.voicelive.aio import ConnectionError, ConnectionClosed
 
 try:

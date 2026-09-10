@@ -135,7 +135,7 @@ L(θ) = (1/n) Σ_i (y_i - ŷ_i)²   where ŷ_i = w^T x_i + b
 Always include the final vectorized form: `∇_w L = -(2/n) X^T (y - ŷ)`.
 
 ### Step 3: Provide NumPy/SciPy Implementation
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import numpy as np
 
 def mse_gradient(X, y, w, b):
@@ -160,7 +160,7 @@ def mse_gradient(X, y, w, b):
 
 ### Step 4: Map to ML Algorithm
 Connect the math to practical ML. Example for MSE gradient → mini-batch SGD:
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 def sgd_step(X_batch, y_batch, w, b, lr=0.01):
     dw, db = mse_gradient(X_batch, y_batch, w, b)
     w -= lr * dw
@@ -205,7 +205,7 @@ Always document numerical issues:
 
 ## Numerical Stability Pattern Library
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Softmax: subtract max to prevent overflow
 def stable_softmax(x, axis=-1):
     x_max = np.max(x, axis=axis, keepdims=True)
@@ -246,7 +246,7 @@ def online_variance(values):
 
 ### Pattern 1: Gradient Checking
 When implementing custom gradients, verify with finite differences:
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 def gradient_check(f, grad_f, x, epsilon=1e-7):
     """Numerically verify gradient computation."""
     analytical = grad_f(x)

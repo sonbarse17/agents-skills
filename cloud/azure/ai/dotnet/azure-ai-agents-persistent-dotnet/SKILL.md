@@ -292,7 +292,7 @@ await client.Files.DeleteFileAsync(file.Id);
 
 | Tool | Class | Purpose |
 |------|-------|---------|
-| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code, generate visualizations |
+| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) code, generate visualizations |
 | File Search | `FileSearchToolDefinition` | Search uploaded files via vector stores |
 | Function Calling | `FunctionToolDefinition` | Call custom functions |
 | Bing Grounding | `BingGroundingToolDefinition` | Web search via Bing |

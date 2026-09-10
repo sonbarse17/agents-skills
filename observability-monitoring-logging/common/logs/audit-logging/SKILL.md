@@ -154,7 +154,7 @@ journalctl --since "7 days ago" --output export > /backup/journal-export.bin
 
 ## Application Logging with Structured JSON
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import logging
 import json
 import hashlib

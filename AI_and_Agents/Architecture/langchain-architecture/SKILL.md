@@ -66,7 +66,7 @@ LangGraph is the standard for building agents in 2026. It provides:
 
 LangGraph uses TypedDict for explicit state:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Annotated, TypedDict
 from langgraph.graph import MessagesState
 
@@ -118,7 +118,7 @@ LangSmith is the standard for [observability](../../../observability-monitoring-
 
 ### Modern ReAct Agent with LangGraph
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_anthropic import ChatAnthropic
@@ -188,7 +188,7 @@ agent = create_react_agent(
 # Run agent with thread ID for memory
 config = {"configurable": {"thread_id": "user-123"}}
 result = await agent.ainvoke(
-    {"messages": [("user", "Search for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) tutorials and calculate 25 * 4")]},
+    {"messages": [("user", "Search for [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) tutorials and calculate 25 * 4")]},
     config=config
 )
 ```
@@ -199,7 +199,7 @@ Detailed pattern documentation lives in `../../../Global_References/langchain-ar
 
 ## Testing Strategies
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import pytest
 from unittest.mock import AsyncMock, patch
 
@@ -240,7 +240,7 @@ async def test_memory_persistence():
 
 ### 1. Caching with Redis
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langchain_community.cache import RedisCache
 from langchain_core.globals import set_llm_cache
 import redis
@@ -251,7 +251,7 @@ set_llm_cache(RedisCache(redis_client))
 
 ### 2. Async Batch Processing
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import asyncio
 from langchain_core.documents import Document
 
@@ -271,7 +271,7 @@ async def process_single(doc: Document) -> dict:
 
 ### 3. Connection Pooling
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone
 

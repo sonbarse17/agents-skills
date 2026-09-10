@@ -287,8 +287,8 @@ A managed service provider had 47 different SLAs, most of which could not be mea
 
 ## Code Examples
 
-### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Priority Calculator ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Priority Calculator ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 from enum import Enum
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -381,8 +381,8 @@ change_types:
     documentation: "Post-change within 24h"
 ```
 
-### Problem Management Workflow ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Problem Management Workflow ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 @dataclass
 class KnownError:
     id: str
@@ -420,8 +420,8 @@ class ProblemManager:
         return {k: v for k, v in Counter(titles).items() if v >= 3}
 ```
 
-### SLA Compliance Calculator ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### SLA Compliance Calculator ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 @dataclass
 class SLAMetric:
     name: str

@@ -45,7 +45,7 @@ Use this skill when:
 | Semgrep | OSS/Commercial | 30+ | Custom rules, speed |
 | CodeQL | Free ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md)) | 10+ | Deep analysis |
 | SonarQube | OSS/Commercial | 25+ | Quality + Security |
-| Bandit | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) projects |
+| Bandit | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
 | Brakeman | OSS | Ruby | Rails apps |
 
 ## Semgrep
@@ -72,7 +72,7 @@ semgrep --config p/owasp-top-ten .
 semgrep --config p/ci .
 
 # Scan specific languages
-semgrep --config p/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) .
+semgrep --config p/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) .
 semgrep --config p/javascript .
 
 # Output formats
@@ -168,7 +168,7 @@ jobs:
 
     strategy:
       matrix:
-        language: ['javascript', '[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)']
+        language: ['javascript', '[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)']
 
     steps:
       - uses: actions/checkout@v4
@@ -203,10 +203,10 @@ jobs:
  * @tags security
  */
 
-import [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).dataflow.new.DataFlow
-import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).dataflow.new.TaintTracking
-import semmle.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).security.dataflow.SqlInjectionQuery
+import [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).dataflow.new.DataFlow
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).dataflow.new.TaintTracking
+import semmle.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).security.dataflow.SqlInjectionQuery
 
 from SqlInjectionConfiguration config, DataFlow::PathNode source, DataFlow::PathNode sink
 where config.hasFlowPath(source, sink)
@@ -264,7 +264,7 @@ sonar.tests=tests
 sonar.exclusions=**/node_modules/**,**/vendor/**
 
 sonar.language=py
-sonar.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
+sonar.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).coverage.reportPaths=coverage.xml
 
 sonar.qualitygate.wait=true
 ```
@@ -288,7 +288,7 @@ sonar.qualitygate.wait=true
 
 ## Language-Specific Tools
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (Bandit)
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (Bandit)
 
 ```bash
 # Install

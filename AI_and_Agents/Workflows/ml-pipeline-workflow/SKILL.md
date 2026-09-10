@@ -87,7 +87,7 @@ The `assets/` directory contains:
 
 ### Basic Pipeline Setup
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # 1. Define pipeline stages
 stages = [
     "data_ingestion",
@@ -213,7 +213,7 @@ stages:
 
 ### Real-time Feature Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Stream processing for real-time features
 # Combined with batch training
 # See references/data-preparation.md
@@ -221,7 +221,7 @@ stages:
 
 ### Continuous Training
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Automated retraining on schedule
 # Triggered by data drift detection
 # See references/model-training.md

@@ -33,7 +33,7 @@ Run retrieval-augmented generation like a measurable production system, not a bl
 ## Prerequisites
 
 - RAG pipeline with instrumented retrieval and generation stages
-- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with evaluation libraries (ragas, langchain, openai)
+- [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with evaluation libraries (ragas, langchain, openai)
 - Prometheus endpoint for custom metrics export
 - Benchmark dataset with gold-standard question/answer/source triples
 - [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK integrated into the RAG service
@@ -57,7 +57,7 @@ Run retrieval-augmented generation like a measurable production system, not a bl
 
 ## RAGAS Evaluation Script
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # rag_eval.py
 """Evaluate RAG pipeline quality using RAGAS metrics."""
 from ragas import evaluate
@@ -120,7 +120,7 @@ if __name__ == "__main__":
 
 ## Groundedness Scoring
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # groundedness.py
 """Score whether generated answers are grounded in retrieved context."""
 from openai import OpenAI
@@ -200,7 +200,7 @@ def batch_groundedness(eval_data: list) -> dict:
 
 ## Retrieval Quality Metrics
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # retrieval_metrics.py
 """Compute retrieval quality metrics for RAG evaluation."""
 from typing import List, Set
@@ -266,7 +266,7 @@ def compute_retrieval_metrics(
 
 ## Prometheus Metrics Export
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # rag_metrics_exporter.py
 """Export RAG quality metrics to Prometheus."""
 from prometheus_client import Histogram, Counter, Gauge, start_http_server
@@ -393,7 +393,7 @@ spec:
             - name: eval-runner
               image: registry.internal/rag-eval:latest
               command:
-                - [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+                - [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
                 - -m
                 - rag_eval
                 - --dataset=/data/benchmark_v3.json

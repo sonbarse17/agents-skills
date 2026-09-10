@@ -38,7 +38,7 @@ Create and configure development containers — [Docker](../../../containers-orc
 Exact user phrases: "dev container", "devcontainer.json", "development container", "VS Code Dev Container", "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces", "dev environment setup", "reproducible dev environment", "containerized dev", "[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) dev environment", "remote container".
 
 ### Input Context
-- Language runtime (Node.js, [Python](../../Languages/python/SKILL.md), Go, Rust, Java, .NET, Ruby, PHP)
+- Language runtime (Node.js, [Python](../../Languages/python/python/SKILL.md), Go, Rust, Java, .NET, Ruby, PHP)
 - Build tools (npm, pip, cargo, maven, gradle, make, cmake)
 - Services needed ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md), Redis, [MySQL](../../Databases/relational/mysql/SKILL.md), [MongoDB](../../Databases/nosql/mongodb/SKILL.md), RabbitMQ, Elasticsearch)
 - VS Code extensions required for development
@@ -77,7 +77,7 @@ What is the project type?
 │   app container + postgres + redis containers
 │   → depends_on, network, healthcheck
 ├── Polyglot / multiple runtimes → Feature-based
-│   base: debian + features (node, [python](../../Languages/python/SKILL.md), go)
+│   base: debian + features (node, [python](../../Languages/python/python/SKILL.md), go)
 │   → ghcr.io/devcontainers/features/*
 ├── GPU / CUDA development → GPU-enabled base
 │   base: mcr.microsoft.com/devcontainers/cuda
@@ -92,7 +92,7 @@ Host Machine (VS Code, Codespaces, JetBrains)
     ↕ Remote-SSH or Remote-Containers
 Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 ├── Application code (mounted volume)
-├── Language runtime (Node, [Python](../../Languages/python/SKILL.md), Go, etc.)
+├── Language runtime (Node, [Python](../../Languages/python/python/SKILL.md), Go, etc.)
 ├── Build tools (npm, cargo, make, etc.)
 ├── VS Code extensions (inside container)
 ├── Git credentials forwarded

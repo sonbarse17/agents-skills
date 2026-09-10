@@ -62,7 +62,7 @@ concrete, evidence-based [autoscaling](../../../../Software_Engineering_and_Othe
 ## Prerequisites & environment
 
 - A [load-testing](../load-testing/SKILL.md) tool: **k6** (scriptable in JavaScript, good CI
-  integration, used for the examples below), **Locust** ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md),
+  integration, used for the examples below), **Locust** ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md),
   distributed load generation, good for complex user-behavior
   simulation), or **JMeter** (GUI/XML-based, long-established, strong
   protocol support) — any of the three is a reasonable choice; pick based

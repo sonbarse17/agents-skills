@@ -53,13 +53,13 @@ Before activating, verify:
 - Compression requirements (storage cost vs CPU cost)
 
 ### Output Artifact
-Data format specification with file layout, encoding, compression, and schema configuration as SQL, YAML, and [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+Data format specification with file layout, encoding, compression, and schema configuration as SQL, YAML, and [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 ### Response Format
 ```sql
 -- Parquet DDL with encoding and compression
 ```
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 -- Arrow table construction and IPC
 ```
 ```yaml
@@ -90,7 +90,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | Compression ratio | High (column similarity) | Low-Medium | N/A (memory) |
 | Schema evolution | Backward compatible | Full support | Requires copy |
 | Zero-copy reads | No (file-based) | No | Yes |
-| Inter-language | Any (file-based) | Any | C++, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), R, Java, JS |
+| Inter-language | Any (file-based) | Any | C++, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), R, Java, JS |
 | Best for | Data lakes, analytics | Message queues, Kafka | Compute engines |
 
 ### Parquet Deep Configuration
@@ -134,7 +134,7 @@ spark:
       parquet.writer.version: "v2"
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # PyArrow: Parquet file writing with advanced config
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -185,7 +185,7 @@ pq.write_table(
 
 Arrow defines a language-agnostic columnar memory layout for zero-copy data sharing.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # PyArrow: Arrow table and IPC
 import pyarrow as pa
 
@@ -224,7 +224,7 @@ buf = sink.getvalue()
 # buf is a shared memory buffer ready for transport
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Arrow IPC flight server (minimal)
 import pyarrow.flight as flight
 
@@ -348,7 +348,7 @@ TBLPROPERTIES ('parquet.mergeschema' = 'true');
 | LZO | 2x | ★★★★ | ★★★★★ | Yes | Legacy Hadoop |
 | Brotli | 4-6x | ★★ | ★★★★ | Yes | Web, high compression |
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Compression selection helper
 import pyarrow.parquet as pq
 
@@ -373,7 +373,7 @@ print(recommend_compression(1000, 16, 0.023))
 
 Arrow Flight is a gRPC-based protocol for high-throughput data transfer using Arrow's columnar format.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Arrow Flight: DoExchange for bidirectional streaming
 class FlightAnalyticsServer(flight.FlightServerBase):
     def do_exchange(self, context, descriptor, reader, writer):
@@ -450,7 +450,7 @@ Data Format Selection
 ## Implementation Patterns
 
 ### Parquet Schema Evolution
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_formats/schema_evolution.py
 import pyarrow.parquet as pq
 import pyarrow as pa
@@ -470,7 +470,7 @@ def safe_append(table: pa.Table, path: str):
 ```
 
 ### Arrow Flight gRPC Pattern
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_formats/arrow_flight.py
 import pyarrow.flight as flight
 

@@ -53,7 +53,7 @@ Pulumi supports multiple languages — choose based on your team's familiarity:
 | Language | Template prefix | Runtime needed |
 | --- | --- | --- |
 | [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) | `aws-[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)` | Node.js |
-| [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `aws-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)` | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.8+ |
+| [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | `aws-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)` | [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.8+ |
 | Go | `aws-go` | Go 1.21+ |
 | C# | `aws-csharp` | .NET 6+ |
 | Java | `aws-java` | JDK 11+ |

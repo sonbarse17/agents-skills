@@ -125,7 +125,7 @@ covers on the prevention side.
    | **Model behavior change** | The prompt, tools, and retrieval are all unchanged and were confirmed working before a specific date/model version, and the failure correlates with a provider-side model update or your own version bump. |
    | **Genuine edge case** | Reproduces deterministically, every upstream component (tools, retrieval, prompt) is confirmed correct and unambiguous, and the input is a legitimately novel scenario the system was never designed to handle. |
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def classify_root_cause(transcript, changelog):
        if any(t.tool_result.error or t.tool_result.is_stale for t in transcript.tool_calls):
            return "tool_failure"

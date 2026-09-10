@@ -19,7 +19,7 @@ depends_on:
   - audit
 ---
 
-# Azure Event Grid SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Event Grid SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Event routing service for building event-driven applications with pub/sub semantics.
 
@@ -50,7 +50,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.eventgrid import EventGridPublisherClient
@@ -58,7 +58,7 @@ from azure.eventgrid import EventGridPublisherClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 endpoint = "https://<topic-name>.<region>.eventgrid.azure.net/api/events"
@@ -77,7 +77,7 @@ with EventGridPublisherClient(endpoint, credential) as client:
 
 ## Publish CloudEvents
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.eventgrid import EventGridPublisherClient, CloudEvent
 from azure.identity import DefaultAzureCredential
 
@@ -104,7 +104,7 @@ with EventGridPublisherClient(endpoint, DefaultAzureCredential()) as client:
 
 ## Publish EventGridEvents
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.eventgrid import EventGridEvent
 from datetime import datetime, timezone
 
@@ -122,7 +122,7 @@ client.send(event)
 
 ### CloudEvent Properties
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 event = CloudEvent(
     type="MyApp.Events.ItemCreated",      # Required: event type
     source="/myapp/items",                 # Required: event source
@@ -137,7 +137,7 @@ event = CloudEvent(
 
 ### EventGridEvent Properties
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 event = EventGridEvent(
     subject="/myapp/items/123",            # Required: subject
     event_type="MyApp.ItemCreated",        # Required: event type
@@ -150,7 +150,7 @@ event = EventGridEvent(
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.eventgrid.aio import EventGridPublisherClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -173,7 +173,7 @@ asyncio.run(publish_events())
 
 For Event Grid Namespaces (pull delivery):
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.eventgrid import EventGridPublisherClient
 from azure.identity import DefaultAzureCredential
 

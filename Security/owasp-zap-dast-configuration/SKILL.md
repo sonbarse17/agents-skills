@@ -60,7 +60,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
 - The user wants to tune ZAP's alert thresholds/rules
   (`-config`/rules file) to cut noise without disabling whole scan
   categories.
-- The user is migrating from the older standalone [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) wrapper
+- The user is migrating from the older standalone [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) wrapper
   scripts (`zap-baseline.py`, `zap-api-scan.py`, `zap-full-scan.py`) to
   the current ZAP Automation Framework YAML format.
 
@@ -71,7 +71,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
   distribution. The Automation Framework (`zap.yaml` plans, invoked via
   `zap.sh -cmd -autorun plan.yaml` or the `zap-x.py` wrapper's
   `-autorun` mode) is the current recommended entry point over the
-  older per-mode [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts, which remain available but receive
+  older per-mode [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts, which remain available but receive
   less active development attention.
 - A reachable target environment — **never point an active-scan job at
   production**; use a staging/preview environment that mirrors

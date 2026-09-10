@@ -515,7 +515,7 @@ groups:
 
 ### Pattern: Error Budget Tracker
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class ErrorBudget:
     def __init__(self, slo: float, window_days: int = 30):
         self.slo = slo

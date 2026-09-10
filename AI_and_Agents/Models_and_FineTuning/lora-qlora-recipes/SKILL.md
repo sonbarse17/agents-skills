@@ -48,7 +48,7 @@ settled convention for LoRA/QLoRA SFT.
 Target **all-linear** modules, not just
 attention:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 target_modules = [
     "q_proj", "k_proj", "v_proj", "o_proj",   # attention
     "gate_proj", "up_proj", "down_proj",      # MLP — matters most
@@ -130,7 +130,7 @@ each one is set that way:
 These show up together on the `get_peft_model`
 call:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 model = FastLanguageModel.get_peft_model(
     model,
     r=32,
@@ -190,7 +190,7 @@ and `../../../Global_References/hyperparameters.md`.
   hardware support before picking a dtype:
 
   ```bash
-  [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "import torch; print(torch.cuda.is_bf16_supported())"
+  [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "import torch; print(torch.cuda.is_bf16_supported())"
   ```
 
 - **Rank too high on a small dataset overfits.**

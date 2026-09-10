@@ -94,7 +94,7 @@ volumes:
 
 ## Required Metadata Schema
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # model_metadata_schema.py
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -158,7 +158,7 @@ class ModelMetadata(BaseModel):
 
 ## Model Registration Script
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # register_model.py
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -234,7 +234,7 @@ def register_model(
 
 ## Promotion Script
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # promote_model.py
 import mlflow
 from mlflow.tracking import MlflowClient
@@ -321,7 +321,7 @@ if __name__ == "__main__":
 
 ## Lifecycle Automation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # lifecycle_policy.py
 from mlflow.tracking import MlflowClient
 from datetime import datetime, timedelta

@@ -33,7 +33,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `re`, `hashlib`, `json` standard libraries
+- [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with `re`, `hashlib`, `json` standard libraries
 - Access to the LLM application source code or configuration
 - Understanding of the application's prompt architecture (system/user/tool boundaries)
 - Test environment with representative user inputs and documents
@@ -57,7 +57,7 @@ Use this skill when:
 
 ## Input Sanitization Functions
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """prompt_sanitizer.py - Input sanitization for LLM applications."""
 
 import re
@@ -181,7 +181,7 @@ def validate_tool_call(tool_name: str, args: dict, allowed_tools: dict) -> dict:
 
 ## Canary Token System
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """canary_tokens.py - Detect data exfiltration from LLM context."""
 
 import hashlib
@@ -319,7 +319,7 @@ defense_layers:
 
 ## Output Validation
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """output_validator.py - Validate and sanitize LLM outputs."""
 
 import re

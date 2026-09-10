@@ -230,7 +230,7 @@ function authorize(requiredPermission: string) {
 ```
 
 **ABAC (Attribute-Based Access Control)** — for fine-grained control:
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 POLICIES = [
     {
         "effect": "allow",
@@ -284,8 +284,8 @@ function authenticate(req: Request, res: Response, next: NextFunction) {
 }
 ```
 
-**[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) FastAPI middleware:**
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+**[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) FastAPI middleware:**
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import jwt

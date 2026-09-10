@@ -123,9 +123,9 @@ aws s3 rm s3://app-assets/tmp/ --recursive \
   --profile=r2
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) boto3 Client
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) boto3 Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import boto3
 
 s3 = boto3.client(

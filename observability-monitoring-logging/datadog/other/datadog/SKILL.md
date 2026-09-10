@@ -190,7 +190,7 @@ logs:
   - type: file
     path: /var/log/myapp/*.log
     service: myapp
-    source: [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+    source: [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
     sourcecategory: custom
     tags:
       - env:production
@@ -212,7 +212,7 @@ logs:
 services:
   myapp:
     labels:
-      com.datadoghq.ad.logs: '[{"source": "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "service": "myapp"}]'
+      com.datadoghq.ad.logs: '[{"source": "[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "service": "myapp"}]'
 ```
 
 ### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Logs
@@ -225,7 +225,7 @@ metadata:
   annotations:
     ad.datadoghq.com/myapp.logs: |
       [{
-        "source": "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)",
+        "source": "[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)",
         "service": "myapp",
         "log_processing_rules": [{
           "type": "multi_line",
@@ -237,9 +237,9 @@ metadata:
 
 ## APM Configuration
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from ddtrace import patch_all, tracer
 
 # Automatic instrumentation
@@ -271,7 +271,7 @@ def process_order(order_id):
 pip install ddtrace
 
 # Run with auto-instrumentation
-ddtrace-run [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py
+ddtrace-run [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) app.py
 ```
 
 ### Node.js
@@ -325,7 +325,7 @@ func main() {
 
 ### DogStatsD
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datadog import DogStatsd
 
 statsd = DogStatsd(host='localhost', port=8125)
@@ -345,7 +345,7 @@ statsd.distribution('myapp.response_time', duration, tags=['endpoint:/api/orders
 
 ### API Submission
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datadog_api_client import Configuration, ApiClient
 from datadog_api_client.v2.api.metrics_api import MetricsApi
 from datadog_api_client.v2.model.metric_payload import MetricPayload

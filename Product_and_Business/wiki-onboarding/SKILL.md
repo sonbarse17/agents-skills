@@ -46,7 +46,7 @@ Generate an `onboarding/` folder with these files:
 ```
 onboarding/
 ├── index.md                    # Onboarding hub — links to all 4 guides with audience descriptions
-├── contributor-guide.md        # For new contributors (assumes [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) or JS background)
+├── contributor-guide.md        # For new contributors (assumes [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) or JS background)
 ├── staff-engineer-guide.md     # For staff/principal engineers
 ├── executive-guide.md          # For VP/director-level engineering leaders
 └── product-manager-guide.md    # For product managers and non-engineering stakeholders
@@ -60,7 +60,7 @@ A landing page with:
 
 | Guide | Audience | What You'll Learn | Time |
 |-------|----------|-------------------|------|
-| [Contributor Guide](./contributor-guide.md) | New contributors with [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/JS experience | Setup, first PR, codebase patterns | ~30 min |
+| [Contributor Guide](./contributor-guide.md) | New contributors with [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/JS experience | Setup, first PR, codebase patterns | ~30 min |
 | [Staff Engineer Guide](./staff-engineer-guide.md) | Staff/principal engineers | Architecture, design decisions, system boundaries | ~45 min |
 | [Executive Guide](./executive-guide.md) | VP/directors of engineering | Capabilities, risks, team topology, investment thesis | ~20 min |
 | [Product Manager Guide](./product-manager-guide.md) | Product managers | Features, user journeys, constraints, data model | ~20 min |
@@ -71,7 +71,7 @@ Scan the repository for build files to determine the primary language for code e
 - `package.json` / `tsconfig.json` → [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/JavaScript
 - `*.csproj` / `*.sln` → C# / .NET
 - `Cargo.toml` → Rust
-- `pyproject.toml` / `setup.py` / `requirements.txt` → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+- `pyproject.toml` / `setup.py` / `requirements.txt` → [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 - `go.mod` → Go
 - `pom.xml` / `build.gradle` → Java
 
@@ -80,14 +80,14 @@ Scan the repository for build files to determine the primary language for code e
 ## Guide 1: Contributor Guide
 
 **File**: `onboarding/contributor-guide.md`
-**Audience**: Engineers joining the project. Assumes proficiency in [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) or JavaScript and general software engineering experience.
+**Audience**: Engineers joining the project. Assumes proficiency in [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) or JavaScript and general software engineering experience.
 **Length**: 1000–2500 lines. Progressive — each section builds on the last.
 
 ### Required Sections
 
-**Part I: Foundations** (skip if repo uses [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) or JS)
-1. **{Primary Language} for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/JS Engineers** — Syntax comparison tables, async model, collections, type system, package management. Concrete code side-by-side, NOT abstract descriptions.
-2. **{Primary Framework} Essentials** — Compare to equivalent [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/JS frameworks (e.g., FastAPI, Express). Request pipeline, routing, DI, config.
+**Part I: Foundations** (skip if repo uses [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) or JS)
+1. **{Primary Language} for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/JS Engineers** — Syntax comparison tables, async model, collections, type system, package management. Concrete code side-by-side, NOT abstract descriptions.
+2. **{Primary Framework} Essentials** — Compare to equivalent [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/JS frameworks (e.g., FastAPI, Express). Request pipeline, routing, DI, config.
 
 **Part II: This Codebase**
 3. **What This Project Does** — 2-3 sentence elevator pitch

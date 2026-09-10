@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# Azure API Center Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure API Center Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Manage API inventory, metadata, and governance in Azure API Center.
 
@@ -51,7 +51,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.mgmt.apicenter import ApiCenterMgmtClient
 import os
@@ -59,7 +59,7 @@ import os
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ApiCenterMgmtClient(
@@ -72,7 +72,7 @@ with ApiCenterMgmtClient(
 
 ## Create API Center
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import Service
 
 api_center = client.services.create_or_update(
@@ -89,7 +89,7 @@ print(f"Created API Center: {api_center.name}")
 
 ## List API Centers
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 api_centers = client.services.list_by_subscription()
 
 for api_center in api_centers:
@@ -98,7 +98,7 @@ for api_center in api_centers:
 
 ## Register an API
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import Api, ApiKind, ApiProperties
 
 api = client.apis.create_or_update(
@@ -122,7 +122,7 @@ print(f"Registered API: {api.properties.title}")
 
 ## Create API Version
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import ApiVersion, ApiVersionProperties, LifecycleStage
 
 version = client.api_versions.create_or_update(
@@ -144,7 +144,7 @@ print(f"Created version: {version.properties.title}")
 
 ## Add API Definition
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import ApiDefinition, ApiDefinitionProperties
 
 definition = client.api_definitions.create_or_update(
@@ -165,7 +165,7 @@ definition = client.api_definitions.create_or_update(
 
 ## Import API Specification
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import ApiSpecImportRequest, ApiSpecImportSourceFormat
 
 # Import from inline content
@@ -185,7 +185,7 @@ client.api_definitions.begin_import_specification(
 
 ## List APIs
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 apis = client.apis.list(
     resource_group_name="my-resource-group",
     service_name="my-api-center",
@@ -198,7 +198,7 @@ for api in apis:
 
 ## Create Environment
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import Environment, EnvironmentKind, EnvironmentProperties
 
 environment = client.environments.create_or_update(
@@ -219,7 +219,7 @@ environment = client.environments.create_or_update(
 
 ## Create Deployment
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import Deployment, DeploymentProperties, DeploymentState
 
 deployment = client.deployments.create_or_update(
@@ -243,7 +243,7 @@ deployment = client.deployments.create_or_update(
 
 ## Define Custom Metadata
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apicenter.models import MetadataSchema, MetadataSchemaProperties
 
 metadata = client.metadata_schemas.create_or_update(

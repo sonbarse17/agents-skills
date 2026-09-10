@@ -228,7 +228,7 @@ docs/
 Before creating any files, verify:
 - [ ] Project name is kebab-case and URL-friendly
 - [ ] Target directory doesn't exist or user confirmed overwrite
-- [ ] Required tools are installed (Node 20+, [Python](../../Languages/python/SKILL.md) 3.12+, etc.)
+- [ ] Required tools are installed (Node 20+, [Python](../../Languages/python/python/SKILL.md) 3.12+, etc.)
 - [ ] Package manager chosen (npm/pnpm/yarn/bun) and available
 - [ ] Git is initialized (or will be by init command)
 - [ ] License file will be generated (MIT/Apache/GPL — ask user)
@@ -256,7 +256,7 @@ What kind of project?
 │   └── Kotlin Multiplatform: Shared business logic
 ├── Library / Package
 │   ├── npm package: [TypeScript](../../Frontend/common/typescript/SKILL.md), tsup/bundling, changesets
-│   └── [Python](../../Languages/python/SKILL.md) package: uv/pip, pyproject.toml, hatchling
+│   └── [Python](../../Languages/python/python/SKILL.md) package: uv/pip, pyproject.toml, hatchling
 └── Static Site
     ├── Astro: content-focused, island architecture
     └── Eleventy/Hugo: markdown-driven, fast builds
@@ -295,7 +295,7 @@ cd my_app
 flutter pub add go_router riverpod flutter_secure_storage
 ```
 
-**[Python](../../Languages/python/SKILL.md) FastAPI backend:**
+**[Python](../../Languages/python/python/SKILL.md) FastAPI backend:**
 ```bash
 mkdir my-api && cd my-api
 uv init --app
@@ -419,7 +419,7 @@ jobs:
 | Language | Linter | Formatter | Test | Build |
 |----------|--------|-----------|------|-------|
 | [TypeScript](../../Frontend/common/typescript/SKILL.md)/JS | `eslint.config.js` | `.prettierrc` | `vitest.config.ts` | `tsconfig.json` |
-| [Python](../../Languages/python/SKILL.md) | `pyproject.toml` (ruff) | `pyproject.toml` (ruff) | `pyproject.toml` (pytest) | `pyproject.toml` |
+| [Python](../../Languages/python/python/SKILL.md) | `pyproject.toml` (ruff) | `pyproject.toml` (ruff) | `pyproject.toml` (pytest) | `pyproject.toml` |
 | Go | `.golangci.yml` | `gofumpt` | built-in `go test` | `go.mod` |
 | Rust | `clippy.toml` | `rustfmt.toml` | built-in `cargo test` | `Cargo.toml` |
 | Dart/Flutter | `analysis_options.yaml` | built-in `dart format` | built-in `flutter test` | `pubspec.yaml` |

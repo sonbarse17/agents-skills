@@ -17,7 +17,7 @@ depends_on:
 - **Horizontal Scaling**: Adding more machines to a database cluster to handle increased load.
 
 ## Consistent Hashing Pseudocode
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 import hashlib
 import bisect
 

@@ -87,7 +87,7 @@ Follow the advisor's or domain router's output. Implement feature by feature:
 
 Run these four sub-analyses **in parallel**:
 
-**Detect language** — Scan for `package.json`+`tsconfig.json` ([TypeScript](../../Frontend/common/typescript/SKILL.md)), `pom.xml`/`build.gradle` (Java), `*.csproj`/`*.sln` (C#), `go.mod` (Go), `requirements.txt`/`pyproject.toml` ([Python](../../Languages/python/SKILL.md)), `Gemfile` (Ruby), `Cargo.toml` (Rust).
+**Detect language** — Scan for `package.json`+`tsconfig.json` ([TypeScript](../../Frontend/common/typescript/SKILL.md)), `pom.xml`/`build.gradle` (Java), `*.csproj`/`*.sln` (C#), `go.mod` (Go), `requirements.txt`/`pyproject.toml` ([Python](../../Languages/python/python/SKILL.md)), `Gemfile` (Ruby), `Cargo.toml` (Rust).
 
 **Detect current platform** — Scan dependencies for SDK indicators:
 - Slack: `@slack/bolt`, `@slack/web-api`, `slack_bolt`, `app.message`, `app.command`, `ack()`
@@ -104,7 +104,7 @@ Classify the detected language into SDK tiers:
 | Tier | Languages | Guidance |
 |---|---|---|
 | **1: Full SDK** | [TypeScript](../../Frontend/common/typescript/SKILL.md) / JavaScript | Full expert system available |
-| **2: Adapt** | [Python](../../Languages/python/SKILL.md) | Both SDKs exist — adapt TS patterns. Load [bolt-python](../experts/slack/bolt-[python](../../Languages/python/SKILL.md).md), [teams-python](../experts/teams/teams-[python](../../Languages/python/SKILL.md).md), [python-cross-platform](../experts/bridge/[python](../../Languages/python/SKILL.md)-cross-platform.md) |
+| **2: Adapt** | [Python](../../Languages/python/python/SKILL.md) | Both SDKs exist — adapt TS patterns. Load [bolt-python](../experts/slack/bolt-[python](../../Languages/python/python/SKILL.md).md), [teams-python](../experts/teams/teams-[python](../../Languages/python/python/SKILL.md).md), [python-cross-platform](../experts/bridge/[python](../../Languages/python/python/SKILL.md)-cross-platform.md) |
 | **3: Split SDK** | Java, C# | One platform has SDK, other needs REST. Load [bolt-java](../experts/slack/bolt-java.md) or [teams-dotnet](../experts/teams/teams-dotnet.md) + [rest-only](../experts/bridge/rest-only-integration-ts.md) |
 | **4: No SDK** | Go, Ruby, Rust | REST-only for both. Load [rest-only](../experts/bridge/rest-only-integration-ts.md) |
 

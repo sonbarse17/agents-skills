@@ -35,7 +35,7 @@ Build [serverless](../../../../Software_Engineering_and_Other/Patterns/serverles
 
 - AWS CLI v2 installed and configured
 - IAM permissions: `lambda:*`, `iam:PassRole`, `logs:*`, `apigateway:*`, `s3:*`
-- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11+, Node.js 20+, or another supported runtime installed locally
+- [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.11+, Node.js 20+, or another supported runtime installed locally
 - (Optional) AWS SAM CLI for local development and deployment
 
 ## Create and Deploy a Function
@@ -92,7 +92,7 @@ aws lambda update-alias \
 
 ## Function Code Examples
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # app.py - API Gateway handler with structured logging
 import json
 import logging
@@ -128,7 +128,7 @@ def process_request(body):
     return {"message": "OK", "data": body}
 ```
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # sqs_processor.py - SQS batch processor with partial failure reporting
 import json
 import logging
@@ -163,16 +163,16 @@ def process_message(body):
 ## Lambda Layers
 
 ```bash
-# Build a layer for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
-mkdir -p layer/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-pip install requests boto3-stubs -t layer/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
+# Build a layer for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies
+mkdir -p layer/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+pip install requests boto3-stubs -t layer/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/
 cd layer
-zip -r ../my-layer.zip [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
+zip -r ../my-layer.zip [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/
 
 # Publish the layer
 aws lambda publish-layer-version \
   --layer-name common-deps \
-  --description "Shared [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies" \
+  --description "Shared [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies" \
   --zip-file fileb://my-layer.zip \
   --compatible-runtimes python3.11 python3.12 \
   --compatible-architectures arm64 x86_64

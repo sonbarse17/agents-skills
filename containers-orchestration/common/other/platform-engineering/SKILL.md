@@ -561,7 +561,7 @@ markdown_extensions:
       custom_fences:
         - name: [mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
           class: [mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
-          format: !![python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/name:pymdownx.superfences.fence_code_format
+          format: !![python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/name:pymdownx.superfences.fence_code_format
 ```
 
 Enable TechDocs in `app-config.yaml`:

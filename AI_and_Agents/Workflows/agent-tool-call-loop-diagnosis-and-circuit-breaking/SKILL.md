@@ -85,7 +85,7 @@ stop the loop — it makes the loop more expensive before it stops.
    times) can also produce a high call count. The distinguishing signal is
    whether each call carries *new information* toward the goal:
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def is_loop(call_history, window=5):
        recent = call_history[-window:]
        signatures = [(c.tool_name, json.dumps(c.arguments, sort_keys=True)) for c in recent]
@@ -133,7 +133,7 @@ stop the loop — it makes the loop more expensive before it stops.
    cost if nothing ever forces a stop; a hard ceiling is the actual safety
    property.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    class CircuitBreaker:
        def __init__(self, max_attempts_per_signature=3, max_total_calls=25,
                     cooldown_seconds=30):

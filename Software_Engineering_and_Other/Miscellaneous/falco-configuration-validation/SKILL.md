@@ -98,7 +98,7 @@ to depend on before it's live.
   the specific behavior a rule targets) to confirm the rule actually
   fires — false-positive testing alone doesn't prove a rule works; it
   only proves it isn't overly broad.
-- Basic scripting (`jq`, `grep`, or a small [Python](../../Languages/python/SKILL.md) script) to summarize
+- Basic scripting (`jq`, `grep`, or a small [Python](../../Languages/python/python/SKILL.md) script) to summarize
   Falco JSON output by rule name, priority, and matching workload —
   manually reading a raw log stream for a week's worth of events doesn't
   scale past a handful of rules.

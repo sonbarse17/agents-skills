@@ -244,7 +244,7 @@ job2:
 generate-pipeline:
   stage: build
   script:
-    - [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) generate_pipeline.py > child-pipeline.yml
+    - [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) generate_pipeline.py > child-pipeline.yml
   artifacts:
     paths:
       - child-pipeline.yml

@@ -196,7 +196,7 @@ The cheapest checks to run before anything else:
 python3 -c "import torch; print(torch.version.cuda)"  # expect 13.x (G1); NGC builds have no +cu130 tag — that's not a failure
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch; print(torch.cuda.get_device_capability())  # expect (12, 1) (G7)
 ```
 

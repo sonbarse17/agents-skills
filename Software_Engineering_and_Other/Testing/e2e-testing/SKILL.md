@@ -559,7 +559,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 | Decision Point | Option A | Option B | Decision Criteria |
 |---|---|---|---|
 | Application type | Web SPA → Playwright/Cypress | Mobile → Detox/Appium | Platform, dev team language |
-| Language preference | JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) (common) | [Python](../../Languages/python/SKILL.md) (Playwright + pytest) | Team expertise, existing codebase |
+| Language preference | JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) (common) | [Python](../../Languages/python/python/SKILL.md) (Playwright + pytest) | Team expertise, existing codebase |
 | CI integration | Cloud service (BrowserStack/Sauce) | Self-hosted (Selenium Grid) | Budget, compliance, scale |
 | Reporting | Built-in (Playwright HTML) | Third-party (Allure/ReportPortal) | Team preference, existing toolchain |
 

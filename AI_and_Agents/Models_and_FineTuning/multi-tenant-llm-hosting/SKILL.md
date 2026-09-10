@@ -286,7 +286,7 @@ spec:
 
 ## Request Routing and Rate Limiting
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # gateway_router.py
 """Multi-tenant request router with rate limiting and model routing."""
 import time
@@ -456,7 +456,7 @@ data:
 
 ## Billing Integration
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # billing_export.py
 """Export tenant usage data for billing systems."""
 import redis

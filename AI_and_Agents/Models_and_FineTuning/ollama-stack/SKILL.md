@@ -187,9 +187,9 @@ curl http://localhost:11434/v1/embeddings \
 curl http://localhost:11434/api/tags
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Client
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # pip install ollama
 import ollama
 
@@ -215,7 +215,7 @@ print(f"Embedding dimensions: {len(result['embeddings'][0])}")
 
 ### OpenAI SDK Compatibility
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="unused")

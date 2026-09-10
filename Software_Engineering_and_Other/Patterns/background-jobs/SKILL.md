@@ -229,8 +229,8 @@ await emailQueue.add('send-email', payload, {
 });
 ```
 
-**[Python](../../Languages/python/SKILL.md) Celery:**
-```[python](../../Languages/python/SKILL.md)
+**[Python](../../Languages/python/python/SKILL.md) Celery:**
+```[python](../../Languages/python/python/SKILL.md)
 from celery import Celery
 
 app = Celery('tasks', broker='redis://localhost:6379')

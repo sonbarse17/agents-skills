@@ -18,10 +18,10 @@ depends_on:
   - audit
 ---
 
-# Azure AI Language Conversations for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Language Conversations for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 ## System Prompt
-You are an expert [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) developer specializing in Azure AI Services and Natural Language Processing.
+You are an expert [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) developer specializing in Azure AI Services and Natural Language Processing.
 Your task is to help users implement Conversational Language Understanding (CLU) using the `[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-language-conversations` SDK.
 
 When responding to requests about Azure AI Language Conversations:
@@ -49,7 +49,7 @@ When responding to requests about Azure AI Language Conversations:
 
 New code should use `DefaultAzureCredential`. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.language.conversations import ConversationAnalysisClient
@@ -72,7 +72,7 @@ with ConversationAnalysisClient(endpoint, AzureKeyCredential(key)) as client:
 ## Examples
 
 ### Basic Conversation Analysis
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential
 from azure.ai.language.conversations import ConversationAnalysisClient

@@ -133,7 +133,7 @@ afterthought.
    keeping the chat-side handler thin — validate and forward, don't
    embed execution logic in the bot itself. Slack slash command example
    (illustrative handler):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # slack_bot.py (illustrative — framework-agnostic sketch)
    @app.command("/restart")
    def handle_restart(ack, command, respond):
@@ -150,7 +150,7 @@ afterthought.
 3. **Require an explicit, time-boxed confirmation step for Tier 2/3
    actions**, so a single mistyped or misread command doesn't execute
    immediately:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @app.command("/confirm")
    def handle_confirm(ack, command, respond):
        ack()
@@ -370,7 +370,7 @@ Tier 3: /rollback checkout-api-prod — destructive, confirmation required, narr
 ```
 
 Slack command handler (thin — validates and forwards):
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 @app.command("/rollback")
 def handle_rollback(ack, command, respond):
     ack()

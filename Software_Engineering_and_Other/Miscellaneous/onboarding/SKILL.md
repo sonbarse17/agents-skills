@@ -99,7 +99,7 @@ Setup approach:
 ├── Install runtime:
 │   ├── .tool-versions → asdf (recommended for polyglot repos)
 │   ├── .nvmrc → nvm
-│   ├── .[python](../../Languages/python/SKILL.md)-version → pyenv
+│   ├── .[python](../../Languages/python/python/SKILL.md)-version → pyenv
 │   └── .ruby-version → rbenv
 ├── Install dependencies:
 │   ├── package-lock.json → npm ci
@@ -274,10 +274,10 @@ Before onboarding a new engineer, ensure:
 - Seed data missing: run `npm run db:seed` after migrations
 - Wrong data in dev: `npm run db:reset` — always safe in development
 
-**[Python](../../Languages/python/SKILL.md) issues:**
+**[Python](../../Languages/python/python/SKILL.md) issues:**
 - Virtual env not activated: `source .venv/bin/activate` (Linux/macOS), `.venv\Scripts\Activate.ps1` (Windows)
 - Missing dependencies: `pip install -r requirements.txt`
-- [Python](../../Languages/python/SKILL.md) version mismatch: `pyenv local 3.12` reads `.[python](../../Languages/python/SKILL.md)-version`
+- [Python](../../Languages/python/python/SKILL.md) version mismatch: `pyenv local 3.12` reads `.[python](../../Languages/python/python/SKILL.md)-version`
 - Conflicting global packages: use `pip install --user` or virtual environments always
 
 ### Progressive Autonomy Model
@@ -449,9 +449,9 @@ brew install --cask visual-studio-code
 # ASDF (version manager for all languages)
 brew install asdf
 asdf plugin add nodejs && asdf install nodejs latest
-asdf plugin add [python](../../Languages/python/SKILL.md) && asdf install [python](../../Languages/python/SKILL.md) latest
+asdf plugin add [python](../../Languages/python/python/SKILL.md) && asdf install [python](../../Languages/python/python/SKILL.md) latest
 asdf global nodejs latest
-asdf global [python](../../Languages/python/SKILL.md) latest
+asdf global [python](../../Languages/python/python/SKILL.md) latest
 ```
 
 ### Linux (Ubuntu/Debian)
@@ -575,8 +575,8 @@ git secrets --register-aws
 | Node.js | Module not found after pull | `rm -rf node_modules && pnpm install` |
 | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) | Volume mounts empty on macOS | Add `:delegated` suffix to mount: `./src:/app/src:delegated` |
 | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) | Port already allocated | `lsof -ti:3000 | xargs kill` or change `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).ports` |
-| [Python](../../Languages/python/SKILL.md) | `pip install` fails with SSL | Upgrade pip: `pip install --upgrade pip setuptools wheel` |
-| [Python](../../Languages/python/SKILL.md) | `ModuleNotFoundError` | Ensure virtual env is activated and `pip install -e .` for local packages |
+| [Python](../../Languages/python/python/SKILL.md) | `pip install` fails with SSL | Upgrade pip: `pip install --upgrade pip setuptools wheel` |
+| [Python](../../Languages/python/python/SKILL.md) | `ModuleNotFoundError` | Ensure virtual env is activated and `pip install -e .` for local packages |
 | Rust | `linker `cc` not found` | Install build tools: `brew install llvm` (macOS), `apt install build-essential` (Linux) |
 | Rust | Slow compile times | Use `mold` linker, `cargo-chef` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) builds |
 | Java | `Unsupported class file major version` | Mismatched JDK version — use `sdk use java 21.0.1` |

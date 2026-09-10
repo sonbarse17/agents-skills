@@ -103,7 +103,7 @@ procedure itself, not an optional nicety.
    step under time pressure — it is the check most likely to be skipped,
    and skipping it is exactly what turns a rollback into a second
    [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import json
 
    def schema_diff(old_version_schema: dict, current_feature_output_schema: dict) -> dict:

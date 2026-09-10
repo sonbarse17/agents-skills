@@ -205,7 +205,7 @@ See `../../../Global_References/suppression_guide.md` for comprehensive suppress
 
 Define organization-specific policies:
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # custom_checks/require_s3_versioning.py
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
 from checkov.common.models.enums import CheckResult, CheckCategories
@@ -510,7 +510,7 @@ checkov -d ./terraform --framework secrets
 ### References (`references/`)
 
 - `compliance_mapping.md` - Mapping of Checkov checks to CIS, PCI-DSS, HIPAA, SOC2, NIST
-- `custom_policies.md` - Guide for writing custom [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and YAML policies
+- `custom_policies.md` - Guide for writing custom [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) and YAML policies
 - `suppression_guide.md` - Best practices for suppressing false positives
 - `terraform_checks.md` - Comprehensive list of Terraform checks with remediation
 - `kubernetes_checks.md` - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security checks and pod security standards
@@ -523,7 +523,7 @@ checkov -d ./terraform --framework secrets
 - `gitlab_ci.yml` - Complete GitLab CI pipeline
 - `jenkins_pipeline.groovy` - [Jenkins](../../../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline template
 - `pre_commit_config.yaml` - Pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook configuration
-- `custom_policy_template.py` - Template for custom [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) policies
+- `custom_policy_template.py` - Template for custom [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) policies
 - `policy_metadata.yaml` - Policy metadata for organization-specific policies
 
 ## Common Patterns

@@ -74,9 +74,9 @@ Load detailed guidance based on context:
 
 ## Common Debugging Commands
 
-**[Python](../../Languages/python/SKILL.md) (pdb)**
+**[Python](../../Languages/python/python/SKILL.md) (pdb)**
 ```bash
-[python](../../Languages/python/SKILL.md) -m pdb script.py          # launch debugger
+[python](../../Languages/python/python/SKILL.md) -m pdb script.py          # launch debugger
 # inside pdb:
 # b 42          — set breakpoint at line 42
 # n             — step over

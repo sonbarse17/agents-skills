@@ -112,7 +112,7 @@ for user-supplied instructions.
    LLM call for relevance (more expensive but more accurate), and pass only
    the top 3–8 to the final generation call.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    candidates = vector_index.search(query_embedding, top_k=30)
    reranked = reranker.score(query, [c.text for c in candidates])
    top_chunks = sorted(zip(candidates, reranked), key=lambda x: -x[1])[:5]

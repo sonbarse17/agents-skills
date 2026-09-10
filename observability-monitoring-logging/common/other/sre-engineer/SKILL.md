@@ -78,7 +78,7 @@ Load detailed guidance based on context:
 When implementing SRE practices, provide:
 1. SLO definitions with SLI measurements and targets
 2. [Monitoring](../../monitoring-strategy/monitoring/SKILL.md)/[alerting](../../alerting/alerting/SKILL.md) configuration (Prometheus, etc.)
-3. Automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, Terraform)
+3. Automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, Terraform)
 4. [Runbooks](../../incident-detection/runbooks/SKILL.md) with clear remediation steps
 5. Brief explanation of reliability impact
 
@@ -159,9 +159,9 @@ sum(rate(container_cpu_cfs_throttled_seconds_total[5m])) by (pod)
 sum(rate(container_cpu_cfs_periods_total[5m])) by (pod)
 ```
 
-### Toil Automation Script ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+### Toil Automation Script ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """Auto-remediation: restart pods exceeding error threshold."""
 import subprocess, sys, json

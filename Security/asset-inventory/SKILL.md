@@ -393,7 +393,7 @@ echo "Discovery complete. Results in $OUTPUT_DIR"
 
 ## CMDB Integration
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """
 CMDB sync script - Normalize cloud assets and push to CMDB API.
 """

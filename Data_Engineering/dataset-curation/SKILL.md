@@ -87,7 +87,7 @@ the wrong place relative to each example.
   before training — decode only unmasked positions;
   expect only assistant text:
 
-  ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+  ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
   keep = batch["labels"][0] != -100
   print(tokenizer.decode(batch["input_ids"][0][keep]))
   ```
@@ -115,7 +115,7 @@ up to the max length, cutting most of that waste.
   silent (the loss curve looks normal) and only
   surface in eval quality, hours later:
 
-  ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+  ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
   for seq in packed_dataset.select(range(10)):
       print(tokenizer.decode(seq["input_ids"]))
   ```

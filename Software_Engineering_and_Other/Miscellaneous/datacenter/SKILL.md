@@ -151,7 +151,7 @@ Cabling:
 ```
 
 ### Step 2: Power [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/power_planning.py
 """Datacenter power [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning tool."""
 
@@ -270,7 +270,7 @@ structured_cabling:
 ```
 
 ### Step 4: DCIM Integration Script
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # dcim/rack_monitor.py
 """Monitor rack-level power, temperature, and humidity via DCIM API."""
 
@@ -438,7 +438,7 @@ cabling:
 ```
 
 ### Step 9: DCIM Tool Configuration — netbox
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # dcim/netbox_sync.py
 """Sync server inventory to Netbox DCIM."""
 import pynetbox

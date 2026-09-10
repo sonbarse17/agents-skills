@@ -356,7 +356,7 @@ Convert and process results:
 # Convert XML to HTML report
 xsltproc /usr/share/nmap/nmap.xsl scan_results.xml -o report.html
 
-# Parse XML with [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Parse XML with [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 python3 -c "import xml.etree.ElementTree as ET; tree = ET.parse('scan_results.xml'); root = tree.getroot(); [print(host.find('address').get('addr')) for host in root.findall('host')]"
 
 # Extract open ports from grepable output

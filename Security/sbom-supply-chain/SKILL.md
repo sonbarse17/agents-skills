@@ -84,7 +84,7 @@ syft dir:. -o cyclonedx-json > sbom-source.json
 syft [docker](../../containers-orchestration/docker/other/docker/SKILL.md):my-local-image:latest -o cyclonedx-json > sbom-local.json
 
 # Generate SBOM for a specific package ecosystem
-syft dir:. --catalogers [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -o cyclonedx-json > sbom-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).json
+syft dir:. --catalogers [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -o cyclonedx-json > sbom-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).json
 
 # Include file hashes for deeper analysis
 syft ghcr.io/acme/api:v1.2.3 -o cyclonedx-json --file-metadata > sbom-with-hashes.json
@@ -106,7 +106,7 @@ npm install -g @cyclonedx/cdxgen
 cdxgen -o sbom.json .
 
 # Specify project type
-cdxgen -t [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -o sbom-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).json .
+cdxgen -t [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -o sbom-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).json .
 cdxgen -t java -o sbom-java.json .
 cdxgen -t node -o sbom-node.json .
 cdxgen -t go -o sbom-go.json .
@@ -226,7 +226,7 @@ cat > provenance.json << 'EOF'
       "digest": { "sha1": "abc123def456" }
     },
     {
-      "uri": "pkg:[docker](../../containers-orchestration/docker/other/docker/SKILL.md)/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.11-slim",
+      "uri": "pkg:[docker](../../containers-orchestration/docker/other/docker/SKILL.md)/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.11-slim",
       "digest": { "sha256": "def456..." }
     }
   ]

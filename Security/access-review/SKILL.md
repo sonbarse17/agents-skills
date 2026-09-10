@@ -289,7 +289,7 @@ echo "Report generated in $OUTPUT_DIR"
 
 ## Unused Permission Detection
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """
 Detect unused IAM permissions using CloudTrail and IAM Access Analyzer.
 Generates recommendations for right-sizing access.

@@ -89,7 +89,7 @@ safest thing to do with live traffic in the next fifteen minutes.
    that feature's specific staleness tolerance (a fraud-scoring feature
    tolerating minutes of staleness is very different from a weekly
    aggregate that tolerates a day):
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from datetime import datetime, timezone
 
    def freshness_report(feature_view_metadata: dict, tolerance_minutes: int) -> dict:

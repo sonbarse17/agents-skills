@@ -81,7 +81,7 @@ No preamble. No postamble. No explanations.
 
 ### Data Transformation Framework Decision Tree
 - Standard SQL transformations, small team: dbt (best DX).
-- Complex multi-language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Scala, SQL): custom framework on Airflow/Dagster.
+- Complex multi-language ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Scala, SQL): custom framework on Airflow/Dagster.
 - Heavy data quality requirements: dbt + Great Expectations.
 - Real-time transformations: streaming (Flink, Kafka Streams, Spark Streaming).
 - Legacy SQL exists: wrap incrementally in dbt.
@@ -112,11 +112,11 @@ No preamble. No postamble. No explanations.
 | Tool | Scope | Language | Integration | Coverage Type |
 |---|---|---|---|---|
 | dbt test | dbt models | SQL/YAML | Native in dbt | Schema, uniqueness, relationships |
-| Great Expectations | Any data source | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Standalone, Airflow, dbt | [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), expectations, validation |
+| Great Expectations | Any data source | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Standalone, Airflow, dbt | [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), expectations, validation |
 | dbt-expectations | dbt models | SQL/YAML | dbt package | GE-style tests in dbt |
 | Soda | Any data source | YAML | CI, Airflow, K8s | Row count, freshness, schema |
-| Deequ | Spark data | Scala/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Spark jobs | Column metrics, constraints |
-| data-diff | Any DB | CLI/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | CI | Cross-DB diff, regression |
+| Deequ | Spark data | Scala/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Spark jobs | Column metrics, constraints |
+| data-diff | Any DB | CLI/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | CI | Cross-DB diff, regression |
 
 ## Core Workflow
 
@@ -140,9 +140,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.12'
       - run: pip install sqlfluff sqlfluff-templater-dbt
       - run: dbt deps
       - run: sqlfluff lint models/ --dialect postgres --processes 4
@@ -151,9 +151,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - name: Download production manifest
@@ -168,9 +168,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery great-expectations
       - run: dbt deps
       - run: dbt build
@@ -338,9 +338,9 @@ jobs:
     environment: staging
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - run: dbt seed --target staging
@@ -359,9 +359,9 @@ jobs:
     concurrency: dbt-prod
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.12'
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.12'
       - run: pip install dbt-bigquery
       - run: dbt deps
       - run: dbt compile --target prod

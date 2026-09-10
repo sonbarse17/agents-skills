@@ -39,7 +39,7 @@ Exact user phrases: "Qt", "QtWidgets", "QtQuick", "QML", "QObject", "signals and
 - UI technology (QtWidgets vs QtQuick/QML)
 - Build system (CMake with Qt6, qmake legacy)
 - Platform targets (Windows, macOS, Linux, [Android](../../../Mobile/android/SKILL.md), iOS, embedded)
-- Language (C++ primarily, [Python](../../Languages/python/SKILL.md) via PySide6)
+- Language (C++ primarily, [Python](../../Languages/python/python/SKILL.md) via PySide6)
 - Module requirements (QtCore, QtWidgets, QtQuick, QtNetwork, QtSql, QtMultimedia, QtCharts, QtWebEngine)
 - Performance requirements (real-time rendering, large data models)
 

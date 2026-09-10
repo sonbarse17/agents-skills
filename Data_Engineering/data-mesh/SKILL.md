@@ -479,7 +479,7 @@ data_product:
 ```
 
 ### Domain Output Port
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_mesh/output_port.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel

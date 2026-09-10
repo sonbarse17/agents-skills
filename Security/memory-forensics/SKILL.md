@@ -199,7 +199,7 @@ typedef struct _MMVAD {
 
 ### Process Injection Indicators
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Malfind indicators
 # - PAGE_EXECUTE_READWRITE protection (suspicious)
 # - MZ header in non-image VAD region

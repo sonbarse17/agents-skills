@@ -86,11 +86,11 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | Feature | Apache Spark | Dask | Ray | Hadoop MapReduce |
 |---|---|---|---|---|
 | Execution model | Driver-executor | Scheduler-worker | GCS (Global Control Store) | JobTracker-TaskTracker |
-| Language | Scala, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), R, SQL | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Java | Java, streaming |
+| Language | Scala, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), R, SQL | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Java | Java, streaming |
 | In-memory | Yes (RDD/DataFrame) | Yes (dataframes) | Yes (object store) | No (disk-based) |
 | Streaming | Micro-batch | Streaming dataframes | Streaming actors | N/A |
 | ML | MLlib | Dask-ML, XGBoost | Ray Tune, RLlib | Apache Mahout |
-| Best for | Batch ETL, SQL, ML | Pandas-scale, custom [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | ML training, RL, serving | Legacy batch |
+| Best for | Batch ETL, SQL, ML | Pandas-scale, custom [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | ML training, RL, serving | Legacy batch |
 | Maturity | Very high | High | High | Declining |
 
 #### Decision Tree
@@ -98,8 +98,8 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Primary workload?
 ├── Batch ETL, large-scale SQL, data warehouse processing
 │   └── Apache Spark (most mature, best ecosystem)
-├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native dataframes, NumPy/Pandas-scale workloads
-│   └── Dask ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native, familiar API)
+├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native dataframes, NumPy/Pandas-scale workloads
+│   └── Dask ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native, familiar API)
 ├── ML training, reinforcement learning, hyperparameter tuning
 │   └── Ray (Ray Train, Ray Tune, RLlib)
 ├── Real-time inference, serving, distributed actors
@@ -470,7 +470,7 @@ Distributed Compute Framework
 │   ├── Streaming → Flink / Kafka Streams / Spark Streaming
 │   └── Both → Flink (unified) / Spark Structured Streaming
 ├── Language preference?
-│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) → PySpark / Dask / Ray
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) → PySpark / Dask / Ray
 │   ├── SQL → Trino / Spark SQL / Hive
 │   └── Java/Scala → Flink / Beam / Spark
 ├── ML workload?
@@ -486,7 +486,7 @@ Distributed Compute Framework
 ## Implementation Patterns
 
 ### Spark Shuffle Optimization
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # distributed_compute/shuffle_optimization.py
 from pyspark.sql import SparkSession
 
@@ -507,7 +507,7 @@ class ShuffleOptimizer:
 ```
 
 ### Flink Stream Processing
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # distributed_compute/flink_stream.py
 from pyflink.datastream import StreamExecutionEnvironment
 from pyflink.table import StreamTableEnvironment

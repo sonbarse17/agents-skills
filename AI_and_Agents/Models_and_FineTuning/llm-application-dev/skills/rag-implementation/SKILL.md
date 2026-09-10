@@ -81,7 +81,7 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 
 ## Quick Start with LangGraph
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langgraph.graph import StateGraph, START, END
 from langchain_anthropic import ChatAnthropic
 from langchain_voyageai import VoyageAIEmbeddings

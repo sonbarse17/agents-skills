@@ -314,9 +314,9 @@ path "secret/data/other/*" {
 
 ## Application Integration
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hvac
 
 # Initialize client

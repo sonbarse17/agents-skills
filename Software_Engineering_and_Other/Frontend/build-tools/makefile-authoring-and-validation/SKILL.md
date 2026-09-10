@@ -340,5 +340,5 @@ environment.
 ## Cross-references
 
 - [shell-scripting-best-practices](../[shell-scripting-best-practices](../../Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md) — strict-mode/quoting guidance for any non-trivial script a Makefile target shells out to.
-- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../../Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md) — an alternative for automation logic that's grown beyond what a Makefile recipe should reasonably contain inline.
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../../Languages/python/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md) — an alternative for automation logic that's grown beyond what a Makefile recipe should reasonably contain inline.
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where `make build`/`make test`/`make deploy` targets typically get invoked from within a pipeline's stages.

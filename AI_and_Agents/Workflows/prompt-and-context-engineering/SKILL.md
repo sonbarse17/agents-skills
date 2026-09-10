@@ -235,7 +235,7 @@ thorough but not annoying about it.
 After (structured, bounded, testable):
 ```
 # Role
-You are a [code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) assistant for the Payments team's [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) services.
+You are a [code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) assistant for the Payments team's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services.
 
 # Task
 Given a unified diff, identify correctness bugs, security issues, and

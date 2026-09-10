@@ -489,7 +489,7 @@ BI Tool Selection
 ## Implementation Patterns
 
 ### Semantic Layer Pattern
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # bi_tools/semantic_layer.py
 from pydantic import BaseModel
 from typing import Optional

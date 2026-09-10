@@ -54,7 +54,7 @@ Read the project's dependency file to identify exact versions:
 ```
 package.json    → Node/React/Vue/Angular/Svelte
 composer.json   → PHP/Symfony/Laravel
-requirements.txt / pyproject.toml → [Python](../../Languages/python/SKILL.md)/Django/Flask
+requirements.txt / pyproject.toml → [Python](../../Languages/python/python/SKILL.md)/Django/Flask
 go.mod          → Go
 Cargo.toml      → Rust
 Gemfile         → Ruby/Rails

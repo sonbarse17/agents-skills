@@ -170,7 +170,7 @@ and NeMo are fragile on Spark; check upstream issues first.
 Confirm the environment can actually see the GPU before
 running anything expensive:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch
 print(torch.cuda.is_available(), torch.version.cuda)
 ```

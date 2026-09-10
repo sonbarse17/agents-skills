@@ -224,9 +224,9 @@ console.log(performance.getEntriesByType("measure"));
 }
 ```
 
-### [Python](../../Languages/python/SKILL.md) Debugging
+### [Python](../../Languages/python/python/SKILL.md) Debugging
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Built-in debugger (pdb)
 import pdb
 
@@ -239,7 +239,7 @@ def calculate_total(items):
 
     return total
 
-# Breakpoint ([Python](../../Languages/python/SKILL.md) 3.7+)
+# Breakpoint ([Python](../../Languages/python/python/SKILL.md) 3.7+)
 def process_order(order):
     breakpoint()  # More convenient than pdb.set_trace()
     # ... code
@@ -471,7 +471,7 @@ afterEach(() => {
 3. **Tools**
    - Browser DevTools Performance tab
    - Lighthouse
-   - [Python](../../Languages/python/SKILL.md): cProfile, line_profiler
+   - [Python](../../Languages/python/python/SKILL.md): cProfile, line_profiler
    - Node: clinic.js, 0x
 ```
 

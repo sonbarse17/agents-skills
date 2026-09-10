@@ -170,13 +170,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate Contract
         run: |
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate_contract.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/validate_contract.py \
             --contract contracts/fct_orders.yaml \
             --schema current_schema.json \
             --compatibility backward
       - name: Check Breaking Changes
         run: |
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_breaking.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_breaking.py \
             --old contracts/fct_orders_v1.yaml \
             --new contracts/fct_orders_v2.yaml
       - name: Validate with dbt

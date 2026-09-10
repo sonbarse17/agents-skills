@@ -48,7 +48,7 @@ Define these metrics at the application layer. All examples use the Prometheus c
 
 ### Latency
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Histogram
 
 # Total end-to-end latency for a full agent turn (user prompt -> final response)
@@ -78,7 +78,7 @@ TOOL_CALL_LATENCY = Histogram(
 
 ### Token Usage
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Counter, Histogram
 
 PROMPT_TOKENS = Counter(
@@ -109,7 +109,7 @@ TOKENS_PER_REQUEST = Histogram(
 
 ### Cost
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Counter
 
 LLM_COST = Counter(
@@ -121,7 +121,7 @@ LLM_COST = Counter(
 
 ### Tool Calls
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Counter
 
 TOOL_CALLS_TOTAL = Counter(
@@ -133,7 +133,7 @@ TOOL_CALLS_TOTAL = Counter(
 
 ### Errors and Retries
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Counter, Gauge
 
 LLM_ERRORS = Counter(
@@ -159,11 +159,11 @@ AGENT_ACTIVE_REQUESTS = Gauge(
 
 ## [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Integration
 
-Use the [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK to create traces that capture every step of an agent turn: the top-level request, each LLM call, each tool execution, and retrieval operations.
+Use the [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK to create traces that capture every step of an agent turn: the top-level request, each LLM call, each tool execution, and retrieval operations.
 
 ### Setup
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # otel_setup.py
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace import TracerProvider
@@ -186,7 +186,7 @@ def init_tracing(service_name: str, otlp_endpoint: str = "http://localhost:4317"
 
 ### Tracing LLM Calls
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # llm_tracing.py
 import time
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
@@ -235,7 +235,7 @@ def traced_llm_call(client, messages, model="gpt-4o", **kwargs):
 
 ### Tracing Tool Execution
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # tool_tracing.py
 import functools
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
@@ -294,7 +294,7 @@ def sql_query(statement: str) -> list:
 
 ### Propagating Trace Context Across Services
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # context_propagation.py
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import context
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).propagate import inject, extract
@@ -321,9 +321,9 @@ def extract_context_from_request(request_headers: dict):
 
 Emit JSON logs for every agent action so they can be ingested by Loki, Elasticsearch, or [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md).
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Logging Configuration
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Logging Configuration
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # logging_config.py
 import logging
 import json
@@ -373,7 +373,7 @@ def configure_logging(level: str = "INFO"):
 
 ### Logging Agent Actions
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # agent_logging.py
 import logging
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
@@ -589,7 +589,7 @@ Save this JSON as `agent-overview.json` and import it into Grafana.
 
 ### Per-Model Cost Calculation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # cost_tracker.py
 from dataclasses import dataclass
 
@@ -689,7 +689,7 @@ groups:
 
 Langfuse provides trace-level visibility with prompt management and scoring. It can run alongside your existing OTel stack.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # langfuse_integration.py
 from langfuse import Langfuse
 from langfuse.decorators import observe, langfuse_context
@@ -736,7 +736,7 @@ export LANGFUSE_HOST="https://cloud.langfuse.com"  # or your self-hosted URL
 
 Helicone acts as a logging proxy. Point your OpenAI base URL at Helicone and it captures everything automatically.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # helicone_integration.py
 from openai import OpenAI
 
@@ -965,7 +965,7 @@ Scrub sensitive data before spans and logs leave the application boundary. This 
 
 ### Span Processor for PII Redaction
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # pii_redactor.py
 import re
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace import SpanProcessor, ReadableSpan
@@ -1026,7 +1026,7 @@ class PIIRedactingSpanProcessor(SpanProcessor):
 
 ### Using the Redactor in Setup
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # otel_setup_with_redaction.py
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace import TracerProvider
@@ -1050,7 +1050,7 @@ def init_tracing_with_redaction(service_name: str, otlp_endpoint: str = "http://
 
 ### Redacting Logs
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # log_redactor.py
 import logging
 from pii_redactor import redact_string

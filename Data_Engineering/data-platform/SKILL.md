@@ -514,7 +514,7 @@ Data Platform Architecture
 ## Implementation Patterns
 
 ### Platform Provisioning API
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_platform/provisioning.py
 from pydantic import BaseModel
 from enum import Enum

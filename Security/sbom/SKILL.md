@@ -247,8 +247,8 @@ trivy image --format cyclonedx \
   registry.example.com/app:v1.2.3
 ```
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) — SBOM Validation Script
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) — SBOM Validation Script
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """Validate SBOM before deployment."""
 import json

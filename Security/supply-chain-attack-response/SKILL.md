@@ -97,9 +97,9 @@ cosign verify \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest
 
-# Verify an artifact with sigstore-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Verify an artifact with sigstore-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 pip install sigstore
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m sigstore verify identity \
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m sigstore verify identity \
   --cert-identity "release@example.com" \
   --cert-oidc-issuer "https://accounts.google.com" \
   artifact.tar.gz
@@ -165,8 +165,8 @@ grep -r "eval(atob" ./node_modules/<compromised-package>/
 # Check for unexpected post-install scripts
 cat node_modules/<compromised-package>/package.json | jq '.scripts'
 
-# For [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) packages, inspect setup.py and __init__.py
-find ~/.local/lib/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)*/site-packages/<compromised-package>/ -name "*.py" \
+# For [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) packages, inspect setup.py and __init__.py
+find ~/.local/lib/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)*/site-packages/<compromised-package>/ -name "*.py" \
   | xargs grep -l "subprocess\|os.system\|exec(\|eval("
 ```
 
@@ -232,7 +232,7 @@ git diff --name-only origin/main...HEAD | grep -E "(package-lock|yarn.lock|Cargo
 # Use the socket CLI to check for typosquatting risk
 npx socket scan --package-lock package-lock.json
 
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md): check package names against popular packages
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): check package names against popular packages
 pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt 2>&1 | grep -i "typosquat"
 
 # Custom check: compare package names to known popular packages

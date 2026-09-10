@@ -67,7 +67,7 @@ CMD ["node", "dist/index.js"]
 ### Layer Optimization
 
 ```dockerfile
-FROM [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim
+FROM [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12-slim
 
 # Install dependencies first (cached unless requirements change)
 COPY requirements.txt .
@@ -76,7 +76,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code (changes frequently)
 COPY . .
 
-CMD ["[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "app.py"]
+CMD ["[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "app.py"]
 ```
 
 ### Security Hardening

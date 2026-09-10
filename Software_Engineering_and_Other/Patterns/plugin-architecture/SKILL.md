@@ -86,7 +86,7 @@ Do you need to support third-party extensions?
 ```
 Can plugins be loaded at runtime without restart?
   ├── Yes → Dynamic loading (hot-plug)
-  │   ├── Language supports dynamic loading (JS, [Python](../../Languages/python/SKILL.md), Java, .NET, Go plugins)
+  │   ├── Language supports dynamic loading (JS, [Python](../../Languages/python/python/SKILL.md), Java, .NET, Go plugins)
   │   ├── Plugin discovery via file system scanning or registry
   │   └── Risk: Version conflicts, dependency hell
   └── No → Compile-time loading
@@ -486,7 +486,7 @@ class PluginResourceLimiter {
 ### Loading Overhead
 | Strategy | Load Time | Memory |
 |----------|-----------|--------|
-| Same process (JS/[Python](../../Languages/python/SKILL.md)) | 10-100ms per plugin | Module code in memory |
+| Same process (JS/[Python](../../Languages/python/python/SKILL.md)) | 10-100ms per plugin | Module code in memory |
 | Subprocess (Node fork) | 50-200ms per plugin | ~10-30MB per instance |
 | Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
 

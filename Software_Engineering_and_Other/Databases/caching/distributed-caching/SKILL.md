@@ -172,7 +172,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### Core Implementation
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def get_consistent_hash_node(key, nodes, virtual_nodes=100):
     ring = {}
     for node in nodes:
@@ -260,7 +260,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### Core Implementation
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def get_consistent_hash_node(key, nodes, virtual_nodes=100):
     ring = {}
     for node in nodes:

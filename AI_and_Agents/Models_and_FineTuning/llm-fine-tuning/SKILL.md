@@ -35,7 +35,7 @@ Use this skill when:
 
 - NVIDIA GPU(s) with 24GB+ VRAM (RTX 4090 / A100 / H100)
 - CUDA 12.1+ and `nvidia-smi` working
-- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `pip`
+- [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with `pip`
 - Hugging Face account and `HF_TOKEN` for gated models
 - 500GB+ disk for model weights and training data
 
@@ -44,7 +44,7 @@ Use this skill when:
 ```bash
 pip install transformers datasets trl peft bitsandbytes accelerate
 
-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) - <<'EOF'
+[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) - <<'EOF'
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model
@@ -193,7 +193,7 @@ deepspeed --num_gpus=4 train.py \
 
 ## DPO / RLHF Alignment
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from trl import DPOTrainer, DPOConfig
 from datasets import load_dataset
 
@@ -221,7 +221,7 @@ trainer.train()
 
 ## Merging LoRA Adapters for Deployment
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from peft import PeftModel
 from transformers import AutoModelForCausalLM
 

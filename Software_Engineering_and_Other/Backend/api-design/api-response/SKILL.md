@@ -216,8 +216,8 @@ type ApiResponse[T any] struct {
 }
 ```
 
-**[Python](../../../Languages/python/SKILL.md)**
-```[python](../../../Languages/python/SKILL.md)
+**[Python](../../../Languages/python/python/SKILL.md)**
+```[python](../../../Languages/python/python/SKILL.md)
 from pydantic import BaseModel
 from typing import Generic, TypeVar, Optional
 
@@ -409,7 +409,7 @@ public class GlobalExceptionHandler : IMiddleware
 ```
 
 **FastAPI exception handler**
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from fastapi import Request, JSONResponse
 from fastapi.exceptions import RequestValidationError
 

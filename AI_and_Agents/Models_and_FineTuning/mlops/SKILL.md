@@ -144,7 +144,7 @@ jobs:
         great_expectations checkpoint run data_validation
     - name: Check for data drift
       run: |
-        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m mlops.[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).drift_detection \
+        [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m mlops.[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).drift_detection \
           --reference data/train.parquet \
           --current data/latest.parquet
 
@@ -153,10 +153,10 @@ jobs:
     runs-on: [self-hosted, gpu]
     steps:
     - name: Train model
-      run: [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) models/classifier/train.py
+      run: [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) models/classifier/train.py
     - name: Evaluate against thresholds
       run: |
-        [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m mlops.evaluate \
+        [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m mlops.evaluate \
           --model models/classifier/output/model.pkl \
           --threshold accuracy=0.85 \
           --threshold f1=0.80
@@ -169,7 +169,7 @@ jobs:
 ```
 
 ### Step 2: Model Registry — MLflow Configuration
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import mlflow
 from mlflow.tracking import MlflowClient
 
@@ -262,7 +262,7 @@ spec:
 ```
 
 ### Step 5: A/B Testing Infrastructure
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
 import random
 
@@ -292,7 +292,7 @@ def predict(user_id: str, features: dict):
 ```
 
 ### Step 6: Drift [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with Evidently AI
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset, RegressionPreset
 from evidently.ui.workspace import Workspace
@@ -339,7 +339,7 @@ offline_store:
   dataset: feature_store
 ```
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from feast import FeatureStore
 
 store = FeatureStore(repo_path="./feature_repo")
@@ -366,10 +366,10 @@ feature_vector = store.get_online_features(
 ```
 
 ### Step 8: Automated Retraining Pipeline
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # scheduler: Airflow DAG for weekly retraining
 from airflow import DAG
-from airflow.operators.[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) import PythonOperator
+from airflow.operators.[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) import PythonOperator
 
 dag = DAG(
     "model_retraining",
@@ -433,7 +433,7 @@ retrain = PythonOperator(
 ```
 
 ### Step 10: Training-Serving Skew Prevention
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Feature transformation must be identical
 
 # BAD: different logic in training vs serving
@@ -455,7 +455,7 @@ def transform_for_serving(row):
 ```
 
 ### Step 11: Model Explainability (SHAP) in Pipeline
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import shap
 import pickle
 

@@ -93,7 +93,7 @@ Load detailed guidance based on context:
 A minimal authenticated endpoint illustrating all three layers:
 
 **[Backend]** — Authenticated route with parameterized query and scoped response:
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 @router.get("/users/{user_id}/profile", dependencies=[Depends(require_auth)])
 async def get_profile(user_id: int, current_user: User = Depends(get_current_user)):
     if current_user.id != user_id:

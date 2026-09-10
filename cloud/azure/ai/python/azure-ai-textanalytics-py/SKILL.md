@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure AI Text Analytics SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Text Analytics SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Client library for Azure AI Language service NLP capabilities including sentiment, entities, key phrases, and more.
 
@@ -52,7 +52,7 @@ AZURE_LANGUAGE_KEY=<your-api-key>  # Only required for the legacy API-key auth p
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -60,7 +60,7 @@ from azure.ai.textanalytics import TextAnalyticsClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with TextAnalyticsClient(
@@ -74,7 +74,7 @@ with TextAnalyticsClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -88,7 +88,7 @@ with TextAnalyticsClient(
 
 ## Sentiment Analysis
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = [
     "I had a wonderful trip to Seattle last week!",
     "The food was terrible and the service was slow."
@@ -114,7 +114,7 @@ for doc in result:
 
 ## Entity Recognition
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = ["Microsoft was founded by Bill Gates and Paul Allen in Albuquerque."]
 
 result = client.recognize_entities(documents)
@@ -130,7 +130,7 @@ for doc in result:
 
 ## PII Detection
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = ["My SSN is 123-45-6789 and my email is john@example.com"]
 
 result = client.recognize_pii_entities(documents)
@@ -144,7 +144,7 @@ for doc in result:
 
 ## Key Phrase Extraction
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = ["Azure AI provides powerful machine learning capabilities for developers."]
 
 result = client.extract_key_phrases(documents)
@@ -156,7 +156,7 @@ for doc in result:
 
 ## Language Detection
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = ["Ce document est en francais.", "This is written in English."]
 
 result = client.detect_language(documents)
@@ -169,7 +169,7 @@ for doc in result:
 
 ## Healthcare Text Analytics
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 documents = ["Patient has diabetes and was prescribed metformin 500mg twice daily."]
 
 poller = client.begin_analyze_healthcare_entities(documents)
@@ -189,7 +189,7 @@ for doc in result:
 
 ## Multiple Analysis (Batch)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.ai.textanalytics import (
     RecognizeEntitiesAction,
     ExtractKeyPhrasesAction,
@@ -220,7 +220,7 @@ for doc_results in results:
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.ai.textanalytics.aio import TextAnalyticsClient
 from azure.identity.aio import DefaultAzureCredential
 

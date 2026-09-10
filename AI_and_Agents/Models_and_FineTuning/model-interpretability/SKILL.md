@@ -34,7 +34,7 @@ depends_on:
 # ML Model Interpretability
 
 ## Quick Start
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import shap
 model = load_model()
 explainer = shap.TreeExplainer(model)
@@ -134,7 +134,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ### Step 1: Global Interpretability
 Permutation importance: shuffle each feature, measure performance drop. Model-agnostic, unbiased. Tree feature importance: built-in but biased toward high-cardinality features. SHAP global: mean absolute SHAP values across all samples. Partial dependence: marginal effect of feature.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.inspection import permutation_importance
 import pandas as pd
 import numpy as np
@@ -180,7 +180,7 @@ def global_shap_analysis(model, X, sample_size=1000):
 ### Step 2: Local Interpretability
 SHAP values: Shapley values from cooperative game theory. Locally accurate, consistent, unique. TreeSHAP for trees (exact, fast). KernelSHAP for any model (slower). LIME: fit sparse local surrogate. Faster but less stable.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def local_shap_explanation(model, X_instance, X_background, feature_names):
     """Explain a single prediction with SHAP."""
     explainer = shap.TreeExplainer(model)
@@ -219,7 +219,7 @@ def lime_explanation(model, X_instance, feature_names, n_features=5):
 ```
 
 ### Step 3: Model-Specific Methods
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Linear model coefficients
 def linear_model_explanation(model, feature_names):
     coef_df = pd.DataFrame({
@@ -251,7 +251,7 @@ def grad_cam(model, image, layer_name, class_idx=None):
 ### Step 4: Visualization Selection
 Summary plot (beeswarm): best for global overview. Waterfall: single prediction explanation. Force plot: interactive, good for presentations. Dependence plot: main effect + interaction. Bar plot: simplest global view.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import matplotlib.pyplot as plt
 
 def visualize_explanations(shap_values, X, feature_names):
@@ -279,7 +279,7 @@ def visualize_explanations(shap_values, X, feature_names):
 ```
 
 ### Step 5: Explanation Validation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def validate_explanation(model, X, explanation_fn, top_k=5):
     """Validate explanation by removing top-k features."""
     base_pred = model.predict_proba(X.mean().to_frame().T)[0][1]
@@ -329,7 +329,7 @@ def validate_explanation(model, X, explanation_fn, top_k=5):
 ## SHAP Usage Patterns — Step by Step
 
 ### Pattern 1: Global Feature Importance with TreeSHAP
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import shap
 import xgboost as xgb
 import matplotlib.pyplot as plt
@@ -353,7 +353,7 @@ feature_ranking = pd.DataFrame({
 ```
 
 ### Pattern 2: Individual Prediction Explanation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Waterfall plot for one prediction
 row = X_test.iloc[0]
 shap.waterfall_plot(
@@ -376,7 +376,7 @@ shap.force_plot(
 ```
 
 ### Pattern 3: Dependence Plot with Interaction Detection
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Single feature dependence
 shap.dependence_plot("age", shap_values, X_test, alpha=0.5)
 
@@ -393,7 +393,7 @@ shap.dependence_plot(
 ```
 
 ### Pattern 4: Feature Interaction Detection
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # SHAP interaction values (only available for TreeExplainer)
 shap_interaction = explainer.shap_interaction_values(X_test)
 
@@ -411,7 +411,7 @@ sns.heatmap(interaction_matrix, xticklabels=X_test.columns,
 ## LIME Usage Patterns
 
 ### Pattern 1: Tabular Data Explanation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import lime
 import lime.lime_tabular
 
@@ -437,7 +437,7 @@ exp.as_list()  # list of (feature, weight) tuples
 ```
 
 ### Pattern 2: Text Explanation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from lime.lime_text import LimeTextExplainer
 
 explainer = lime.lime_text.LimeTextExplainer(
@@ -460,7 +460,7 @@ exp.show_in_notebook(text=text)
 ```
 
 ### LIME Stability Check
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # LIME is unstable — run multiple times to verify
 def stable_lime_explanation(instance, num_runs=5):
     results = []

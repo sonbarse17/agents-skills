@@ -66,7 +66,7 @@ Master PCI DSS (Payment Card Industry Data Security Standard) compliance for sec
 
 ## Data Minimization (Never Store)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # NEVER STORE THESE
 PROHIBITED_DATA = {
     'full_track_data': 'Magnetic stripe data',
@@ -114,7 +114,7 @@ class PaymentData:
 
 ### Using Payment Processor Tokens
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import stripe
 
 class TokenizedPayment:
@@ -177,7 +177,7 @@ class TokenizedPayment:
 
 ### Custom Tokenization (Advanced)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import secrets
 from cryptography.fernet import Fernet
 
@@ -220,7 +220,7 @@ class TokenVault:
 
 ### Data at Rest
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 import os
 
@@ -263,7 +263,7 @@ encrypted_pan = storage.encrypt("4242424242424242")
 
 ### Data in Transit
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Always use TLS 1.2 or higher
 # Flask/Django example
 app.config['SESSION_COOKIE_SECURE'] = True  # HTTPS only

@@ -247,9 +247,9 @@ function isValid(input: string): boolean {
 }
 ```
 
-### [Python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md)
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # SIMPLIFY: Verbose dictionary building
 # Before
 result = {}

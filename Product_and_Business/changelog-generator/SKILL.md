@@ -390,9 +390,9 @@ Hand off to `dev-loop-[git-workflow](../../ci-cd/common/git-workflow/git-workflo
 
 ## Implementation Patterns
 
-### Changelog Generator ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+### Changelog Generator ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import subprocess
 import re
 from typing import List, Dict, Optional

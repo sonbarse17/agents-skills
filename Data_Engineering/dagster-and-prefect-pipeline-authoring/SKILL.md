@@ -74,7 +74,7 @@ choosing, alongside Airflow's task-based approach covered in
   into the asset function itself.
 - For Prefect: familiarity with its work pool/worker deployment model for
   actually executing flow runs (distinct from just defining the flow in
-  [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)).
+  [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -94,7 +94,7 @@ choosing, alongside Airflow's task-based approach covered in
 
 2. **Define a Dagster asset with explicit dependencies inferred from
    function parameters**, not a separate dependency-declaration step:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from dagster import asset, Definitions
 
    @asset
@@ -124,7 +124,7 @@ choosing, alongside Airflow's task-based approach covered in
 3. **Use Dagster partitions for date-based (or otherwise partitioned)
    assets**, which is Dagster's mechanism for backfill/reprocessing that's
    more structured than Airflow's logical-date templating:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from dagster import asset, DailyPartitionsDefinition
 
    daily_partitions = DailyPartitionsDefinition(start_date="2024-01-01")
@@ -144,10 +144,10 @@ choosing, alongside Airflow's task-based approach covered in
    remove the need for idempotent task logic, it just gives a more
    structured UI/API for selecting which partitions to (re)materialize.
 
-4. **Define a Prefect flow and tasks using plain [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) control flow** —
+4. **Define a Prefect flow and tasks using plain [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) control flow** —
    Prefect's model allows ordinary `if`/`for` logic to drive task
    execution, rather than Airflow's more declarative dependency graph:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from prefect import flow, task
    from datetime import timedelta
 
@@ -164,12 +164,12 @@ choosing, alongside Airflow's task-based approach covered in
    def orders_daily_rollup_flow(rollup_date: str):
        orders = extract_orders()
        if not orders:
-           # ordinary [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) control flow — no special "branch operator"
+           # ordinary [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) control flow — no special "branch operator"
            # needed the way Airflow requires a BranchPythonOperator
            return
        compute_rollup(orders, rollup_date)
    ```
-   The `if not orders: return` branch is plain [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) — Prefect doesn't
+   The `if not orders: return` branch is plain [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) — Prefect doesn't
    need Airflow's dedicated branching operators for this, which is one of
    the concrete authoring-ergonomics differences teams cite when
    preferring Prefect for highly dynamic pipelines.
@@ -177,7 +177,7 @@ choosing, alongside Airflow's task-based approach covered in
 5. **Use Prefect's `.map()` (or the equivalent dynamic task generation)
    for fan-out over a runtime-determined list**, rather than needing a
    fixed, pre-declared set of parallel tasks:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @task
    def process_region(region: str, rollup_date: str):
        compute_rollup_for_region(region, rollup_date)
@@ -191,11 +191,11 @@ choosing, alongside Airflow's task-based approach covered in
    Airflow 2.3+ too, so this specific capability is no longer a hard
    Prefect-only differentiator — but Prefect's version requires
    noticeably less ceremony, which matters for a highly dynamic pipeline
-   authored primarily in plain [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+   authored primarily in plain [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 6. **Set retries and caching at the task/asset level deliberately**, since
    both frameworks' defaults differ from Airflow's and from each other:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @task(retries=3, retry_delay_seconds=60, cache_key_fn=lambda ctx, params: str(params))
    def extract_orders(source_date: str):
        ...
@@ -212,7 +212,7 @@ choosing, alongside Airflow's task-based approach covered in
    overwrite-safe logic, it just changes how re-execution is
    triggered/scoped (Dagster: re-materializing a partition; Prefect:
    re-running a flow run or an individual mapped task):
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Both frameworks still need this discipline — the framework doesn't
    # make a naive append-only write safe to retry.
    ```
@@ -227,8 +227,8 @@ choosing, alongside Airflow's task-based approach covered in
    # actually executing the logic
    dagster asset materialize --select orders_daily_rollup --partition 2024-06-01
 
-   # Prefect: run a flow directly as a local [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) invocation
-   [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "from pipeline import orders_daily_rollup_flow; orders_daily_rollup_flow(rollup_date='2024-06-01')"
+   # Prefect: run a flow directly as a local [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) invocation
+   [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "from pipeline import orders_daily_rollup_flow; orders_daily_rollup_flow(rollup_date='2024-06-01')"
    ```
    As with `airflow dags test`, these actually execute task/asset logic
    against real (or test) dependencies — treat them the same way: a
@@ -244,7 +244,7 @@ choosing, alongside Airflow's task-based approach covered in
 - Use Dagster's asset model deliberately when data lineage/freshness
   tracking across the pipeline is a real requirement, not just because
   "assets" sounds more modern than "tasks."
-- Use Prefect's dynamic `.map()`/plain-[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-control-flow authoring for
+- Use Prefect's dynamic `.map()`/plain-[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-control-flow authoring for
   pipelines with genuine runtime-determined branching/fan-out, not for
   every pipeline by default — a simple, static, linear pipeline gains
   little from this flexibility and Airflow/Dagster may be simpler to
@@ -319,7 +319,7 @@ requirement is exactly what Dagster's asset lineage graph provides
 natively, without needing to bolt on a separate lineage-tracking system
 the way a purely task-based DAG would.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from dagster import asset, Definitions, DailyPartitionsDefinition
 
 daily_partitions = DailyPartitionsDefinition(start_date="2024-01-01")
@@ -370,7 +370,7 @@ upstream API for a list of newly onboarded partners (unknown count until
 runtime), and run a distinct validation-and-import flow per partner with
 several conditional branches depending on each partner's contract type,"
 that pipeline would be a better fit for Prefect's dynamic `.map()` and
-plain-[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) branching (or Airflow, if the team already operates Airflow
+plain-[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) branching (or Airflow, if the team already operates Airflow
 and the dynamic task mapping added in Airflow 2.3+ covers the need) than
 for Dagster's asset model.
 

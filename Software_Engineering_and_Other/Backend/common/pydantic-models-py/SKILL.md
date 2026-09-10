@@ -38,7 +38,7 @@ Copy the template from [assets/template.py](assets/template.py) and replace plac
 
 ## camelCase Aliases
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -52,7 +52,7 @@ class MyModel(BaseModel):
 
 ## Optional Update Fields
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 class MyUpdate(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
@@ -62,7 +62,7 @@ class MyUpdate(BaseModel):
 
 ## Database Document
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 class MyInDB(MyResponse):
     doc_type: str = "my_resource"
 ```

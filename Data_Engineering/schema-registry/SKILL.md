@@ -158,7 +158,7 @@ jobs:
       - name: Validate and Check Compatibility
         run: |
           for schema in schemas/**/*.avsc; do
-            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate_and_register.py \
+            [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/validate_and_register.py \
               --subject "$(basename $schema .avsc)-value" \
               --schema "$schema" --mode BACKWARD
           done
@@ -167,7 +167,7 @@ jobs:
         run: |
           for schema in schemas/**/*.avsc; do
             subject=$(basename "$schema" .avsc)-value
-            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/register_schema.py --subject "$subject" --schema "$schema"
+            [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/register_schema.py --subject "$subject" --schema "$schema"
           done
 ```
 

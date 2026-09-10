@@ -416,7 +416,7 @@ jobs:
         run: |
           for model in docs/threat-model/*.yaml; do
             echo "Validating $model..."
-            [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
+            [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "
           import yaml, sys
           with open('$model') as f:
               data = yaml.safe_load(f)

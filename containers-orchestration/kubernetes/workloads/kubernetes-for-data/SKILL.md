@@ -190,7 +190,7 @@ spec:
         containers:
         - name: trainer
           image: pytorch/pytorch:2.1.0-cuda12.1
-          command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "train.py"]
+          command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "train.py"]
           resources:
             requests:
               cpu: "8"

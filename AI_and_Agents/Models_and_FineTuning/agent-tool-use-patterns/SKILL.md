@@ -96,7 +96,7 @@ wiring is used underneath.
    dedicated approval state). Encode this classification in code, not just
    documentation, so the dispatcher can enforce it mechanically.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    TOOL_RISK = {
        "search_tickets": "read_only",
        "update_ticket_status": "reversible",
@@ -126,7 +126,7 @@ wiring is used underneath.
    repeats, since a repeated identical call with no new information is
    almost never intentional progress.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    recent_calls = collections.deque(maxlen=3)
    def check_stall(call):
        key = (call.name, json.dumps(call.arguments, sort_keys=True))
@@ -240,7 +240,7 @@ wiring is used underneath.
 
 Risk classification and dispatcher policy:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 TOOL_RISK = {
     "list_instances": "read_only",       # auto-execute
     "stop_instance": "reversible",       # auto-execute, logged

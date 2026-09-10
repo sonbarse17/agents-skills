@@ -53,7 +53,7 @@ Before activating, verify:
 ETL pipeline design with DAG structure, transformation config, error handling as YAML and SQL.
 
 ### Response Format
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Airflow DAG skeleton
 # Task definitions
 ```
@@ -82,7 +82,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## ETL vs ELT
 
 ### ETL (Extract, Transform, Load)
-Transform happens before loading. Best for: on-premises databases, structured data, complex transformations requiring significant compute, regulatory environments requiring data masking before storage. ETL requires a transformation engine (Spark, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)) between extraction and loading. Transformation reduces data volume before warehouse storage, saving on warehouse costs.
+Transform happens before loading. Best for: on-premises databases, structured data, complex transformations requiring significant compute, regulatory environments requiring data masking before storage. ETL requires a transformation engine (Spark, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)) between extraction and loading. Transformation reduces data volume before warehouse storage, saving on warehouse costs.
 
 ### ELT (Extract, Load, Transform)
 Transform happens in the warehouse. Best for: cloud warehouses (Snowflake, BigQuery, Redshift), raw data preservation, agile schema evolution, when the warehouse provides sufficient compute for transformations. ELT loads raw data into staging tables first, then transforms using SQL. Recommended for most cloud data warehouse pipelines.
@@ -95,7 +95,7 @@ Transform happens in the warehouse. Best for: cloud warehouses (Snowflake, BigQu
 | Data volume | 100GB+ daily | Any |
 | Transformation complexity | High (ML, NLP, image processing) | Moderate (SQL aggregations) |
 | Compliance | PII masking required before storage | Column-level security in warehouse |
-| Team skill set | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Spark engineers | SQL analysts |
+| Team skill set | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Spark engineers | SQL analysts |
 | Schema stability | Fixed schema | Evolving schema |
 
 ## Airflow DAG Design
@@ -105,10 +105,10 @@ One DAG per data domain. Structure: `start → extract → validate_extract → 
 
 #### DAG Template
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) import PythonOperator
+from airflow.operators.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 
 default_args = {
@@ -364,7 +364,7 @@ staging_area:
 ### Transform Validations
 Referential integrity: FK columns match PK values in referenced tables. Aggregate comparison: totals match between source and target (SUM, COUNT). Unique key enforcement: no duplicates in PK columns. Distribution drift: value distributions compared to baseline (Kolmogorov-Smirnov test for numerical fields).
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Custom validation hook
 def validate_row_count(df, expected_min=1000, expected_max=None):
     count = df.count()
@@ -433,7 +433,7 @@ INSERT INTO staging_orders (
 |---|---|---|---|---|
 | Frequency | Daily/hourly | Daily/hourly | Every 5-15 min | Continuous |
 | Latency | 1-24 hours | 1-24 hours | 5-15 min | < 1 second |
-| Transform engine | Spark/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Warehouse SQL | Spark/Flink | Flink/Kafka Streams |
+| Transform engine | Spark/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Warehouse SQL | Spark/Flink | Flink/Kafka Streams |
 | Storage | Staging + warehouse | Raw + transformed | Raw + streaming | Kafka + warehouse |
 | Complexity | High (transform engine) | Low (SQL only) | Medium | High |
 | Cost | Medium (compute + storage) | Low (warehouse only) | Medium | High (streaming infra) |
@@ -502,9 +502,9 @@ Source → Extract Task
 
 | Platform | Language | Scheduler | Best For |
 |---|---|---|---|
-| Apache Airflow | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Centralized/polling | Enterprise, complex DAGs, large ecosystem |
-| Dagster | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Event-driven, asset-focused | Data platform teams, asset lineage |
-| Prefect | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Cloud or self-hosted | Teams wanting [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native, modern UX |
+| Apache Airflow | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Centralized/polling | Enterprise, complex DAGs, large ecosystem |
+| Dagster | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Event-driven, asset-focused | Data platform teams, asset lineage |
+| Prefect | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Cloud or self-hosted | Teams wanting [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native, modern UX |
 | Kestra | YAML | Event-driven | YAML-first teams, declarative pipelines |
 | AWS Step Functions | JSON/ASL | Event-driven | AWS-native [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipelines |
 | Azure Data Factory | JSON/UI | Cloud-native | Azure shops, no-code ETL |
@@ -515,10 +515,10 @@ Source → Extract Task
 NiFi provides a visual, no-code approach to data routing and transformation. Drag-and-drop processor chaining, data provenance tracking, backpressure, and priority queuing. Ideal for ingestion from heterogeneous sources and protocol translation. Deploy as a standalone cluster with ZooKeeper.
 
 ### Mage.ai
-Mage.ai is a modern open-source ETL tool with [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native pipeline definition. Pipelines are blocks connected in a DAG with `@transformer` and `@loader` decorators. Auto-generated UI, real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and built-in dbt/Spark/BigQuery integration.
+Mage.ai is a modern open-source ETL tool with [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native pipeline definition. Pipelines are blocks connected in a DAG with `@transformer` and `@loader` decorators. Auto-generated UI, real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and built-in dbt/Spark/BigQuery integration.
 
 ### Kestra
-Kestra uses declarative YAML for pipeline definitions with a powerful orchestration engine. Supports batch and event-driven workflows with built-in error handling, retries, and SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Plugin ecosystem covers ETL, dbt, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), and cloud services.
+Kestra uses declarative YAML for pipeline definitions with a powerful orchestration engine. Supports batch and event-driven workflows with built-in error handling, retries, and SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Plugin ecosystem covers ETL, dbt, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and cloud services.
 
 ### Cloud ETL Services
 AWS Glue: [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Spark-based ETL with schema crawler and auto-generated catalog. Azure Data Factory: 90+ built-in connectors with mapping data flows and trigger-based orchestration. GCP Dataflow: fully-managed Apache Beam for batch and streaming with auto-scaling and exactly-once semantics.

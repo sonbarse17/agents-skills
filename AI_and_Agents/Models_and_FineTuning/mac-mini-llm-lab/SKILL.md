@@ -53,8 +53,8 @@ xcode-select --install
 # Core packages
 brew install tmux htop btop wget jq git neovim
 
-# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment (for MLX and custom scripts)
-brew install [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.12 uv
+# [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) environment (for MLX and custom scripts)
+brew install [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.12 uv
 
 # [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 brew install prometheus node_exporter

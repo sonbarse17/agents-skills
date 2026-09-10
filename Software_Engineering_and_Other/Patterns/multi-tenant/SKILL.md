@@ -474,7 +474,7 @@ CREATE POLICY tenant_isolation_policy ON orders
 -- Application middleware sets tenant context
 -- In Node.js/Express middleware:
 --   await db.query("SELECT set_config('app.tenant_id', $1, true)", [tenantId]);
--- In [Python](../../Languages/python/SKILL.md)/FastAPI middleware:
+-- In [Python](../../Languages/python/python/SKILL.md)/FastAPI middleware:
 --   await db.execute("SELECT set_config('app.tenant_id', $1, true)", [tenant_id])
 ```
 

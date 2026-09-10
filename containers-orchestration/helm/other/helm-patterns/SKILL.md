@@ -388,7 +388,7 @@ spec:
       containers:
       - name: migrate
         image: "{{ include "my-app.image" . }}"
-        command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "manage.py", "migrate"]
+        command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "manage.py", "migrate"]
 ```
 
 ```yaml

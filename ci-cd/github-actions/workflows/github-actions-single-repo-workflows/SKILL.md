@@ -122,7 +122,7 @@ behavior.
    ```
    Prefer the language-specific setup action's built-in `cache:` input
    (`actions/setup-node@v4` with `cache: "npm"`,
-   `actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5` with `cache: "pip"`) over hand-rolled
+   `actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5` with `cache: "pip"`) over hand-rolled
    `actions/cache` where available — it's pre-wired to the right paths and
    keys.
 
@@ -251,25 +251,25 @@ behavior.
 
 ## Worked example
 
-**Scenario:** A single [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) service repo needs CI across three [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+**Scenario:** A single [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) service repo needs CI across three [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 versions with sharded tests, dependency caching, and a composite action
 that both the CI and a separate nightly workflow reuse for environment
 setup.
 
-`.[github](../../other/github/SKILL.md)/actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-env/action.yml`:
+`.[github](../../other/github/SKILL.md)/actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-env/action.yml`:
 ```yaml
-name: "Setup [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) env"
-description: "Checkout + [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) + cached pip deps"
+name: "Setup [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) env"
+description: "Checkout + [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) + cached pip deps"
 inputs:
-  [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version:
+  [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version:
     required: true
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+    - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
       with:
-        [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ inputs.[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}
+        [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: ${{ inputs.[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version }}
         cache: "pip"
     - run: pip install -r requirements.txt -r requirements-dev.txt
       shell: bash
@@ -297,16 +297,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ["3.10", "3.11", "3.12"]
+        [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: ["3.10", "3.11", "3.12"]
         shard: [1, 2]
     steps:
-      - uses: ./.[github](../../other/github/SKILL.md)/actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-env
-        with: { [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }} }
+      - uses: ./.[github](../../other/github/SKILL.md)/actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-env
+        with: { [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: ${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version }} }
       - run: pytest --shard-id=${{ matrix.shard }} --num-shards=2 --junitxml=reports/junit.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: junit-${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}-${{ matrix.shard }}
+          name: junit-${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version }}-${{ matrix.shard }}
           path: reports/junit.xml
 
   gate:

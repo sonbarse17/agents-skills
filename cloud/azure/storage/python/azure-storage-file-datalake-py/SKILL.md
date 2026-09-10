@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure Data Lake Storage Gen2 SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Data Lake Storage Gen2 SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Hierarchical file system for big data analytics workloads.
 
@@ -51,14 +51,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.filedatalake import DataLakeServiceClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.dfs.core.windows.net"
 
@@ -78,7 +78,7 @@ with DataLakeServiceClient(account_url=account_url, credential=credential) as se
 
 ## File System Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Create file system (container)
 file_system_client = service_client.create_file_system("myfilesystem")
 
@@ -95,7 +95,7 @@ for fs in service_client.list_file_systems():
 
 ## Directory Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_system_client = service_client.get_file_system_client("myfilesystem")
 
 # Create directory
@@ -118,7 +118,7 @@ directory_client.rename_directory(new_name="myfilesystem/newname")
 
 ### Upload File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Get file client
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
@@ -137,7 +137,7 @@ file_client.flush_data(12)  # [Commit](../../../../../ci-cd/common/git-workflow/
 
 ### Download File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
 # Download all content
@@ -155,13 +155,13 @@ download = file_client.download_file(offset=0, length=100)
 
 ### Delete File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_client.delete_file()
 ```
 
 ## List Contents
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # List paths (files and directories)
 for path in file_system_client.get_paths():
     print(f"{'DIR' if path.is_directory else 'FILE'}: {path.name}")
@@ -177,7 +177,7 @@ for path in file_system_client.get_paths(path="mydir", recursive=True):
 
 ## File/Directory Properties
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Get properties
 properties = file_client.get_file_properties()
 print(f"Size: {properties.size}")
@@ -189,7 +189,7 @@ file_client.set_metadata(metadata={"processed": "true"})
 
 ## Access Control (ACL)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Get ACL
 acl = directory_client.get_access_control()
 print(f"Owner: {acl['owner']}")
@@ -210,7 +210,7 @@ directory_client.update_access_control_recursive(
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.storage.filedatalake.aio import DataLakeServiceClient
 from azure.identity.aio import DefaultAzureCredential
 

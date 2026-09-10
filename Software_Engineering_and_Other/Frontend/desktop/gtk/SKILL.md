@@ -38,7 +38,7 @@ Exact user phrases: "GTK", "GTK3", "GTK4", "GtkWidget", "GtkBuilder", "Gtk CSS",
 
 ### Input Context
 - GTK version (3.x or 4.x — 4.x preferred for new projects)
-- Language (C, Rust via gtk4-rs, [Python](../../../Languages/python/SKILL.md) via PyGObject, Vala, JS via GJS)
+- Language (C, Rust via gtk4-rs, [Python](../../../Languages/python/python/SKILL.md) via PyGObject, Vala, JS via GJS)
 - Display backend (Wayland, X11, Windows GDK, macOS Quartz)
 - CSS styling approach (Adwaita theme, custom CSS, libadwaita)
 - Performance needs (heavy rendering via GtkGLArea, large data via GtkListView)
@@ -135,8 +135,8 @@ fn main() {
 }
 ```
 
-```[python](../../../Languages/python/SKILL.md)
-# [Python](../../../Languages/python/SKILL.md) with PyGObject
+```[python](../../../Languages/python/python/SKILL.md)
+# [Python](../../../Languages/python/python/SKILL.md) with PyGObject
 import gi
 gi.require_version('Gtk', '4.0')
 from gi.repository import Gtk, GLib, Gio

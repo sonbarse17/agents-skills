@@ -154,7 +154,7 @@ Attachments: {logs, screenshots}
 | Language | Framework | Preferred For |
 |----------|-----------|---------------|
 | [TypeScript](../../Frontend/common/typescript/SKILL.md) | Playwright | E2E, web apps |
-| [Python](../../Languages/python/SKILL.md) | Pytest | API, backend |
+| [Python](../../Languages/python/python/SKILL.md) | Pytest | API, backend |
 | Go | Testify | Go services |
 | Rust | cargo test | Rust services |
 

@@ -90,9 +90,9 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | In-memory | No (disk via Tez) | Yes (RDD/DF) | In-memory pipeline | Yes (dataframes) |
 | Latency | Minutes | Seconds-minutes | Sub-second | Seconds |
 | SQL standard | HQL (limited) | ANSI SQL | ANSI SQL | SQL via Dask |
-| UDF support | Java UDF | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Scala/Java | Java/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) |
+| UDF support | Java UDF | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Scala/Java | Java/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) |
 | Cost-based | Yes (CBO) | Yes (CBO + AQE) | Yes (cost-based) | No |
-| Best for | Legacy Hive | Complex ETL, ML | Interactive SQL | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) pipelines |
+| Best for | Legacy Hive | Complex ETL, ML | Interactive SQL | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) pipelines |
 
 #### Decision Tree
 
@@ -105,8 +105,8 @@ Query interactivity requirement?
 │   └── Legacy Hive environment → Hive on Tez
 ├── Hours: Massive batch, large shuffles
 │   └── Spark SQL (best resilience, shuffle handling)
-└── Ad-hoc [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) analytics
-    └── Dask SQL ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
+└── Ad-hoc [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) analytics
+    └── Dask SQL ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native)
 ```
 
 ### Step 2: File Format Selection

@@ -98,7 +98,7 @@ unreliable.
    them (per
    [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) means
    re-processing the whole corpus, not incrementally patching it:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def chunk_document(doc, chunk_size=400, overlap=60):
        # deterministic chunker — same doc + same config always
        # produces the same chunk boundaries and count
@@ -109,7 +109,7 @@ unreliable.
    chunk index**, never a random/generated ID — this is the single
    change that makes upserts idempotent and stale-chunk deletion
    possible:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def chunk_id(source_doc_id, chunk_index):
        return f"{source_doc_id}::chunk-{chunk_index:04d}"
    ```
@@ -122,7 +122,7 @@ unreliable.
 3. **Batch embedding calls, and make each batch idempotent and
    independently retryable** — a single failed batch in a 10,000-
    document backfill should not force reprocessing the other 9,999:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    BATCH_SIZE = 100
 
    def process_batch(doc_batch, run_id):
@@ -156,7 +156,7 @@ unreliable.
    or its content shrinks**, not just upsert new content — an upsert-
    only pipeline accumulates orphaned chunks from deleted documents and
    from documents that produce fewer chunks after an edit:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def reindex_document(doc, previous_chunk_count):
        new_chunks = chunk_document(doc)
        new_ids = {chunk_id(doc.id, i) for i in range(len(new_chunks))}
@@ -193,7 +193,7 @@ unreliable.
    [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
    for the index-side write/query resource contention this throttling
    is protecting against):
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    for batch in chunked(documents, BATCH_SIZE):
        process_batch(batch, run_id)
        time.sleep(THROTTLE_SECONDS)  # or use a token-bucket rate limiter
@@ -318,7 +318,7 @@ idempotently, and clean up stale chunks — plus a one-time backfill for
 the existing ~2,000-document corpus.
 
 Backfill (one-time, batch API, throttled):
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 BATCH_SIZE = 100
 THROTTLE_SECONDS = 2
 run_id = "backfill-2026-07-28"
@@ -332,7 +332,7 @@ minutes — recorded as the pipeline's first baseline for future
 regression comparison (step 8).
 
 Ongoing event-driven re-indexing:
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def on_cms_webhook(event):
     if event.type in ("publish", "update"):
         doc = fetch_document(event.doc_id)

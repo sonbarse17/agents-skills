@@ -52,10 +52,10 @@ Before activating, verify:
 - Prior experiments or baseline results
 
 ### Output Artifact
-Model architecture definition, training loop, distributed strategy config, and optimization settings as [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+Model architecture definition, training loop, distributed strategy config, and optimization settings as [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 ### Response Format
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Model architecture (nn.Module or Keras)
 # Training loop with AMP and logging
 # Distributed training launcher
@@ -86,7 +86,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Framework Selection
 PyTorch: imperative/debuggable, research community standard, HuggingFace ecosystem, dynamic computation graphs, easier custom architectures. TensorFlow/Keras: production deployment (TF Serving, TF Lite, TF.js), static graph optimization, TFX pipeline integration, larger industrial ecosystem. JAX: functional, XLA-compiled, high-performance research, growing but smaller ecosystem. Recommendation: PyTorch for research and custom models, TensorFlow for production deployment pipelines.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # PyTorch: explicit training loop
 import torch.nn as nn
 import torch.optim as optim
@@ -115,7 +115,7 @@ class ImageClassifier(nn.Module):
 ### Step 2: Data Loading
 PyTorch: Dataset class + DataLoader with num_workers, prefetch_factor, pin_memory. Augmentation: torchvision.transforms for images, custom transforms for audio/text. Multiprocessing: num_workers = 4-8 per GPU, prefetch_factor=2. TensorFlow: tf.data.Dataset with interleave, map (with num_parallel_calls), cache, prefetch. Data pipeline must never be the bottleneck.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 
@@ -149,7 +149,7 @@ train_loader = DataLoader(
 ### Step 3: Training Loop
 PyTorch: model.train(), optimizer.zero_grad(), loss.backward(), optimizer.step(). Gradient clipping for stability. Learning rate scheduling: cosine annealing, ReduceLROnPlateau, OneCycleLR. Checkpointing: save model state, optimizer state, epoch, best metric. Early stopping: patience=5-10 epochs on validation metric. Logging: loss, learning rate, metrics per epoch.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def train_epoch(model, loader, optimizer, criterion, device, scaler=None):
     model.train()
     total_loss = 0
@@ -199,7 +199,7 @@ def validate(model, loader, criterion, device):
 ### Step 4: CNN Architectures
 ResNet: residual connections for deep networks (18, 34, 50, 101, 152). ResNet50 is the best accuracy/compute trade-off. EfficientNet: compound scaling (depth, width, resolution). EfficientNet-B0 to B7. MobileNet: depthwise separable convolutions for mobile/edge. ConvNeXt: modernized ResNet with Swish, LayerNorm. Transfer learning: freeze pretrained backbone, train new classifier head. Fine-tune whole network at low learning rate (1e-5 to 1e-4).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torchvision.models as models
 
 model = models.resnet50(weights="DEFAULT")
@@ -224,7 +224,7 @@ optimizer = optim.Adam(model.parameters(), lr=1e-5)
 ### Step 5: RNN and Transformer
 LSTM: for sequence modeling (time-series, text). Bidirectional LSTM: context from both directions. GRU: lighter than LSTM, similar performance. Transformer: self-attention for parallel processing, positional encoding for sequence order. Multi-head attention: multiple attention heads capture different relationships.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class TransformerClassifier(nn.Module):
     def __init__(self, vocab_size, d_model=256, nhead=8, num_layers=4, num_classes=2):
         super().__init__()
@@ -262,7 +262,7 @@ class PositionalEncoding(nn.Module):
 ### Step 6: Distributed Training
 DDP (DistributedDataParallel): each GPU has model copy, gradient sync at each step. Best for models fitting in single GPU memory. FSDP (Fully Sharded Data Parallel): shard model parameters, gradients, optimizer states across GPUs. Best for large models (1B+ params). Launch: torchrun for DDP/FSDP. Gradient checkpointing: trade compute for memory (train larger models on fewer GPUs).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel
 from torch.utils.data.distributed import DistributedSampler
@@ -295,7 +295,7 @@ if __name__ == "__main__":
 ### Step 7: Training Visualization and Logging
 Use TensorBoard, WandB, or MLflow for tracking. Log loss, learning rate, gradients, and activations histograms. Monitor GPU utilization with nvidia-smi. Detect vanishing/exploding gradients by tracking gradient norms.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from torch.utils.tensorboard import SummaryWriter
 
 writer = SummaryWriter("runs/experiment_001")
@@ -319,7 +319,7 @@ for epoch in range(num_epochs):
 ### Step 8: Hyperparameter Optimization
 Use Optuna for Bayesian optimization of hyperparameters. Define search space for learning rate, batch size, optimizer, architecture parameters. Use pruning (MedianPruner, HyperbandPruner) to terminate unpromising trials early.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import optuna
 
 def objective(trial):
@@ -409,7 +409,7 @@ Input type
 | Feature | PyTorch | TensorFlow | JAX |
 |---|---|---|---|
 | Graph type | Dynamic (Eager) | Static (Graph) + Eager | JIT (XLA) |
-| Debugging | [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native | tfdbg | print inside jit |
+| Debugging | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native | tfdbg | print inside jit |
 | Distributed | DDP, FSDP, DeepSpeed | MirroredStrategy, TPUStrategy | pmap, shmap |
 | Production | TorchServe, ONNX | TF Serving, TF Lite, TF.js | Limited |
 | Community | Research dominant | Industry dominant | Growing research |
@@ -505,7 +505,7 @@ Scalability: single GPU for models up to 7B params (quantized). 4-8 GPUs for 7B-
 ## Implementation Patterns
 
 ### Transformer for Time Series
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch
 import torch.nn as nn
 
@@ -529,7 +529,7 @@ class TimeSeriesTransformer(nn.Module):
 `
 
 ### Training Loop with Mixed Precision
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch
 from torch.cuda.amp import autocast, GradScaler
 

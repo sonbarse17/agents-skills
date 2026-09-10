@@ -189,7 +189,7 @@ Transaction acceptance:
 ```
 
 ### Raw Transaction Construction
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
 import struct
 
@@ -223,7 +223,7 @@ def create_legacy_tx(utxos, outputs, private_keys, locktime=0):
 ## Mining & PoW Mechanics
 
 ### Difficulty Adjustment Algorithm
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Bitcoin difficulty: adjusts every 2016 blocks (~2 weeks)
 # Target = previous_target * actual_time_span / expected_time_span (20160 min)
 # Clamped to [1/4, 4] of previous difficulty
@@ -250,7 +250,7 @@ def calculate_difficulty(previous_target, actual_timespan_seconds):
 ```
 
 ### Stratum Mining Protocol
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Stratum V1: centralized mining pool protocol
 # Pool sends job assignments, miners submit shares
 class StratumMiner:
@@ -518,7 +518,7 @@ Types:
 - Solo mining: only viable with >1% of total hashrate
 
 ### Fee Estimation
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Bitcoin fee estimation strategies
 def estimate_fee(target_blocks, mempool_entries):
     """

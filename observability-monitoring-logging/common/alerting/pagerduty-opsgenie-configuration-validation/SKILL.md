@@ -70,7 +70,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
   their resolved on-call membership — validation needs the *resolved*
   membership (who a schedule actually points to right now and for the
   next N weeks), not just the policy's static JSON.
-- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ if using the reference script in `scripts/` — no
+- [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.9+ if using the reference script in `scripts/` — no
   third-party dependencies required for the coverage-logic check itself
   (add `requests` only if wiring it directly to the live API rather than
   exported JSON).

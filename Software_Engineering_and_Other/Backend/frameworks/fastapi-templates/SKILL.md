@@ -21,7 +21,7 @@ Production-ready FastAPI project structures with async patterns, dependency inje
 ## When to Use This Skill
 
 - Starting new FastAPI projects from scratch
-- Implementing async REST APIs with [Python](../../../Languages/python/SKILL.md)
+- Implementing async REST APIs with [Python](../../../Languages/python/python/SKILL.md)
 - Building high-performance web services and [microservices](../../../Patterns/microservices/SKILL.md)
 - Creating async applications with [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MongoDB](../../../Databases/nosql/mongodb/SKILL.md)
 - Setting up API projects with proper structure and testing
@@ -85,7 +85,7 @@ Detailed sections (starting with `## Implementation Patterns`) live in `../../..
 
 ## Testing
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # tests/conftest.py
 import pytest
 import asyncio

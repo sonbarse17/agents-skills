@@ -282,7 +282,7 @@ Each role has veto power on ambiguity. If any amigo can't explain what a scenari
 - Context injection: dependency injection for shared state
 - Reports: TRX, HTML, LivingDoc
 
-### Behave ([Python](../../Languages/python/SKILL.md))
+### Behave ([Python](../../Languages/python/python/SKILL.md))
 - Step definition matching: decorators with regex
 - Hooks: before_scenario, after_scenario, before_all
 - Context: `context` object for shared state
@@ -354,7 +354,7 @@ Best practices: run smoke BDD tests on every [commit](../../../ci-cd/common/git-
 |------|----------|--------------|----------------|-----------|---------|
 | Cucumber | Ruby/JVM/JS | Cucumber Expr/Regex | Native | HTML, JSON, JUnit | Open source |
 | SpecFlow | .NET | Attributes/Regex | Native | LivingDoc, TRX | Open source |
-| Behave | [Python](../../Languages/python/SKILL.md) | Decorators/Regex | Native | JSON, JUnit | Open source |
+| Behave | [Python](../../Languages/python/python/SKILL.md) | Decorators/Regex | Native | JSON, JUnit | Open source |
 | JBehave | Java | Annotations | Native | HTML, XML | Open source |
 | Kiwi | Swift | Closures | XCTest | XCTest | Open source |
 
@@ -405,8 +405,8 @@ Then("the {string} should receive a notification") do |role|
 end
 ```
 
-**[Python](../../Languages/python/SKILL.md) (Behave):**
-```[python](../../Languages/python/SKILL.md)
+**[Python](../../Languages/python/python/SKILL.md) (Behave):**
+```[python](../../Languages/python/python/SKILL.md)
 @given('the inventory has {count} units of "{product}"')
 def step_given_inventory(context, count, product):
     context.inventory = {product: int(count)}
@@ -503,7 +503,7 @@ Scenario: Invoice generation with complex formatting
 ```
 What programming language is the project using?
   |-- Ruby --> Use Cucumber-Ruby with Cucumber Expressions
-  |-- [Python](../../Languages/python/SKILL.md) --> Use Behave with regex step definitions
+  |-- [Python](../../Languages/python/python/SKILL.md) --> Use Behave with regex step definitions
   |-- JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) --> Use Cucumber.js with Cucumber Expressions
   |-- Java --> Use Cucumber-JVM with @Annotations
   |-- C#/.NET --> Use SpecFlow with method attributes
@@ -522,7 +522,7 @@ Are step definitions becoming complex to maintain?
 What is the team's primary language?
   |-- Ruby/JVM/JS --> Cucumber (most mature ecosystem)
   |-- .NET --> SpecFlow (native .NET integration)
-  |-- [Python](../../Languages/python/SKILL.md) --> Behave or pytest-bdd
+  |-- [Python](../../Languages/python/python/SKILL.md) --> Behave or pytest-bdd
   |-- Java-only --> JBehave (simpler than Cucumber-JVM)
   |-- Go --> Godog
   |-- Mobile (iOS) --> XCTest-Gherkin or Cucumberish

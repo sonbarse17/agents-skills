@@ -80,21 +80,21 @@ jobs:
 
       - name: Run quality evaluation suite
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.run \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.run \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --suite quality \
             --output results/quality.json
 
       - name: Run safety evaluation suite
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.run \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.run \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --suite safety \
             --output results/safety.json
 
       - name: Run latency benchmark
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.benchmark \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.benchmark \
             --model "${{ inputs.model_name }}:${{ inputs.model_version }}" \
             --concurrent-users 50 \
             --duration 300 \
@@ -102,19 +102,19 @@ jobs:
 
       - name: Gate check - quality
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.gate_check \
             --results results/quality.json \
             --threshold-file thresholds/quality.yaml
 
       - name: Gate check - safety
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.gate_check \
             --results results/safety.json \
             --threshold-file thresholds/safety.yaml
 
       - name: Gate check - latency
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m evals.gate_check \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m evals.gate_check \
             --results results/latency.json \
             --threshold-file thresholds/latency.yaml
 
@@ -150,7 +150,7 @@ jobs:
 
       - name: Wait for canary validation (15 min)
         run: |
-          [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m canary.validate \
+          [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m canary.validate \
             --deployment ${{ inputs.model_name }}-canary \
             --namespace ai-${{ inputs.target_env }} \
             --duration 900 \

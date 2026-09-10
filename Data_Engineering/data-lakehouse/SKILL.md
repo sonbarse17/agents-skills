@@ -185,7 +185,7 @@ Replication strategies: Delta Sharing for cross-cloud reads, cloud-native tools 
 ### Step 6: Data Quality Gates
 Bronze: ensure files readable, schema matches, no empty payloads. Silver: null rate <5% on key columns, referential integrity, dedup by business key. Gold: aggregate totals match across dimensions, historical trend consistent.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Quality gate at silver layer
 from pyspark.sql import functions as F
 
@@ -393,7 +393,7 @@ optimization:
       - "Aggregate at gold layer — avoid detail-level queries in BI"
   
   ml_training:
-    engine: "Spark ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) DataFrame API)"
+    engine: "Spark ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) DataFrame API)"
     config:
       - "Use Delta format for training data reads"
       - "Enable Delta caching for repeated data access"
@@ -407,7 +407,7 @@ optimization:
     engine: "Databricks Notebooks + Spark SQL"
     config:
       - "Use Databricks SQL for SQL exploration"
-      - "Pandas on Spark for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) exploration"
+      - "Pandas on Spark for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) exploration"
       - "Auto-scaling clusters for concurrent ad-hoc queries"
     tips:
       - "Set query timeout (5min default for exploration)"
@@ -444,7 +444,7 @@ lakehouse_platforms:
     catalog: "Nessie, Hive, JDBC, REST, Glue"
     formats: "Iceberg"
     engines: "Spark, Trino, Flink, Hive, Presto, Dremio"
-    ml_integration: "Via Spark/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)"
+    ml_integration: "Via Spark/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)"
     strengths: ["Most open ecosystem", "Partition evolution", "Multi-engine"]
     weaknesses: ["Less mature governance vs [Unity](../../Game_Development/unity/SKILL.md) Catalog", "Self-managed catalog"]
   
@@ -531,7 +531,7 @@ Lakehouse Architecture Selection
 ## Implementation Patterns
 
 ### Medallion Architecture Pipeline
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_lakehouse/medallion_pipeline.py
 from pyspark.sql import SparkSession, DataFrame
 

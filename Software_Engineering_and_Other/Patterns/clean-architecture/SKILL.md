@@ -42,7 +42,7 @@ Exact user phrases: "where does this code go", "what layer", "clean architecture
 
 ### Input Context
 Before activating, verify:
-- The stack is known (NestJS, Go, Rust, [Python](../../Languages/python/SKILL.md), Spring Boot).
+- The stack is known (NestJS, Go, Rust, [Python](../../Languages/python/python/SKILL.md), Spring Boot).
 - The user has described a specific piece of code or asked about a specific location.
 - The project's folder structure is visible or has been described.
 
@@ -121,8 +121,8 @@ export class Email {
 }
 ```
 
-```[python](../../Languages/python/SKILL.md)
-# Domain — [Python](../../Languages/python/SKILL.md) dataclass, no framework imports
+```[python](../../Languages/python/python/SKILL.md)
+# Domain — [Python](../../Languages/python/python/SKILL.md) dataclass, no framework imports
 @dataclass
 class Order:
     id: OrderId
@@ -230,7 +230,7 @@ function buildContainer(): Container {
 ### Single Responsibility per Use Case
 Each use case handles exactly one business operation: `CreateOrder`, `ProcessPayment`, `UpdateUserProfile`. Use cases are not services with many methods — they are individual classes or functions.
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # GOOD: One class per use case
 class CreateOrderUseCase:
     def __init__(self, repo: OrderRepository, uow: UnitOfWork):
@@ -373,7 +373,7 @@ function orderToResponse(order: Order): OrderResponse {
 }
 ```
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Presentation layer mapper
 def order_to_response(order: Order) -> OrderResponse:
     return OrderResponse(

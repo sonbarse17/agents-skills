@@ -238,7 +238,7 @@ For client-only UI state (modals, toggles, theme), pair htmx with Alpine.js:
 
 Since htmx is primarily server-driven, testing focuses on the backend:
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # pytest example for Django + htmx
 def test_contact_list_htmx(client):
     response = client.get('/contacts', HTTP_HX_REQUEST='true')
@@ -324,7 +324,7 @@ Fundamental architecture change (client to server rendering). Best for content-h
 ## Server Integration Patterns
 
 ### Django
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def contact_list(request):
     if request.htmx:
         return render(request, 'contacts/_list.html', {'contacts': Contact.objects.all()})
@@ -456,7 +456,7 @@ Carry forward: hx-trigger/hx-target/hx-swap pattern, HTML-fragment responses, HA
 
 ### Server-Side Handler Pattern
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from flask import Blueprint, request, render_template, jsonify
 
 htmx = Blueprint('htmx', __name__)

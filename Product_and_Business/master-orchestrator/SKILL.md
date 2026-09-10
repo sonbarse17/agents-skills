@@ -92,7 +92,7 @@ Run these checks in order. Stop at the first match.
 5. `Test-Path -LiteralPath package.json` — Node project
 6. `Test-Path -LiteralPath Cargo.toml` — Rust project
 7. `Test-Path -LiteralPath go.mod` — Go project
-8. `Test-Path -LiteralPath requirements.txt` or `pyproject.toml` — [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) project
+8. `Test-Path -LiteralPath requirements.txt` or `pyproject.toml` — [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) project
 9. `Test-Path -LiteralPath pom.xml` or `build.gradle` — Java project
 
 ### Step 2: Route by State
@@ -252,16 +252,16 @@ State: User asks about Symfony, Symfony framework, Symfony DI, Doctrine.
   Route: php-symfony
   Reason: "Symfony framework request."
 
-State: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack detected with Django (Django in dependencies).
-  Route: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-django
+State: [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) stack detected with Django (Django in dependencies).
+  Route: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-django
   Reason: "Django backend detected."
 
-State: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack detected with FastAPI (fastapi in dependencies).
-  Route: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-fastapi
+State: [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) stack detected with FastAPI (fastapi in dependencies).
+  Route: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-fastapi
   Reason: "FastAPI backend detected."
 
-State: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) stack detected with Flask (flask in dependencies).
-  Route: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-flask
+State: [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) stack detected with Flask (flask in dependencies).
+  Route: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-flask
   Reason: "Flask backend detected."
 
 State: User asks about Hono, Hono backend, Hono middleware.
@@ -1510,8 +1510,8 @@ Read project files:
 - go.mod -> golang-patterns
 - Cargo.toml -> rust-patterns
 - Gemfile -> backend-rails
-- requirements.txt: if fastapi present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-fastapi; if django present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-django; if flask present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-flask
-- pyproject.toml: if django present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-django
+- requirements.txt: if fastapi present -> [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-fastapi; if django present -> [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-django; if flask present -> [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-flask
+- pyproject.toml: if django present -> [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-django
 - pom.xml -> backend-spring-boot-architecture; if quarkus present -> java-quarkus; if [micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) present -> java-[micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md)
 - build.gradle -> backend-spring-boot-architecture; if kotlin -> backend-kotlin-architecture
 - build.gradle.kts: if kotlin and [android](../../Mobile/android/SKILL.md) -> mobile-[android](../../Mobile/android/SKILL.md); if kotlin only -> backend-kotlin-architecture

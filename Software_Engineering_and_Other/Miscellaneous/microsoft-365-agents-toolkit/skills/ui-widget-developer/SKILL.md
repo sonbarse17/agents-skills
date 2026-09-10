@@ -101,7 +101,7 @@ After installing, invoke the relevant skill to continue.
 
 ## 📛 PROJECT DETECTION 📛
 
-This skill triggers when building MCP servers with OAI app or widget rendering for Microsoft 365 Copilot Chat. The MCP server can be written in any language that supports the MCP protocol ([TypeScript](../../../../Frontend/common/typescript/SKILL.md), [Python](../../../../Languages/python/SKILL.md), C#, etc.). The agent project and MCP server may live in the same repo, separate folders, or entirely different projects.
+This skill triggers when building MCP servers with OAI app or widget rendering for Microsoft 365 Copilot Chat. The MCP server can be written in any language that supports the MCP protocol ([TypeScript](../../../../Frontend/common/typescript/SKILL.md), [Python](../../../../Languages/python/python/SKILL.md), C#, etc.). The agent project and MCP server may live in the same repo, separate folders, or entirely different projects.
 
 ## Scenario Routing
 
@@ -310,7 +310,7 @@ project/
 └── env/.env.local              # MCP_SERVER_URL, MCP_SERVER_DOMAIN
 ```
 
-**Language note**: This shows a [TypeScript](../../../../Frontend/common/typescript/SKILL.md) project layout. For [Python](../../../../Languages/python/SKILL.md), replace `mcp-server/src/index.ts` with your [Python](../../../../Languages/python/SKILL.md) entry point (e.g., `server.py`). For C#, use a standard .NET project structure. The `appPackage/`, `widgets/`, `scripts/`, and `env/` directories are language-agnostic.
+**Language note**: This shows a [TypeScript](../../../../Frontend/common/typescript/SKILL.md) project layout. For [Python](../../../../Languages/python/python/SKILL.md), replace `mcp-server/src/index.ts` with your [Python](../../../../Languages/python/python/SKILL.md) entry point (e.g., `server.py`). For C#, use a standard .NET project structure. The `appPackage/`, `widgets/`, `scripts/`, and `env/` directories are language-agnostic.
 
 ## Copilot Widget Protocol
 
@@ -426,7 +426,7 @@ On first run, provision the agent once the tunnel is up (see AGENT PROVISIONING 
 
 1. **Start the MCP server** (dev mode with hot reload):
    - [TypeScript](../../../../Frontend/common/typescript/SKILL.md): `cd mcp-server && npm install && npm run dev`
-   - [Python](../../../../Languages/python/SKILL.md): `cd mcp-server && pip install -r requirements.txt && [python](../../../../Languages/python/SKILL.md) server.py`
+   - [Python](../../../../Languages/python/python/SKILL.md): `cd mcp-server && pip install -r requirements.txt && [python](../../../../Languages/python/python/SKILL.md) server.py`
    - C#: `cd mcp-server && dotnet run`
 
 2. **Start the devtunnel** (creates named tunnel on first run, reuses on subsequent runs):

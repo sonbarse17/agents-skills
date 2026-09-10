@@ -105,7 +105,7 @@ the catalog and scorecards correctly in whichever product is chosen.
      "icon": "Microservice",
      "schema": {
        "properties": {
-         "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)", "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"] },
+         "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)", "[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)"] },
          "tier": { "type": "string", "enum": ["tier-1", "tier-2", "tier-3"] },
          "repo_url": { "type": "string", "format": "url" }
        },

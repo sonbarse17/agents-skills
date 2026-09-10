@@ -74,7 +74,7 @@ it sees.
   needs to unfreeze, drop QLoRA and use bf16 LoRA
   instead.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # freeze tower + projector; LoRA on LLM only
 for name, param in model.named_parameters():
     if "vision_tower" in name or "projector" in name:

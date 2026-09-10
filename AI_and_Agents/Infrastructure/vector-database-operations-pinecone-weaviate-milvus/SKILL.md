@@ -118,7 +118,7 @@ pattern itself, which this skill doesn't repeat).
      efConstruction: 128
      maxConnections: 32  # M
    ```
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Milvus index params (illustrative)
    index_params = {
        "index_type": "HNSW",
@@ -127,7 +127,7 @@ pattern itself, which this skill doesn't repeat).
    }
    search_params = {"ef": 128}  # tuned separately at query time
    ```
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Pinecone: HNSW internals are managed for you on pod-based indexes;
    # the primary tunable is pod type/size and top_k at query time rather
    # than raw M/ef parameters — check current Pinecone docs for what's
@@ -176,7 +176,7 @@ pattern itself, which this skill doesn't repeat).
    spread a large backfill across partitions/time rather than one burst
    against one shard.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Generic batch-upsert pattern applicable across vendors' SDKs
    BATCH_SIZE = 200
    for batch in chunked(vectors_with_metadata, BATCH_SIZE):

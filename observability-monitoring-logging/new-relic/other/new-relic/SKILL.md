@@ -131,9 +131,9 @@ npm install newrelic
 NEW_RELIC_LICENSE_KEY=xxx node -r newrelic app.js
 ```
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # newrelic.ini
 [newrelic]
 license_key = YOUR_LICENSE_KEY
@@ -152,7 +152,7 @@ pip install newrelic
 newrelic-admin generate-config YOUR_LICENSE_KEY newrelic.ini
 
 # Run application
-NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py
+NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) app.py
 
 # Or with gunicorn
 NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn app:app
@@ -208,7 +208,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 ### Custom Events
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import newrelic.agent
 
 # Record custom event
@@ -221,7 +221,7 @@ newrelic.agent.record_custom_event('OrderPlaced', {
 
 ### Custom Metrics
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import newrelic.agent
 
 # Record custom metric
@@ -236,7 +236,7 @@ newrelic.agent.record_custom_metric('Custom/ProcessingTime',
 
 ### Custom Spans
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import newrelic.agent
 
 @newrelic.agent.function_trace(name='process_payment')
@@ -404,9 +404,9 @@ SINCE 1 day ago
 
 ## Logs in Context
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Configuration
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Configuration
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # newrelic.ini
 [newrelic]
 application_logging.enabled = true

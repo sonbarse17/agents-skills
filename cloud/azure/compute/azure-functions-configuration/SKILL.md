@@ -92,7 +92,7 @@ sensitivity is a recurring, avoidable source of production complaints.
      --resource-group <RESOURCE_GROUP> \
      --plan checkout-functions-premium \
      --storage-account <STORAGE_ACCOUNT_NAME> \
-     --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
+     --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) \
      --runtime-version 3.11 \
      --functions-version 4
    ```

@@ -108,7 +108,7 @@ it."
    different systems.
 
 2. **Point training clients at the tracking server**, not a local path:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow
 
    mlflow.set_tracking_uri("http://mlflow.internal:5000")
@@ -118,7 +118,7 @@ it."
 3. **Use autologging to instrument standard training calls** with minimal
    code changes, then add manual logging only for what autolog doesn't
    capture:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow
    import mlflow.xgboost
    import xgboost as xgb
@@ -155,12 +155,12 @@ it."
          learning_rate: {type: float, default: 0.05}
          data_snapshot: {type: string, default: "s3://data-lake/fraud/snapshots/latest"}
        command: >
-         [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) train.py --max-depth {max_depth} --learning-rate {learning_rate}
+         [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) train.py --max-depth {max_depth} --learning-rate {learning_rate}
          --data-snapshot {data_snapshot}
    ```
    ```yaml
    # python_env.yaml — pin exact versions, not ranges, for reproducibility
-   [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md): "3.11.6"
+   [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): "3.11.6"
    dependencies:
      - mlflow==2.16.2
      - xgboost==2.1.1
@@ -175,7 +175,7 @@ it."
    the training script's ad hoc setup steps.
 
 5. **Register the winning run's model artifact to the Model Registry**:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    result = mlflow.register_model(
        model_uri="runs:/<RUN_ID>/model",
        name="fraud-scorer",
@@ -186,7 +186,7 @@ it."
    classic stage model (`None` → `Staging` → `Production` → `Archived`)
    is being superseded by a tag/alias-based model starting around MLflow
    2.9 — check which your server version and client expect:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from mlflow import MlflowClient
 
    client = MlflowClient()
@@ -221,7 +221,7 @@ it."
 
 7. **Serve or load a specific registered version explicitly by
    version/alias**, never "whatever is latest" implicitly:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    model = mlflow.pyfunc.load_model("models:/fraud-scorer@champion")
    # or, pinned to an explicit version:
    model = mlflow.pyfunc.load_model("models:/fraud-scorer/14")
@@ -332,7 +332,7 @@ XGBoost autologging and alias-based registry promotion.
    ```
 2. Training script, run via `mlflow run` for reproducibility, with
    XGBoost autologging enabled:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow, mlflow.xgboost, xgboost as xgb
 
    mlflow.set_tracking_uri("http://mlflow.internal:5000")
@@ -349,7 +349,7 @@ XGBoost autologging and alias-based registry promotion.
    ```
 3. Registration and alias-based promotion, run as a controlled step
    after the run's metrics clear a review bar (not automatically):
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from mlflow import MlflowClient
 
    client = MlflowClient()
@@ -364,12 +364,12 @@ XGBoost autologging and alias-based registry promotion.
    ```
 4. Serving code loads the alias, never a hardcoded version, so the next
    promotion doesn't require a code change:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    model = mlflow.pyfunc.load_model("models:/fraud-scorer@champion")
    ```
 5. Two weeks later the new champion's live precision drops; on-call
    reverts with the recorded previous version:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    client.set_registered_model_alias("fraud-scorer", "champion", previous_champion.version)
    ```
    because step 3 captured the rollback target before promoting, this is

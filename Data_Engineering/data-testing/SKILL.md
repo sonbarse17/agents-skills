@@ -62,7 +62,7 @@ Test suite configuration with dbt unit tests, Soda checks, Great Expectations su
 # Unit test fixtures and assertions
 # Regression diff queries
 ```
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Great Expectations suite
 # CI pipeline
 ```
@@ -270,7 +270,7 @@ checks for customers:
 ## Great Expectations
 
 ### Expectation Suite
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # suites/orders_suite.py
 import great_expectations as ge
 
@@ -328,7 +328,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
       - run: pip install dbt-postgres dbt-unit-testing
       - run: dbt deps
       - run: dbt run --models state:modified+
@@ -474,7 +474,7 @@ What aspect of the data pipeline are we validating?
 Data Testing Strategy
 ├── Pipeline testing approach?
 │   ├── SQL transformation tests → dbt tests (singular + generic)
-│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) transformation tests → pytest + chispa (PySpark)
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) transformation tests → pytest + chispa (PySpark)
 │   └── End-to-end pipeline tests → [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)/[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions with test datasets
 ├── Data quality testing?
 │   ├── Row-level (not null, unique) → dbt generic tests
@@ -493,7 +493,7 @@ Data Testing Strategy
 ## Implementation Patterns
 
 ### PySpark Testing with Chispa
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_testing/pyspark_test.py
 import pytest
 from chispa import assert_df_equality

@@ -62,8 +62,8 @@ Load detailed guidance based on context:
 
 ## Code Examples
 
-### Strangler Fig Facade ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Strangler Fig Facade ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # facade.py — routes requests to legacy or new service based on a feature flag
 import os
 from legacy_service import LegacyOrderService
@@ -81,7 +81,7 @@ class OrderServiceFacade:
 ```
 
 ### Feature Flag Wrapper
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # feature_flags.py — thin wrapper around an environment or config-based flag store
 import os
 
@@ -97,7 +97,7 @@ else:
 ```
 
 ### Characterization Test Template (pytest)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # test_characterization_orders.py
 # Captures existing legacy behavior as a golden-master safety net.
 import pytest

@@ -160,7 +160,7 @@ integration decisions between phases.
    applying the logging discipline from
    [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md), rather than
    standing up a separate MLflow server:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from google.cloud import aiplatform
 
    aiplatform.init(project="prj-ml-platform-prod", location="us-central1",
@@ -188,7 +188,7 @@ integration decisions between phases.
    [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
    (Vertex AI Pipelines uses the same KFP SDK, targeting a different
    backend):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from kfp import dsl, compiler
    from google.cloud import aiplatform
 

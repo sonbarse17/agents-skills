@@ -40,7 +40,7 @@ flowchart TD
 
 ## 3. Core Orchestration Logic
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 import json
 from fastapi import FastAPI, HTTPException

@@ -99,7 +99,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
      prompt template version and tokenizer version).
 3. **Export to the target runtime format** and validate the export is
    numerically equivalent to the training-time model on a held-out sample:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import torch
 
    model.eval()
@@ -115,7 +115,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
    traced.save("fraud-scorer-v2.3.1.pt")
    ```
 4. **Register the artifact** with its version, stage, and metadata:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow
 
    with mlflow.start_run(run_id="run-8841"):

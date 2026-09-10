@@ -57,7 +57,7 @@ Before any analysis, you MUST determine the source repository context:
 
 The catalogue MUST include an Onboarding section (always first, uncollapsed) containing:
 
-1. **Contributor Guide** — For new contributors (assumes [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/JS). Progressive depth:
+1. **Contributor Guide** — For new contributors (assumes [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/JS). Progressive depth:
    - Part I: Language/framework/technology foundations with cross-language comparisons
    - Part II: This codebase's architecture and domain model
    - Part III: Dev setup, testing, codebase navigation, contributing
@@ -79,8 +79,8 @@ The catalogue MUST include an Onboarding section (always first, uncollapsed) con
 ## Language Detection
 
 Detect primary language from file extensions and build files, then select a comparison language:
-- C#/Java/Go/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) as comparison
-- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) → JavaScript as comparison
+- C#/Java/Go/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) → [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) as comparison
+- [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) → JavaScript as comparison
 - Rust → C++ or Go as comparison
 
 ## Constraints

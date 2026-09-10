@@ -301,9 +301,9 @@ az keyvault set-policy \
 
 ## Application Integration
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.keyvault.secrets import SecretClient
 from azure.keyvault.keys import KeyClient

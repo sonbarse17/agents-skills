@@ -469,7 +469,7 @@ cask "visual-studio-code"
 cask "iterm2"
 cask "[docker](../../containers-orchestration/docker/other/docker/SKILL.md)"
 brew "node"
-brew "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.12"
+brew "[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.12"
 
 # Communication
 cask "slack"
@@ -499,7 +499,7 @@ brew bundle --file=/path/to/Brewfile --no-lock
       { "PackageIdentifier": "Tailscale.Tailscale" },
       { "PackageIdentifier": "AgileBits.1Password" },
       { "PackageIdentifier": "OpenJS.NodeJS.LTS" },
-      { "PackageIdentifier": "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).3.12" }
+      { "PackageIdentifier": "[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).3.12" }
     ],
     "SourceDetails": {
       "Name": "winget",

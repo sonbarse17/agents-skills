@@ -472,7 +472,7 @@ contract HTLC {
 ```
 
 ### Relayer Verification
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # blockchain-cross-chain/relayer_verification.py
 class CrossChainRelayer:
     def __init__(self, source_rpc: str, dest_rpc: str):

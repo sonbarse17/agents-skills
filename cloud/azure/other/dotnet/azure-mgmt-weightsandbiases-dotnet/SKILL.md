@@ -316,9 +316,9 @@ catch (RequestFailedException ex)
 
 ## Integration with W&B SDK
 
-After creating the Azure resource, use the W&B [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK for experiment tracking:
+After creating the Azure resource, use the W&B [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK for experiment tracking:
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Install: pip install wandb
 import wandb
 

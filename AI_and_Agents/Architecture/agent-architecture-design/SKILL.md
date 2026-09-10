@@ -95,7 +95,7 @@ vendor SDK is driving it.
    it's done. Fail closed (stop and surface an error) rather than fail open
    (silently keep going or silently give up and claim success).
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    MAX_ITERATIONS = 12
    TIMEOUT_SECONDS = 180
 

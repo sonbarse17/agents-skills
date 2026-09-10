@@ -30,15 +30,15 @@ depends_on:
   - alerting
 ---
 
-# [Python](../../../Languages/python/SKILL.md) FastAPI Architecture
+# [Python](../../../Languages/python/python/SKILL.md) FastAPI Architecture
 
 ## Purpose
-Structure FastAPI applications with Clean Architecture. Pydantic at boundaries only. Domain entities are pure [Python](../../../Languages/python/SKILL.md) dataclasses. FastAPI routers are thin. Dependency injection via Depends.
+Structure FastAPI applications with Clean Architecture. Pydantic at boundaries only. Domain entities are pure [Python](../../../Languages/python/python/SKILL.md) dataclasses. FastAPI routers are thin. Dependency injection via Depends.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "FastAPI structure", "FastAPI architecture", "FastAPI folder", "FastAPI clean arch", "FastAPI router", "FastAPI dependency injection", "[Python](../../../Languages/python/SKILL.md) backend structure".
+Exact user phrases: "FastAPI structure", "FastAPI architecture", "FastAPI folder", "FastAPI clean arch", "FastAPI router", "FastAPI dependency injection", "[Python](../../../Languages/python/python/SKILL.md) backend structure".
 
 ### Input Context
 Before activating, verify:
@@ -67,7 +67,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 ### Completion Criteria
 - [ ] src/ directory structure follows Clean Architecture.
-- [ ] Domain entities are pure [Python](../../../Languages/python/SKILL.md) (dataclasses). No Pydantic. No SQLAlchemy.
+- [ ] Domain entities are pure [Python](../../../Languages/python/python/SKILL.md) (dataclasses). No Pydantic. No SQLAlchemy.
 - [ ] Pydantic schemas exist only in src/schemas/ (API boundary).
 - [ ] Repository interfaces are ABCs in domain/.
 - [ ] Repository implementations use SQLAlchemy in infrastructure/.
@@ -147,8 +147,8 @@ tests/
     test_create_user.py
 ```
 
-### Step 2: Domain Entity (Pure [Python](../../../Languages/python/SKILL.md))
-```[python](../../../Languages/python/SKILL.md)
+### Step 2: Domain Entity (Pure [Python](../../../Languages/python/python/SKILL.md))
+```[python](../../../Languages/python/python/SKILL.md)
 from dataclasses import dataclass, field
 from uuid import uuid4, UUID
 from datetime import datetime
@@ -190,7 +190,7 @@ class Order:
 ```
 
 ### Step 3: Repository Interface (ABC) and Implementation
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # domain/repositories.py
 from abc import ABC, abstractmethod
 from uuid import UUID
@@ -243,7 +243,7 @@ class SqlAlchemyUserRepository(UserRepository):
 ```
 
 ### Step 4: Pydantic Schemas (API Boundary Only)
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from pydantic import BaseModel, EmailStr, ConfigDict
 from uuid import UUID
 from datetime import datetime
@@ -282,7 +282,7 @@ class PaginatedResponse(BaseModel, Generic[T]):
 
 ### Step 5: Use Case
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # application/use_cases/create_user.py
 from domain.entities import User
 from domain.repositories import UserRepository
@@ -305,7 +305,7 @@ class CreateUserUseCase:
 
 ### Step 6: FastAPI Endpoint and DI
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # api/v1/endpoints/users.py
 from fastapi import APIRouter, Depends, Query
 
@@ -356,7 +356,7 @@ async def get_create_user_use_case(
 
 ### Step 7: App Entry Point
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -384,7 +384,7 @@ async def health():
 
 ### Pattern: Global Exception Handler
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # core/exceptions.py
 class AppException(Exception):
     def __init__(self, status_code: int, code: str, message: str, details: any = None):
@@ -444,7 +444,7 @@ async def validation_exception_handler(request, exc):
 
 ## Testing Strategies
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # tests/test_api/test_users.py
 from httpx import AsyncClient, ASGITransport
 import pytest
@@ -471,7 +471,7 @@ Use `httpx.AsyncClient` with ASGI transport for integration tests. Use `pytest-a
 
 ## Rules
 - FastAPI routers are thin. Input validation in Pydantic schemas. Business logic in use cases. Data access in repositories.
-- Domain entities are pure [Python](../../../Languages/python/SKILL.md) dataclasses. No Pydantic validators, no SQLAlchemy annotations, no framework imports.
+- Domain entities are pure [Python](../../../Languages/python/python/SKILL.md) dataclasses. No Pydantic validators, no SQLAlchemy annotations, no framework imports.
 - Pydantic schemas exist ONLY at the API boundary (src/schemas/). Never import them in domain or application layers.
 - Use Depends() for dependency injection. Never instantiate dependencies inside routers.
 - One file per endpoint resource in api/v1/endpoints/.

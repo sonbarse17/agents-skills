@@ -155,7 +155,7 @@ app.use('/v1', v1Router);
 app.use('/v2', v2Router);
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # FastAPI
 from fastapi import APIRouter, FastAPI
 

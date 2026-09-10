@@ -60,7 +60,7 @@ all" justification, which lives in
   (e.g. "a researcher, a writer, and an editor") and a declarative,
   role-first framework fits better than hand-wiring a graph.
 - Building or reviewing a CrewAI crew's `agents.yaml`/`tasks.yaml` (or
-  equivalent [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) config) and choosing `sequential` vs. `hierarchical`
+  equivalent [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) config) and choosing `sequential` vs. `hierarchical`
   process.
 - Building or reviewing an AutoGen `GroupChat` — choosing the speaker-
   selection strategy, configuring a `UserProxyAgent`'s code-execution and
@@ -76,7 +76,7 @@ all" justification, which lives in
 
 ## Prerequisites & environment
 
-- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (both frameworks are [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first; CrewAI has no first-party JS/TS
+- [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (both frameworks are [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first; CrewAI has no first-party JS/TS
   SDK as of current releases — verify before assuming parity).
 - CrewAI: the `crewai` package plus `crewai-tools` for common tool
   integrations; an LLM provider configured per-agent (CrewAI supports
@@ -104,7 +104,7 @@ all" justification, which lives in
 1. **In CrewAI, define each agent with a narrow role, goal, and backstory**
    — these three fields are what the underlying LLM call actually
    conditions on, not just documentation:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from crewai import Agent, Task, Crew, Process
 
    researcher = Agent(
@@ -132,7 +132,7 @@ all" justification, which lives in
    processes, an explicit context dependency** — CrewAI passes prior tasks'
    output into later tasks automatically when wired via `context`, which is
    the framework's version of the structured hand-off contract:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    research_task = Task(
        description="Research recent developments in {topic}",
        expected_output="A bullet list of 3 findings, each with a source URL",
@@ -153,7 +153,7 @@ all" justification, which lives in
    manager) that plans and delegates dynamically — the supervisor/worker
    topology, at the cost of an extra planning LLM call and less
    predictable task ordering:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    crew = Crew(
        agents=[researcher, writer],
        tasks=[research_task, writing_task],
@@ -166,7 +166,7 @@ all" justification, which lives in
 4. **In AutoGen, configure each conversable agent's `system_message` as
    narrowly as a CrewAI role**, and decide up front whether the
    conversation is a direct two-agent exchange or a `GroupChat`:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from autogen import ConversableAgent, GroupChat, GroupChatManager
 
    researcher = ConversableAgent(
@@ -188,7 +188,7 @@ all" justification, which lives in
    than relying on the default, since the default (LLM-based next-speaker
    selection) can pick an unexpected agent, especially with more than a
    handful of participants:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    groupchat = GroupChat(
        agents=[researcher, writer],
        messages=[],
@@ -204,7 +204,7 @@ all" justification, which lives in
 
 6. **Scope `UserProxyAgent`'s code execution and autonomy explicitly** —
    this is AutoGen's most operationally sensitive default surface:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from autogen import UserProxyAgent
 
    user_proxy = UserProxyAgent(
@@ -324,7 +324,7 @@ in [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orc
 built here as a CrewAI sequential crew for a team that wants a declarative,
 low-code implementation rather than hand-wiring a graph.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from crewai import Agent, Task, Crew, Process
 
 pr_agent = Agent(
@@ -380,4 +380,4 @@ contract.
 - [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral topologies (supervisor/worker, pipeline, parallel/aggregation, critic/debate) and coordination pitfalls that CrewAI and AutoGen each implement in their own opinionated way.
 - [langchain-and-langgraph-agent-orchestration](../[langchain-and-langgraph-agent-orchestration](../../Models_and_FineTuning/langchain-and-langgraph-agent-orchestration/SKILL.md)/SKILL.md) — a lower-level, graph-based alternative when a task outgrows CrewAI/AutoGen's role-based abstraction and needs explicit cyclical control flow or durable checkpointing.
 - [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the single-agent control-loop fundamentals (iteration caps, tool boundaries, human checkpoints) that still apply inside each individual CrewAI/AutoGen agent.
-- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side that CrewAI/AutoGen agents call into, rather than defining every tool as an in-framework [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function.
+- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side that CrewAI/AutoGen agents call into, rather than defining every tool as an in-framework [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) function.

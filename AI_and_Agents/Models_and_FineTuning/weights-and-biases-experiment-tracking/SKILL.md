@@ -65,7 +65,7 @@ without needing to be restated.
   Server** / **Dedicated Cloud** self-hosted deployment — check current
   W&B documentation for which self-hosted tier fits your compliance needs,
   as packaging and licensing for self-hosted options change over time.
-- The `wandb` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) package installed in the training environment.
+- The `wandb` [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) package installed in the training environment.
 - An API key, supplied via `wandb login` (interactive) or the
   `WANDB_API_KEY` environment variable in CI/non-interactive environments
   — never hardcoded in source.
@@ -81,7 +81,7 @@ without needing to be restated.
 
 1. **Initialize a run and log config/metrics** — `config` captures
    hyperparameters once at the start; `log` is called per step/epoch:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import wandb
 
    run = wandb.init(
@@ -106,7 +106,7 @@ without needing to be restated.
 2. **Log artifacts with explicit versioning and lineage**, not just
    ad hoc file uploads — an artifact records what run produced it and
    what it was built from:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    artifact = wandb.Artifact(
        name="fraud-scorer-model",
        type="model",
@@ -182,7 +182,7 @@ without needing to be restated.
 
 6. **Build a Report to communicate results to stakeholders** who won't
    open the raw run dashboard:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import wandb
    import wandb.apis.reports as wr
 

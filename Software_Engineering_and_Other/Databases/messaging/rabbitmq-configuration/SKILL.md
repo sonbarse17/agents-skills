@@ -103,7 +103,7 @@ validating it before production rollout is covered separately in
 3. **Publish messages as persistent for anything that must survive a
    broker restart**, since queue durability and message persistence are
    separate settings:
-   ```[python](../../../Languages/python/SKILL.md)
+   ```[python](../../../Languages/python/python/SKILL.md)
    channel.basic_publish(
        exchange="orders.topic",
        routing_key="orders.created.us-east",
@@ -275,7 +275,7 @@ rabbitmqadmin -V orders-service declare binding \
 ```
 
 Publisher (persistent messages, routed by region):
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 channel.basic_publish(
     exchange="orders.topic",
     routing_key="orders.created.us-east",

@@ -40,7 +40,7 @@ loudly — the sync succeeds, the plugin exists, and the gap is only
 visible once real traffic hits it (or doesn't). This skill covers the
 validation commands that catch these before (or immediately after)
 applying, distinct from
-[kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md),
+[kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers writing the Service/Route/Plugin configuration in the
 first place.
 
@@ -127,7 +127,7 @@ first place.
    Any result showing `local` on a multi-node deployment is a real
    finding, not a stylistic choice — flag it before this reaches
    production. See
-   [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md)
+   [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md)
    for why this matters at the strategy level.
 
 5. **Test auth and rate-limiting plugins against real requests in
@@ -260,7 +260,7 @@ first place.
 **Scenario:** Validate the `payments-api` `kong.yml` (Service, Route,
 `key-auth`, and Redis-backed `rate-limiting` plugin) from the worked
 example in
-[kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
+[kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md)
 before syncing it to production.
 
 ```bash
@@ -293,6 +293,6 @@ confirm parity before the change is considered complete.
 
 ## Cross-references
 
-- [kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Service/Route/Plugin configuration this skill validates.
-- [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — why the `policy` field on a rate-limiting plugin matters, checked for correctness in step 4 above.
+- [kong-[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Service/Route/Plugin configuration this skill validates.
+- [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../../../Software_Engineering_and_Other/Backend/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — why the `policy` field on a rate-limiting plugin matters, checked for correctness in step 4 above.
 - [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline (dry-run, then confirm real effect) applied to Consul's config entries and intentions, useful for comparing pre-production check patterns across tools.

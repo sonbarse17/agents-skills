@@ -13,7 +13,7 @@ depends_on:
   - github
 ---
 
-# Temporal [Python](../../Languages/python/SKILL.md) Testing Strategies
+# Temporal [Python](../../Languages/python/python/SKILL.md) Testing Strategies
 
 Comprehensive testing approaches for Temporal workflows using pytest, progressive disclosure resources for specific testing scenarios.
 
@@ -28,7 +28,7 @@ Comprehensive testing approaches for Temporal workflows using pytest, progressiv
 
 ## Testing Philosophy
 
-**Recommended Approach** (Source: docs.temporal.io/develop/[python](../../Languages/python/SKILL.md)/testing-suite):
+**Recommended Approach** (Source: docs.temporal.io/develop/[python](../../Languages/python/python/SKILL.md)/testing-suite):
 
 - Write majority as integration tests
 - Use pytest with async fixtures
@@ -96,7 +96,7 @@ This skill provides detailed guidance through progressive disclosure. Load speci
 
 ### Basic Workflow Test
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import pytest
 from temporalio.testing import WorkflowEnvironment
 from temporalio.worker import Worker
@@ -126,7 +126,7 @@ async def test_workflow(workflow_env):
 
 ### Basic Activity Test
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from temporalio.testing import ActivityEnvironment
 
 async def test_activity():
@@ -163,6 +163,6 @@ async def test_activity():
 
 ## Additional References
 
-- [Python](../../Languages/python/SKILL.md) SDK Testing: docs.temporal.io/develop/[python](../../Languages/python/SKILL.md)/testing-suite
+- [Python](../../Languages/python/python/SKILL.md) SDK Testing: docs.temporal.io/develop/[python](../../Languages/python/python/SKILL.md)/testing-suite
 - Testing Patterns: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
-- [Python](../../Languages/python/SKILL.md) Samples: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/samples-[python](../../Languages/python/SKILL.md)
+- [Python](../../Languages/python/python/SKILL.md) Samples: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/samples-[python](../../Languages/python/python/SKILL.md)

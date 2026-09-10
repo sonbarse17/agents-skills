@@ -414,7 +414,7 @@ After regression testing, hand off to:
 
 ### Regression Test Suite Runner
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import List, Dict, Optional, Callable
 from dataclasses import dataclass
 from datetime import datetime

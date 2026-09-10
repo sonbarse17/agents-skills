@@ -338,7 +338,7 @@ vendor_registry_schema:
 
 ## SLA [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """
 Vendor SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) - Track uptime and response time commitments.
 """

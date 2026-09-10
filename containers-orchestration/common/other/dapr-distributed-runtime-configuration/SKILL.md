@@ -32,7 +32,7 @@ Dapr (Distributed Application Runtime) runs as a **sidecar** alongside
 each service instance, exposing language-agnostic HTTP/gRPC APIs for
 building blocks like state management, publish/subscribe messaging, and
 service-to-service invocation — so a polyglot fleet of services (Go,
-[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Java, Node) gets consistent, swappable infrastructure
+[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Java, Node) gets consistent, swappable infrastructure
 integrations (Redis today, a different state store tomorrow) without
 each service embedding its own client library and retry logic per
 backend. The value is in the abstraction and the operational

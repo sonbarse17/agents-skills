@@ -31,7 +31,7 @@ depends_on:
 
 # FastAPI Expert
 
-Deep expertise in async [Python](../../../Languages/python/SKILL.md), Pydantic V2, and production-grade API development with FastAPI.
+Deep expertise in async [Python](../../../Languages/python/python/SKILL.md), Pydantic V2, and production-grade API development with FastAPI.
 
 ## When to Use This Skill
 
@@ -56,7 +56,7 @@ Deep expertise in async [Python](../../../Languages/python/SKILL.md), Pydantic V
 
 Schema + endpoint + dependency injection in one cohesive unit:
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # schemas.py
 from pydantic import BaseModel, EmailStr, field_validator, model_config
 
@@ -82,7 +82,7 @@ class UserResponse(BaseModel):
     name: str | None = None
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # routers/users.py
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -104,7 +104,7 @@ async def create_user(payload: UserCreate, db: DbDep) -> UserResponse:
     return await crud.create_user(db, payload)
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # crud.py
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -126,7 +126,7 @@ async def create_user(db: AsyncSession, payload: UserCreate) -> User:
 
 ## JWT Authentication Snippet
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # security.py
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt

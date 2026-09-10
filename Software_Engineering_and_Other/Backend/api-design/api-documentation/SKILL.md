@@ -422,7 +422,7 @@ rules:
 # dredd.yml
 dry-run: null
 hookfiles: ./tests/hooks/*.py
-language: [python](../../../Languages/python/SKILL.md)
+language: [python](../../../Languages/python/python/SKILL.md)
 server: npm run start:test
 server-wait: 3
 init: false
@@ -444,7 +444,7 @@ path: []
 hooks-worker-timeout: 5000
 sandbox: false
 ```
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # tests/hooks/hooks.py
 import dredd_hooks as hooks
 import json

@@ -86,7 +86,7 @@ Indexing needs:
 ├── Full control over schema and storage?
 │   ├── YES → ChainIndex or custom indexer
 │   │   ├── ChainIndex → Go-based custom indexer framework
-│   │   └── Custom → Any stack (Rust, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node) + any DB (Postgres, ClickHouse)
+│   │   └── Custom → Any stack (Rust, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Node) + any DB (Postgres, ClickHouse)
 │   └── NO → Managed service (The Graph, Goldsky)
 └── Multi-chain aggregation needed?
     ├── YES → Goldsky Mirror or custom (subgraphs per chain + aggregation layer)
@@ -111,7 +111,7 @@ Data volume:
 ├── < 100 events/day → Subgraph or Dune query (free tier)
 ├── 100-10K events/day → Subgraph (hosted), Goldsky Pipeline
 ├── 10K-1M events/day → Goldsky Mirror, self-hosted graph-node
-└── 1M+ events/day → Custom indexer (Rust/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) + ClickHouse)
+└── 1M+ events/day → Custom indexer (Rust/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) + ClickHouse)
 ```
 
 ## Subgraph Architecture (The Graph)
@@ -371,7 +371,7 @@ Components:
 ```
 
 ### Reorg Handling in Custom Indexers
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Custom indexer reorg handling strategy
 class Indexer:
     def __init__(self, confirmations=6):
@@ -492,7 +492,7 @@ dataSources:
 ```
 
 ### Custom Indexer with [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # blockchain-data-indexing/custom_indexer.py
 from web3 import Web3
 import asyncpg

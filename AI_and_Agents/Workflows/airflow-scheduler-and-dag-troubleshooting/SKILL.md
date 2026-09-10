@@ -97,7 +97,7 @@ rather than re-deriving them.
    ```bash
    airflow dags list-import-errors
    ```
-   An import error here (e.g. a bad Jinja template reference, a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   An import error here (e.g. a bad Jinja template reference, a [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    exception from a top-level call the way
    [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
    warns against) means the scheduler literally cannot see the current
@@ -129,7 +129,7 @@ rather than re-deriving them.
 4. **Check `pool` and `max_active_tasks`/`max_active_runs` settings** if
    tasks are queued but concurrency limits — not raw worker [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) —
    are the actual constraint:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @dag(
        max_active_runs=1,       # only one run of this DAG in flight at a time
        max_active_tasks=8,      # cap on concurrent task instances for this DAG
@@ -195,7 +195,7 @@ rather than re-deriving them.
 
 8. **For a repeatedly-failing task, check retry/backoff configuration
    before assuming manual intervention is the only path**:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    default_args = {
        "retries": 3,
        "retry_delay": timedelta(minutes=5),
@@ -240,7 +240,7 @@ rather than re-deriving them.
   **Fix:** Check `airflow dags list-import-errors` first — the DAG file
   almost certainly fails to import after the edit, and the scheduler
   can't create new runs for a DAG it can't parse. Fix the import error
-  (often a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) exception in top-level code, per
+  (often a [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) exception in top-level code, per
   [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md))
   rather than looking for a scheduling-configuration problem.
 
@@ -300,7 +300,7 @@ filepath                          error
 dags/orders_daily_rollup.py       ModuleNotFoundError: No module named 'orders_utils'
 ```
 A recent [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) added a helper import (`orders_utils`) that isn't
-installed in the scheduler's [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment. The scheduler has been
+installed in the scheduler's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) environment. The scheduler has been
 silently failing to parse this DAG file since that deploy — there are no
 new DAG runs because the scheduler literally can't see an up-to-date,
 importable version of the DAG, which explains the "stopped running"
@@ -310,7 +310,7 @@ Fix: revert the dependency-adding [commit](../../../ci-cd/common/git-workflow/co
 dependency installation step) so the file imports cleanly again, verified
 with:
 ```bash
-$ [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); assert not db.import_errors, db.import_errors"
+$ [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); assert not db.import_errors, db.import_errors"
 ```
 Once the import error clears, the scheduler resumes creating DAG runs for
 `orders_daily_rollup` on its normal `@daily` schedule. Because

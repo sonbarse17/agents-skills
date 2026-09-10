@@ -64,7 +64,7 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   └── 99.99% uptime            │   └── API catalog              │   └── Recommendations
 ├── Developer Experience         ├── Mobile SDK Suite             ├── Global Expansion
 │   ├── Self-service portal      │   ├── iOS SDK v2               │   ├── EU region
-│   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/android/SKILL.md) SDK v2           │   ├── APAC region
+│   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/android/SKILL.md) SDK v2           │   ├── APAC region
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
     ├── SSO/SAML                     ├── Custom [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)            ├── Partner marketplace
@@ -132,7 +132,7 @@ Phase 2 (Weeks 7-12): NEXT RISKIEST
   → Validate: 5 enterprise pilot customers
 
 Phase 3 (Weeks 13-18): SCALE
-  → Build: Self-service portal, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs
+  → Build: Self-service portal, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go SDKs
   → Validate: Organic signup funnel metrics
 ```
 
@@ -232,7 +232,7 @@ Key Results:
 Initiatives → KR Mapping:
   - Self-service developer portal    → KR1, KR2
   - Interactive API documentation    → KR3
-  - [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs        → KR1, KR4
+  - [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go SDKs        → KR1, KR4
   - Automated onboarding email flow  → KR1
   - Developer community forum        → KR2
 ```
@@ -270,7 +270,7 @@ Engineering OKR (Individual):
 ```
 
 ### OKR Health Check
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class OKRHealthCheck:
     def check_progress(self, okrs: list[dict]) -> list[dict]:
         """Check OKR health and flag at-risk items."""
@@ -369,7 +369,7 @@ Current trade-off:
   ✅ Launch multi-region active-active (P0 — SLO requirement)
   ✅ Reduce P99 latency from 500ms to 100ms (KR target)
   ❌ Delay developer portal v2 (moved to Q3)
-  ❌ Defer [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK improvements (moved to Q3)
+  ❌ Defer [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK improvements (moved to Q3)
   ⚠️ Team [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) fully allocated — no new work without descoping
 ```
 
@@ -442,7 +442,7 @@ risk_register:
 ```
 
 ### Roadmap Data Model
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from dataclasses import dataclass
 from datetime import date
 from enum import Enum
@@ -601,7 +601,7 @@ risk_communication:
   examples:
     - "If we invest in multi-region, then we must delay the mobile SDK by one quarter."
     - "If the security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reveals critical findings, then we will reprioritize Q3 scope."
-    - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Go SDKs."
+    - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) and Go SDKs."
 
   when_to_communicate:
     - After each quarterly planning cycle
@@ -682,7 +682,7 @@ roadmap_health:
 ## Advanced OKR Linkage Patterns
 
 ### Weighted KR Contribution Model
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def compute_kr_contribution(initiatives: list[dict]) -> dict:
     """Shows how each initiative contributes to each KR."""
     kr_contributions = {}

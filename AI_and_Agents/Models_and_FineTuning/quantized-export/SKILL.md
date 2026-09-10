@@ -173,7 +173,7 @@ work":**
 Run this as a gate, not a manual check:
 
 ```bash
-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) smoke_test.py "$EXPORT_PATH" \
+[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) smoke_test.py "$EXPORT_PATH" \
     eval/goldens.jsonl pre-export-outputs.jsonl
 # non-zero exit on any pre/post mismatch
 ```

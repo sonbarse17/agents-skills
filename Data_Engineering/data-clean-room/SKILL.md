@@ -246,8 +246,8 @@ clean_room:
 
 PSI allows two parties to find the intersection of their datasets without revealing non-intersecting records.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md): PSI using hashed keys with salt
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): PSI using hashed keys with salt
 import hashlib
 import os
 import secrets
@@ -448,7 +448,7 @@ Clean Room Architecture
 ## Implementation Patterns
 
 ### Differential Privacy Aggregation
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_clean_room/dp_aggregation.py
 import numpy as np
 
@@ -472,7 +472,7 @@ class DPAggregator:
 ```
 
 ### Private Set Intersection Protocol
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_clean_room/psi.py
 from cryptography.hazmat.primitives import hashes
 

@@ -91,7 +91,7 @@ lecture on drift statistics.
    underlying data, rather than trusting the dashboard number at face
    value — a bug in the [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) computation itself is indistinguishable
    from real drift until checked:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import numpy as np
 
    def population_stability_index(expected, actual, bins=10):

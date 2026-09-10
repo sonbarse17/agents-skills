@@ -13,9 +13,9 @@ depends_on:
   - dashboards
 ---
 
-# [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) [Observability](../../../common/fundamentals/observability/SKILL.md)
+# [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) [Observability](../../../common/fundamentals/observability/SKILL.md)
 
-Instrument [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) applications with structured logs, metrics, and traces. When something breaks in production, you need to answer "what, where, and why" without deploying new code.
+Instrument [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) applications with structured logs, metrics, and traces. When something breaks in production, you need to answer "what, where, and why" without deploying new code.
 
 ## When to Use This Skill
 
@@ -46,7 +46,7 @@ Keep metric label values bounded. Unbounded labels (like user IDs) explode stora
 
 ## Quick Start
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 
 structlog.configure(
@@ -66,7 +66,7 @@ logger.info("Request processed", user_id="123", duration_ms=45)
 
 Configure structlog for JSON output with consistent fields.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import logging
 import structlog
 
@@ -98,7 +98,7 @@ logger = structlog.get_logger()
 
 Every log entry should include standard fields for filtering and correlation.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 from contextvars import ContextVar
 
@@ -147,7 +147,7 @@ Use log levels consistently across the application.
 | `WARNING` | Recoverable anomalies | Retry attempts, fallback used |
 | `ERROR` | Failures needing attention | Exceptions, service unavailable |
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # DEBUG: Detailed internal information
 logger.debug("Cache lookup", key=cache_key, hit=cache_hit)
 
@@ -177,7 +177,7 @@ Never log expected behavior at `ERROR`. A user entering a wrong password is `INF
 
 Generate a unique ID at ingress and thread it through all operations.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from contextvars import ContextVar
 import uuid
 import structlog
@@ -207,7 +207,7 @@ async def correlation_middleware(request: Request, call_next):
 
 Propagate to outbound requests:
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import httpx
 
 async def call_downstream_service(endpoint: str, data: dict) -> dict:
@@ -223,7 +223,7 @@ async def call_downstream_service(endpoint: str, data: dict) -> dict:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-observability_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Advanced Patterns`) live in `../../../Global_References/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-observability_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices Summary
 

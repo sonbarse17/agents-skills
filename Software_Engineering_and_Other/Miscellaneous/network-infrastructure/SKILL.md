@@ -389,7 +389,7 @@ Apply on all uplinks: shape, queue, police inbound to protect fabric.
 ```
 
 ### Step 15: Network Automation — Nornir
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # nornir/bgp_check.py
 from nornir import InitNornir
 from nornir_netmiko import netmiko_send_command

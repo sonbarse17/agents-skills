@@ -50,7 +50,7 @@ The context window is a shared resource. Challenge each piece: "Does this justif
 
 Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for current API patterns:
 
-- Query: "[SDK name] [operation] [python](../../Languages/python/SKILL.md)"
+- Query: "[SDK name] [operation] [python](../../Languages/python/python/SKILL.md)"
 - Verify: Parameters match your installed SDK version
 ```
 
@@ -199,17 +199,17 @@ Follow this structure (based on existing Azure SDK skills):
 1. **Title** — `# SDK Name`
 2. **Installation** — `pip install`, `npm install`, etc.
 3. **Environment Variables** — Required configuration, with an inline comment explaining when it's required. If using `DefaultAzureCredential` in production, include `AZURE_TOKEN_CREDENTIALS` (set to `prod` or `<specific_credential>`)
-4. **Authentication & Lifecycle** — For [Python](../../Languages/python/SKILL.md) skills, prefer `DefaultAzureCredential`: use it as-is for local development, and constrain it for production by setting `AZURE_TOKEN_CREDENTIALS` to `prod` (or a specific target credential name). A specific Microsoft Entra Token credential such as `ManagedIdentityCredential` or `WorkloadIdentityCredential` may be used directly instead. **For [Python](../../Languages/python/SKILL.md) skills, this section MUST start with the standard callout block** (see [Required Authentication & Lifecycle Callout ([Python](../../Languages/python/SKILL.md))](#required-authentication--lifecycle-callout-[python](../../Languages/python/SKILL.md)) below).
+4. **Authentication & Lifecycle** — For [Python](../../Languages/python/python/SKILL.md) skills, prefer `DefaultAzureCredential`: use it as-is for local development, and constrain it for production by setting `AZURE_TOKEN_CREDENTIALS` to `prod` (or a specific target credential name). A specific Microsoft Entra Token credential such as `ManagedIdentityCredential` or `WorkloadIdentityCredential` may be used directly instead. **For [Python](../../Languages/python/python/SKILL.md) skills, this section MUST start with the standard callout block** (see [Required Authentication & Lifecycle Callout ([Python](../../Languages/python/python/SKILL.md))](#required-authentication--lifecycle-callout-[python](../../Languages/python/python/SKILL.md)) below).
 5. **Core Workflow** — Minimal viable example (per core workflow discipline above)
 6. **Feature Tables** — Clients, methods, tools
 7. **Best Practices** — Numbered list
 8. **Reference Links** — Table linking to `/references/*.md` (for Azure SDK skills, include `capabilities.md` + `non-hero-scenarios.md`)
 
-### Required Authentication & Lifecycle Callout ([Python](../../Languages/python/SKILL.md))
+### Required Authentication & Lifecycle Callout ([Python](../../Languages/python/python/SKILL.md))
 
-> **Scope:** [Python](../../Languages/python/SKILL.md) skills (`-py` suffix) only. Other languages may follow their own idioms.
+> **Scope:** [Python](../../Languages/python/python/SKILL.md) skills (`-py` suffix) only. Other languages may follow their own idioms.
 
-Every [Python](../../Languages/python/SKILL.md) Azure SDK skill MUST open its `## Authentication & Lifecycle` section with the following callout block, **verbatim**, before any code samples. This makes the two non-negotiable rules visible to users before they read or copy any client setup code.
+Every [Python](../../Languages/python/python/SKILL.md) Azure SDK skill MUST open its `## Authentication & Lifecycle` section with the following callout block, **verbatim**, before any code samples. This makes the two non-negotiable rules visible to users before they read or copy any client setup code.
 
 ```markdown
 ## Authentication & Lifecycle
@@ -232,7 +232,7 @@ Every [Python](../../Languages/python/SKILL.md) Azure SDK skill MUST open its `#
 - Do not paraphrase or restructure the wording — the consistency across skills is the point.
 - If the SDK does not support Entra ID at all (rare — e.g. some legacy speech REST endpoints, websocket APIs that require subscription keys), keep rule #2 (context managers) and replace rule #1 with a single sentence noting the SDK requires API-key auth and explaining why Entra is not yet available.
 - If the SDK is async-only (e.g. `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive`), keep both rules but show only the async form in the bullets.
-- Skip the callout entirely for non-Azure [Python](../../Languages/python/SKILL.md) skills with no client lifecycle (e.g. `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`).
+- Skip the callout entirely for non-Azure [Python](../../Languages/python/python/SKILL.md) skills with no client lifecycle (e.g. `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`).
 
 **Code sample enforcement.** Every client construction in the skill body must demonstrate both rules:
 
@@ -247,15 +247,15 @@ For local development, use `DefaultAzureCredential` which supports multiple auth
 
 If configuring a Rust skill, use `DeveloperToolsCredential` for local development and `ManagedIdentityCredential` for production. The Rust SDK does not support `DefaultAzureCredential`, so explicitly use the appropriate credential in each environment.
 
-```[python](../../Languages/python/SKILL.md)
-# [Python](../../Languages/python/SKILL.md) — note: client is wrapped in `with` for deterministic cleanup
+```[python](../../Languages/python/python/SKILL.md)
+# [Python](../../Languages/python/python/SKILL.md) — note: client is wrapped in `with` for deterministic cleanup
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 # Local dev: DefaultAzureCredential works as-is.
 credential = DefaultAzureCredential()
 # Production alternative: constrain DefaultAzureCredential with AZURE_TOKEN_CREDENTIALS.
 # credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 with ServiceClient(endpoint, credential) as client:
     client.do_thing()
@@ -412,7 +412,7 @@ Use a token counter or model playground to measure each section. Compare to the 
 
 **3. Example count [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):**
 
-- [ ] 1 complete example per hero scenario / core workflow documented in SKILL.md. For [Python](../../Languages/python/SKILL.md) SDKs that support both sync and async, the paired sync + async examples for the same workflow count as one workflow, not two.
+- [ ] 1 complete example per hero scenario / core workflow documented in SKILL.md. For [Python](../../Languages/python/python/SKILL.md) SDKs that support both sync and async, the paired sync + async examples for the same workflow count as one workflow, not two.
 - [ ] Feature table includes 3-5 core methods (not comprehensive API)
 - [ ] Max 1 example per best practice bullet
 
@@ -426,8 +426,8 @@ Use a token counter or model playground to measure each section. Compare to the 
 **4b. Authentication guidance validation** (critical for all credentials):
 
 - [ ] If skill uses Azure Identity credentials, verify guidance against the current official credential docs for that language/package (Microsoft Learn where available; otherwise the upstream SDK repo or package docs)
-- [ ] For [Python](../../Languages/python/SKILL.md) skills, development guidance may recommend `DefaultAzureCredential` (supports multiple dev credential types)
-- [ ] For [Python](../../Languages/python/SKILL.md) skills, production guidance: `DefaultAzureCredential` alone (unconstrained) is not sufficient; require either `AZURE_TOKEN_CREDENTIALS=prod` (or a specific target credential) to constrain the chain, or a specific credential (e.g., `ManagedIdentityCredential`) used directly
+- [ ] For [Python](../../Languages/python/python/SKILL.md) skills, development guidance may recommend `DefaultAzureCredential` (supports multiple dev credential types)
+- [ ] For [Python](../../Languages/python/python/SKILL.md) skills, production guidance: `DefaultAzureCredential` alone (unconstrained) is not sufficient; require either `AZURE_TOKEN_CREDENTIALS=prod` (or a specific target credential) to constrain the chain, or a specific credential (e.g., `ManagedIdentityCredential`) used directly
 - [ ] For Rust skills, development/production guidance reflects the actual supported credentials (`DeveloperToolsCredential` for local dev; a specific production credential such as `ManagedIdentityCredential` for production)
 - [ ] Link to `/references/auth-strategies.md` or official docs for production credential selection
 
@@ -482,7 +482,7 @@ Azure SDKs use consistent verbs across all languages:
 
 See `../../../Global_References/azure-sdk-patterns.md` for detailed patterns including:
 
-- **[Python](../../Languages/python/SKILL.md)**: `ItemPaged`, `LROPoller`, context managers, Sphinx docstrings. When the SDK provides both sync and async clients, present both forms as first-class options; do not express a preference for either. When the SDK is sync-only or async-only, document the available mode only. Do not mix sync and async within a single code example. Always show `with` / `async with` context managers.
+- **[Python](../../Languages/python/python/SKILL.md)**: `ItemPaged`, `LROPoller`, context managers, Sphinx docstrings. When the SDK provides both sync and async clients, present both forms as first-class options; do not express a preference for either. When the SDK is sync-only or async-only, document the available mode only. Do not mix sync and async within a single code example. Always show `with` / `async with` context managers.
 - **.NET**: `Response<T>`, `Pageable<T>`, `Operation<T>`, mocking support
 - **Java**: Builder pattern, `PagedIterable`/`PagedFlux`, Reactor types
 - **[TypeScript](../../Frontend/common/typescript/SKILL.md)**: `PagedAsyncIterableIterator`, `AbortSignal`, browser considerations
@@ -491,13 +491,13 @@ See `../../../Global_References/azure-sdk-patterns.md` for detailed patterns inc
 
 ### Required Best Practices in Every Skill (User-Facing)
 
-#### [Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), and Go languages
+#### [Python](../../Languages/python/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), and Go languages
 
 **These two rules are not just authoring conventions for the skill itself — they MUST be explicitly written into every generated skill's `## Best Practices` section so end users who follow the skill apply them in their own code.**
 
 Add both items verbatim (adapted only for language/SDK specifics) as the **first two items** of the Best Practices list. Do not assume users will infer them from examples.
 
-**Standard wording ([Python](../../Languages/python/SKILL.md); adapt for other languages):**
+**Standard wording ([Python](../../Languages/python/python/SKILL.md); adapt for other languages):**
 
 ```markdown
 1. **Do not mix sync and async clients in the same call path.** Use either `azure.xxx` sync clients or `azure.xxx.aio` async clients within a single call path — do not combine both.
@@ -510,7 +510,7 @@ Add both items verbatim (adapted only for language/SDK specifics) as the **first
 | Skill type                                                                    | Adjust item #1 to                                                                                                                   | Adjust item #2 to                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Async-only SDK (e.g. voicelive)                                               | "This SDK is async-only; use the `.aio` namespace throughout."                                                                      | keep standard                                                                                                                                                                                                                  |
-| Framework guidance that is async-oriented (for example some agent frameworks) | "Use the framework's documented async patterns where required, but do not claim async is globally preferred for Azure [Python](../../Languages/python/SKILL.md) SDKs." | keep standard                                                                                                                                                                                                                  |
+| Framework guidance that is async-oriented (for example some agent frameworks) | "Use the framework's documented async patterns where required, but do not claim async is globally preferred for Azure [Python](../../Languages/python/python/SKILL.md) SDKs." | keep standard                                                                                                                                                                                                                  |
 | Provider-pattern ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) exporters/distro)                             | keep standard                                                                                                                       | "Call `provider.shutdown()` / `flush()` at process exit to flush telemetry — providers are not context managers."                                                                                                              |
 | REST-over-httpx skills                                                        | keep standard                                                                                                                       | "Use `with httpx.Client(...) as client:` (sync) or `async with httpx.AsyncClient(...) as client:` (async) so connections pool and close deterministically."                                                                    |
 | Identity skill                                                                | keep standard                                                                                                                       | "Use credentials as context managers (`with DefaultAzureCredential() as credential:`) when they own token caches / HTTP transports you want cleaned up; for async, use `async with` on credentials from `azure.identity.aio`." |
@@ -620,7 +620,7 @@ When an Azure SDK has been deprecated or rebranded, update skills to guide users
 ---
 name: skill-creator
 description: |
-  Azure AI Example SDK for [Python](../../Languages/python/SKILL.md). Use for [specific service features].
+  Azure AI Example SDK for [Python](../../Languages/python/python/SKILL.md). Use for [specific service features].
   Triggers: "example service", "create example", "list examples".
 ---
 
@@ -664,7 +664,7 @@ credential = DefaultAzureCredential()
 
 # Or use a specific credential directly in production:
 
-# See https://learn.microsoft.com/[python](../../Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../Languages/python/python/SKILL.md)#credential-classes
 
 # credential = ManagedIdentityCredential()
 
@@ -725,7 +725,7 @@ item = client.create_item(name="example", data={...})
 | ------------------------- | --------------------------------------------------------- | ------------------------ |
 | **SDK Package**           | `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents`, `Azure.AI.OpenAI`, `azblob`            | Identifies the exact SDK |
 | **Documentation URL**     | `https://learn.microsoft.com/en-us/azure/ai-services/...` | Primary source of truth  |
-| **Repository** (optional) | `Azure/azure-sdk-for-[python](../../Languages/python/SKILL.md)`, `Azure/azure-sdk-for-go`    | For code patterns        |
+| **Repository** (optional) | `Azure/azure-sdk-for-[python](../../Languages/python/python/SKILL.md)`, `Azure/azure-sdk-for-go`    | For code patterns        |
 
 **Prompt the user if not provided:**
 
@@ -767,15 +767,15 @@ Skills are organized by **language** and **product area** in the `skills/` direc
 
 | Category      | Description                             | Examples                                     |
 | ------------- | --------------------------------------- | -------------------------------------------- |
-| `foundry`     | AI Foundry, agents, projects, inference | `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py`, `[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py/SKILL.md)/SKILL.md)` |
-| `data`        | Storage, Cosmos DB, Tables, Data Lake   | `[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-py/SKILL.md)/SKILL.md)`, `[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-py/SKILL.md)/SKILL.md)`   |
-| `messaging`   | Event Hubs, Service Bus, Event Grid     | `[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-eventhub-py/SKILL.md)/SKILL.md)`, `[azure-servicebus-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-servicebus-py](../../../cloud/azure/messaging/python/azure-servicebus-py/SKILL.md)/SKILL.md)`   |
-| `[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`  | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), App Insights, Query      | `[azure-monitor-[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-monitor-[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md)`             |
-| `identity`    | Authentication, DefaultAzureCredential  | `[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-identity-py/SKILL.md)/SKILL.md)`                          |
-| `security`    | Key [Vault](../vault/SKILL.md), secrets, keys, certificates  | `[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-keyvault](../../../cloud/azure/security/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md)`                          |
-| `integration` | API Management, App Configuration       | `[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-appconfiguration-py/SKILL.md)/SKILL.md)`                  |
+| `foundry`     | AI Foundry, agents, projects, inference | `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py`, `[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py/SKILL.md)/SKILL.md)` |
+| `data`        | Storage, Cosmos DB, Tables, Data Lake   | `[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-cosmos-py/SKILL.md)/SKILL.md)`, `[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-py/SKILL.md)/SKILL.md)`   |
+| `messaging`   | Event Hubs, Service Bus, Event Grid     | `[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-eventhub-py/SKILL.md)/SKILL.md)`, `[azure-servicebus-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[azure-servicebus-py](../../../cloud/azure/messaging/python/azure-servicebus-py/SKILL.md)/SKILL.md)`   |
+| `[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`  | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), App Insights, Query      | `[azure-monitor-[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-monitor-[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md)`             |
+| `identity`    | Authentication, DefaultAzureCredential  | `[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-identity-py/SKILL.md)/SKILL.md)`                          |
+| `security`    | Key [Vault](../vault/SKILL.md), secrets, keys, certificates  | `[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[azure-keyvault](../../../cloud/azure/security/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md)`                          |
+| `integration` | API Management, App Configuration       | `[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-appconfiguration-py/SKILL.md)/SKILL.md)`                  |
 | `compute`     | Batch, ML compute                       | `[azure-compute-batch-java](../../../DevOps_and_Cloud/Cloud_Providers/[azure-compute-batch-java](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-java/skills/[azure-compute](../../../DevOps_and_Cloud/Cloud_Providers/[azure-compute](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-batch-java/SKILL.md)/SKILL.md)`                   |
-| `container`   | Container Registry, ACR                 | `[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-containerregistry-py/SKILL.md)/SKILL.md)`                 |
+| `container`   | Container Registry, ACR                 | `[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-containerregistry-py/SKILL.md)/SKILL.md)`                 |
 
 **Determine the category** based on:
 
@@ -820,7 +820,7 @@ Skills are organized by **language** and **product area** in the `skills/` direc
 ---
 name: azure-service-py
 description: |
-  Azure Service SDK for [Python](../../Languages/python/SKILL.md). Use for [specific features].
+  Azure Service SDK for [Python](../../Languages/python/python/SKILL.md). Use for [specific features].
   Triggers: "service name", "create resource", "specific operation".
 metadata:
   benchmark_tokens_estimated: "1180"
@@ -847,13 +847,13 @@ After creating the skill in `.[github](../../../ci-cd/github-actions/other/githu
 ```bash
 # Pattern: skills/<language>/<category>/<short-name> -> ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<full-[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
 
-# Example for [azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py in [python](../../Languages/python/SKILL.md)/foundry:
-cd skills/[python](../../Languages/python/SKILL.md)/foundry
+# Example for [azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py in [python](../../Languages/python/python/SKILL.md)/foundry:
+cd skills/[python](../../Languages/python/python/SKILL.md)/foundry
 ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py agents
 
-# Example for [azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) in [python](../../Languages/python/SKILL.md)/data:
-cd skills/[python](../../Languages/python/SKILL.md)/data
-ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) cosmos-db
+# Example for [azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) in [python](../../Languages/python/python/SKILL.md)/data:
+cd skills/[python](../../Languages/python/python/SKILL.md)/data
+ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) cosmos-db
 
 # Example for [azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-go in go/data:
 cd skills/go/data
@@ -869,7 +869,7 @@ ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/sk
 **Verify the symlink:**
 
 ```bash
-ls -la skills/[python](../../Languages/python/SKILL.md)/foundry/agents
+ls -la skills/[python](../../Languages/python/python/SKILL.md)/foundry/agents
 # Should show: agents -> ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py
 ```
 
@@ -1064,7 +1064,7 @@ For Azure SDK language skills, use official upstream source docs and examples as
 - Go examples: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/tree/main/sdk/<service>/<module>/`
 - Rust: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/README.md`
 - Rust examples: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/examples/`
-- .NET/Java/[Python](../../Languages/python/SKILL.md)/TS/Go: use current Microsoft Learn package docs + official SDK repos
+- .NET/Java/[Python](../../Languages/python/python/SKILL.md)/TS/Go: use current Microsoft Learn package docs + official SDK repos
 
 2. **Refresh skill content surgically**
 
@@ -1078,7 +1078,7 @@ For Azure SDK language skills, use official upstream source docs and examples as
 
 Use the language-specific authoritative source as the contract for every snippet in the regenerated skill:
 
-- **[Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), Go**: Treat the current Microsoft Learn API reference as the contract.
+- **[Python](../../Languages/python/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), Go**: Treat the current Microsoft Learn API reference as the contract.
 - **Rust**: Treat the official SDK repository (`https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust`) and crates.io documentation as the contract; Rust packages do not have Learn API-reference pages.
 
 Before finalizing any regenerated skill:
@@ -1098,7 +1098,7 @@ Before finalizing any regenerated skill:
 1. Identify **hero scenarios** from the current authoritative docs/samples for that SDK (Microsoft Learn where available; otherwise the upstream SDK repo and package documentation).
 2. Ensure each hero scenario is represented in the skill with copy-pastable snippets (or an explicit link to a bundled reference file when too large).
 3. Add/refresh test scenarios so hero flows are validated by harness patterns.
-4. Add at least **one important non-hero scenario** (for example: update/patch, delete/cleanup, export/import, advanced auth mode, paging/filtering, retries/error handling, or LRO [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) when supported by the SDK. For [Python](../../Languages/python/SKILL.md) SDKs that support both sync and async clients, present both forms with equal priority; do not treat either as universally preferred.
+4. Add at least **one important non-hero scenario** (for example: update/patch, delete/cleanup, export/import, advanced auth mode, paging/filtering, retries/error handling, or LRO [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) when supported by the SDK. For [Python](../../Languages/python/python/SKILL.md) SDKs that support both sync and async clients, present both forms with equal priority; do not treat either as universally preferred.
 5. For Azure SDK skills, structure `references/` as:
    - `references/capabilities.md` as a concise index that records each hero scenario and where it is covered (`SKILL.md` or a bundled reference), plus links to deeper non-hero references, with no historical/migration narration.
    - `references/non-hero-scenarios.md` for concrete non-hero examples that are intentionally kept out of the main `SKILL.md`.
@@ -1143,18 +1143,18 @@ In the PR/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) notes, in
 - Which snippets/signatures were corrected
 - Which tests/evals were run and their outcomes
 
-#### [Python](../../Languages/python/SKILL.md) plugin batch recipe: `azure-sdk-[python](../../Languages/python/SKILL.md)`
+#### [Python](../../Languages/python/python/SKILL.md) plugin batch recipe: `azure-sdk-[python](../../Languages/python/python/SKILL.md)`
 
-Use this when the request is "regenerate all [Python](../../Languages/python/SKILL.md) skills under azure-sdk-[python](../../Languages/python/SKILL.md)."
+Use this when the request is "regenerate all [Python](../../Languages/python/python/SKILL.md) skills under azure-sdk-[python](../../Languages/python/python/SKILL.md)."
 
 1. **Scope the exact targets first**
 
 ```bash
-# Canonical source of truth for [Python](../../Languages/python/SKILL.md) plugin skills
-ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md
+# Canonical source of truth for [Python](../../Languages/python/python/SKILL.md) plugin skills
+ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/*/SKILL.md
 ```
 
-- Treat `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/` as canonical.
+- Treat `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/` as canonical.
 - Keep `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<name>` links in sync after edits (symlink check/fix step below).
 
 2. **For each skill, refresh from authoritative sources**
@@ -1162,24 +1162,24 @@ ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-
 - Always use `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP first for current Microsoft Learn API guidance.
 - Verify the installed package version with `pip show <package>`, then inspect the installed package or official API reference to verify every symbol and signature used in snippets.
 - For Azure SDK skills, prefer package overview + official SDK repo examples.
-- For non-Azure [Python](../../Languages/python/SKILL.md) skills in this plugin (for example `[fastapi-router-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[fastapi-router-py](../../Backend/frameworks/fastapi-router-py/SKILL.md)/SKILL.md)`, `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`), keep language-specific best-practice variants and skip Azure-specific auth callouts when lifecycle/auth is not applicable.
+- For non-Azure [Python](../../Languages/python/python/SKILL.md) skills in this plugin (for example `[fastapi-router-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[fastapi-router-py](../../Backend/frameworks/fastapi-router-py/SKILL.md)/SKILL.md)`, `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`), keep language-specific best-practice variants and skip Azure-specific auth callouts when lifecycle/auth is not applicable.
 
-3. **Apply [Python](../../Languages/python/SKILL.md) enforcement rules consistently**
+3. **Apply [Python](../../Languages/python/python/SKILL.md) enforcement rules consistently**
 
-- Keep the standard section order for Azure SDK [Python](../../Languages/python/SKILL.md) skills.
+- Keep the standard section order for Azure SDK [Python](../../Languages/python/python/SKILL.md) skills.
 - Ensure `## Authentication & Lifecycle` starts with the required callout block (verbatim) when applicable.
 - Ensure every client example uses `with` / `async with` lifecycle patterns.
 - Ensure `## Best Practices` starts with the two required user-facing rules (or the documented variant for async-only/provider-pattern skills).
-- Ensure each regenerated Azure SDK [Python](../../Languages/python/SKILL.md) skill has `references/capabilities.md` (index) and `references/non-hero-scenarios.md` (concrete non-hero examples).
+- Ensure each regenerated Azure SDK [Python](../../Languages/python/python/SKILL.md) skill has `references/capabilities.md` (index) and `references/non-hero-scenarios.md` (concrete non-hero examples).
 - Keep existing references/assets/scripts unless stale or incorrect.
 
-4. **Validate all regenerated [Python](../../Languages/python/SKILL.md) skills**
+4. **Validate all regenerated [Python](../../Languages/python/python/SKILL.md) skills**
 
 ```bash
-# Fast frontmatter/structure validation for every [Python](../../Languages/python/SKILL.md) skill
-[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/skill-creator/scripts/quick_validate.py .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
+# Fast frontmatter/structure validation for every [Python](../../Languages/python/python/SKILL.md) skill
+[python](../../Languages/python/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/skill-creator/scripts/quick_validate.py .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
 
-# Run [Python](../../Languages/python/SKILL.md) skill harness in mock mode (all *-py scenarios)
+# Run [Python](../../Languages/python/python/SKILL.md) skill harness in mock mode (all *-py scenarios)
 (cd tests && pwsh ./run-harness-by-language.ps1 -Language py -Mock)
 ```
 
@@ -1187,8 +1187,8 @@ ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-
 
 ```bash
 # Ensure .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills links point at plugin canonical skills
-[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --check
-[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --apply
+[python](../../Languages/python/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/python/SKILL.md) --check
+[python](../../Languages/python/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/python/SKILL.md) --apply
 
 # Refresh docs site data after content changes
 (cd docs-site && npx tsx scripts/extract-skills.ts && npm run build)
@@ -1196,9 +1196,9 @@ ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-
 
 6. **Completion criteria for batch regeneration**
 
-- Every targeted `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md` is updated or explicitly confirmed current.
+- Every targeted `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/python/SKILL.md)/skills/*/SKILL.md` is updated or explicitly confirmed current.
 - Harness mock run for `-py` skills passes without regressions.
-- Skill links are in sync for `azure-sdk-[python](../../Languages/python/SKILL.md)`.
+- Skill links are in sync for `azure-sdk-[python](../../Languages/python/python/SKILL.md)`.
 - PR notes include upstream docs used, signature corrections, and validation outcomes.
 
 ---
@@ -1226,7 +1226,7 @@ ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-
 azure-service-skill/
 ├── SKILL.md (overview + language selection)
 └── references/
-    ├── [python](../../Languages/python/SKILL.md).md
+    ├── [python](../../Languages/python/python/SKILL.md).md
     ├── dotnet.md
     ├── go.md
     ├── java.md
@@ -1271,8 +1271,8 @@ azure-service-skill/
 | Skip acceptance criteria                                                       | Skills without tests can't be validated                                             |
 | Skip symlink categorization                                                    | Skills won't be discoverable by category                                            |
 | Use wrong import paths                                                         | Azure SDKs have specific module structures                                          |
-| Omit sync/async + context-manager bullets from Best Practices in [Python](../../Languages/python/SKILL.md) skills | End users won't follow rules that aren't written down; examples alone aren't enough |
-| Mix sync and async in the same [Python](../../Languages/python/SKILL.md) example                                  | Demonstrates the anti-pattern the skill is supposed to prevent                      |
+| Omit sync/async + context-manager bullets from Best Practices in [Python](../../Languages/python/python/SKILL.md) skills | End users won't follow rules that aren't written down; examples alone aren't enough |
+| Mix sync and async in the same [Python](../../Languages/python/python/SKILL.md) example                                  | Demonstrates the anti-pattern the skill is supposed to prevent                      |
 | Ship regenerated skills with zero test scenarios                               | Hero workflows and regressions cannot be validated                                  |
 | Claim full API coverage from a single happy-path sample                        | Hides operation-group and non-hero gaps users need for production                   |
 | Omit `references/*.md` coverage for non-hero capabilities                      | Forces advanced capabilities out of context and leaves API breadth undocumented     |
@@ -1293,7 +1293,7 @@ Before completing a skill:
 
 - [ ] Description includes what AND when (trigger phrases)
 - [ ] SKILL.md under 500 lines
-- [ ] Authentication follows language rules (`DefaultAzureCredential` for [Python](../../Languages/python/SKILL.md)/.NET/Java/TS/Go local dev; `DeveloperToolsCredential` local dev + `ManagedIdentityCredential` production for Rust)
+- [ ] Authentication follows language rules (`DefaultAzureCredential` for [Python](../../Languages/python/python/SKILL.md)/.NET/Java/TS/Go local dev; `DeveloperToolsCredential` local dev + `ManagedIdentityCredential` production for Rust)
 - [ ] Includes cleanup/delete in examples
 - [ ] References organized by feature (`capabilities.md` index + dedicated deep-dive files)
 - [ ] Hero scenarios from the current authoritative docs/samples for that SDK are explicitly covered in snippets and tests
@@ -1301,7 +1301,7 @@ Before completing a skill:
 - [ ] For Azure SDK skills, `references/capabilities.md` indexes hero/non-hero coverage and links to dedicated non-hero docs
 - [ ] For Azure SDK skills, `references/non-hero-scenarios.md` contains concrete non-hero examples distinct from hero snippets
 - [ ] For broad SDKs (especially management SDKs), operation-group coverage is explicit (covered in snippets vs. reference-only)
-- [ ] **([Python](../../Languages/python/SKILL.md) skills only) Best Practices section contains the two user-facing rules** (sync-or-async consistency + context managers for clients and async credentials), using the variant matched to the skill type
+- [ ] **([Python](../../Languages/python/python/SKILL.md) skills only) Best Practices section contains the two user-facing rules** (sync-or-async consistency + context managers for clients and async credentials), using the variant matched to the skill type
 - [ ] For Rust skills: `## Best Practices` starts with cargo dependency rule + `azure_core` direct-import rule
 
 **Categorization:**

@@ -305,7 +305,7 @@ Console.WriteLine(result.Content[0].Text);
 
 | Tool | Class | Purpose |
 |------|-------|---------|
-| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code |
+| Code Interpreter | `CodeInterpreterToolDefinition` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) code |
 | File Search | `FileSearchToolDefinition` | Search uploaded files |
 | Function Calling | `FunctionToolDefinition` | Call custom functions |
 | Bing Grounding | `BingGroundingToolDefinition` | Web search via Bing |

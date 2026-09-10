@@ -27,7 +27,7 @@ flowchart TD
 ```
 
 ## LoRA Configuration Snippet
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch
 from transformers import AutoModelForCausalLM
 from peft import LoraConfig, get_peft_model

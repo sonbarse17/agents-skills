@@ -48,7 +48,7 @@ service.
 
 ## When to use
 
-- The user wants to author a pipeline using the KFP SDK (`kfp` [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+- The user wants to author a pipeline using the KFP SDK (`kfp` [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
   package, v2 `@dsl.component`/`@dsl.pipeline` decorators) rather than a
   general DAG description.
 - The user is deciding whether Kubeflow Pipelines specifically (vs. Argo
@@ -71,7 +71,7 @@ service.
   its execution engine under the hood — see
   [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../../../argocd/other/argo-workflows-pipeline-design/SKILL.md)/SKILL.md)
   for the underlying execution model).
-- The `kfp` [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK installed locally (`pip install kfp`), version
+- The `kfp` [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK installed locally (`pip install kfp`), version
   matched to the installed backend — **KFP v2 SDK pipelines will not
   compile or run correctly against a v1-only backend**, and this is a
   common source of confusing compile-time or runtime errors (see Common
@@ -91,15 +91,15 @@ service.
 
 ## Step-by-step guidance
 
-1. **Define components as isolated, containerized [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) functions** using
+1. **Define components as isolated, containerized [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) functions** using
    the KFP v2 SDK — each `@dsl.component` compiles to its own container
    image build (or reuses a specified `base_image`), so keep components
    small and single-purpose rather than one monolithic function:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from kfp import dsl
    from kfp.dsl import Input, Output, Dataset, Model, Metrics
 
-   @dsl.component(base_image="[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.11-slim", packages_to_install=["pandas==2.2.0", "scikit-learn==1.4.0"])
+   @dsl.component(base_image="[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.11-slim", packages_to_install=["pandas==2.2.0", "scikit-learn==1.4.0"])
    def preprocess(raw_data: Input[Dataset], processed: Output[Dataset]):
        import pandas as pd
        df = pd.read_csv(raw_data.path)
@@ -118,7 +118,7 @@ service.
 2. **Compose components into a pipeline with `@dsl.pipeline`**, wiring
    outputs to inputs explicitly — KFP infers the execution DAG from these
    data dependencies, not from an explicit ordering list:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @dsl.pipeline(name="fraud-model-training", description="Preprocess, train, evaluate, conditionally register")
    def training_pipeline(raw_data_uri: str, min_accuracy: float = 0.85):
        ingest_task = ingest(source_uri=raw_data_uri)
@@ -137,14 +137,14 @@ service.
 3. **Compile the pipeline to its IR YAML** and inspect it before running —
    this is the artifact that actually gets submitted, and compile-time
    errors here are cheaper to catch than runtime failures:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from kfp import compiler
    compiler.Compiler().compile(training_pipeline, package_path="training_pipeline.yaml")
    ```
 
 4. **Submit runs via the KFP client**, organizing related runs under a
    named Experiment so comparisons and recurring schedules stay grouped:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import kfp
    client = kfp.Client(host="https://kubeflow.internal/pipeline")
    experiment = client.create_experiment(name="fraud-model-retraining")
@@ -161,7 +161,7 @@ service.
 5. **Request GPU resources on individual components** using KFP's resource
    methods, matching the resource key conventions validated in
    [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @dsl.pipeline(name="gpu-training-pipeline")
    def pipeline(raw_data_uri: str):
        train_task = train(processed=..., epochs=15)
@@ -209,7 +209,7 @@ service.
                containers:
                  - name: trainer
                    image: registry.internal/kfp-train:2.4.0
-                   command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "train.py", "--lr=${trialParameters.learningRate}", "--batch-size=${trialParameters.batchSize}"]
+                   command: ["[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "train.py", "--lr=${trialParameters.learningRate}", "--batch-size=${trialParameters.batchSize}"]
    ```
 
 7. **Set up [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md) with Kubeflow Profiles** so teams get isolated
@@ -294,7 +294,7 @@ service.
   **Fix:** This is the same silent-fallback risk covered in
   [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) —
   inspect the compiled `training_pipeline.yaml` directly for the resource
-  block rather than trusting that calling `set_accelerator_type` in [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+  block rather than trusting that calling `set_accelerator_type` in [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
   guarantees it made it through compilation; SDK method names and behavior
   have changed across KFP v1→v2, and a stale example copied from
   documentation for the wrong SDK version can silently no-op.
@@ -324,7 +324,7 @@ service.
 ad hoc script to Kubeflow Pipelines, with a GPU training step and an
 accuracy gate before registration.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from kfp import dsl, compiler
 from kfp.dsl import Input, Output, Dataset, Model, Metrics
 
@@ -366,7 +366,7 @@ compiler.Compiler().compile(fraud_retraining_pipeline, package_path="fraud_retra
 ```
 
 Submit as a weekly recurring run:
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import kfp
 client = kfp.Client(host="https://kubeflow.internal/pipeline")
 client.create_recurring_run(
@@ -386,7 +386,7 @@ silently promote a worse model.
 ## Cross-references
 
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral DAG/gate/reproducibility concepts this skill implements in KFP-specific terms; read that first if choosing between orchestrators.
-- [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — an alternative, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native distributed orchestration paradigm to consider instead of or alongside Kubeflow Pipelines.
+- [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — an alternative, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native distributed orchestration paradigm to consider instead of or alongside Kubeflow Pipelines.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the GPU scheduling infrastructure and validation checklist that KFP component-level accelerator requests must be checked against.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — pairing KFP's built-in run/metrics tracking with a dedicated experiment tracker for richer comparison across runs.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registration step's target scheme for the conditional `register` component.

@@ -118,9 +118,9 @@ node --prof-process isolate-*.log > processed.txt
 npx clinic doctor -- node app.js
 npx clinic flame -- node app.js
 
-# [Python](../../Languages/python/SKILL.md): cProfile
-[python](../../Languages/python/SKILL.md) -m cProfile -o output.prof app.py
-[python](../../Languages/python/SKILL.md) -m pstats output.prof  # Interactive analysis
+# [Python](../../Languages/python/python/SKILL.md): cProfile
+[python](../../Languages/python/python/SKILL.md) -m cProfile -o output.prof app.py
+[python](../../Languages/python/python/SKILL.md) -m pstats output.prof  # Interactive analysis
 # Or use snakeviz for visualization: snakeviz output.prof
 
 # Rust: perf + flamegraph
@@ -157,8 +157,8 @@ setInterval(() => {
 }, 5000);
 ```
 
-```[python](../../Languages/python/SKILL.md)
-# [Python](../../Languages/python/SKILL.md): memory profiler
+```[python](../../Languages/python/python/SKILL.md)
+# [Python](../../Languages/python/python/SKILL.md): memory profiler
 from memory_profiler import profile
 
 @profile
@@ -354,7 +354,7 @@ optimizations:
 
 ### Performance Profiler CLI
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 import time
 import functools
@@ -474,7 +474,7 @@ profiler = ProfilerManager()
 
 ### Memory Usage Snapshot Tool
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import tracemalloc
 import gc
 from typing import Dict, List, Optional

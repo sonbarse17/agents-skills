@@ -130,7 +130,7 @@ async function processResource() {
 }
 ```
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from redlock import Redlock
 import aioredis
 
@@ -415,7 +415,7 @@ Carry forward: lock provider, TTL configuration, fencing requirement.
 
 ### Redis-Based Distributed Lock
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import redis
 import uuid
 import time

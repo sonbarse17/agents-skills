@@ -196,8 +196,8 @@ class StripeFactory extends PaymentGatewayFactory {
 }
 ```
 
-### Strategy Pattern ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Strategy Pattern ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 from abc import ABC, abstractmethod
 
 class ShippingStrategy(ABC):

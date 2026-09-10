@@ -286,8 +286,8 @@ var pipeline = new ResiliencePipelineBuilder<Payment>()
 var payment = await pipeline.ExecuteAsync(ct => client.charge(orderId, ct));
 ```
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Pattern
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Pattern
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import backoff
 import circuitbreaker
 
@@ -394,7 +394,7 @@ Carry forward: timeout values, retry configuration, circuit breaker thresholds.
 
 ### Circuit Breaker
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Callable, Any, Optional, Dict
 from enum import Enum
 from datetime import datetime, timedelta
@@ -485,7 +485,7 @@ class CircuitBreaker:
 
 ### Retry with Exponential Backoff
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import asyncio
 import random
 from typing import Callable, Any, List, Optional

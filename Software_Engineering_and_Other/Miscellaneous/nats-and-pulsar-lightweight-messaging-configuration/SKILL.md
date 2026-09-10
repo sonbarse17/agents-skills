@@ -340,7 +340,7 @@ despite the low message volume, since durability matters even though
 throughput doesn't.
 
 Publisher:
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 nc = await nats.connect("nats://nats-cluster:4222")
 js = nc.jetstream()
 await js.publish("shipments.status.updated", shipment_status_payload)

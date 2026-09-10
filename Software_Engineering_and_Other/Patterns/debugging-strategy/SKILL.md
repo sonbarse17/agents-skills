@@ -204,10 +204,10 @@ node --inspect-brk app.js
 console.log('[DEBUG] user:', user?.id, 'data:', JSON.stringify(data, null, 2));
 ```
 
-```[python](../../Languages/python/SKILL.md)
-# [Python](../../Languages/python/SKILL.md): pdb / ipdb
-import pdb; pdb.set_trace()  # [Python](../../Languages/python/SKILL.md) 3.6-
-breakpoint()  # [Python](../../Languages/python/SKILL.md) 3.7+
+```[python](../../Languages/python/python/SKILL.md)
+# [Python](../../Languages/python/python/SKILL.md): pdb / ipdb
+import pdb; pdb.set_trace()  # [Python](../../Languages/python/python/SKILL.md) 3.6-
+breakpoint()  # [Python](../../Languages/python/python/SKILL.md) 3.7+
 
 # Logging
 import logging
@@ -322,7 +322,7 @@ Hand off to `[dev-loop-performance-profiler](../../Miscellaneous/performance-pro
 
 ### Bug Report Parser
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import Dict, Optional, List
 import re
 from datetime import datetime
@@ -378,7 +378,7 @@ class BugReport:
 
 ### Root Cause Analysis Documenter
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import List, Dict, Optional
 from datetime import datetime
 import json
@@ -495,7 +495,7 @@ What language/platform?
 │   ├── Browser → Chrome DevTools / React DevTools / Redux DevTools
 │   └── Mobile (React Native) → Flipper / React Native Debugger
 │
-├── [Python](../../Languages/python/SKILL.md)
+├── [Python](../../Languages/python/python/SKILL.md)
 │   ├── Local → pdb / ipdb / breakpoint()
 │   └── Production → traceback + structured logging + [Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)
 │

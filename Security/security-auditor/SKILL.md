@@ -123,8 +123,8 @@ npx snyk test                # Deep dependency analysis
 npx snyk monitor             # Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 # pip
-pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)                    # Scan [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
-safety check                 # Alternative [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scanner
+pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)                    # Scan [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies
+safety check                 # Alternative [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scanner
 
 # cargo (Rust)
 cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md)                  # [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Cargo.lock for CVEs
@@ -159,9 +159,9 @@ tools:
     usage: "npx eslint --plugin security ."
     strengths: "Linter integration, easy setup"
   bandit:
-    description: "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SAST"
+    description: "[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SAST"
     usage: "bandit -r src/ -f json"
-    strengths: "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-specific patterns"
+    strengths: "[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-specific patterns"
   gosec:
     description: "Go security checker"
     usage: "gosec ./..."
@@ -359,7 +359,7 @@ priority_matrix:
 
 ### Dependency Vulnerability Scanner
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import json
 import subprocess
 from typing import Dict, List, Optional

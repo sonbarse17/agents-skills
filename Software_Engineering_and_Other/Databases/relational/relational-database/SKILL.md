@@ -198,7 +198,7 @@ FOR UPDATE SKIP LOCKED;
 ```
 
 ### Step 8: Migration Management
-Tools: Alembic ([Python](../../../Languages/python/SKILL.md)), Flyway (Java), Sqitch (language-agnostic), Liquibase (XML/YAML/JSON). Principles: every migration has forward and rollback script; migrations are idempotent; never modify existing migrations after merge; test migrations against a copy of production data. Zero-downtime migrations require additive schema changes (new columns nullable, backfill, then add NOT NULL). Avoid long-running locks by using `CREATE INDEX CONCURRENTLY` and `ALTER TABLE ... SET NOT NULL` with low lock timeouts.
+Tools: Alembic ([Python](../../../Languages/python/python/SKILL.md)), Flyway (Java), Sqitch (language-agnostic), Liquibase (XML/YAML/JSON). Principles: every migration has forward and rollback script; migrations are idempotent; never modify existing migrations after merge; test migrations against a copy of production data. Zero-downtime migrations require additive schema changes (new columns nullable, backfill, then add NOT NULL). Avoid long-running locks by using `CREATE INDEX CONCURRENTLY` and `ALTER TABLE ... SET NOT NULL` with low lock timeouts.
 
 ```sql
 -- Safe index creation without blocking writes
@@ -465,7 +465,7 @@ CREATE INDEX idx_orders_status ON orders (status) WHERE status IN ('pending', 'p
 ```
 
 ### Connection Pooling Pattern
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # relational_database/connection_pool.py
 from psycopg2 import pool
 from contextlib import contextmanager

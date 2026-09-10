@@ -91,7 +91,7 @@ model that is "working" in every infrastructure sense while being wrong.
      shift (treat as an actionable alert) — tune per feature's known
      volatility rather than applying one threshold blindly everywhere.
 3. **Compute PSI concretely** for a feature `avg_rating_30d`:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import numpy as np
 
    def population_stability_index(expected, actual, bins=10):

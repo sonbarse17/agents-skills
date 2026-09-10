@@ -113,7 +113,7 @@ dvc stage add -n train \
   -d src/train.py \
   -o models/model.pkl \
   -M metrics/accuracy.json \
-  [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/train.py
+  [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) src/train.py
 
 # Reproduce pipeline
 dvc repro
@@ -213,7 +213,7 @@ LakeFS hooks: `pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)` (v
 ### Step 8: Nessie — Git for Iceberg
 Nessie provides Git-like version control for data lakes at the Iceberg catalog level. Unlike LakeFS (object store branching), Nessie operates on table metadata via the Iceberg REST Catalog API. A Nessie [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) captures all table states atomically, enabling multi-table atomic operations. Branches are zero-copy — instant creation regardless of data size since only metadata references are copied. Key operations: `CREATE BRANCH dev FROM main` for isolated data development; `MERGE dev INTO main` for atomic promotion of all table changes; `TAG release-1.0` for reproducible snapshots. Integrates with Spark, Flink, Trino, and Dremio. Use Nessie for catalog-level Iceberg versioning, multi-table atomic commits, and CI/CD pipeline isolation for data engineering.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pynessie import NessieClient
 client = NessieClient('http://nessie:19120/api/v2')
 client.create_branch('etl-job-20240501', 'main')
@@ -414,7 +414,7 @@ branching_strategy:
 # dvc.yaml — reproducible data pipeline
 stages:
   extract:
-    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/extract.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) src/extract.py
     deps:
       - src/extract.py
       - config/extract_config.yaml
@@ -425,7 +425,7 @@ stages:
       - extract.end_date
   
   transform:
-    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/transform.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) src/transform.py
     deps:
       - src/transform.py
       - data/raw/orders.parquet
@@ -435,7 +435,7 @@ stages:
       - transform.min_order_amount
   
   aggregate:
-    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/aggregate.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) src/aggregate.py
     deps:
       - src/aggregate.py
       - data/processed/orders_clean.parquet
@@ -443,7 +443,7 @@ stages:
       - data/features/order_features.parquet
     
   evaluate:
-    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) src/evaluate.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) src/evaluate.py
     deps:
       - src/evaluate.py
       - data/features/order_features.parquet
@@ -525,7 +525,7 @@ Data Versioning Strategy
 ## Implementation Patterns
 
 ### Nessie Branch Operations
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_versioning/nessie_branch.py
 from pynessie import NessieClient
 
@@ -551,7 +551,7 @@ class NessieBranchManager:
 # data_versioning/dvc.yaml
 stages:
   prepare_data:
-    cmd: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/prepare_data.py
+    cmd: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/prepare_data.py
     deps:
       - scripts/prepare_data.py
       - data/raw

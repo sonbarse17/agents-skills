@@ -112,7 +112,7 @@ selection, triage workflow, suppression policy — see
    sonar.test.exclusions=**/*.spec.ts,**/*.test.ts
    sonar.coverage.exclusions=**/migrations/**,**/*.d.ts
    sonar.javascript.lcov.reportPaths=coverage/lcov.info
-   sonar.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
+   sonar.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).coverage.reportPaths=coverage.xml
    ```
 
 2. **Run the scanner in CI**, feeding in the auth token as a secret,
@@ -289,7 +289,7 @@ selection, triage workflow, suppression policy — see
 
 ## Worked example
 
-A [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) service (`payments-api`) adopts SonarCloud with a new-code
+A [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) service (`payments-api`) adopts SonarCloud with a new-code
 quality gate and PR decoration.
 
 `sonar-project.properties`:
@@ -298,7 +298,7 @@ sonar.projectKey=example-org_payments-api
 sonar.organization=example-org
 sonar.sources=app
 sonar.tests=tests
-sonar.[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).coverage.reportPaths=coverage.xml
+sonar.[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).coverage.reportPaths=coverage.xml
 sonar.exclusions=**/migrations/**,**/__pycache__/**
 ```
 

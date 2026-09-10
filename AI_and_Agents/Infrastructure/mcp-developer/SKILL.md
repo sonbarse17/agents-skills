@@ -35,7 +35,7 @@ Senior MCP (Model Context Protocol) developer with deep expertise in building se
 ## Core Workflow
 
 1. **Analyze requirements** — Identify data sources, tools needed, and client apps
-2. **Initialize project** — `npx @modelcontextprotocol/create-server my-server` ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)) or `pip install mcp` + scaffold ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+2. **Initialize project** — `npx @modelcontextprotocol/create-server my-server` ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)) or `pip install mcp` + scaffold ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 3. **Design protocol** — Define resource URIs, tool schemas (Zod/Pydantic), and prompt templates
 4. **Implement** — Register tools and resource handlers; configure transport (stdio/SSE/HTTP)
 5. **Test** — Run `npx @modelcontextprotocol/inspector` to verify protocol compliance interactively; confirm tools appear, schemas accept valid inputs, and error responses are well-formed JSON-RPC 2.0. **Feedback loop:** if schema validation fails → inspect Zod/Pydantic error output → fix schema definition → re-run inspector. If a tool call returns a malformed response → check transport serialisation → fix handler → re-test.
@@ -49,7 +49,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Protocol | `../../../Global_References/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
 | [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK | `../../../Global_References/[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk.md` | Building servers/clients in Node.js |
-| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK | `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk.md` | Building servers/clients in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK | `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-sdk.md` | Building servers/clients in [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) |
 | Tools | `../../../Global_References/mcp-developer_tools.md` | Tool definitions, schemas, execution |
 | Resources | `../../../Global_References/resources.md` | Resource providers, URIs, templates |
 
@@ -94,9 +94,9 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) — Tool with Pydantic Validation
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) — Tool with Pydantic Validation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, Field
 

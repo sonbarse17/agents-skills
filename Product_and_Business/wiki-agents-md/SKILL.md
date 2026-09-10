@@ -149,7 +149,7 @@ One real code example beats three paragraphs of description.
 
 ### Example
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async def get_user_by_id(user_id: str) -> User:
     """Fetch a user by their unique identifier."""
     async with get_db_session() as session:
@@ -207,7 +207,7 @@ If it exists, **stop**. Report and move to the next folder.
 ### Step 2: Scan the folder
 
 Identify:
-- Primary language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Rust, Go, Java, C#)
+- Primary language ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Rust, Go, Java, C#)
 - Framework (FastAPI, Next.js, Actix, Spring Boot)
 - Build tool (npm, cargo, poetry, maven, gradle)
 - Test runner (pytest, vitest, cargo test, JUnit)

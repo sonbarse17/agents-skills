@@ -77,7 +77,7 @@ diagnose after the fact.
 1. **Define entities and feature views explicitly.** An entity is the join
    key (e.g. `driver_id`); a feature view is a named, versioned group of
    features tied to that entity with a defined source and freshness.
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Feast example: feature_repo/driver_features.py
    from feast import Entity, FeatureView, Field, FileSource
    from feast.types import Float32, Int64
@@ -106,7 +106,7 @@ diagnose after the fact.
 2. **Build point-in-time-correct training datasets** by joining the label
    timestamps against feature history "as of" that timestamp — never a naive
    join against the latest feature value:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from feast import FeatureStore
 
    store = FeatureStore(repo_path="feature_repo/")
@@ -132,7 +132,7 @@ diagnose after the fact.
    ```
 4. **Serve features online** using the identical feature view definition
    used in training:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    online_features = store.get_online_features(
        features=[
            "driver_stats:trips_last_7d",

@@ -31,7 +31,7 @@ flowchart TD
 ```
 
 ## RAG Implementation Snippet
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI

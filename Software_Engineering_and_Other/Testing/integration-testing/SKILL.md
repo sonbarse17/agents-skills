@@ -160,8 +160,8 @@ Does CI support [Docker](../../../containers-orchestration/docker/other/docker/S
 
 ## Integration Test Examples
 
-### [Python](../../Languages/python/SKILL.md) + TestContainers — Database Integration Test
-```[python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md) + TestContainers — Database Integration Test
+```[python](../../Languages/python/python/SKILL.md)
 import pytest
 from testcontainers.postgres import PostgresContainer
 from sqlalchemy import create_engine, text

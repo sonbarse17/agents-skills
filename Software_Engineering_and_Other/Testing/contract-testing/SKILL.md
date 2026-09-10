@@ -103,7 +103,7 @@ For messaging contracts, Pact supports message pacts. A message pact defines the
 ## Workflow
 
 ### Step 1: Pact Setup
-Install Pact CLI and Pact library for each language: `@pact-foundation/pact` (JS), `pact` (Ruby), `pact-jvm` (JVM), `pact-[python](../../Languages/python/SKILL.md)`. Deploy Pact Broker (OSS or PactFlow SaaS) for contract sharing. Each consumer-provider pair has exactly one set of contracts.
+Install Pact CLI and Pact library for each language: `@pact-foundation/pact` (JS), `pact` (Ruby), `pact-jvm` (JVM), `pact-[python](../../Languages/python/python/SKILL.md)`. Deploy Pact Broker (OSS or PactFlow SaaS) for contract sharing. Each consumer-provider pair has exactly one set of contracts.
 
 ### Step 2: Consumer Test
 ```[typescript](../../Frontend/common/typescript/SKILL.md)
@@ -278,8 +278,8 @@ describe("Payment Service Pact", () => {
 });
 ```
 
-### [Python](../../Languages/python/SKILL.md) — Consumer Test with Pact
-```[python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md) — Consumer Test with Pact
+```[python](../../Languages/python/python/SKILL.md)
 # tests/contract/test_payment_client.py
 import atexit
 import pytest

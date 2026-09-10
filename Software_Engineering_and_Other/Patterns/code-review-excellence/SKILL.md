@@ -259,10 +259,10 @@ Please use parameterized queries."
 
 ## Language-Specific Patterns
 
-### [Python](../../Languages/python/SKILL.md) Code Review
+### [Python](../../Languages/python/python/SKILL.md) Code Review
 
-```[python](../../Languages/python/SKILL.md)
-# Check for [Python](../../Languages/python/SKILL.md)-specific issues
+```[python](../../Languages/python/python/SKILL.md)
+# Check for [Python](../../Languages/python/python/SKILL.md)-specific issues
 
 # ❌ Mutable default arguments
 def add_item(item, items=[]):  # Bug! Shared across calls

@@ -37,7 +37,7 @@ Exact user phrases: "generate API client", "OpenAPI client", "Swagger codegen", 
 
 ### Input Context
 - API specification format (OpenAPI 3.x, Swagger 2.0, GraphQL, gRPC protobuf)
-- Target language/framework ([TypeScript](../../../Frontend/common/typescript/SKILL.md), C#, [Python](../../../Languages/python/SKILL.md), Java, Go, Rust, Kotlin)
+- Target language/framework ([TypeScript](../../../Frontend/common/typescript/SKILL.md), C#, [Python](../../../Languages/python/python/SKILL.md), Java, Go, Rust, Kotlin)
 - HTTP client library (fetch, axios, HttpClient, httpx, reqwest)
 - Authentication method (Bearer token, API key, OAuth2, mTLS, custom header)
 - Existing API spec location (URL, file path, registry URL)
@@ -72,7 +72,7 @@ What is the API format?
 ├── OpenAPI 3.x (REST) → openapi-generator, NSwag, kiota
 │   ├── [TypeScript](../../../Frontend/common/typescript/SKILL.md) → openapi-generator ([typescript](../../../Frontend/common/typescript/SKILL.md)-fetch, [typescript](../../../Frontend/common/typescript/SKILL.md)-axios)
 │   ├── C# → NSwag, kiota, openapi-generator (csharp)
-│   ├── [Python](../../../Languages/python/SKILL.md) → openapi-generator ([python](../../../Languages/python/SKILL.md)), kiota
+│   ├── [Python](../../../Languages/python/python/SKILL.md) → openapi-generator ([python](../../../Languages/python/python/SKILL.md)), kiota
 │   ├── Java → openapi-generator (java, spring), kiota
 │   ├── Go → openapi-generator (go), oapi-codegen
 │   └── Rust → openapi-generator (rust), octorust, paperclip
@@ -82,7 +82,7 @@ What is the API format?
 └── gRPC → protoc + language plugin
     ├── Go → protoc-gen-go-grpc
     ├── C# → Grpc.Tools
-    ├── [Python](../../../Languages/python/SKILL.md) → grpcio-tools
+    ├── [Python](../../../Languages/python/python/SKILL.md) → grpcio-tools
     └── Rust → tonic-build
 ```
 
@@ -367,8 +367,8 @@ additionalProperties:
   useDateTimeOffset: true
   targetFramework: net8.0
 
-# [Python](../../../Languages/python/SKILL.md)
-generatorName: [python](../../../Languages/python/SKILL.md)
+# [Python](../../../Languages/python/python/SKILL.md)
+generatorName: [python](../../../Languages/python/python/SKILL.md)
 additionalProperties:
   packageName: myorg_api_client
   useOneOfDiscriminatorLookup: true
@@ -384,7 +384,7 @@ additionalProperties:
 
 ### OpenAPI Client Generator
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from typing import Dict, List, Optional
 import json
 import subprocess
@@ -399,7 +399,7 @@ class OpenAPIClientGenerator:
                 "npm_package": "@openapitools/openapi-generator-cli",
                 "command": "npx @openapitools/openapi-generator-cli generate",
             },
-            "[python](../../../Languages/python/SKILL.md)": {
+            "[python](../../../Languages/python/python/SKILL.md)": {
                 "pip_package": "openapi-generator-cli",
                 "command": "openapi-generator generate",
             },
@@ -423,8 +423,8 @@ class OpenAPIClientGenerator:
         cmd = [
             "openapi-generator", "generate",
             "-i", self.spec_path,
-            "-g", "[python](../../../Languages/python/SKILL.md)",
-            "-o", f"{self.output_dir}/[python](../../../Languages/python/SKILL.md)",
+            "-g", "[python](../../../Languages/python/python/SKILL.md)",
+            "-o", f"{self.output_dir}/[python](../../../Languages/python/python/SKILL.md)",
             "--additional-properties=packageName=api_client",
         ]
         if opts.get("package_name"):
@@ -469,8 +469,8 @@ What language/framework?
 │   ├── Angular → @openapitools/[typescript](../../../Frontend/common/typescript/SKILL.md)-angular
 │   └── Node.js → @openapitools/[typescript](../../../Frontend/common/typescript/SKILL.md)-node
 │
-├── [Python](../../../Languages/python/SKILL.md)
-│   └── httpx/requests → openapi-generator [python](../../../Languages/python/SKILL.md)
+├── [Python](../../../Languages/python/python/SKILL.md)
+│   └── httpx/requests → openapi-generator [python](../../../Languages/python/python/SKILL.md)
 │
 ├── Go
 │   └── net/http → openapi-generator go

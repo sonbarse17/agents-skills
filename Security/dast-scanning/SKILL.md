@@ -230,7 +230,7 @@ dast:
 
 ### REST API Usage
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import requests
 
 class BurpScanner:

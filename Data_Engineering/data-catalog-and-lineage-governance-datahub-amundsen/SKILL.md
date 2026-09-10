@@ -72,7 +72,7 @@ rather than the graph-construction mechanics themselves.
   production. **Amundsen**: separate metadata, search, and frontend
   services, typically backed by Neo4j or Atlas for the metadata graph and
   Elasticsearch for search.
-- The `acryl-datahub` [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) CLI/SDK (for DataHub) or Amundsen's
+- The `acryl-datahub` [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) CLI/SDK (for DataHub) or Amundsen's
   `databuilder` library, for writing and running ingestion recipes.
 - Read access (credentials scoped to metadata only, not data content where
   avoidable) to every source system to be cataloged: data warehouse system
@@ -141,7 +141,7 @@ rather than the graph-construction mechanics themselves.
    the feature tables and training run it depends on, tying together with
    the lineage graph from
    [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md):
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from datahub.emitter.rest_emitter import DatahubRestEmitter
    from datahub.metadata.schema_classes import MLModelPropertiesClass, MLModelLineageInfoClass
 
@@ -205,7 +205,7 @@ rather than the graph-construction mechanics themselves.
    # Query DataHub for downstream consumers of a dataset before deletion
    datahub get --urn "urn:li:dataset:(urn:li:dataPlatform:s3,ml-artifacts/fraud-scorer/v11,PROD)" --aspect upstreamLineage
    ```
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # Mark deprecated with a grace period rather than deleting immediately
    from datahub.metadata.schema_classes import DeprecationClass
    deprecation = DeprecationClass(
@@ -336,7 +336,7 @@ datahub get --urn "urn:li:mlModel:(urn:li:dataPlatform:mlflow,fraud-scorer-v11,P
 ```
 Given that finding, the artifact is marked deprecated with a grace period
 rather than deleted immediately:
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 deprecation = DeprecationClass(
     deprecated=True,
     note="Superseded by v14. Retained as rollback reference per [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) INC-2026-0512; delete after 2026-10-01 once v14 has one full quarter of stable production history.",

@@ -334,7 +334,7 @@ Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscell
 
 ### PR Description Generator
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import List, Dict, Optional
 import subprocess
 import re

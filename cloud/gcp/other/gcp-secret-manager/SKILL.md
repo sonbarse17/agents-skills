@@ -256,9 +256,9 @@ spec:
 
 ## Application SDK Examples
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from google.cloud import secretmanager
 from google.api_core import exceptions
 import json
@@ -398,7 +398,7 @@ main().catch(console.error);
 
 ## Secret Rotation with Cloud Functions
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """cloud_function_rotation.py - Triggered by Pub/Sub on secret rotation events."""
 
 import functions_framework

@@ -431,7 +431,7 @@ jobs:
           diff-api openapi-spec-v2.yaml openapi-spec-v3.yaml || true
       - name: Principle adherence
         run: |
-          [python](../../Languages/python/SKILL.md) scripts/check-principles.py --principles docs/architecture/principles.yaml
+          [python](../../Languages/python/python/SKILL.md) scripts/check-principles.py --principles docs/architecture/principles.yaml
       - name: Notify ARB on violation
         if: failure()
         run: |

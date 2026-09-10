@@ -418,7 +418,7 @@ Dependabot: simplest setup, [GitHub](../../../ci-cd/github-actions/other/github/
 npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) as baseline, Trivy for CI scanning, Snyk for enterprise.
 
 ### Lock Files by Ecosystem
-npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn specific. pnpm (pnpm-lock.yaml): pnpm specific, efficient disk. Cargo.lock: Rust standard. go.sum: Go standard, checksum only. Gemfile.lock: Ruby standard. poetry.lock: [Python](../../Languages/python/SKILL.md) poetry.
+npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn specific. pnpm (pnpm-lock.yaml): pnpm specific, efficient disk. Cargo.lock: Rust standard. go.sum: Go standard, checksum only. Gemfile.lock: Ruby standard. poetry.lock: [Python](../../Languages/python/python/SKILL.md) poetry.
 
 ## Operations & Maintenance
 

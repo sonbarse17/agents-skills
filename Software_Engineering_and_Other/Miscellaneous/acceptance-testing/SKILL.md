@@ -117,9 +117,9 @@ Scenario Outline: Discount application by order value
     | 500.00      | 20       |
 ```
 
-## Automated Acceptance Tests ([Python](../../Languages/python/SKILL.md) + pytest-bdd)
+## Automated Acceptance Tests ([Python](../../Languages/python/python/SKILL.md) + pytest-bdd)
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # tests/acceptance/test_checkout.py
 from pytest_bdd import scenarios, given, when, then, parsers
 

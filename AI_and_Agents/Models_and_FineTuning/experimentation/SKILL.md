@@ -96,7 +96,7 @@ Related success indicators that might be affected. Examples: average order value
 Metrics that MUST NOT degrade even if primary metric improves. Examples: page load time, error rate, unsubscribes, support ticket volume, latency p99. Set acceptable thresholds upfront. A treatment that improves the primary metric but degrades a guardrail is usually not shipped.
 
 #### Metric Standardization
-Define metrics once in a central repository (SQL or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)). Store: metric name, SQL definition, owner, expected range, seasonality, guardrail assignment. Version control definitions. Consistent definitions across experiments enable comparability.
+Define metrics once in a central repository (SQL or [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)). Store: metric name, SQL definition, owner, expected range, seasonality, guardrail assignment. Version control definitions. Consistent definitions across experiments enable comparability.
 
 ### Step 3: Sample Size Calculation
 
@@ -191,7 +191,7 @@ Data type?
 #### Variance Reduction with Pre-Experiment Covariates
 CUPED uses pre-experiment data to explain metric variance, reducing required sample size. Formula: Y_cv = Y - θ × (X - μ_X). θ = Cov(Y, X) / Var(X). Variance reduction = Corr(Y, X)². Typical reduction: 20-50% for metrics with strong pre-experiment correlation.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def cuped_adjust(treatment_metric, control_metric, pre_treatment, pre_control):
     # Pool pre-experiment data (both variants before treatment)
     pre_pooled = np.concatenate([pre_treatment, pre_control])
@@ -220,7 +220,7 @@ High correlation between pre/post metric (r > 0.5). Stable user behavior (don't 
 #### Mixture of Sequential Probability Ratio Test (mSPRT)
 Allows continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without inflating false positive rate. Uses a mixing distribution over effect sizes. Decision boundary widens over time, maintaining valid type I error at any stopping time.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # mSPRT for normal data (continuous metrics)
 def msprt_normal(treatment_data, control_data, variance=None):
     n = len(treatment_data)
@@ -242,9 +242,9 @@ def msprt_normal(treatment_data, control_data, variance=None):
 #### Implementation in Practice
 Use sequential testing for: long-running experiments, high-traffic products, safety-critical changes. Configure: expected effect size, alpha spending function, maximum sample size. Tools: Google's CORE, Optimizely Sequential, custom mSPRT implementation.
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Power Calculation
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Power Calculation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def sample_size_proportion(p0, mde_relative, alpha=0.05, power=0.80, ratio=1.0):
     p1 = p0 * (1 + mde_relative)
     z_alpha = stats.norm.ppf(1 - alpha/2)
@@ -270,7 +270,7 @@ def sample_size_continuous(mu, sigma, mde_absolute, alpha=0.05, power=0.80):
 #### Delta Method for Variance
 Ratio metrics (revenue per user, CTR = clicks/impressions) need special variance estimation. Delta method: Var(R) ≈ (μ_y/μ_x)² × (Var(y)/μ_y² + Var(x)/μ_x² - 2Cov(x,y)/(μ_x·μ_y))
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def delta_method_variance(a, b):
     # For ratio metric R = a / b (e.g., revenue per session)
     mu_a, mu_b = np.mean(a), np.mean(b)
@@ -297,7 +297,7 @@ When delta method assumptions fail (small samples, skewed distributions): resamp
 Explore/exploit when: opportunity cost of exploration is real (revenue per impression), many variants (>5), metric is immediate (clicks, not retention). Don't use MAB: small sample sizes, delayed metrics, need hypothesis testing.
 
 #### Thompson Sampling
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def thompson_sample(clicks, impressions, n_samples=1000):
     # Beta-Binomial: prior Beta(1,1), posterior Beta(1+clicks, 1+impressions-clicks)
     posteriors = [stats.beta(1+c, 1+i-c).rvs(n_samples)
@@ -478,7 +478,7 @@ Experimentation Design
 ## Implementation Patterns
 
 ### Frequentist A/B Test Analysis
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # experimentation/frequentist_ab_test.py
 import numpy as np
 from scipy import stats
@@ -505,7 +505,7 @@ class ABTestAnalyzer:
 ```
 
 ### Bayesian A/B Test
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # experimentation/bayesian_ab_test.py
 import pymc as pm
 

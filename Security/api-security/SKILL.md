@@ -284,8 +284,8 @@ function authenticateJWT(req, res, next) {
 }
 ```
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) FastAPI Rate Limiting with SlowAPI
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) FastAPI Rate Limiting with SlowAPI
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 
@@ -323,8 +323,8 @@ func jwtMiddleware(next http.Handler) http.Handler {
 }
 ```
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Input Validation with Pydantic
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Input Validation with Pydantic
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 

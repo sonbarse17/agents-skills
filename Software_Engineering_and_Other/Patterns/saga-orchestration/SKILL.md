@@ -87,7 +87,7 @@ Moved to `../../../Global_References/saga-orchestration_details.md`.
 
 A saga enters compensation but never reaches FAILED. This means a compensation handler is throwing an unhandled exception and never publishing `SagaCompensationCompleted`. Add dead-letter queue (DLQ) handling to compensation consumers and ensure every compensation action publishes a result event even when the underlying operation was already rolled back.
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 async def handle_release_reservation(self, command: Dict):
     try:
         await self.release_reservation(command["original_result"]["reservation_id"])

@@ -57,7 +57,7 @@ Lineage configuration with OpenLineage integration, Marquez deployment, column-l
 # OpenLineage integration config
 # Marquez deployment
 ```
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Lineage event emission
 # SQL parser setup
 ```
@@ -97,7 +97,7 @@ Each entity has a unique identifier (FQN), type, and metadata. Edges represent d
 ## OpenLineage Integration
 
 ### Airflow Integration
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from openlineage.airflow import DAG
 
 dag = DAG(
@@ -192,7 +192,7 @@ curl http://localhost:5000/api/v1/namespaces/prod_warehouse/jobs
 ## Column-Level Lineage
 
 ### SQL Parsing with sqllineage
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sqllineage.runner import LineageRunner
 
 sql = """
@@ -254,7 +254,7 @@ for col, src in result.column_mapping.items():
 ## Impact Analysis
 
 ### Downstream Impact Query
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def get_downstream_impact(dataset_fqn: str, depth: int = 3):
     """Recursively find all downstream consumers of a dataset."""
     query = f"""
@@ -336,7 +336,7 @@ spark_openlineage:
 
 #### SQL Parser for Column-Level Lineage
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Column-level lineage extraction
 from sqllineage.runner import LineageRunner
 from sqlparse import parse
@@ -376,7 +376,7 @@ def extract_column_lineage(sql_query, default_schema="public"):
 
 #### Impact Analysis API
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Marquez API: find all downstream dependencies
 import requests
 
@@ -469,7 +469,7 @@ Data processing tool?
 ├── dbt transformations → dbt-openlineage package
 ├── Spark jobs → OpenLineage Spark listener
 ├── Flink streaming → OpenLineage Flink integration
-├── Custom [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts → Manual OpenLineage events via [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) client
+├── Custom [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts → Manual OpenLineage events via [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) client
 ├── SQL transformations → SQL parser (sqllineage, sqlfluff)
 └── Manual / undocumented → Start with manual annotations, automate gradually
 ```
@@ -524,7 +524,7 @@ Lineage Collection Strategy
 ## Implementation Patterns
 
 ### OpenLineage Spark Listener
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_lineage/spark_listener.py
 from openlineage.spark import OpenLineageSparkListener
 from openlineage.client import OpenLineageClient
@@ -545,7 +545,7 @@ class LineageReporter:
 ```
 
 ### SQL Parser Lineage
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_lineage/sql_lineage.py
 from sqlparse import parse
 from sqllineage.runner import LineageRunner

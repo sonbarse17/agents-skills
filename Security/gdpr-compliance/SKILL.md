@@ -156,7 +156,7 @@ processing_activity_template:
 
 ## Consent Management Implementation
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """
 Consent management system implementing GDPR Article 7 requirements.
 Consent must be freely given, specific, informed, and unambiguous.
@@ -312,7 +312,7 @@ dsar_workflow:
       - Update data mapping if new data stores discovered
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """DSAR automation - data collection across systems."""
 import json
 from datetime import datetime, timezone

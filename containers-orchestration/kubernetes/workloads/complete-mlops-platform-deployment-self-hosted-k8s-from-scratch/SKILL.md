@@ -137,7 +137,7 @@ alternative.
      versioned pipeline graph and Katib-integrated hyperparameter tuning.
      See
      [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md).
-   - **Ray (via the KubeRay operator)** — a [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native distributed
+   - **Ray (via the KubeRay operator)** — a [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native distributed
      runtime (Ray Train/Tune/Serve) better suited to dynamic task graphs,
      actors with persistent state, and fine-grained fractional GPU
      allocation, at the cost of more failure surface living in
@@ -177,7 +177,7 @@ alternative.
    [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md),
    targeting the Phase 2 training node pool and logging to the Phase 4
    MLflow instance:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    train_task = train(processed=preprocess_task.outputs["processed"], epochs=20)
    train_task.set_accelerator_type("nvidia.com/gpu").set_accelerator_limit(1)
    train_task.set_caching_options(enable_caching=False)

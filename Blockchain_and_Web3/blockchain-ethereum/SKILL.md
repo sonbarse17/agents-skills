@@ -506,7 +506,7 @@ contract SmartAccount {
 ```
 
 ### EIP-4844 Blob Transaction
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # blockchain-ethereum/blob_transaction.py
 from eth_account import Account
 from eth_account._utils.signing import sign_message_hash

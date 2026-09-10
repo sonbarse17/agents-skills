@@ -149,7 +149,7 @@ Does the code touch a critical path (auth, payments, data layer)?
 
 ### Framework/Language-Specific Considerations
 
-| Aspect | Static Typed (TS, Rust, Java) | Dynamic ([Python](../../Languages/python/SKILL.md), JS, Ruby) |
+| Aspect | Static Typed (TS, Rust, Java) | Dynamic ([Python](../../Languages/python/python/SKILL.md), JS, Ruby) |
 |--------|-----------------------------|---------------------------|
 | Type errors | Caught at compile time | Runtime risk. MUST review type contracts |
 | Null safety | Compiler-enforced (strict mode) | Manual checks required. SHOULD validate all external inputs |

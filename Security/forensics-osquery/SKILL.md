@@ -358,7 +358,7 @@ SELECT p1.name AS webserver, p1.pid, p1.cmdline,
 FROM processes p1
 JOIN processes p2 ON p1.pid = p2.parent
 WHERE p1.name IN ('httpd', 'nginx', 'apache2', 'w3wp.exe')
-  AND p2.name IN ('bash', 'sh', 'cmd.exe', 'powershell.exe', 'perl', '[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)');
+  AND p2.name IN ('bash', 'sh', 'cmd.exe', 'powershell.exe', 'perl', '[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)');
 
 -- Files in web directories with recent modifications
 SELECT path, filename, mtime, md5, sha256

@@ -81,12 +81,12 @@ there to scan and what's exploitable if a vulnerability is found.
     fully static binaries e.g. Go with CGO disabled).
   - **Alpine** — small (musl libc, `apk` package manager), widely used,
     but musl's subtle differences from glibc occasionally break
-    compiled dependencies (e.g. some [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Node native modules); still
+    compiled dependencies (e.g. some [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Node native modules); still
     ships a shell and package manager unless explicitly stripped.
-  - **`-slim` variants** (e.g. `[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim`, `node:20-slim`) — a
+  - **`-slim` variants** (e.g. `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12-slim`, `node:20-slim`) — a
     reasonable middle ground: much smaller than the full image, glibc-based
     (fewer compatibility surprises than Alpine), still has a shell.
-  - Full-distribution images (`ubuntu`, `debian`, default `[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`)
+  - Full-distribution images (`ubuntu`, `debian`, default `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12`)
     — largest attack surface and image size; rarely justified for a
     final runtime image, sometimes needed as a build stage.
 - [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster (if hardening deploy-time `securityContext`) with
@@ -118,7 +118,7 @@ there to scan and what's exploitable if a vulnerability is found.
    consider "the same" across rebuilds — tags are mutable and can be
    repointed by the upstream maintainer:
    ```dockerfile
-   FROM [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim@sha256:<digest> AS base
+   FROM [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12-slim@sha256:<digest> AS base
    ```
    Balance this against staying current on security patches: pinning by
    digest requires an explicit, deliberate bump process (e.g. a
@@ -233,7 +233,7 @@ there to scan and what's exploitable if a vulnerability is found.
   builds specifically.
 
 - **Symptom:** An Alpine-based image works in local [Docker](../../other/docker/SKILL.md) Desktop testing
-  but a compiled [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Node native dependency fails or behaves
+  but a compiled [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Node native dependency fails or behaves
   differently in the CI/production Alpine build.
   **Fix:** This is usually musl libc vs. glibc incompatibility in a
   native extension; either switch that stage to a glibc-based `-slim`

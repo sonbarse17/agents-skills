@@ -81,7 +81,7 @@ Inputs: language, team expertise, existing tooling
 ├── [TypeScript](../../common/typescript/SKILL.md)/JavaScript → fast-check
 │   ├── Stateful testing needed? → Use fc.Command + fc.modelRun
 │   └── Async code? → Use fc.asyncProperty
-├── [Python](../../../Languages/python/SKILL.md) → Hypothesis
+├── [Python](../../../Languages/python/python/SKILL.md) → Hypothesis
 │   ├── Stateful testing needed? → RuleBasedStateMachine
 │   └── Pandas/NumPy? → pandas strategies
 ├── Java/Kotlin → jqwik
@@ -200,8 +200,8 @@ test("uniq is idempotent", () => {
 });
 ```
 
-### [Python](../../../Languages/python/SKILL.md)/Hypothesis — Invariant Property
-```[python](../../../Languages/python/SKILL.md)
+### [Python](../../../Languages/python/python/SKILL.md)/Hypothesis — Invariant Property
+```[python](../../../Languages/python/python/SKILL.md)
 from hypothesis import given, strategies as st
 from src.pricing import calculate_discount, PriceBreak
 
@@ -237,8 +237,8 @@ def test_discount_percent_never_exceeds_100(quantity, breaks):
     assert discount <= 100
 ```
 
-### [Python](../../../Languages/python/SKILL.md)/Hypothesis — Custom Strategy
-```[python](../../../Languages/python/SKILL.md)
+### [Python](../../../Languages/python/python/SKILL.md)/Hypothesis — Custom Strategy
+```[python](../../../Languages/python/python/SKILL.md)
 # Custom strategy for valid email addresses
 email_strategy = st.emails()
 

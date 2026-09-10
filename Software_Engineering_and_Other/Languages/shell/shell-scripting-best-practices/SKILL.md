@@ -218,10 +218,10 @@ state.
 - Give scripts a `--dry-run` mode for anything destructive or
   state-changing, printing what would happen without executing it —
   mirrors the review-before-apply pattern used for
-  `terraform plan`/[CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) change sets/`[ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook --check`.
+  `terraform plan`/[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) change sets/`[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook --check`.
 - Set explicit, descriptive exit codes (`exit 2` for usage errors, `exit 1`
   for runtime failures) instead of always `exit 1`, so calling automation
-  (CI, cron [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)) can distinguish failure classes.
+  (CI, cron [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)) can distinguish failure classes.
 - Log to stderr for diagnostics/progress and reserve stdout for the
   script's actual output, so a script's output remains pipeable/parseable
   by other tools without diagnostic noise mixed in.
@@ -366,4 +366,4 @@ tests/deploy.bats
 
 - [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)
 - [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
-- [aws-[cloudformation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../../../DevOps_and_Cloud/Infrastructure_as_Code/aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md)
+- [aws-[cloudformation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates](../../../DevOps_and_Cloud/Infrastructure_as_Code/aws-[cloudformation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md)

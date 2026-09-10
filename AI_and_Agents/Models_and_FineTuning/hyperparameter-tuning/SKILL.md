@@ -133,7 +133,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Search Space Definition
 Use log-uniform for positive-valued parameters spanning orders of magnitude (learning rate 1e-5 to 1e-1, regularization 1e-4 to 1e-1). Use uniform for bounded additive parameters (depth 3-15, units 32-512). Use categorical for discrete options (optimizer, activation). Define conditional spaces where parameters depend on other choices.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import optuna
 
 def create_search_space(trial, model_type="xgboost"):
@@ -167,7 +167,7 @@ def create_search_space(trial, model_type="xgboost"):
 ### Step 2: Strategy Selection
 Grid search: only for <4 dims AND budget covers full grid. Random search: always prefer over grid when >4 dims. Bayesian optimization: GP for <10 continuous params, TPE for mixed/categorical/high-dim. CMA-ES: for 5-20 continuous parameters, non-convex landscapes.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def select_strategy(n_params, trial_time_seconds, budget):
     dims_continuous = sum(1 for p in n_params if p["type"] in ("float", "int") and p.get("log", False))
     dims_discrete = len(n_params) - dims_continuous
@@ -187,7 +187,7 @@ def select_strategy(n_params, trial_time_seconds, budget):
 ### Step 3: Framework Configuration
 Optuna: trial.suggest_float/log/int/categorical. Study with TPE sampler + MedianPruner. Storage for persistence. Ray Tune: tune.{loguniform/uniform/randint/choice} with ASHA scheduler. Hyperopt: hp.{loguniform/uniform/quniform/choice}.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Optuna complete example
 import optuna
 from optuna.samplers import TPESampler
@@ -242,7 +242,7 @@ optuna.visualization.plot_optimization_history(study)
 ### Step 4: Pruning & Early Stopping
 Median pruner: stop if intermediate value falls below median of completed trials at same step. Requires n_startup_trials, n_warmup_steps. Hyperband: adaptive resource allocation. ASHA: distributed variant for parallel settings.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Ray Tune with ASHA pruning
 from ray import tune
 from ray.tune.schedulers import ASHAScheduler
@@ -282,7 +282,7 @@ results = tuner.fit()
 ### Step 5: Distributed Execution
 Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Optuna distributed with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
 study = optuna.create_study(
     storage="[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://user:pass@host/db",
@@ -295,7 +295,7 @@ study = optuna.create_study(
 ### Step 6: Post-Tuning Analysis
 Parameter importance (fANOVA-based), parallel coordinate plot, contour plot (top 2 params interaction), optimization history, failure analysis.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def analyze_study(study):
     importances = optuna.visualization.plot_param_importances(study)
     parallel = optuna.visualization.plot_parallel_coordinate(study)
@@ -342,7 +342,7 @@ def analyze_study(study):
 ## Search Space Design — Per Algorithm
 
 ### Decision Trees / Random Forest
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 space = {
     "n_estimators": (10, 500),            # integer, uniform
     "max_depth": (3, 50),                 # integer, log scale
@@ -356,7 +356,7 @@ space = {
 ```
 
 ### XGBoost / LightGBM
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 space = {
     "learning_rate": (1e-4, 0.3),         # float, LOG scale
     "max_depth": (3, 15),                 # integer, log scale
@@ -374,7 +374,7 @@ space = {
 ```
 
 ### Neural Networks
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 space = {
     "learning_rate": (1e-5, 1e-2),        # LOG scale
     "batch_size": [16, 32, 64, 128, 256], # categorical (discrete jump)
@@ -392,7 +392,7 @@ space = {
 ```
 
 ### Transformers (NLP)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 space = {
     "learning_rate": (1e-6, 5e-4),        # LOG scale
     "warmup_ratio": (0.0, 0.3),           # float
@@ -409,7 +409,7 @@ space = {
 ```
 
 ### Conditional Search Spaces
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # When parameter B is only valid if parameter A has a specific value
 space = {
     "optimizer": ["adam", "sgd", "adamw"],
@@ -424,7 +424,7 @@ space = {
 ## Pruning Patterns
 
 ### Median Stopping Rule (Optuna)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import optuna
 
 def objective(trial):
@@ -455,7 +455,7 @@ study = optuna.create_study(
 ```
 
 ### ASHA (Asynchronous Successive Halving Algorithm)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from optuna.pruners import HyperbandPruner
 
 study = optuna.create_study(
@@ -475,7 +475,7 @@ study = optuna.create_study(
 ```
 
 ### Custom Pruning Criteria
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def custom_prune_callback(study, trial):
     """Prune if loss hasn't improved for 10 epochs."""
     intermediate_values = trial.intermediate_values

@@ -28,7 +28,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 - Standardizing [observability](../../../common/fundamentals/observability/SKILL.md) data model and naming
 - Sending telemetry to Prometheus, Grafana, [Datadog](../../../datadog/other/datadog/SKILL.md), or OTLP backends
 - Building SLO [dashboards](../../../common/dashboard-design/dashboards/SKILL.md) with trace-to-log correlation
-- Instrumenting [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) or Node.js applications with tracing and metrics
+- Instrumenting [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) or Node.js applications with tracing and metrics
 - Setting up auto-instrumentation for existing services without code changes
 
 ## Prerequisites
@@ -239,11 +239,11 @@ spec:
       targetPort: 8888
 ```
 
-## [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK Instrumentation
+## [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK Instrumentation
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # tracing_setup.py
-"""Initialize OpenTelemetry tracing and metrics for a [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) service."""
+"""Initialize OpenTelemetry tracing and metrics for a [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) service."""
 from opentelemetry import trace, metrics
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -361,11 +361,11 @@ process.on("SIGTERM", () => sdk.shutdown());
 #   helm install opentelemetry-operator open-telemetry/opentelemetry-operator \
 #     --namespace [observability](../../../common/fundamentals/observability/SKILL.md) --create-namespace
 
-# Define instrumentation for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) services
+# Define instrumentation for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
-  name: [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-instrumentation
+  name: [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-instrumentation
   namespace: default
 spec:
   exporter:
@@ -376,8 +376,8 @@ spec:
   sampler:
     type: parentbased_traceidratio
     argument: "0.25"
-  [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):
-    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):0.44b0
+  [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):
+    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):0.44b0
     env:
       - name: OTEL_PYTHON_LOG_CORRELATION
         value: "true"
@@ -404,10 +404,10 @@ spec:
 To instrument a pod, add the annotation:
 
 ```yaml
-# For [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):
+# For [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):
 metadata:
   annotations:
-    instrumentation.opentelemetry.io/inject-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md): "true"
+    instrumentation.opentelemetry.io/inject-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): "true"
 
 # For Node.js:
 metadata:

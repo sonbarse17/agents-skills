@@ -40,7 +40,7 @@ Build Microsoft 365 agents and Teams apps using the ATK CLI.
    - Always wait for completion before running the next step (timeout 120000ms+)
 
 5. **Local Service Startup — Hangs terminal (expected):**
-   - `npm run dev`, `npm start`, `[python](../../Languages/python/SKILL.md) app.py`, `devtunnel host`, etc. will hang — the process keeps running indefinitely
+   - `npm run dev`, `npm start`, `[python](../../Languages/python/python/SKILL.md) app.py`, `devtunnel host`, etc. will hang — the process keeps running indefinitely
    - ALWAYS run as a background process (`isBackground=true`) — NEVER use `isBackground=false` for these commands
    - Do NOT wait for it to "finish" — verify startup by checking output for "listening on port" or tunnel URL
    - If errors appear, read logs, diagnose, fix, restart

@@ -206,7 +206,7 @@ git secrets --add --allowed 'your-api-key-here'
 
 Scan agent-generated output before it reaches version control:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """scan_agent_output.py - Scan AI agent output for leaked secrets."""
 
@@ -769,7 +769,7 @@ EOF
 
 ### Agent Action Logger
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """agent_audit_logger.py - Log all AI agent actions for compliance."""
 
@@ -979,7 +979,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          # [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+          # [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
           if ls tests/*.py &>/dev/null; then
             pip install pytest pytest-cov
             pytest --cov=src --cov-report=json --cov-fail-under=80
@@ -1007,7 +1007,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Bandit ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+      - name: Run Bandit ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
         if: hashFiles('**/*.py') != ''
         run: |
           pip install bandit

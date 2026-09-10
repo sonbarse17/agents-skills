@@ -68,7 +68,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Base Image | Size | Security Surface | Use Case |
 |---|---|---|---|
 | alpine | ~5MB | Minimal (musl libc) | Go, Rust, static binaries |
-| slim (debian) | ~80MB | Reduced (glibc) | Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby |
+| slim (debian) | ~80MB | Reduced (glibc) | Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Ruby |
 | distroless | ~15MB | Minimal (no shell) | Production, security-hardened |
 | ubuntu/debian | ~200MB | Full (apt, tools) | Development, complex deps |
 | scratch | 0MB | Empty | Static Go binaries |
@@ -76,7 +76,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Build Strategy Decision Tree
 - Static binary (Go, Rust): scratch or distroless for smallest size.
-- Interpreted (Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby): slim or distroless.
+- Interpreted (Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Ruby): slim or distroless.
 - Compile-to-binary (Java, .NET): multi-stage JDK builder -> JRE runner.
 - System dependencies needed: alpine with apk or slim with apt.
 - Development: full image with dev tools + mounted source as volume.
@@ -97,7 +97,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Language | Base Image | Multi-Stage | Non-Root | Caching |
 |---|---|---|---|---|
 | Node.js | node:22-alpine | npm ci in builder, copy dist to runner | adduser -D nodeuser | COPY package*.json first |
-| [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12-slim | pip install in builder, copy site-packages | adduser --disabled-password | COPY requirements.txt first |
+| [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12-slim | pip install in builder, copy site-packages | adduser --disabled-password | COPY requirements.txt first |
 | Go | golang:1.22-alpine | go build in builder, copy binary to scratch | USER 65534 | COPY go.mod go.sum first |
 | Rust | rust:1.77-slim | cargo build in builder, copy binary to distroless | USER 1000 | COPY Cargo.toml Cargo.lock first |
 | Java | eclipse-temurin:21-jdk-alpine | mvn package in builder, copy jar to jre | addgroup -S appgroup | COPY pom.xml first |
@@ -288,7 +288,7 @@ USER 65534
 
 ### Step 7: Health Check Patterns
 ```dockerfile
-# HTTP health check (Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go web servers)
+# HTTP health check (Node, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go web servers)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 

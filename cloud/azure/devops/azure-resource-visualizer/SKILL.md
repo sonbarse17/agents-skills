@@ -91,7 +91,7 @@ See [example-diagram.md](./assets/example-diagram.md) for a complete sample arch
 
 **Resource Type Examples:**
 - App Service: Include plan tier (B1, S1, P1v2)
-- Functions: Include runtime (.NET, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Node)
+- Functions: Include runtime (.NET, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Node)
 - Databases: Include tier (Basic, Standard, Premium)
 - Storage: Include redundancy (LRS, GRS, ZRS)
 - VNets: Include address space

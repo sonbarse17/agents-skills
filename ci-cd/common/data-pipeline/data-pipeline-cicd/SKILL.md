@@ -99,9 +99,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.11'
       - run: pip install sqlfluff==3.0.0 sqlfluff-templater-dbt
       - run: sqlfluff lint transform/models/ --dialect snowflake --templater dbt
 
@@ -109,9 +109,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.11'
       - run: pip install dbt-snowflake dbt-core==1.7.0
       - run: dbt deps --project-dir transform
       - run: dbt build --project-dir transform --target ci
@@ -306,7 +306,7 @@ jobs:
       - run: |
           # Simulate migration ordering
           pip install sqlparse
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "
             import os, glob
             migrations = sorted(glob.glob('migrations/*.sql'))
             print(f'Found {len(migrations)} migrations to apply:')
@@ -395,7 +395,7 @@ workflows:
         - run: dbt ls --project-dir $DIR --output json > $DIR/model_list.txt
         - run: |
             echo "## dbt Model Changes"
-            cat $DIR/model_list.txt | [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "
+            cat $DIR/model_list.txt | [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "
             import json, sys
             models = json.load(sys.stdin)
             for m in models:

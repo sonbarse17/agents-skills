@@ -34,7 +34,7 @@ depends_on:
 # ML NLP
 
 ## Quick Start
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from transformers import pipeline
 classifier = pipeline("sentiment-analysis")
 result = classifier("I loved this movie!")
@@ -153,7 +153,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ### Step 1: Task & Framework Selection
 Text classification: HuggingFace Transformers (BERT, RoBERTa). Production: spaCy with transformer wrapper. NER: spaCy (production pipeline, entity merging). Summarization: BART (best quality-size), T5 (flexible), Pegasus (SOTA). QA: BERT (extractive), T5/BART (generative). Translation: MarianMT (per-language pairs), NLLB-200 (many languages).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Framework comparison
 def select_framework(task, production=False, latency_sensitive=False):
     if task in ["classification", "sentiment"]:
@@ -169,7 +169,7 @@ def select_framework(task, production=False, latency_sensitive=False):
 ### Step 2: Preprocessing
 Tokenization: WordPiece (BERT, 30k), BPE (GPT, RoBERTa, 50k), SentencePiece (T5, unigram). Normalization: lowercase for sentiment/classification, preserve case for NER. Max sequence length: 128 (binary classif), 256 (topic classif), 384 (NER), 512 (extractive QA), 1024+ (summarization). Dynamic padding via DataCollatorWithPadding.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from transformers import AutoTokenizer, DataCollatorWithPadding
 
 def setup_tokenizer(model_name="bert-base-uncased", max_length=512):
@@ -191,7 +191,7 @@ data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 ### Step 3: Model Selection
 Encoder-only (BERT, RoBERTa, DeBERTa): bidirectional attention, best for understanding. Decoder-only (GPT, Llama, Mistral): causal attention, best for generation. Encoder-decoder (T5, BART, MarianMT): best for seq2seq. Multilingual: mBERT (104 languages), XLM-R (100 languages), NLLB (200 languages).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def select_model(task, size="base"):
     models = {
         "classification": {"base": "bert-base-uncased", "large": "roberta-large"},
@@ -207,7 +207,7 @@ def select_model(task, size="base"):
 ### Step 4: Fine-Tuning
 Full fine-tuning: update all params. Best quality, highest compute. LoRA: train low-rank matrices (rank 8-64) in attention layers. ~0.1-1% params trainable. Near full FT quality. QLoRA: 4-bit NormalFloat + LoRA. Train 7B-13B on single 24GB GPU.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Full fine-tuning with Trainer
 from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
 
@@ -276,7 +276,7 @@ model = get_peft_model(model, lora_config)
 ### Step 5: Inference Optimization
 Quantization: FP16 (2x GPU), INT8 (4x CPU/GPU), INT4 (8x with GPTQ/AWQ). ONNX Runtime: 2-5x CPU speedup. vLLM: PagedAttention for efficient generation. KV caching for autoregressive models.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from optimum.onnxruntime import ORTModelForSequenceClassification
 from transformers import AutoTokenizer
 
@@ -295,7 +295,7 @@ with torch.no_grad():
 ### Step 6: Evaluation
 Classification: F1 (macro/weighted), ROC AUC. NER: exact match F1, span F1. Summarization: ROUGE-1/2/L, BERTScore. Translation: BLEU, chrF, COMET. Generation: perplexity. QA: exact match, F1.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datasets import load_metric
 
 def compute_metrics(eval_pred, task="classification"):
@@ -342,7 +342,7 @@ def compute_metrics(eval_pred, task="classification"):
 ## Fine-Tuning Patterns — Production Guide
 
 ### Full Fine-Tuning (Encoder Models)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from transformers import Trainer, TrainingArguments
 
@@ -382,7 +382,7 @@ trainer.train()
 ```
 
 ### Parameter-Efficient Fine-Tuning (LoRA)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from peft import LoraConfig, get_peft_model, TaskType
 
 lora_config = LoraConfig(
@@ -407,7 +407,7 @@ model = get_peft_model(model, lora_config)
 ```
 
 ### Task-Specific Layer Fine-Tuning
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # When to use: Similar task to pretraining, small dataset
 
 # Freeze all pretrained layers
@@ -463,7 +463,7 @@ How to evaluate?
 ```
 
 ### Custom Tokenizer Training
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from tokenizers import Tokenizer, models, trainers, pre_tokenizers, decoders
 
 # Build a BPE tokenizer on domain-specific data

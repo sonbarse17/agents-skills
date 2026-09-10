@@ -77,8 +77,8 @@ function correlationMiddleware(req, res, next) {
 ```
 Propagate `x-correlation-id` in every outbound HTTP call and Kafka message header.
 
-### Circuit Breaker ([Python](../../Languages/python/SKILL.md) / `pybreaker`)
-```[python](../../Languages/python/SKILL.md)
+### Circuit Breaker ([Python](../../Languages/python/python/SKILL.md) / `pybreaker`)
+```[python](../../Languages/python/python/SKILL.md)
 import pybreaker
 
 # Opens after 5 failures; resets after 30 s in half-open state

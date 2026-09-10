@@ -38,7 +38,7 @@ Exact user phrases: "write README", "create README", "README file", "README.md",
 ### Input Context
 - Project name and description
 - Project type (CLI tool, library, web app, API server, desktop app, game)
-- Language and framework (Node.js, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Rust, Go, .NET, etc.)
+- Language and framework (Node.js, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Rust, Go, .NET, etc.)
 - Target audience (end users, developers, both)
 - Installation method (npm, pip, cargo, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md), Homebrew, manual)
 - Build and test commands
@@ -343,7 +343,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
 | Use real examples | Don't use foo/bar, use realistic values |
 | Link to detailed docs | README is the front door, not the whole house |
 | Include platform-specific notes | Not everyone uses macOS or Linux |
-| Pin Node.js/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/etc. versions | Users need to know what's compatible |
+| Pin Node.js/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/etc. versions | Users need to know what's compatible |
 
 ## Templates & Tools
 
@@ -403,7 +403,7 @@ Hand off to `[dev-loop-changelog-generator](../changelog-generator/SKILL.md)` fo
 
 ### README Generator
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Dict, List, Optional
 import json
 import subprocess
@@ -551,7 +551,7 @@ class READMEGenerator:
 
 ### README Quality Checker
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 from typing import List, Dict
 

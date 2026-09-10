@@ -72,7 +72,7 @@ behind OpenFeature or is called directly.
 ## Prerequisites & environment
 
 - An OpenFeature SDK for the application's language (Java, .NET,
-  Go, JavaScript/Node.js, [Python](../../Languages/python/SKILL.md), PHP, Ruby SDKs are all part of the
+  Go, JavaScript/Node.js, [Python](../../Languages/python/python/SKILL.md), PHP, Ruby SDKs are all part of the
   CNCF project) — the specification itself defines the API shape every
   language SDK implements, so the concepts transfer directly even though
   package names differ per language.

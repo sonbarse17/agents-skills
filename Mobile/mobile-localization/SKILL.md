@@ -504,13 +504,13 @@ jobs:
 
       - name: Validate iOS placeholder consistency
         run: |
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_placeholders.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_placeholders.py \
             --base ios/en.lproj/Localizable.strings \
             --translations ios/*.lproj/Localizable.strings
 
       - name: Validate [Android](../android/SKILL.md) placeholder consistency
         run: |
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_android_placeholders.py \
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_android_placeholders.py \
             --base [android](../android/SKILL.md)/src/main/res/values/strings.xml \
             --translations [android](../android/SKILL.md)/src/main/res/values-*/strings.xml
 

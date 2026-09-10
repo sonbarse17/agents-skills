@@ -117,7 +117,7 @@ Default to isolation. Joint only when there's a specific reason (e.g., explicit 
 
 User has a CMS with 50k articles, wants a personalized "for you" feed. Walk through 8 steps → generate a Strapi plugin scaffold with multi-action scoring, author diversity, standard filters, async side-effect lane.
 
-### RAG retrieval reranker ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) async)
+### RAG retrieval reranker ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) async)
 
 User's RAG returns top-50 chunks from a vector DB, wants to rerank with a more expensive scorer and return top-5. Single-source pipeline with a scorer chain (cheap retrieval + expensive rerank).
 
@@ -131,9 +131,9 @@ User wants a daily digest that picks the top 10 from the last 24h queue. Offline
 
 ## Upstream
 
-This skill is a single-file adapter for the upstream repository, which ships 5 load-on-demand reference docs and 3 runnable example scaffolds (Strapi v5 / Go / [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) — every one green on its test suite, 9/9 tests total).
+This skill is a single-file adapter for the upstream repository, which ships 5 load-on-demand reference docs and 3 runnable example scaffolds (Strapi v5 / Go / [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) — every one green on its test suite, 9/9 tests total).
 
 - **Upstream:** https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/mturac/recsys-pipeline-architect
 - **Release:** v0.1.0 (MIT)
-- **References:** interfaces in 4 languages (TS/Go/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Rust), multi-action scoring, candidate isolation, filter cookbook (12 patterns), scorer cookbook
+- **References:** interfaces in 4 languages (TS/Go/[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Rust), multi-action scoring, candidate isolation, filter cookbook (12 patterns), scorer cookbook
 - **Cross-platform install:** `npx skills add mturac/recsys-pipeline-architect`

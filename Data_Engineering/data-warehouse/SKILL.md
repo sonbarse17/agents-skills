@@ -76,7 +76,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## Warehouse Platforms
 
 ### Snowflake
-Snowflake is a fully-managed cloud data warehouse with separated compute and storage. Key features: auto-scaling warehouses (XS to 6XL), automatic clustering, zero-copy cloning, time travel (up to 90 days), data sharing, and Snowpark for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Java/Scala processing. Snowflake uses a columnar storage format with automatic micro-partitioning. Compute is billed per second while active; storage is billed per TB per month. Best for: organizations that want minimal operational overhead, need data sharing capabilities, or require [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) support.
+Snowflake is a fully-managed cloud data warehouse with separated compute and storage. Key features: auto-scaling warehouses (XS to 6XL), automatic clustering, zero-copy cloning, time travel (up to 90 days), data sharing, and Snowpark for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Java/Scala processing. Snowflake uses a columnar storage format with automatic micro-partitioning. Compute is billed per second while active; storage is billed per TB per month. Best for: organizations that want minimal operational overhead, need data sharing capabilities, or require [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) support.
 
 ### BigQuery
 BigQuery is Google Cloud's [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) data warehouse. Key features: automatic partitioning and clustering, unlimited storage with no management, BI Engine for cached dashboard queries, BigQuery ML for in-database ML, and slot-based pricing. BigQuery separates compute (slots) from storage. Queries scan data on demand — there is no compute cluster to manage. Pricing is per byte scanned (on-demand) or per slot (flat-rate). Best for: GCP-native organizations, teams that want zero infrastructure management, and ad-hoc analytics at petabyte scale.
@@ -126,7 +126,7 @@ Filter early — push WHERE clauses to subqueries. Avoid SELECT * — specify ne
 | Query performance | Good (auto-clustering) | Excellent (columnar) | Excellent (sort keys) | Very good (Photon) |
 | Concurrency | Multi-cluster | Automatic | Concurrency scaling | Auto-scaling |
 | Data sharing | Yes (native) | Yes (authorized views) | Yes (Spectrum) | Yes (Delta Sharing) |
-| ML integration | Snowpark ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Java/Scala) | BigQuery ML (SQL) | SageMaker integration | Native (MLflow, notebooks) |
+| ML integration | Snowpark ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Java/Scala) | BigQuery ML (SQL) | SageMaker integration | Native (MLflow, notebooks) |
 | Cost predictability | Credit quotas | Flat-rate slots | Node reservations | DBU caps |
 | Open formats | Proprietary | Proprietary | Proprietary | Delta Lake (open) |
 

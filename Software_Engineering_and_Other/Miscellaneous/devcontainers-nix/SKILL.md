@@ -43,7 +43,7 @@ Use this skill when:
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
     "ghcr.io/devcontainers/features/node:1": { "version": "20" },
-    "ghcr.io/devcontainers/features/[python](../../Languages/python/SKILL.md):1": { "version": "3.12" },
+    "ghcr.io/devcontainers/features/[python](../../Languages/python/python/SKILL.md):1": { "version": "3.12" },
     "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):2": {},
     "ghcr.io/devcontainers/features/[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)-helm-minikube:1": {}
   },
@@ -54,7 +54,7 @@ Use this skill when:
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-[python](../../Languages/python/SKILL.md).[python](../../Languages/python/SKILL.md)"
+        "ms-[python](../../Languages/python/python/SKILL.md).[python](../../Languages/python/python/SKILL.md)"
       ],
       "settings": {
         "editor.formatOnSave": true
@@ -223,7 +223,7 @@ curl -fsSL https://get.jetify.com/devbox | bash
 devbox init
 
 # Add packages
-devbox add nodejs@20 [python](../../Languages/python/SKILL.md)@3.12 [postgresql](../../Databases/relational/postgresql/SKILL.md)@16
+devbox add nodejs@20 [python](../../Languages/python/python/SKILL.md)@3.12 [postgresql](../../Databases/relational/postgresql/SKILL.md)@16
 devbox add go@1.22 [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) helm
 
 # Enter shell
@@ -240,7 +240,7 @@ devbox run node --version
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
   "packages": [
     "nodejs@20",
-    "[python](../../Languages/python/SKILL.md)@3.12",
+    "[python](../../Languages/python/python/SKILL.md)@3.12",
     "go@1.22",
     "[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)@1.29",
     "[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-helm@3.14",
@@ -382,7 +382,7 @@ jobs:
 - Use direnv for automatic environment activation
 - Cache Nix store in CI (Cachix or [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) cache)
 - Document setup in README: `devbox shell` or `nix develop`
-- Keep dev environment close to production (same Node/[Python](../../Languages/python/SKILL.md) versions)
+- Keep dev environment close to production (same Node/[Python](../../Languages/python/python/SKILL.md) versions)
 
 ## Troubleshooting
 

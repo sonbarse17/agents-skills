@@ -38,7 +38,7 @@ Senior ML engineer specializing in LLM fine-tuning, parameter-efficient methods,
 ## Core Workflow
 
 1. **Dataset preparation** — Validate and format data; run quality checks before training starts
-   - Checkpoint: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) validate_dataset.py --input data.jsonl` — fix all errors before proceeding
+   - Checkpoint: `[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) validate_dataset.py --input data.jsonl` — fix all errors before proceeding
 2. **Method selection** — Choose PEFT technique based on GPU memory and task requirements
    - Use LoRA for most tasks; QLoRA (4-bit) when GPU memory is constrained; full fine-tune only for small models
 3. **Training** — Configure hyperparameters, monitor loss curves, checkpoint regularly
@@ -61,7 +61,7 @@ Load detailed guidance based on context:
 
 ## Minimal Working Example — LoRA Fine-Tuning with Hugging Face PEFT
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments
 from peft import LoraConfig, get_peft_model, TaskType
@@ -134,7 +134,7 @@ tokenizer.save_pretrained("./lora-adapter")
 ```
 
 **QLoRA variant** — add these lines before loading the model to enable 4-bit quantization:
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from transformers import BitsAndBytesConfig
 
 bnb_config = BitsAndBytesConfig(
@@ -147,7 +147,7 @@ model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_c
 ```
 
 **Merge adapter into base model for deployment:**
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from peft import PeftModel
 
 base = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.bfloat16)

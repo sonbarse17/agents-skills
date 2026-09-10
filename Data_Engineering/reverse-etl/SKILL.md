@@ -216,8 +216,8 @@ sync:
     ignore_deletes: false
 ```
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) idempotency check in custom sync pipeline
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) idempotency check in custom sync pipeline
 import hashlib
 from datetime import datetime, timedelta
 
@@ -506,7 +506,7 @@ sync:
 ```
 
 ### Custom Reverse ETL Pipeline
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # reverse_etl/custom_sync.py
 from datetime import datetime
 import httpx

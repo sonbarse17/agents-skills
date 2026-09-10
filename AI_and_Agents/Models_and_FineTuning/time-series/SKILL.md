@@ -150,7 +150,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ### Step 1: Exploratory Analysis
 Plot the series: identify level, trend, seasonal pattern. STL decomposition (robust=True). Check missing values (interpolate or forward fill). Analyze ACF (MA terms, seasonality) and PACF (AR terms). Stationarity: ADF test (H0=non-stationary) + KPSS test (H0=stationary).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import pandas as pd
 import numpy as np
 from statsmodels.tsa.stattools import adfuller, kpss
@@ -199,7 +199,7 @@ def detect_seasonality(y, freq):
 ### Step 2: Model Selection and Implementation
 ARIMA: univariate, no strong seasonality, 100-1000 obs. SARIMA: clear seasonal pattern, ≥2 cycles. Prophet: multiple seasonalities, holidays, missing data, outliers. LSTM: long sequences (>10K), complex patterns. TFT: interpretable deep learning with attention. Gradient boosting (LightGBM): tabular time series with rich features.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # ARIMA auto-selection
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
@@ -267,7 +267,7 @@ def train_ts_gbdt(train_df, val_df, feature_cols, target_col):
 ### Step 3: Feature Engineering
 Lags: y_{t-1}, y_{t-2}, y_{t-season} for autoregressive behavior. Rolling statistics: mean, std, min, max, slope over windows. Calendar: dayofweek, month, quarter, holiday, hour. Fourier terms: sin/cos at seasonal periods. Exogenous regressors: promotions, pricing, weather.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def create_ts_features(df, date_col, target_col, freq="D"):
     """Create comprehensive time series features."""
     features = df.copy()
@@ -315,7 +315,7 @@ def create_ts_features(df, date_col, target_col, freq="D"):
 ### Step 4: Temporal Cross-Validation
 Expanding window: train on past, test on next block. Sliding window: fixed train size, slides forward. Gap between train and test to prevent autocorrelation leakage.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import TimeSeriesSplit
 
 def temporal_cv(X, y, n_splits=5, gap=0, test_size=None):
@@ -341,7 +341,7 @@ def temporal_cv(X, y, n_splits=5, gap=0, test_size=None):
 ### Step 5: Evaluation Metrics
 MASE: scale-independent, compares to naive forecast. MASE < 1 means model beats naive. sMAPE: symmetric relative error. RMSE: sensitive to large errors. CRPS: full distribution evaluation.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def mase(y_true, y_pred, y_train, seasonality=1):
     """Mean Absolute Scaled Error."""
     naive_error = np.mean(np.abs(np.diff(y_train, n=seasonality)))
@@ -358,7 +358,7 @@ def smape(y_true, y_pred):
 ### Step 6: Prediction Intervals
 ARIMA/SARIMA: built-in normal-based CI. Prophet: uncertainty from MCMC. LSTM: quantile regression with pinball loss. TFT: built-in quantile output. Conformal prediction: distribution-free intervals.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def conformal_prediction(model, X_train, y_train, X_test, alpha=0.1):
     """Conformal prediction for distribution-free intervals."""
     y_train_pred = model.predict(X_train)
@@ -443,7 +443,7 @@ Hand off to [ml-feature-engineering](../../../Data_Engineering/feature-engineeri
 ## Implementation Patterns
 
 ### Prophet Forecasting Pipeline
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
 import pandas as pd
@@ -481,7 +481,7 @@ print(metrics[['horizon', 'mse', 'mae', 'mape']].mean())
 `
 
 ### LSTM Time Series Model
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import torch
 import torch.nn as nn
 

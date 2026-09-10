@@ -34,7 +34,7 @@ Use this skill when:
 ## Prerequisites
 
 - NVIDIA GPU(s) with CUDA 12.1+ (A100/H100 recommended for production)
-- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with pip
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.9+ with pip
 - 40GB+ VRAM for 70B models; 8GB+ for 7B models
 - `nvidia-container-toolkit` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) GPU passthrough
 
@@ -175,7 +175,7 @@ vllm serve <model> \
 pip install vllm
 
 # Run throughput benchmark
-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m vllm.entrypoints.openai.run_batch \
+[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m vllm.entrypoints.openai.run_batch \
   --model meta-llama/Llama-3.1-8B-Instruct \
   --input-file prompts.jsonl \
   --output-file results.jsonl

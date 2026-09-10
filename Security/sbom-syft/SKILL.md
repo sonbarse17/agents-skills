@@ -48,7 +48,7 @@ Syft is a CLI tool and Go library for generating comprehensive Software Bills of
 ## Supported Ecosystems
 
 **Languages & Package Managers:**
-Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
+Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
 
 **Container & System:**
 OCI images, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) images, Singularity, container layers, Linux distributions
@@ -298,8 +298,8 @@ Extract specific package information:
 # Generate detailed SBOM
 syft <target> -o syft-json=full-sbom.json
 
-# Extract only [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) packages
-cat full-sbom.json | jq '.artifacts[] | select(.type == "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)")'
+# Extract only [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) packages
+cat full-sbom.json | jq '.artifacts[] | select(.type == "[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)")'
 
 # Extract packages with specific licenses
 cat full-sbom.json | jq '.artifacts[] | select(.licenses[].value == "MIT")'

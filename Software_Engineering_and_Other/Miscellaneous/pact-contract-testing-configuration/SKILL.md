@@ -60,7 +60,7 @@ gate deploys is covered separately in
 ## Prerequisites & environment
 
 - A Pact client library for the consumer's language (`pact-js`,
-  `pact-[python](../../Languages/python/SKILL.md)`, `pact-jvm`, etc.) added to the consumer's test
+  `pact-[python](../../Languages/python/python/SKILL.md)`, `pact-jvm`, etc.) added to the consumer's test
   dependencies, and a corresponding library on the provider side for
   verification.
 - A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)

@@ -30,7 +30,7 @@ graph TD
 - **Evaluation**: Use metrics like NDCG, Precision@K, and Recall@K for ranking quality. Avoid relying solely on RMSE.
 
 ## Code Snippet: Matrix Factorization (Surprise Library)
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from surprise import Dataset, Reader, SVD
 from surprise.model_selection import cross_validate
 

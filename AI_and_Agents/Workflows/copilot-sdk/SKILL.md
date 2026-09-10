@@ -19,20 +19,20 @@ depends_on:
 
 # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot SDK
 
-Build applications that programmatically interact with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, and .NET.
+Build applications that programmatically interact with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, and .NET.
 
 ## Prerequisites
 
 - **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot CLI** installed and authenticated (`copilot --version`)
 - **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot subscription** (Individual, Business, or Enterprise) — not required for BYOK
-- **Runtime:** Node.js 18+ / [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.8+ / Go 1.21+ / .NET 8.0+
+- **Runtime:** Node.js 18+ / [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.8+ / Go 1.21+ / .NET 8.0+
 
 ## Installation
 
 | Language | Package | Install |
 |----------|---------|---------|
 | Node.js | `@[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` | `npm install @[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` |
-| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `[github](../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` | `pip install [github](../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | `[github](../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` | `pip install [github](../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` |
 | Go | `[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` | `go get [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` |
 | .NET | `[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` | `dotnet add package [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` |
 
@@ -73,9 +73,9 @@ console.log(response?.data.content);
 await client.stop();
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import asyncio
 from copilot import CopilotClient
 
@@ -130,9 +130,9 @@ session.on("session.idle", () => console.log());
 await session.sendAndWait({ prompt: "Tell me a joke" });
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from copilot.generated.session_events import SessionEventType
 
 session = await client.create_session({"model": "gpt-4.1", "streaming": True})
@@ -184,9 +184,9 @@ const session = await client.createSession({
 });
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from copilot.tools import define_tool
 from pydantic import BaseModel, Field
 
@@ -359,9 +359,9 @@ hooks: {
 
 **Output fields:** `suppressOutput`, `errorHandling` (`"retry"` | `"skip"` | `"abort"`), `retryCount`, `userNotification`
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Hook Example
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Hook Example
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async def on_pre_tool_use(input_data, invocation):
     if input_data["toolName"] in ["shell", "bash"]:
         return {"permissionDecision": "deny", "permissionDecisionReason": "Not permitted"}
@@ -565,7 +565,7 @@ provider: { type: "openai", baseUrl: "http://localhost:11434/v1" }
 
 Use `DefaultAzureCredential` to get short-lived bearer tokens for Azure deployments:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from copilot import CopilotClient, ProviderConfig, SessionConfig
 
@@ -905,7 +905,7 @@ client.on("stateChange", (state) => console.log("Changed to:", state));
 | Language | Client | Session Create | Send | Resume | Stop |
 |----------|--------|---------------|------|--------|------|
 | Node.js | `new CopilotClient()` | `client.createSession()` | `session.sendAndWait()` | `client.resumeSession()` | `client.stop()` |
-| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `CopilotClient()` | `client.create_session()` | `session.send_and_wait()` | `client.resume_session()` | `client.stop()` |
+| [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | `CopilotClient()` | `client.create_session()` | `session.send_and_wait()` | `client.resume_session()` | `client.stop()` |
 | Go | `copilot.NewClient(nil)` | `client.CreateSession()` | `session.SendAndWait()` | `client.ResumeSession()` | `client.Stop()` |
 | .NET | `new CopilotClient()` | `client.CreateSessionAsync()` | `session.SendAndWaitAsync()` | `client.ResumeSessionAsync()` | `client.DisposeAsync()` |
 

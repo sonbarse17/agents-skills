@@ -56,7 +56,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 
 | Concept | Description |
 | --- | --- |
-| **Control node** | Machine where Ansible runs (requires [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md); no agent needed on targets) |
+| **Control node** | Machine where Ansible runs (requires [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md); no agent needed on targets) |
 | **Managed node** | Target host reached via SSH (Linux) or WinRM (Windows) |
 | **Inventory** | List of managed nodes (INI, YAML, or dynamic script) |
 | **Playbook** | YAML file defining ordered plays and tasks |

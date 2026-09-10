@@ -55,7 +55,7 @@ gcloud services enable cloudfunctions.googleapis.com cloudbuild.googleapis.com \
 ## Deploy an HTTP Function (Gen2)
 
 ```bash
-# [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) HTTP function
+# [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) HTTP function
 gcloud functions deploy hello-http \
   --gen2 --region=us-central1 --runtime=python312 \
   --trigger-http --allow-unauthenticated \
@@ -112,9 +112,9 @@ gcloud scheduler jobs create http daily-cleanup-job \
   --location=us-central1
 ```
 
-## [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Function Examples
+## [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Function Examples
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # main.py
 import functions_framework
 import base64, json

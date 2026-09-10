@@ -95,7 +95,7 @@ rather than re-deriving them.
 
 2. **Check consumer prefetch (`basic_qos`) and acknowledgment mode** before
    assuming the consumer code itself is slow:
-   ```[python](../../Languages/python/SKILL.md)
+   ```[python](../../Languages/python/python/SKILL.md)
    channel.basic_qos(prefetch_count=20)  # cap in-flight unacked messages per consumer
    channel.basic_consume(queue="orders.fulfillment", on_message_callback=handle, auto_ack=False)
    ```

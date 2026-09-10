@@ -50,7 +50,7 @@ Before activating, verify:
 - Budget constraints (Pay-As-You-Go vs Reserved vs Savings Plans).
 
 ### Output Artifact
-Writes to Terraform HCL, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) YAML, AWS CLI commands, IAM policy JSON, and/or CDK [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+Writes to Terraform HCL, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) YAML, AWS CLI commands, IAM policy JSON, and/or CDK [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 ### Response Format
 HCL, YAML, JSON, or CLI commands with no extraneous explanation.

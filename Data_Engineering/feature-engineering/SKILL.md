@@ -51,13 +51,13 @@ Before activating, verify:
 - Dataset size (rows, columns, total memory usage)
 - ML model type (linear models, tree-based, neural networks)
 - Domain knowledge (business rules, known interactions, feature semantics)
-- Infrastructure ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment, memory constraints, compute budget)
+- Infrastructure ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) environment, memory constraints, compute budget)
 
 ### Output Artifact
-Feature engineering pipeline with encoding, scaling, extraction, interaction, and selection as [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+Feature engineering pipeline with encoding, scaling, extraction, interaction, and selection as [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 ### Response Format
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Feature engineering pipeline
 # Encoding and scaling transforms
 # Feature selection implementation
@@ -146,7 +146,7 @@ Data size and characteristic
 ### Step 1: Categorical Encoding
 One-hot encoding: nominal categories with < 50 unique values. Target encoding: high-cardinality categories, use smoothing to prevent overfitting. Ordinal encoding: ordered categories (education level, satisfaction). Binary encoding: high cardinality (hash categories to binary columns). Count encoding: frequency of each category. Leave-one-out encoding: target encoding without current row.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, LabelEncoder
 from category_encoders import TargetEncoder, BinaryEncoder, CatBoostEncoder
 import pandas as pd
@@ -178,7 +178,7 @@ def encode_categorical(df, cat_cols, target=None):
 ### Step 2: Numerical Scaling
 StandardScaler: zero mean, unit variance (default for most models). MinMaxScaler: bounded [0, 1] (neural networks, distance-based models). RobustScaler: median and IQR (outlier-robust). PowerTransformer: make data more Gaussian (Yeo-Johnson for positive and negative, Box-Cox for strictly positive). QuantileTransformer: uniform or normal distribution output. Fit on training data only, transform train and test.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.preprocessing import StandardScaler, RobustScaler, MinMaxScaler, PowerTransformer
 from scipy.stats import skew
 
@@ -201,7 +201,7 @@ def scale_numerical(df, num_cols):
 ### Step 3: Datetime Features
 Extract components: year, month, day, dayofweek, quarter, hour, minute, is_weekend, is_holiday, dayofyear, weekofyear. Cyclical encoding: sin/cos transform for cyclical features (month, dayofweek, hour). Difference features: days since last event, time between events. Lag features: previous values at t-1, t-7, t-30. Rolling window: rolling mean, std, min, max over window.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def extract_datetime_features(df, date_col):
     dates = pd.to_datetime(df[date_col])
     features = pd.DataFrame(index=df.index)
@@ -237,7 +237,7 @@ def create_lag_features(df, group_col, value_col, lags=[1, 7, 30]):
 ### Step 4: Text Features
 TF-IDF: term frequency-inverse document frequency, best for medium-length documents. CountVectorizer: simple word/phrase counts. N-grams: unigrams + bigrams typically sufficient. Sublinear TF: use sublinear_tf=True for dampened frequency. Vocabulary size: limit to 5000-50000 most frequent terms. Min/max document frequency: filter rare and ubiquitous terms. Word embeddings: pretrained Word2Vec/GloVe/FastText for dense representations.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
 def extract_text_features(texts, max_features=10000):
@@ -271,7 +271,7 @@ def text_to_avg_embeddings(texts, embedding_index, embed_dim=100):
 ### Step 5: Feature Interactions
 Polynomial features: degree 2 (x1*x2, x1^2, x2^2) — sufficient for most cases. Cross features: domain-specific interactions (product_category * season, user_tier * purchase_value). Ratio features: a/b where denominator > 0. Difference features: a - b for comparable columns. Aggregated features: groupby means, max, min, count per category.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.preprocessing import PolynomialFeatures
 
 def create_interactions(df, num_cols, cat_cols, target=None):
@@ -298,7 +298,7 @@ def create_interactions(df, num_cols, cat_cols, target=None):
 ### Step 6: Feature Selection
 Filter methods: correlation (Pearson for linear, Spearman for monotonic), mutual information (non-linear relationships), variance threshold (remove constant features), chi-square (categorical-categorical). Wrapper methods: recursive feature elimination (RFE), forward/backward selection. Embedded methods: L1 regularization (Lasso), tree-based importance (Random Forest, XGBoost). SelectKBest: keep top k features by score.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.feature_selection import (
     SelectKBest, mutual_info_classif, f_classif, RFE,
     VarianceThreshold, SelectFromModel
@@ -337,7 +337,7 @@ def get_feature_importance(X, y, feature_names):
 ### Step 7: Automated Feature Engineering
 Featuretools: deep feature synthesis on relational data. Define entities and relationships, stack transform primitives (day, month, hour, time_since_previous) and aggregation primitives (count, sum, mean, std, max, min, trend, mode). Max depth: 2-3 for most use cases; deeper features overfit. tsfresh: automatic time-series feature extraction (hundreds of features per series). Apply after Featuretools transformation.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import featuretools as ft
 from featuretools.primitives import (
     Count, Sum, Mean, Std, Max, Min, Trend, Mode, Day, Month, Hour,
@@ -362,7 +362,7 @@ def automated_feature_engineering(entities, relationships, target_entity, max_de
 ### Step 8: Date-Only Features
 For date columns without time component, extract: days since epoch, days until next event, relative to a reference date. Difference between multiple date columns yields duration features (e.g., order_to_shipping_days). For subscription/billing: days since last activity, days until renewal, account age.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def date_difference_features(df, date_col_a, date_col_b):
     dates_a = pd.to_datetime(df[date_col_a])
     dates_b = pd.to_datetime(df[date_col_b])
@@ -372,7 +372,7 @@ def date_difference_features(df, date_col_a, date_col_b):
 
 ### Step 9: Target Encoding in Cross-Validation
 Target encoding leaks target information if applied to full dataset before splitting. Always use within cross-validation:
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import KFold
 import numpy as np
 
@@ -424,7 +424,7 @@ def target_encode_cv_classification(df, cat_col, target, n_folds=5, smoothing=10
 ## Production Considerations
 
 ### Feature Store Integration
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Feast feature view with engineered features
 from feast import FeatureView, Feature, Field
 from feast.types import Float32, Int64, String
@@ -527,7 +527,7 @@ feature_engineering:
 ## Implementation Patterns
 
 ### Feature Engineering Pipeline
-`[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import FunctionTransformer
 import numpy as np
@@ -562,7 +562,7 @@ pipeline = Pipeline([
 `
 
 ### Text Feature Extraction
-`[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 import spacy

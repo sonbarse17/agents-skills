@@ -247,8 +247,8 @@ Run multiple security tools and aggregate results in a single review:
 #!/bin/bash
 # Run comprehensive security scan
 
-# [Python](../../Languages/python/SKILL.md) security
-bandit -r . -f json | reviewdog -f=bandit -name="[Python](../../Languages/python/SKILL.md) SAST" -reporter=[github](../../../ci-cd/github-actions/other/github/SKILL.md)-pr-review &
+# [Python](../../Languages/python/python/SKILL.md) security
+bandit -r . -f json | reviewdog -f=bandit -name="[Python](../../Languages/python/python/SKILL.md) SAST" -reporter=[github](../../../ci-cd/github-actions/other/github/SKILL.md)-pr-review &
 
 # Secrets detection
 gitleaks detect --report-format json | reviewdog -f=gitleaks -name="Secret Scan" -reporter=[github](../../../ci-cd/github-actions/other/github/SKILL.md)-pr-review &
@@ -372,7 +372,7 @@ runner:
   bandit:
     cmd: bandit -r . -f json
     format: bandit
-    name: [Python](../../Languages/python/SKILL.md) Security
+    name: [Python](../../Languages/python/python/SKILL.md) Security
     level: warning
 
   semgrep:

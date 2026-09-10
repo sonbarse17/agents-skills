@@ -103,7 +103,7 @@ Key pages to review:
 | Language | Best For | SDK |
 |----------|----------|-----|
 | **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)** (recommended) | General MCP servers, broad compatibility | `@modelcontextprotocol/sdk` |
-| **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)** | Data/ML pipelines, FastAPI integration | `mcp` (FastMCP) |
+| **[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)** | Data/ML pipelines, FastAPI integration | `mcp` (FastMCP) |
 | **C#/.NET** | Azure/Microsoft ecosystem, enterprise | `Microsoft.Mcp.Core` |
 
 **Transport Selection:**
@@ -121,9 +121,9 @@ Key pages to review:
 - **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk/main/README.md`
 - [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) patterns and examples
 
-**For [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):**
-- **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk/main/README.md`
-- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Guide](./reference/python_mcp_server.md) - [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) patterns and examples
+**For [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):**
+- **[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-sdk/main/README.md`
+- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Guide](./reference/python_mcp_server.md) - [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) patterns and examples
 
 **For C#/.NET (Microsoft ecosystem):**
 - [🔷 Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) - C# patterns, Azure MCP architecture, command hierarchy
@@ -144,7 +144,7 @@ Prioritize comprehensive API coverage. List endpoints to implement, starting wit
 
 See language-specific guides for project setup:
 - [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - Project structure, package.json, tsconfig.json
-- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Guide](./reference/python_mcp_server.md) - Module organization, dependencies
+- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Guide](./reference/python_mcp_server.md) - Module organization, dependencies
 - [🔷 Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) - C# project structure, command hierarchy
 
 #### 2.2 Implement Core Infrastructure
@@ -160,7 +160,7 @@ Create shared utilities:
 For each tool:
 
 **Input Schema:**
-- Use Zod ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)) or Pydantic ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+- Use Zod ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)) or Pydantic ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 - Include constraints and clear descriptions
 - Add examples in field descriptions
 
@@ -204,8 +204,8 @@ Review for:
 - Run `npm run build` to verify compilation
 - Test with MCP Inspector: `npx @modelcontextprotocol/inspector`
 
-**[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):**
-- Verify syntax: `[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m py_compile your_server.py`
+**[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):**
+- Verify syntax: `[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m py_compile your_server.py`
 - Test with MCP Inspector
 
 See language-specific guides for detailed testing approaches and quality checklists.
@@ -281,12 +281,12 @@ Load these resources as needed during development:
   - Testing infrastructure with Bicep templates
 
 ### SDK Documentation (Load During Phase 1/2)
-- **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk/main/README.md`
+- **[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-sdk/main/README.md`
 - **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk/main/README.md`
 - **Microsoft MCP SDK**: See [Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) for C#/.NET
 
 ### Language-Specific Implementation Guides (Load During Phase 2)
-- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Implementation Guide](./reference/python_mcp_server.md) - Complete [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/FastMCP guide with:
+- [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Implementation Guide](./reference/python_mcp_server.md) - Complete [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/FastMCP guide with:
   - Server initialization patterns
   - Pydantic model examples
   - Tool registration with `@mcp.tool`

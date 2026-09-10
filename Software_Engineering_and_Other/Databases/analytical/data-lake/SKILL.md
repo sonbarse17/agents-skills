@@ -504,7 +504,7 @@ Lake Table Format Selection
 ## Implementation Patterns
 
 ### Iceberg Table Maintenance
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # data_lake/iceberg_maintenance.py
 from pyspark.sql import SparkSession
 

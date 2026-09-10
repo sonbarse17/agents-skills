@@ -128,7 +128,7 @@ single agent, and how to keep hand-offs between agents reliable.
    and addresses the delegated sub-task before passing it downstream or
    integrating it, rather than assuming compliance.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def supervisor_step(task):
        plan = supervisor_llm.plan(task)
        results = {}

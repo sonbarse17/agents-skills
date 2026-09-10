@@ -455,7 +455,7 @@ ORDER BY total_amount DESC
 ```
 
 ### Graph Embedding with Node2Vec
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # graph_database/node2vec_embedding.py
 from node2vec import Node2Vec
 import networkx as nx

@@ -146,7 +146,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ## Workflow
 
 ### Step 1: Metric Selection
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.metrics import (
     accuracy_score, balanced_accuracy_score,
     precision_score, recall_score, f1_score,
@@ -176,7 +176,7 @@ def select_metrics(y_true, y_pred, y_prob, task_type, imbalance_ratio=None):
 ```
 
 ### Step 2: Cross-Validation Strategy
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import (
     KFold, StratifiedKFold, GroupKFold,
     TimeSeriesSplit, RepeatedKFold, cross_validate,
@@ -196,7 +196,7 @@ def get_cv_strategy(data_type, n_splits=5, n_repeats=3):
 ```
 
 ### Step 3: Bias-Variance Diagnosis
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def diagnose_bias_variance(train_scores, val_scores, metric_name="accuracy"):
     train_mean = np.mean(train_scores)
     val_mean = np.mean(val_scores)
@@ -226,7 +226,7 @@ def diagnose_bias_variance(train_scores, val_scores, metric_name="accuracy"):
 ```
 
 ### Step 4: Confidence Intervals
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def bootstrap_ci(scores, n_bootstrap=10000, ci=0.95):
     """Bootstrap confidence interval for metric."""
     bootstrapped = np.random.choice(scores, (n_bootstrap, len(scores)), replace=True)
@@ -237,7 +237,7 @@ def bootstrap_ci(scores, n_bootstrap=10000, ci=0.95):
 ```
 
 ### Step 5: Statistical Significance
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from scipy import stats
 
 def compare_models(scores_a, scores_b, paired=True):
@@ -271,7 +271,7 @@ def mcnemar_test(y_true, pred_a, pred_b):
 ```
 
 ### Step 6: Learning Curves
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import learning_curve
 
 def plot_learning_curve(model, X, y, cv, train_sizes):
@@ -307,7 +307,7 @@ def plot_learning_curve(model, X, y, cv, train_sizes):
 ## Production Considerations
 
 ### Threshold Tuning
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def find_optimal_threshold(y_val, y_prob, metric="f1"):
     precision, recall, thresholds = precision_recall_curve(y_val, y_prob)
     if metric == "f1":
@@ -378,7 +378,7 @@ def find_optimal_threshold(y_val, y_prob, metric="f1"):
 | Stratified Group K-Fold | Grouped + imbalanced | Medical, user-level classification | Rare combinations hard to find |
 
 ### CV Implementation — Time Series Split
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import TimeSeriesSplit
 
 def evaluate_timeseries(X, y, model_fn, n_splits=5):
@@ -400,7 +400,7 @@ def evaluate_timeseries(X, y, model_fn, n_splits=5):
 ## Statistical Significance for Model Comparison
 
 ### McNemar's Test (paired, classification)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from scipy.stats import chi2
 
 def mcnemar_test(y_true, y_model_a, y_model_b):
@@ -417,7 +417,7 @@ def mcnemar_test(y_true, y_model_a, y_model_b):
 ```
 
 ### Paired Bootstrap (any metric)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def paired_bootstrap_test(y_true, pred_a, pred_b, metric_fn,
                           n_bootstrap=10000, alpha=0.05):
     """Test if model A is significantly different from model B."""
@@ -443,7 +443,7 @@ def paired_bootstrap_test(y_true, pred_a, pred_b, metric_fn,
 
 ## Learning Curve Template
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 
@@ -527,7 +527,7 @@ Hand off to ml-[experiment-tracking](../../../Data_Engineering/experiment-tracki
 ## Implementation Patterns
 
 ### Cross-Validation with Metrics
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import StratifiedKFold, cross_validate
 from sklearn.metrics import (
     make_scorer, accuracy_score, precision_score,
@@ -559,7 +559,7 @@ for metric in scoring:
 `
 
 ### Model Comparison Report
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import matplotlib.pyplot as plt
 from sklearn.metrics import RocCurveDisplay, PrecisionRecallDisplay
 
@@ -584,7 +584,7 @@ plt.savefig('model_comparison.png')
 - **GPU-accelerated metrics**: Use CuPy/RAPIDS for large-scale metric computation. Speed up bootstrapped confidence intervals.
 
 ### Bootstrap Confidence Intervals
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.utils import resample
 
 def bootstrap_ci(y_true, y_pred, metric_fn, n_iterations=1000, ci=0.95):

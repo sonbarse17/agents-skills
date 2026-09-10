@@ -108,7 +108,7 @@ permit (
 ) when {
     context.command_pattern in [
         "git", "npm", "pnpm", "yarn", "ls", "cat", "pwd",
-        "echo", "test", "node", "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "make"
+        "echo", "test", "node", "[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)", "make"
     ]
 };
 
@@ -246,9 +246,9 @@ The receipt format has four independent implementations today:
 | Implementation | Language | Use case |
 |----------------|----------|----------|
 | [protect-mcp](https://www.npmjs.com/package/protect-mcp) | [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) | Claude Code, Cursor, MCP hosts |
-| [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Google Agent Development Kit |
+| [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Google Agent Development Kit |
 | [sb-runtime](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
-| APS governance hook | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | CrewAI, LangChain |
+| APS governance hook | [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | CrewAI, LangChain |
 
 A receipt produced by any of them verifies against
 [`@veritasacta/verify`](https://www.npmjs.com/package/@veritasacta/verify).
@@ -273,7 +273,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - name: Run governed agent
-        run: [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/run_agent.py > receipts.jsonl
+        run: [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/run_agent.py > receipts.jsonl
       - name: Verify receipt chain
         run: npx @veritasacta/verify receipts.jsonl
 ```

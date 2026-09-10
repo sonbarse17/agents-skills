@@ -35,7 +35,7 @@ For cron syntax, DST pitfalls, locking, and [Kubernetes](../../../containers-orc
 
 A scheduler that fires a job that's already running, or re-fires after a timeout that wasn't
 actually a hang, needs the job itself to tolerate a duplicate execution. This is the same
-idempotency discipline from `[scripting-automation](../../Languages/scripting-automation/SKILL.md)`, but scheduled jobs need it more: nobody is
+idempotency discipline from `[scripting-automation](../../Languages/shell/scripting-automation/SKILL.md)`, but scheduled jobs need it more: nobody is
 present to notice a duplicate run happened.
 
 - **Key the job's effect on the scheduled time or a run ID**, not on "whatever the current time

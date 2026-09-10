@@ -368,7 +368,7 @@ policies:
     allowed_bases:
       - alpine:3.18
       - ubuntu:22.04
-      - [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.11-slim
+      - [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.11-slim
 ```
 
 ## Common Issues

@@ -38,7 +38,7 @@ Use this skill when:
 - AWS CLI v2 installed and configured
 - IAM policy allowing `secretsmanager:*` actions (or scoped permissions)
 - For rotation: Lambda execution role and VPC access to target services
-- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with `boto3` for SDK examples
+- [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.9+ with `boto3` for SDK examples
 
 ## Secret Creation and Management
 
@@ -119,7 +119,7 @@ aws secretsmanager describe-secret \
 
 ### Lambda Rotation Function
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 """rotation_function.py - Custom rotation Lambda for database credentials."""
 
 import boto3
@@ -299,9 +299,9 @@ resource "aws_secretsmanager_secret_rotation" "db" {
 
 ## Application Integration
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import boto3
 import json
 from functools import lru_cache

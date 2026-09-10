@@ -175,7 +175,7 @@ revisits.
    # Example: a scheduled CI job that fails if any exception's expiry has passed
    python3 scripts/check_exception_expiry.py --registry exceptions/ --fail-on-expired
    ```
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # scripts/check_exception_expiry.py (illustrative, not production code)
    import sys, yaml, datetime, pathlib
 

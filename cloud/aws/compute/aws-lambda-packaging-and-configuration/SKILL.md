@@ -81,7 +81,7 @@ function nobody scoped down after the initial "just get it working" deploy.
    binaries compiled for the target architecture) or want to reuse an
    existing container build/scan pipeline:
    ```dockerfile
-   FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12
+   FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12
    COPY requirements.txt ${LAMBDA_TASK_ROOT}
    RUN pip install -r requirements.txt -t ${LAMBDA_TASK_ROOT}
    COPY app.py ${LAMBDA_TASK_ROOT}
@@ -239,12 +239,12 @@ function nobody scoped down after the initial "just get it working" deploy.
 
 ## Worked example
 
-**Scenario:** An image-processing function ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Pillow, with native
+**Scenario:** An image-processing function ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Pillow, with native
 image-codec bindings) needs to resize uploaded images from S3 and write
 results to DynamoDB, with low p99 latency for a user-facing upload flow.
 
 Packaging: native Pillow dependencies make a container image the better
-fit, built `FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`, pushed to ECR as
+fit, built `FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.12`, pushed to ECR as
 shown in step 1.
 
 Configuration:

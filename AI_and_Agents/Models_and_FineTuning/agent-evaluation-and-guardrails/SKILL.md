@@ -110,7 +110,7 @@ them as complementary, not interchangeable.
    pass/fail (or score) per case and an aggregate summary, so a prompt or
    model change can be compared before/after in one command.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def run_eval_suite(cases, agent_fn):
        results = []
        for case in cases:
@@ -141,7 +141,7 @@ them as complementary, not interchangeable.
    - A final-output check for disallowed content categories relevant to
      your domain (PII leakage, unapproved claims, off-brand tone).
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def guardrail_check(output, context):
        if not is_valid_json_schema(output, EXPECTED_SCHEMA):
            return GuardrailResult(block=True, reason="schema_violation")

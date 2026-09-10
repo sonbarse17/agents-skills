@@ -65,7 +65,7 @@ Load detailed guidance based on context:
 
 The snippet below demonstrates the core MUST DO constraints: indexed fields, `select_related`, serializer validation, and endpoint permissions.
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # models.py
 from django.db import models
 
@@ -119,7 +119,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user)
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # tests.py
 from rest_framework.test import APITestCase
 from rest_framework import status

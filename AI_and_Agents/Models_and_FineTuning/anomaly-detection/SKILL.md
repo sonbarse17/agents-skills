@@ -36,7 +36,7 @@ depends_on:
 # ML Anomaly Detection
 
 ## Quick Start
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.ensemble import IsolationForest
 model = IsolationForest(contamination=0.05).fit(X_train)
 predictions = model.predict(X_test)
@@ -168,7 +168,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Data Characterization
 Low-dimensional tabular (<50 features): statistical methods (Z-score, IQR), LOF (local outlier detection), Isolation Forest (ensemble). High-dimensional tabular (>50 features): Isolation Forest (scales well), autoencoders (non-linear compression), HBOS (fast feature-independent). Time-series data: STL decomposition + detect anomalies in residuals, Twitter's AnomalyDetection approach, LSTM autoencoder for sequential patterns.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def characterize_data(df):
     profile = {
         "n_samples": len(df),
@@ -185,7 +185,7 @@ def characterize_data(df):
 ### Step 2: Statistical Baselines
 Z-score: assumes normal distribution. Flag if |Z| > 3 (99.7% confidence threshold). Modified Z-score uses median and MAD — robust to extreme outliers. Threshold 3.5 is standard. IQR: flag if value outside [Q1 - 1.5*IQR, Q3 + 1.5*IQR]. Non-parametric. Grubbs' test: for univariate data, test one outlier at a time. Generalized ESD for sequential detection.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from scipy import stats
 import numpy as np
 
@@ -223,7 +223,7 @@ def mahalanobis_outliers(X, threshold=None):
 ### Step 3: Method Selection and Implementation
 Isolation Forest: best general-purpose default. Ensemble of random trees — anomalies require fewer partitions. Fast (O(n log n)), scalable to high dimensions. LOF: compares local density to neighbors. Best for datasets with varying densities. One-class SVM: maximal margin boundary, best for novelty detection. Autoencoder: learn compressed representation, anomalies have high reconstruction error.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.svm import OneClassSVM
@@ -276,7 +276,7 @@ def autoencoder_detection(X, encoding_dim=0.2, epochs=50, contamination=0.05):
 
 ### Step 4: Ensemble Anomaly Detection
 Combine multiple detectors for robustness. Average scores, use majority voting, or require consensus (2 of 3 agree):
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def ensemble_anomaly_detection(X, contamination=0.05):
     results = {}
 
@@ -309,7 +309,7 @@ def ensemble_anomaly_detection(X, contamination=0.05):
 ### Step 5: Parameter Configuration
 Contamination rate (nu): expected proportion of anomalies. If unknown: set auto, set 0.01-0.05 for most real-world systems. Threshold selection: statistical (3 std for Z-score), percentile (99th or 99.5th), elbow method, domain expertise.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def estimate_contamination(scores, method="elbow"):
     """Estimate contamination rate from anomaly scores."""
     sorted_scores = np.sort(scores)
@@ -331,7 +331,7 @@ def estimate_contamination(scores, method="elbow"):
 ### Step 6: Evaluation
 Labeled data: precision, recall, F1, PR curve, ROC AUC. Partially labeled: evaluate on labeled subset, track precision@k. Unlabeled: precision at k (manual inspect top-k), overlap between methods.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.metrics import precision_recall_curve, auc, average_precision_score
 
 def evaluate_anomaly_detection(y_true, anomaly_scores):
@@ -361,7 +361,7 @@ def precision_at_k(y_true, anomaly_scores, k):
 ### Step 7: Real-Time Pipeline
 Batch mode: run detection every N minutes. Streaming: sliding window with incremental update. Buffer: maintain sliding window of recent N data points.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import pandas as pd
 from collections import deque
 
@@ -466,7 +466,7 @@ Hand off to devops-[observability](../../../observability-monitoring-logging/com
 ## Implementation Patterns
 
 ### Isolation Forest for Anomaly Detection
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.model_selection import train_test_split
@@ -486,7 +486,7 @@ predictions = model.predict(X_test)  # 1 = normal, -1 = anomaly
 `
 
 ### Autoencoder-Based Anomaly Detection
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import tensorflow as tf
 from tensorflow.keras import layers, Model
 
@@ -519,7 +519,7 @@ class AnomalyAutoencoder(Model):
 - **Batch streaming**: For time-series, use sliding window training. Retrain only when drift is detected.
 
 ### Inference Speed
-- **ONNX export**: Convert trained models to ONNX for faster inference. Achieve 2-5x speedup over native [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+- **ONNX export**: Convert trained models to ONNX for faster inference. Achieve 2-5x speedup over native [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 - **Quantization**: Use int8 quantization for edge deployment. Reduces model size 4x with minimal accuracy loss.
 - **Approximate nearest neighbor**: Replace exact distance computation with ANN (Annoy, FAISS). Essential for real-time LOF at scale.
 

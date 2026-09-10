@@ -118,7 +118,7 @@ await resend.emails.send({
 });
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # SES with boto3
 import boto3
 from botocore.exceptions import ClientError
@@ -518,7 +518,7 @@ async function testEmailDelivery() {
 
 - Use MailHog in CI for integration testing without real email delivery
 - Test all 10+ email clients with Email on Acid or Litmus before going live
-- Validate SPF/DKIM/DMARC records with `checkdmarc` [Python](../../../Languages/python/SKILL.md) library in CI
+- Validate SPF/DKIM/DMARC records with `checkdmarc` [Python](../../../Languages/python/python/SKILL.md) library in CI
 - Load test: send 10K emails through queue, measure throughput and worker utilization
 - A/B test subject lines and sender names for open rate optimization
 

@@ -287,7 +287,7 @@ Chaining 5+ exclusive gateways in sequence makes the diagram unreadable. Fix: ex
 |----------|-----------------|-----|-----------|------------|------|
 | Camunda 8 | Full | Yes | Java, JS, Go | SaaS/Self-hosted | Free + Enterprise |
 | Flowable | Full | Yes | Java, Spring | Self-hosted | Free + Enterprise |
-| Temporal | Workflow engine | No | Java, Go, TS, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Self-hosted/SaaS | Free + Cloud |
+| Temporal | Workflow engine | No | Java, Go, TS, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Self-hosted/SaaS | Free + Cloud |
 | Zeebe (Camunda) | Full | Yes | Java, Go, JS | SaaS/Orchestration | Included in Camunda 8 |
 | jBPM | Full | Yes | Java | Self-hosted | Open source |
 | IBM BPM | Full | Limited | Java | Self-hosted | Commercial |
@@ -302,7 +302,7 @@ Map each BPMN activity to the correct automation implementation type:
 | Service Task | API call / microservice | REST, gRPC, GraphQL call | Deterministic, stateless operations |
 | Business Rule Task | DMN decision | Decision table evaluation | Complex business logic with explicit rules |
 | User Task | Human workflow | Task list, form, approval UI | Requires human judgment or input |
-| Script Task | Inline code execution | JavaScript, Groovy, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Simple transformations, data mapping |
+| Script Task | Inline code execution | JavaScript, Groovy, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Simple transformations, data mapping |
 | Send Task | Outbound message | Email, SMS, webhook, event | Notification or external system trigger |
 | Receive Task | Inbound event listener | Message queue, webhook, polling | Waiting for external system response |
 | Manual Task | No automation | Documented procedure | Cannot or should not be automated |

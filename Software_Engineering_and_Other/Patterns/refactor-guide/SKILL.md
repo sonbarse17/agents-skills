@@ -374,7 +374,7 @@ describe('processOrder', () => {
 
 ### Code Smell Detector
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import ast
 import re
 from typing import List, Dict, Optional
@@ -518,7 +518,7 @@ class PythonSmellDetector:
 
 ### Strangler Fig Pattern Implementation
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import Dict, Any, Callable, Optional
 import re
 

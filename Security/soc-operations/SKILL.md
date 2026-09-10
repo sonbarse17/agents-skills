@@ -134,7 +134,7 @@ Role: Deep investigation of confirmed incidents. Scope determination, containmen
 
 **Tier 3 — Senior Investigator / Threat Hunter:**
 Role: Advanced forensics, reverse engineering, threat hunting, detection engineering, tool tuning.
-- Skills: Memory analysis, reverse engineering, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripting, threat intel, malware analysis
+- Skills: Memory analysis, reverse engineering, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripting, threat intel, malware analysis
 - Ratio: 10-15% of SOC headcount
 - Metrics: Threat hunting hypotheses tested, detection rules created, investigation depth
 - Escalation: CISO / Legal / PR for major incidents
@@ -381,7 +381,7 @@ Handover To: Analyst Name
 | SLA Compliance | % of incidents handled within SLA | > 95% | Incidents within SLA / Total incidents |
 
 **SOC Dashboard:**
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # SOC Dashboard Data Model
 soc_dashboard = {
     "current_alerts": {

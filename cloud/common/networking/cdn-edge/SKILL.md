@@ -81,7 +81,7 @@ Terraform HCL for CDN resources, provider config (CloudFront, Fastly VCL, Cloudf
 | Feature | CloudFront Functions | Lambda@Edge | Cloudflare Workers |
 |---|---|---|---|
 | Max execution | 50μs | 5s | 50ms |
-| Runtime | JS | Node.js, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | JS, Wasm |
+| Runtime | JS | Node.js, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | JS, Wasm |
 | Network access | None | Full (VPC, DB) | Fetch API |
 | Cold start | No | Yes | No |
 | Use case | Header rewrite, URL redirect | Auth, A/B test | Full edge apps |
@@ -297,7 +297,7 @@ export default {
 ```
 
 ### Step 5: Signed URLs for Private Content
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # generate_signed_url.py
 import boto3
 from botocore.signers import CloudFrontSigner

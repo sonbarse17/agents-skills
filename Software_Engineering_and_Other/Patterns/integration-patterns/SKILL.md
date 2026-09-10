@@ -294,8 +294,8 @@ Integration: connecting systems, message routing, protocol transformation. Orche
 
 ## Code Examples
 
-### Anti-Corruption Layer ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Anti-Corruption Layer ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, asdict
 import json
@@ -361,8 +361,8 @@ class OrderService:
         return asdict(modern)
 ```
 
-### Message Router with Content-Based Routing ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Message Router with Content-Based Routing ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import json, enum
 from typing import Callable
 
@@ -413,8 +413,8 @@ msg = Message({"amount": 15000, "region": "domestic", "risk_score": 0.3})
 print(router.route(msg))  # ['order-fulfillment-premium']
 ```
 
-### Retry with Exponential Backoff ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Retry with Exponential Backoff ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import time, random
 from functools import wraps
 
@@ -445,8 +445,8 @@ def call_downstream_service(url):
     return response.json()
 ```
 
-### Schema Registry Compatibility Check ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Schema Registry Compatibility Check ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 class SchemaRegistry:
     def __init__(self):
         self.schemas = {}

@@ -78,7 +78,7 @@ full per-seat licensing for that purpose alone.
   needs a live cloud connection or a deployed environment; both scan source
   statically.
 - **Checkov** (`pip install checkov` or the container image
-  `bridgecrew/checkov`) — [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-based, broadest format coverage
+  `bridgecrew/checkov`) — [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-based, broadest format coverage
   (Terraform, [CloudFormation](../../../cloudformation/other/cloudformation/SKILL.md), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
   Framework, Dockerfile, and plain YAML/JSON for some checks).
 - **tfsec** (a standalone Go binary, or via `brew install tfsec` /

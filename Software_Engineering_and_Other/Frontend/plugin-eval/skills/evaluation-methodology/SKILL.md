@@ -371,7 +371,7 @@ Builds the local corpus index at `~/.plugineval/corpus`. Required before Elo ran
 
 Reproduce the composite score offline (pre-[commit](../../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook, CI gate):
 
-```[python](../../../../Languages/python/SKILL.md)
+```[python](../../../../Languages/python/python/SKILL.md)
 def composite_score(dimension_scores: dict, anti_pattern_count: int = 0) -> float:
     """Replicate the PluginEval composite formula."""
     WEIGHTS = {

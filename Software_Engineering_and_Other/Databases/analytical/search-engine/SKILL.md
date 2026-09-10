@@ -483,7 +483,7 @@ Search Engine Selection
 ```
 
 ### Search Query with Hybrid Scoring
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # search_engine/hybrid_search.py
 class HybridSearch:
     def __init__(self, client, index: str):

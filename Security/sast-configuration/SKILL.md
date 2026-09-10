@@ -34,7 +34,7 @@ This skill provides comprehensive guidance for setting up and configuring SAST t
 ### 1. Semgrep Configuration
 
 - Custom rule creation with pattern matching
-- Language-specific security rules ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), JavaScript, Go, Java, etc.)
+- Language-specific security rules ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), JavaScript, Go, Java, etc.)
 - CI/CD integration ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md))
 - False positive tuning and rule optimization
 - Organizational policy enforcement
@@ -76,7 +76,7 @@ semgrep --config=auto --error
 
 # CodeQL CLI setup
 gh extension install [github](../../ci-cd/github-actions/other/github/SKILL.md)/gh-codeql
-codeql database create mydb --language=[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+codeql database create mydb --language=[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 ```
 
 ## Integration Patterns
@@ -136,7 +136,7 @@ codeql database create mydb --language=[python](../../Software_Engineering_and_O
 ### New Project Setup
 
 ```bash
-./scripts/run-sast.sh --setup --language [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) --tools semgrep,sonarqube
+./scripts/run-sast.sh --setup --language [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) --tools semgrep,sonarqube
 ```
 
 ### Custom Rule Development

@@ -123,7 +123,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ## Workflow
 
 ### Step 1: Choose Feature Store
-- **Feast**: Open-source, self-hosted, batch features. Supports Redis, DynamoDB. [Python](../../Languages/python/SKILL.md) SDK.
+- **Feast**: Open-source, self-hosted, batch features. Supports Redis, DynamoDB. [Python](../../Languages/python/python/SKILL.md) SDK.
 - **Tecton**: Managed, declarative, streaming + batch, built-in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Higher cost.
 - **SageMaker Feature Store**: Native AWS integration, good for SageMaker workflows.
 - **Vertex AI Feature Store**: GCP-native, BigQuery-backed.
@@ -140,7 +140,7 @@ feature_repo/
 ```
 
 ### Step 3: Configure Entities and Sources
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # entities.py
 from feast import Entity
 
@@ -161,7 +161,7 @@ driver_stats_source = FileSource(
 ```
 
 ### Step 4: Define Feature Views
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # feature_views.py
 from feast import FeatureView, Feature
 from datetime import timedelta
@@ -200,7 +200,7 @@ driver_stream_fv = StreamFeatureView(
 ```
 
 ### Step 5: Point-in-Time Join
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from feast import FeatureStore
 
 store = FeatureStore(repo_path='.')
@@ -214,7 +214,7 @@ training_df = store.get_historical_features(
 ```
 
 ### Step 6: Online Serving
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Online feature retrieval
 feature_vector = store.get_online_features(
     features=['driver_stats:avg_daily_trips', 'driver_stats:avg_rating'],
@@ -230,7 +230,7 @@ store.materialize_incremental(end_date=datetime.now())
 ```
 
 ### Step 7: Feature Validation
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from feast import Feature
 from feast.infra.offline_stores.bigquery_source import BigQuerySource
 from great_expectations.core import ExpectationSuite
@@ -342,7 +342,7 @@ GROUP BY l.user_id, l.event_timestamp, l.label
 ```
 
 ### Pattern: Sequential PIT (Multiple Feature Versions)
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # When feature computation changed (e.g., feature v2 deployed on date D)
 # Use feature v1 for events before D, feature v2 for events after D
 
@@ -355,7 +355,7 @@ def get_feature_at_time(user_id: str, event_time: datetime):
 ```
 
 ### Pattern: Streaming PIT Join
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # For real-time features (e.g., current session activity)
 # Use Kafka + Flink: join label event with latest feature state
 
@@ -374,7 +374,7 @@ joined = label_stream.join(feature_stream)
 ## Feature Validation Templates
 
 ### Basic Validation — Batch Feature Pipeline
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import pandera as pa
 from datetime import datetime, timedelta
 
@@ -399,7 +399,7 @@ def validate_features(df: pd.DataFrame) -> pd.DataFrame:
 ```
 
 ### Distribution Shift Detection
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from scipy.stats import ks_2samp
 import numpy as np
 
@@ -503,7 +503,7 @@ For model training with feature store integration, hand off to `ml-[ml-pipeline]
 ## Implementation Patterns
 
 ### Feast Feature Definition
-`[python](../../Languages/python/SKILL.md)
+`[python](../../Languages/python/python/SKILL.md)
 from datetime import timedelta
 from feast import Entity, FeatureView, Field, FileSource, ValueType
 from feast.types import Float32, Int64, String
@@ -535,7 +535,7 @@ transaction_features = FeatureView(
 `
 
 ### Feature Serving API
-`[python](../../Languages/python/SKILL.md)
+`[python](../../Languages/python/python/SKILL.md)
 from feast import FeatureStore
 import pandas as pd
 

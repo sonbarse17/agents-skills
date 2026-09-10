@@ -359,11 +359,11 @@ FROM application_logs
 ```esql
 // Filter by multivalue membership
 FROM employees
-| WHERE MV_CONTAINS(languages, "[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
+| WHERE MV_CONTAINS(languages, "[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)")
 
 // Find entries matching multiple values
 FROM employees
-| WHERE MV_CONTAINS(languages, "Java") AND MV_CONTAINS(languages, "[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
+| WHERE MV_CONTAINS(languages, "Java") AND MV_CONTAINS(languages, "[Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)")
 
 // Count multivalue entries
 FROM employees

@@ -133,7 +133,7 @@ DATE_TRUNC('month', created_at) AS cohort_month
 
 A live dashboard refreshing every 10 seconds with complex cohort SQL will degrade production query performance. Separate OLAP workloads from OLTP by writing pre-aggregated metrics to a summary table via a scheduled job, and have the dashboard read from that:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Scheduled every 5 minutes via cron/Celery
 def refresh_mrr_summary():
     conn.execute("""
@@ -148,7 +148,7 @@ def refresh_mrr_summary():
 
 Static thresholds set once and never reviewed cause alert fatigue. Use dynamic thresholds based on rolling averages so alerts fire only when the metric deviates significantly from its own baseline:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Alert if current value is > 2 standard deviations from 30-day rolling mean
 def is_anomalous(current: float, history: list[float]) -> bool:
     mean = statistics.mean(history)

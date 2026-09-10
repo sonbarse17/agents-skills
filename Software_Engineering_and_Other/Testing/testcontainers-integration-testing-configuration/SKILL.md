@@ -76,7 +76,7 @@ a Testcontainers suite that works fine on a developer's laptop.
   [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) available (either the runner's own [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) socket mounted in,
   or a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) sidecar/service, depending on the CI platform).
 - The Testcontainers library for the test language/framework (`testcontainers-java`
-  with JUnit 5, `testcontainers-[python](../../Languages/python/SKILL.md)`, `testcontainers-go`,
+  with JUnit 5, `testcontainers-[python](../../Languages/python/python/SKILL.md)`, `testcontainers-go`,
   `testcontainers-node`, or the corresponding module for the test
   framework in use) plus the specific **module** for each dependency
   (e.g. `testcontainers-java`'s `[postgresql](../../Databases/relational/postgresql/SKILL.md)`, `kafka`, and `redis`
@@ -132,8 +132,8 @@ a Testcontainers suite that works fine on a developer's laptop.
    KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.6.0"))
        .waitingFor(Wait.forListeningPort());
    ```
-   ```[python](../../Languages/python/SKILL.md)
-   # testcontainers-[python](../../Languages/python/SKILL.md): Postgres module's built-in readiness wait
+   ```[python](../../Languages/python/python/SKILL.md)
+   # testcontainers-[python](../../Languages/python/python/SKILL.md): Postgres module's built-in readiness wait
    from testcontainers.postgres import PostgresContainer
 
    postgres = PostgresContainer("postgres:16")
@@ -173,7 +173,7 @@ a Testcontainers suite that works fine on a developer's laptop.
        registry.add("spring.datasource.password", postgres::getPassword);
    }
    ```
-   ```[python](../../Languages/python/SKILL.md)
+   ```[python](../../Languages/python/python/SKILL.md)
    engine = create_engine(postgres.get_connection_url())
    ```
    A hardcoded port (e.g. always mapping to host port `5432`) breaks

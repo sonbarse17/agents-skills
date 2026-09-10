@@ -53,7 +53,7 @@ Before activating, verify:
 - Existing backup tools (Veeam, Rubrik, Commvault, cloud-native).
 
 ### Output Artifact
-Writes to backup automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Bash/PowerShell), Terraform for DR infra, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), and CI/CD pipeline for backup validation.
+Writes to backup automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Bash/PowerShell), Terraform for DR infra, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), and CI/CD pipeline for backup validation.
 
 ### Response Format
 Configuration files, scripts, and [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) templates with no extraneous explanation.
@@ -274,7 +274,7 @@ resource "aws_backup_global_settings" "org_settings" {
 ```
 
 ### Step 3: Database Backup Automation ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md))
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 # backup/db_backup.py
 """Automated [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) backup with WAL archiving and offsite replication."""
@@ -560,9 +560,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: '3.11'
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: '3.11'
 
       - name: Install dependencies
         run: pip install boto3 pg8000
@@ -699,7 +699,7 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 - Backup logs exported to SIEM for analysis.
 
 ## Output Format
-Backup automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) markdown, CI/CD validation pipeline.
+Backup automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) markdown, CI/CD validation pipeline.
 
 ## References
   - ../../../Global_References/backup-3-2-1.md

@@ -421,7 +421,7 @@ Data access pattern?
 
 #### DynamoDB Single-Table Design
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # Single-table design for e-commerce
 # PK: entity type + ID, SK: relationship/sort key
 items = {

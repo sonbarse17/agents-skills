@@ -45,7 +45,7 @@ For advanced techniques, see [../../../Global_References/advanced-techniques.md]
 - **Protection identification**: named technique (e.g., RDTSC timing check, PEB BeingDebugged) with location in binary
 - **Bypass strategy**: specific patch addresses, hook points, or tool commands to neutralize each check
 - **Analysis report**: structured findings listing each protection layer, severity, and recommended bypass
-- **Code artifacts**: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/IDAPython scripts, GDB command sequences, or C stubs for bypassing or implementing checks
+- **Code artifacts**: [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/IDAPython scripts, GDB command sequences, or C stubs for bypassing or implementing checks
 
 ---
 

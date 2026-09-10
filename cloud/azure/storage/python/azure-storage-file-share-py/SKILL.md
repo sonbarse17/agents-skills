@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# Azure Storage File Share SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Storage File Share SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Manage SMB file shares for cloud-native and lift-and-shift scenarios.
 
@@ -50,14 +50,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.storage.fileshare import ShareServiceClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ShareServiceClient(
@@ -72,26 +72,26 @@ with ShareServiceClient(
 
 ### Create Share
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 share = service.create_share("my-share")
 ```
 
 ### List Shares
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 for share in service.list_shares():
     print(f"{share.name}: {share.quota} GB")
 ```
 
 ### Get Share Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 share_client = service.get_share_client("my-share")
 ```
 
 ### Delete Share
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 service.delete_share("my-share")
 ```
 
@@ -99,7 +99,7 @@ service.delete_share("my-share")
 
 ### Create Directory
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 share_client = service.get_share_client("my-share")
 share_client.create_directory("my-directory")
 
@@ -109,7 +109,7 @@ share_client.create_directory("my-directory/sub-directory")
 
 ### List Directories and Files
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 directory_client = share_client.get_directory_client("my-directory")
 
 for item in directory_client.list_directories_and_files():
@@ -121,7 +121,7 @@ for item in directory_client.list_directories_and_files():
 
 ### Delete Directory
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 share_client.delete_directory("my-directory")
 ```
 
@@ -129,7 +129,7 @@ share_client.delete_directory("my-directory")
 
 ### Upload File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_client = share_client.get_file_client("my-directory/file.txt")
 
 # From string
@@ -145,7 +145,7 @@ file_client.upload_file(b"Binary content")
 
 ### Download File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_client = share_client.get_file_client("my-directory/file.txt")
 
 # To bytes
@@ -164,7 +164,7 @@ for chunk in download.chunks():
 
 ### Get File Properties
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 properties = file_client.get_file_properties()
 print(f"Size: {properties.size}")
 print(f"Content type: {properties.content_settings.content_type}")
@@ -173,13 +173,13 @@ print(f"Last modified: {properties.last_modified}")
 
 ### Delete File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 file_client.delete_file()
 ```
 
 ### Copy File
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 source_url = "https://account.file.core.windows.net/share/source.txt"
 dest_client = share_client.get_file_client("destination.txt")
 dest_client.start_copy_from_url(source_url)
@@ -189,14 +189,14 @@ dest_client.start_copy_from_url(source_url)
 
 ### Upload Range
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Upload to specific range
 file_client.upload_range(data=b"content", offset=0, length=7)
 ```
 
 ### Download Range
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Download specific range
 download = file_client.download_file(offset=0, length=100)
 data = download.readall()
@@ -206,14 +206,14 @@ data = download.readall()
 
 ### Create Snapshot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 snapshot = share_client.create_snapshot()
 print(f"Snapshot: {snapshot['snapshot']}")
 ```
 
 ### Access Snapshot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 snapshot_client = service.get_share_client(
     "my-share",
     snapshot=snapshot["snapshot"]
@@ -222,7 +222,7 @@ snapshot_client = service.get_share_client(
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.storage.fileshare.aio import ShareServiceClient
 from azure.identity.aio import DefaultAzureCredential
 

@@ -59,7 +59,7 @@ INVESTIGATION APPROACH:
 CRM APPLICATION ARCHITECTURE:
 
 - Frontend: React app on CloudFront
-- API: REST API via API Gateway → Lambda ([Python](../../Languages/python/SKILL.md))
+- API: REST API via API Gateway → Lambda ([Python](../../Languages/python/python/SKILL.md))
 - Database: Aurora DSQL ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md)-compatible) behind RDS Proxy
 - Async Processing: SQS notification queue → Queue consumer Lambda (Node.js)
 - Event Processing: CRM event processor Lambda (Node.js) for pipeline events

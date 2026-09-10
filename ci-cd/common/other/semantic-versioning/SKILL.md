@@ -362,9 +362,9 @@ git [commit](../../git-workflow/commit/SKILL.md) -m "chore: bump version to $NEW
 git tag -a "v$NEW_VERSION" -m "Version $NEW_VERSION"
 ```
 
-### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Script
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Script
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 # bump_version.py
 

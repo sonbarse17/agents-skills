@@ -45,7 +45,7 @@ Use this skill when:
 
 ## Track Costs First
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Use LiteLLM's cost tracking (automatic per-model pricing)
 import litellm
 
@@ -69,7 +69,7 @@ litellm.success_callback = [log_cost]
 
 ## Model Right-Sizing
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Route by task complexity — don't use GPT-4o for everything
 def get_model_for_task(task_type: str) -> str:
     routing = {
@@ -92,7 +92,7 @@ def get_model_for_task(task_type: str) -> str:
 
 ## Prompt Caching (Provider-Side)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Anthropic — cache long system prompts (saves 90% on cached tokens)
 import anthropic
 
@@ -123,7 +123,7 @@ print(f"Cache read tokens: {response.usage.cache_read_input_tokens}")
 
 ## Batching with OpenAI Batch API (50% Discount)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import json
 from openai import OpenAI
 
@@ -161,7 +161,7 @@ print(f"Batch ID: {batch.id}")  # poll status with client.batches.retrieve(batch
 
 ## Semantic Caching
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
 import json
 import redis
@@ -209,7 +209,7 @@ def cached_llm_call(prompt: str, llm_fn) -> str:
 
 ## Prompt Compression
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # LLMLingua — compress long prompts by 3–20× with minimal quality loss
 from llmlingua import PromptCompressor
 
@@ -230,7 +230,7 @@ print(f"Savings: {compressed['saving']}")
 
 ## Self-Hosting Break-Even Calculator
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def break_even_analysis(
     monthly_api_spend_usd: float,
     gpu_cost_per_hour_usd: float = 2.50,   # e.g., A10G on AWS
@@ -257,7 +257,7 @@ print(break_even_analysis(5000))
 
 ## Cost Dashboard (Grafana)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Emit cost metrics to Prometheus
 from prometheus_client import Counter, Histogram
 

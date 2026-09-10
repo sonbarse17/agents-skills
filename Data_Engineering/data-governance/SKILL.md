@@ -107,7 +107,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Define classification levels: Public (no harm if exposed), Internal (internal use only), Confidential (business sensitive), Restricted (PII, PHI, PCI, credentials). Mark each data field with classification. Apply controls per level: Restricted requires encryption at rest, access logging, quarterly access review. Automate classification detection: scan for PII patterns (SSN, credit card, email, phone). Use data discovery tools to tag fields automatically. Maintain a classification register.
 
 Automated PII detection patterns:
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Example: PII scanning with regex
 import re
 
@@ -343,8 +343,8 @@ data_contract:
       severity: error
 ```
 
-### Data Quality Scorecard ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Pattern)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Data Quality Scorecard ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Pattern)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class DataQualityScorecard:
     def __init__(self, dataset_name, reporting_period):
         self.dataset = dataset_name
@@ -395,8 +395,8 @@ print(scorecard.report())
 
 ## Code Examples
 
-### Automated PII Scanner ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Schema Registry Integration)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Automated PII Scanner ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Schema Registry Integration)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re, yaml
 from typing import List, Dict, Optional
 
@@ -466,7 +466,7 @@ print(scanner.generate_classification_report(schema))
 ```
 
 ### Data Quality Monitor (Great Expectations Pattern)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Pattern: Automated data quality pipeline
 quality_checks = {
     "completeness": "SELECT COUNT(*) - COUNT({column}) AS nulls FROM {table}",

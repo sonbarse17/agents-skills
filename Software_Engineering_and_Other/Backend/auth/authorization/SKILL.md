@@ -431,10 +431,10 @@ async function breakGlassAccess(userId, resourceId, reason) {
 
 | Engine | Language | Model | Deployment | Best For |
 |--------|----------|-------|------------|----------|
-| **Casbin** | Go, Node.js, [Python](../../../Languages/python/SKILL.md), Java, .NET, Rust | PERM metamodel | In-app library | RBAC/ABAC/ACL in any language |
+| **Casbin** | Go, Node.js, [Python](../../../Languages/python/python/SKILL.md), Java, .NET, Rust | PERM metamodel | In-app library | RBAC/ABAC/ACL in any language |
 | **OPA/Rego** | Rego | Declarative policies | Sidecar/bundle | Cloud-native, K8s, multi-service |
 | **Cerbos** | YAML | Resource policies | Sidecar/[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) | Fine-grained, user-friendly |
-| **Permit.io** | [Python](../../../Languages/python/SKILL.md), Node.js, Go, REST | RBAC/ABAC/ReBAC | SaaS/self-hosted | Rapid deployment, GUI policy editor |
+| **Permit.io** | [Python](../../../Languages/python/python/SKILL.md), Node.js, Go, REST | RBAC/ABAC/ReBAC | SaaS/self-hosted | Rapid deployment, GUI policy editor |
 | **AuthZed/SpiceDB** | Zanzibar | Relationship tuples | gRPC API | ReBAC at scale |
 
 **Casbin example (Node.js):**
@@ -620,7 +620,7 @@ function authorizeMiddleware(action, resourceType) {
 ```
 
 **FastAPI dependency injection:**
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from fastapi import Depends, HTTPException
 
 async def require_permission(action: str, resource: str):

@@ -183,7 +183,7 @@ The function's own code, at invoke time, calls the managed secrets service
 directly using the execution role's own identity — the deployment package
 never contains a secret value, and there is no cluster-side operator
 involved (unlike [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)'s External Secrets Operator model):
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import boto3
 _secrets_client = boto3.client("secretsmanager")
 

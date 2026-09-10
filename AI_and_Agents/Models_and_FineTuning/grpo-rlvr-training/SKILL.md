@@ -75,7 +75,7 @@ preference between two acceptable outputs, that's
 The reference recipe is TRL's `GRPOTrainer` with
 vLLM-backed generation:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from trl import GRPOConfig, GRPOTrainer
 
 grpo_args = GRPOConfig(
@@ -194,7 +194,7 @@ above.
 ## References
 
 - `../../../Global_References/reward-functions.md` — complete
-  [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) reward functions (exact-match
+  [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) reward functions (exact-match
   correctness, schema validation, unit-test
   execution, a length-penalty wrapper, and a
   rubric-as-reward judge pattern) to inspect under

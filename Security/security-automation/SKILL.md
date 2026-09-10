@@ -57,7 +57,7 @@ jobs:
 
 ## Automated Remediation
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Auto-remediation script
 def remediate_public_s3(bucket_name):
     """Remove public access from S3 bucket."""
@@ -96,7 +96,7 @@ playbook:
 
 ## Compliance as Code
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Checkov custom check
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
 

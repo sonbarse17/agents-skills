@@ -132,17 +132,17 @@ For capturing and analyzing API traffic at scale:
    ```
 5. Export to HAR format for analysis:
    ```bash
-   # Using [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) API
+   # Using [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) API
    python3 -c "from mitmproxy.io import FlowReader; from mitmproxy.tools.dump import DumpMaster;
    import sys; [print(flow.request.url) for flow in FlowReader(open('api-traffic.flow', 'rb')).stream()]"
    ```
 
-### Workflow 4: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Scripting for API Testing
+### Workflow 4: [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Scripting for API Testing
 
 For automated security testing with custom logic:
 
-1. Create [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) addon script (`api-test.py`):
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+1. Create [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) addon script (`api-test.py`):
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from mitmproxy import http
 
    class APISecurityTester:
@@ -240,7 +240,7 @@ Install mitmproxy CA certificate for HTTPS interception:
 
 Test authentication mechanisms and token handling:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # auth-test.py
 from mitmproxy import http
 
@@ -268,7 +268,7 @@ addons = [AuthTester()]
 
 Fuzz API parameters for injection vulnerabilities:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # fuzz-params.py
 from mitmproxy import http
 
@@ -291,7 +291,7 @@ addons = [ParamFuzzer()]
 
 Inspect and test GraphQL APIs:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # graphql-test.py
 from mitmproxy import http
 import json
@@ -425,7 +425,7 @@ mitmproxy --modify-body '/~s & ~b "error"/success'
 
 Intercept and modify WebSocket traffic:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # websocket-test.py
 from mitmproxy import websocket
 

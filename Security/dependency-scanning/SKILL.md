@@ -46,7 +46,7 @@ Use this skill when:
 | Dependabot | Free ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md)) | Many | Automated PRs |
 | OWASP Dep-Check | OSS | Many | Free scanning |
 | npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | Built-in | Node.js | Quick checks |
-| pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) projects |
+| pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) | OSS | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
 | Trivy | OSS | Many | Container deps |
 
 ## Snyk
@@ -160,7 +160,7 @@ updates:
           - "minor"
           - "patch"
 
-  # [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+  # [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
@@ -293,7 +293,7 @@ npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) fix --force
 npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --production
 ```
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
 
 ```bash
 # Install
@@ -350,7 +350,7 @@ bundle-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) check --format jso
 # Node.js
 npx @cyclonedx/cyclonedx-npm --output-file sbom.json
 
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 pip install cyclonedx-bom
 cyclonedx-py -o sbom.json
 

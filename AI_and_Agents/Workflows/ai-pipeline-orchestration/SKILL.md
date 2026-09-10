@@ -35,7 +35,7 @@ Use this skill when:
 
 | Tool | Best For | Complexity | GPU Jobs |
 |------|----------|------------|----------|
-| **Prefect** | Modern [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first; easy to adopt | Low | Good |
+| **Prefect** | Modern [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first; easy to adopt | Low | Good |
 | **Airflow** | Complex DAGs; large teams; existing usage | High | Good |
 | **Dagster** | Asset-centric; strong data lineage | Medium | Excellent |
 | **Temporal** | Long-running workflows; reliability-first | Medium | Good |
@@ -54,7 +54,7 @@ prefect worker start --pool default-agent-pool
 
 ## Prefect: RAG Ingestion Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prefect import flow, task, get_run_logger
 from prefect.tasks import task_input_hash
 from datetime import timedelta
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
 ## Prefect: Batch LLM Inference Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prefect import flow, task
 from prefect.concurrency.sync import concurrency
 import asyncio
@@ -161,7 +161,7 @@ async def batch_inference_flow(input_file: str, output_file: str, batch_size: in
 
 ## Airflow: Model Training DAG
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from airflow.decorators import dag, task
 from airflow.providers.cncf.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).operators.pod import KubernetesPodOperator
 from datetime import datetime
@@ -223,7 +223,7 @@ llm_fine_tuning_dag()
 
 ## Dagster: Asset-Based AI Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from dagster import asset, AssetExecutionContext, define_asset_job, ScheduleDefinition
 
 @asset(description="Raw documents fetched from knowledge sources")

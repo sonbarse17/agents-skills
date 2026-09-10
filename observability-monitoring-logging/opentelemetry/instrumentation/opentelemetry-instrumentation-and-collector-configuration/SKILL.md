@@ -89,7 +89,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   common source of subtly incompatible config behavior.
 - A language-specific [OpenTelemetry](../../other/opentelemetry/SKILL.md) SDK/auto-instrumentation
   distribution for each service being instrumented (a Java agent JAR, the
-  [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument` launcher plus
+  [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument` launcher plus
   `[opentelemetry](../../other/opentelemetry/SKILL.md)-bootstrap`, the Node.js
   `@[opentelemetry](../../other/opentelemetry/SKILL.md)/auto-instrumentations-node` package, or a manual SDK
   integration for languages without mature auto-instrumentation, such as
@@ -125,12 +125,12 @@ or the tracing backend's own storage/sampling/correlation concerns (see
      -jar checkout-service.jar
    ```
    ```bash
-   # [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md): bootstrap installs instrumentation packages for detected
+   # [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): bootstrap installs instrumentation packages for detected
    # libraries, then [opentelemetry](../../other/opentelemetry/SKILL.md)-instrument wraps the process
    [opentelemetry](../../other/opentelemetry/SKILL.md)-bootstrap -a install
    OTEL_SERVICE_NAME=checkout-service \
    OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317 \
-   [opentelemetry](../../other/opentelemetry/SKILL.md)-instrument [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py
+   [opentelemetry](../../other/opentelemetry/SKILL.md)-instrument [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) app.py
    ```
    ```javascript
    // Node.js: registered before any other imports (auto-instrumentations-node)
@@ -148,7 +148,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
 2. **Add manual instrumentation for business-meaningful spans/metrics**
    auto-instrumentation cannot know about — a checkout step, a specific
    cache-hit ratio, a queue-processing span:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from [opentelemetry](../../other/opentelemetry/SKILL.md) import trace, metrics
 
    tracer = trace.get_tracer("checkout-service")
@@ -470,7 +470,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
 
 ## Worked example
 
-**Scenario:** `checkout-service` ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)) and `payments-service` (Java)
+**Scenario:** `checkout-service` ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)) and `payments-service` (Java)
 need distributed tracing across their shared request path, with metrics
 routed to Prometheus, logs routed to Loki, and traces routed to Tempo —
 all through a two-tier Collector deployment (per-pod agent → central

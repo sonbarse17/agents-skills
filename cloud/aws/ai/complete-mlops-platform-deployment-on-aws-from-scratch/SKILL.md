@@ -183,7 +183,7 @@ integration decisions between phases.
    vendor-neutral gate/reproducibility principles, implemented concretely
    with the KFP SDK per
    [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    train_task = train(processed=preprocess_task.outputs["processed"], epochs=20)
    train_task.set_accelerator_type("nvidia.com/gpu").set_accelerator_limit(1)
    ```

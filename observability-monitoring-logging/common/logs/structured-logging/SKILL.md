@@ -204,8 +204,8 @@ logger.Info().Str("orderId", orderId).Float64("amount", 49.99).Msg("Order create
 logger.Error().Err(err).Str("orderId", orderId).Msg("Payment failed")
 ```
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# structlog — [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# structlog — [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 
 structlog.configure(
@@ -371,7 +371,7 @@ logging:
 | Scenario | Best Logger | Throughput (100B msg) |
 |----------|-------------|----------------------|
 | Node.js high-throughput | Pino | ~200,000 msg/s |
-| [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) sync | structlog + orjson | ~50,000 msg/s |
+| [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) sync | structlog + orjson | ~50,000 msg/s |
 | Go | Zerolog | ~500,000 msg/s |
 | Java | Log4j2 async | ~300,000 msg/s |
 | .NET | Serilog | ~150,000 msg/s |

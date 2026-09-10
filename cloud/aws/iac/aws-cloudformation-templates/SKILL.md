@@ -378,4 +378,4 @@ aws [cloudformation](../../../../infrastructure-as-code/cloudformation/other/clo
 
 - [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 - [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../[ansible](../ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
-- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)

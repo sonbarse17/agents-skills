@@ -63,7 +63,7 @@ server side of that pairing.
 ## Prerequisites & environment
 
 - An MCP SDK for your language of choice (official SDKs exist for
-  [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/Node and [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) at minimum; check current SDK versions before
+  [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/Node and [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) at minimum; check current SDK versions before
   starting, as the protocol has evolved across revisions).
 - A transport decision: `stdio` for local, single-user tool servers
   launched by the agent host process; streamable HTTP for remote or
@@ -122,7 +122,7 @@ server side of that pairing.
    schema — a malicious or buggy client, or a model that emits malformed
    arguments, must not reach your backend with unvalidated input.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from mcp.server import Server
    from mcp.types import Tool, TextContent
 

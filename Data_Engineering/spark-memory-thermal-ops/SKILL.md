@@ -117,7 +117,7 @@ Before launch, work through these in order:
 A sanity check of the worksheet formula against
 the ≈40GB anchor:
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 params = 70e9
 weights_gb = params * 0.5 / 1e9      # NF4, step 1
 adapter_gb = 0.5                     # step 5, negligible

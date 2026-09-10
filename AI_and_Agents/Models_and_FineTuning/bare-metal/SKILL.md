@@ -52,7 +52,7 @@ Before activating, verify:
 - RAID controller model (PERC, Smart Array, MegaRAID, NVMe-native).
 
 ### Output Artifact
-Writes to PXE/iPXE config files, MAAS machine definitions, automation scripts ([Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Bash), BMC configuration scripts, firmware management playbooks.
+Writes to PXE/iPXE config files, MAAS machine definitions, automation scripts ([Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Bash), BMC configuration scripts, firmware management playbooks.
 
 ### Response Format
 Configuration files, scripts, and playbooks with no extraneous explanation.
@@ -261,7 +261,7 @@ echo "=== PXE Setup Complete ==="
 ```
 
 ### Step 2: BMC/IPMI Configuration Automation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 # bmc/bmc_config.py
 """Automate BMC (iDRAC/iLO/iBMC) configuration across server fleet."""
@@ -723,7 +723,7 @@ main "$@"
 ```
 
 ### Step 5: MAAS Integration for Automated Provisioning
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 # provisioning/maas_integration.py
 """MAAS API integration for automated bare-metal provisioning."""
@@ -929,7 +929,7 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 - Asset management database must be updated within 24h of new server deployment.
 
 ## Output Format
-PXE/iPXE configuration, BMC automation scripts ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Bash), [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) burn-in playbooks, MAAS API scripts, RAID configuration scripts.
+PXE/iPXE configuration, BMC automation scripts ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Bash), [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) burn-in playbooks, MAAS API scripts, RAID configuration scripts.
 
 ## References
   - ../../../Global_References/bare-metal-advanced.md

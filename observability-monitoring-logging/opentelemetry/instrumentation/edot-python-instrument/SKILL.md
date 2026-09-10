@@ -15,13 +15,13 @@ depends_on:
   - opentelemetry
 ---
 
-# EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Instrumentation
+# EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Instrumentation
 
 Read the setup guide before making changes:
 
-- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) setup](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/setup)
-- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) configuration](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/configuration)
-- [OpenTelemetry [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) auto-instrumentation](https://[opentelemetry](../../other/opentelemetry/SKILL.md).io/docs/zero-code/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/)
+- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) setup](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/setup)
+- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) configuration](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/configuration)
+- [OpenTelemetry [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) auto-instrumentation](https://[opentelemetry](../../other/opentelemetry/SKILL.md).io/docs/zero-code/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/)
 
 ## Guidelines
 
@@ -29,7 +29,7 @@ Read the setup guide before making changes:
 1. Run `edot-bootstrap --action=install` during image build to install auto-instrumentation packages for detected
    libraries
 1. Wrap the application entrypoint with `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument` — e.g. `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument gunicorn app:app` or
-   `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app.py`. Without this, no telemetry is collected
+   `[opentelemetry](../../other/opentelemetry/SKILL.md)-instrument [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) app.py`. Without this, no telemetry is collected
 1. Set exactly three required environment variables:
    - `OTEL_SERVICE_NAME`
    - `OTEL_EXPORTER_OTLP_ENDPOINT` — must be the **managed OTLP endpoint** or **EDOT Collector** URL. Never use an APM
@@ -43,5 +43,5 @@ Read the setup guide before making changes:
 
 ## Examples
 
-See the [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) setup guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/setup) for
+See the [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) setup guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/setup) for
 complete examples.

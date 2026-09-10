@@ -218,7 +218,7 @@ tshark -r capture.pcap -Y "http.request.method == POST and (http contains \"pass
 tshark -r capture.pcap -Y "smb2.cmd == 8 or smb2.cmd == 9"
 
 # Suspicious User-Agents
-tshark -r capture.pcap -Y "http.user_agent contains \"[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)\" or http.user_agent contains \"curl\""
+tshark -r capture.pcap -Y "http.user_agent contains \"[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)\" or http.user_agent contains \"curl\""
 
 # Large data transfers
 tshark -r capture.pcap -Y "tcp.len > 1400"

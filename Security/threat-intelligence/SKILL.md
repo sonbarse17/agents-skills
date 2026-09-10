@@ -202,7 +202,7 @@ osint_sources:
 ```
 
 **Automated Collection Pipeline:**
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import requests
 import json
 from datetime import datetime, timedelta
@@ -298,7 +298,7 @@ Collection → Normalization → Deduplication → Enrichment → Scoring → Di
 ```
 
 **IoC Scoring and Prioritization:**
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def score_indicator(indicator: Dict) -> int:
     """Score an indicator from 0-100 based on confidence and relevance."""
     score = 0
@@ -414,7 +414,7 @@ threat_actor_profile:
 ```
 
 **Detection Coverage Scoring:**
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def calculate_coverage_score(mapped_ttps: Dict, active_detections: List[str]) -> Dict:
     """
     Calculate detection coverage percentage for mapped TTPs.

@@ -113,7 +113,7 @@ tshark -r capture.pcap -q -z io,phs
 
 ### Scapy for Custom Analysis
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from scapy.all import *
 
 # Read pcap
@@ -174,7 +174,7 @@ Redis       - "*" RESP array prefix
 
 ### Structure Identification
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Common patterns in binary protocols
 
 # Length-prefixed message
@@ -203,9 +203,9 @@ struct Packet {
 };
 ```
 
-### [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Protocol Parser
+### [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Protocol Parser
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import struct
 from dataclasses import dataclass
 
@@ -252,7 +252,7 @@ def parse_tlv(data: bytes):
 
 ### Hex Dump Analysis
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def hexdump(data: bytes, width: int = 16):
     """Format binary data as hex dump."""
     lines = []
@@ -275,7 +275,7 @@ def hexdump(data: bytes, width: int = 16):
 
 ### Identifying Encryption
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Entropy analysis - high entropy suggests encryption/compression
 import math
 from collections import Counter
@@ -456,7 +456,7 @@ tcp_table:add(8888, proto)
 
 ### Fuzzing with Boofuzz
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from boofuzz import *
 
 def main():
@@ -486,7 +486,7 @@ if __name__ == "__main__":
 
 ### Replay and Modification
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from scapy.all import *
 
 # Replay captured traffic

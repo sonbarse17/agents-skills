@@ -79,7 +79,7 @@ specific pre-built ones).
 
 - Node.js and `npx` availability for GitNexus (`npx gitnexus analyze && npx
   gitnexus setup`).
-- The `uv` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) package/tool manager for Graphify (`uv tool install
+- The `uv` [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) package/tool manager for Graphify (`uv tool install
   graphifyy`).
 - A Rust-toolchain-built binary or published release for CodeGraph (it is
   itself implemented in Rust for its parsing kernel — no Rust toolchain is
@@ -286,7 +286,7 @@ specific pre-built ones).
 ## Worked example
 
 **Scenario:** A team is choosing a code-knowledge-graph tool for an AI
-coding agent that works across a polyglot [monorepo](../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) (Go, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md),
+coding agent that works across a polyglot [monorepo](../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) (Go, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md),
 plus some Rust services), with two decision factors: (1) the company's main
 product is commercial, so licensing matters, and (2) the agent frequently
 needs impact-radius answers ("what breaks if I change this function") while
@@ -295,7 +295,7 @@ actively refactoring in the same session.
 Evaluation:
 
 ```
-GitNexus  — 14 languages (covers Go/TS/[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Rust if all 14 include them;
+GitNexus  — 14 languages (covers Go/TS/[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Rust if all 14 include them;
             verify each specific language is on the list), 17 MCP tools
             including dedicated impact-radius/call-chain/blast-zone
             queries, backed by LadybugDB in .gitnexus/.

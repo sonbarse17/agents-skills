@@ -77,7 +77,7 @@ codebase.
   - **SonarQube/SonarCloud** — broad multi-language coverage plus code
     quality metrics; self-hosted SonarQube needs a running server and a
     scanner CLI or Maven/Gradle/`.NET` plugin.
-  - Language-native security linters (Bandit for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), gosec for Go,
+  - Language-native security linters (Bandit for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), gosec for Go,
     `eslint-plugin-security`/`eslint-plugin-no-unsanitized` for
     JS/TS, `brakeman` for Rails) are lighter-weight and worth running in
     addition to a general-purpose tool for language-specific idioms.
@@ -142,8 +142,8 @@ codebase.
 
 5. **Add an inline suppression mechanism with mandatory justification**,
    not silent ignores. Semgrep example:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-   # nosemgrep: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).lang.security.[audit](../../AI_and_Agents/Operations/audit/SKILL.md).subprocess-shell-true
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   # nosemgrep: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).lang.security.[audit](../../AI_and_Agents/Operations/audit/SKILL.md).subprocess-shell-true
    # Justification: `cmd` is built from a fixed allowlist, see ALLOWED_CMDS above.
    subprocess.run(cmd, shell=True)
    ```
@@ -231,7 +231,7 @@ codebase.
 
 ## Worked example
 
-A [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Flask service adds Semgrep as a blocking PR gate, with a
+A [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Flask service adds Semgrep as a blocking PR gate, with a
 one-time full-repo baseline scan run separately.
 
 `.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sast.yml`:
@@ -255,7 +255,7 @@ jobs:
         run: |
           semgrep ci \
             --config p/owasp-top-ten \
-            --config p/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
+            --config p/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) \
             --config p/secrets \
             --baseline-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) "${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.base.sha }}" \
             --sarif --output semgrep.sarif
@@ -285,7 +285,7 @@ jobs:
 Sample finding surfaced on a PR (SARIF excerpt, trimmed):
 ```json
 {
-  "ruleId": "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).flask.security.injection.sql-injection.flask-sqli",
+  "ruleId": "[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).flask.security.injection.sql-injection.flask-sqli",
   "level": "error",
   "message": { "text": "User-controlled data flows into a raw SQL query." },
   "locations": [{ "physicalLocation": { "artifactLocation": { "uri": "app/views/search.py" }, "region": { "startLine": 42 } } }]

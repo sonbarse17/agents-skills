@@ -206,7 +206,7 @@ modbus read <target-ip> 502 1 0 10
 # S7 information gathering
 nmap -p 102 --script s7-info <target-ip> -oA s7_info
 
-# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SNAP7 enumeration
+# [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SNAP7 enumeration
 python3 -c "import snap7; client = snap7.client.Client(); client.connect('<target-ip>', 0, 1); print(client.get_cpu_info()); client.disconnect()"
 ```
 
@@ -380,7 +380,7 @@ EOF
   Commands NOT requiring root:
   - TCP Connect scans (`nmap -sT`): Safe, no root needed
   - Service version detection (`nmap -sV`): No root needed
-  - Most [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) tools (pymodbus, snap7): Run as regular user
+  - Most [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) tools (pymodbus, snap7): Run as regular user
   - Metasploit console: Runs as regular user
 
 - **Claude CLI Safety Considerations**:

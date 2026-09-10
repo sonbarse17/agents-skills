@@ -22,7 +22,7 @@ depends_on:
   - azure-keyvault
 ---
 
-# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Secure storage and management for secrets, cryptographic keys, and certificates.
 
@@ -66,14 +66,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### SecretClient Setup
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.keyvault.secrets import SecretClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 vault_url = "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
 
@@ -84,7 +84,7 @@ with SecretClient(vault_url=vault_url, credential=credential) as client:
 
 ### Secret Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Set secret
 secret = client.set_secret("database-password", "super-secret-value")
 print(f"Created: {secret.name}, version: {secret.properties.version}")
@@ -119,7 +119,7 @@ client.begin_recover_deleted_secret("database-password").result()
 
 ### KeyClient Setup
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.keys import KeyClient
 
@@ -133,7 +133,7 @@ with KeyClient(vault_url=vault_url, credential=credential) as client:
 
 ### Key Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.keyvault.keys import KeyType
 
 # Create RSA key
@@ -157,7 +157,7 @@ deleted_key = poller.result()
 
 ### Cryptographic Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.keyvault.keys.crypto import CryptographyClient, EncryptionAlgorithm
 
 # Get crypto client for a specific key
@@ -193,7 +193,7 @@ with CryptographyClient(
 
 ### CertificateClient Setup
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.keyvault.certificates import CertificateClient, CertificatePolicy
 
@@ -207,7 +207,7 @@ with CertificateClient(vault_url=vault_url, credential=credential) as client:
 
 ### Certificate Operations
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Create self-signed certificate
 policy = CertificatePolicy.get_default()
 poller = client.begin_create_certificate("my-cert", policy=policy)
@@ -243,7 +243,7 @@ deleted = poller.result()
 
 ## Async Clients
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity.aio import DefaultAzureCredential
 from azure.keyvault.secrets.aio import SecretClient
 
@@ -259,7 +259,7 @@ asyncio.run(get_secret())
 
 ## Error Handling
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.core.exceptions import ResourceNotFoundError, HttpResponseError
 
 try:

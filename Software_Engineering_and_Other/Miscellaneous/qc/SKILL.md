@@ -123,7 +123,7 @@ security:
 }
 ```
 
-**[Python](../../Languages/python/SKILL.md):**
+**[Python](../../Languages/python/python/SKILL.md):**
 ```toml
 [tool.ruff]
 line-length = 100
@@ -246,7 +246,7 @@ What is your primary goal?
   ├── Enforce minimum standards in CI
   │   └── Use SonarQube Quality Gate with tool-specific linters
   │       └── Language? JS/TS → ESLint + Jest + SonarQube
-  │       └── [Python](../../Languages/python/SKILL.md) → Ruff + pytest-cov + SonarQube
+  │       └── [Python](../../Languages/python/python/SKILL.md) → Ruff + pytest-cov + SonarQube
   │       └── Go → golangci-lint + go test + govulncheck
   │       └── Rust → clippy + cargo-tarpaulin + cargo-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
   ├── Measure and reduce technical debt
@@ -435,7 +435,7 @@ An open-source project with 500+ contributors needed consistent quality across P
 - ../../../Global_References/qc-advanced.md — QC advanced topics including [microservices](../../Patterns/microservices/SKILL.md), security, and DevOps
 - ../../../Global_References/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
 - ../../../Global_References/qc-fundamentals.md — Core QC concepts and terminology
-- ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../Languages/python/SKILL.md), Go, Rust)
+- ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../Languages/python/python/SKILL.md), Go, Rust)
 - ../../../Global_References/technical-debt-register.md — Technical debt register template with severity and effort
 - ../../../Global_References/qc-process-framework.md — QC process framework and maturity model
 - ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs

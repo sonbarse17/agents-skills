@@ -509,7 +509,7 @@ Data API Protocol Selection
 ## Implementation Patterns
 
 ### Pagination Pattern
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # data_api/pagination.py
 from fastapi import Query
 from typing import Optional

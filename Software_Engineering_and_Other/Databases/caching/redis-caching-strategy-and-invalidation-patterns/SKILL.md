@@ -91,7 +91,7 @@ TTL strategy chosen here, see
 
 **Cache-aside (lazy loading)** — the application checks the cache first,
 and on a miss reads from the database and populates the cache:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def get_user(user_id):
     cached = redis.get(f"user:{user_id}")
     if cached is not None:
@@ -108,7 +108,7 @@ explicitly (step 3).
 
 **Write-through** — every write goes through the cache, which writes to
 the database synchronously before acknowledging:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def update_user(user_id, data):
     db.execute("UPDATE users SET ... WHERE id = %s", user_id, data)
     redis.set(f"user:{user_id}", serialize(data), ex=300)
@@ -134,7 +134,7 @@ A fixed TTL applied identically to many keys populated at the same time
 tight loop) causes them all to expire simultaneously, producing a
 correlated spike in cache misses and backend load exactly 300 seconds
 later. Add jitter:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 import random
 base_ttl = 300
 jittered_ttl = base_ttl + random.randint(-30, 30)
@@ -156,7 +156,7 @@ refreshed.
 For any data where staleness beyond the write itself is unacceptable
 (not just "eventually consistent within a TTL window is fine"),
 actively invalidate on write rather than waiting for natural expiry:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def update_user(user_id, data):
     db.execute("UPDATE users SET ... WHERE id = %s", user_id, data)
     redis.delete(f"user:{user_id}")   # next read repopulates from DB (cache-aside)
@@ -177,7 +177,7 @@ If multiple application regions each read from their own local Redis
 (not a shared cluster), a write in one region must invalidate the
 cached copy in every other region. Use Redis pub/sub for fan-out, but
 design for its at-most-once, fire-and-forget delivery:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # Publisher (on write)
 redis.publish("cache-invalidate", json.dumps({"key": f"user:{user_id}"}))
 
@@ -204,7 +204,7 @@ at once, multiplying backend load exactly when it was already handling
 the read traffic via cache. Use a lock (or "recompute lease") so only
 one request rebuilds the value while others either wait briefly or
 serve a stale copy:
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 def get_with_stampede_protection(key, rebuild_fn, ttl=300, lock_ttl=10):
     value = redis.get(key)
     if value is not None:
@@ -315,13 +315,13 @@ thousands of keys at once) the database sees a load spike.
    should invalidate promptly on an explicit price change; inventory
    availability at add-to-cart time should have a much shorter TTL since
    overselling is more costly than a cache miss.
-   ```[python](../../../Languages/python/SKILL.md)
+   ```[python](../../../Languages/python/python/SKILL.md)
    redis.set(f"price:{sku}", price, ex=90)              # base TTL, jittered below
    redis.set(f"inventory:{sku}", qty, ex=15)             # short TTL, staleness-sensitive
    ```
 2. Add invalidation-on-write to the price-change code path (cache-aside,
    delete-then-repopulate):
-   ```[python](../../../Languages/python/SKILL.md)
+   ```[python](../../../Languages/python/python/SKILL.md)
    def apply_price_change(sku, new_price):
        db.execute("UPDATE products SET price = %s WHERE sku = %s", new_price, sku)
        redis.delete(f"price:{sku}")
@@ -330,7 +330,7 @@ thousands of keys at once) the database sees a load spike.
    immediately, independent of the 90-second TTL.
 3. Fix the batch-sync thundering herd by jittering TTLs on the sync job
    and adding stampede protection for the highest-traffic SKUs:
-   ```[python](../../../Languages/python/SKILL.md)
+   ```[python](../../../Languages/python/python/SKILL.md)
    jittered_ttl = 90 + random.randint(-15, 15)
    redis.set(f"price:{sku}", price, ex=jittered_ttl)
    ```

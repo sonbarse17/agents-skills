@@ -175,7 +175,7 @@ and doesn't repeat HCL authoring or module design.
    proposed change (a plan that would remove encryption, widen an IAM
    policy, or touch a disallowed region) — Sentinel example (Terraform
    Cloud/Enterprise):
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import "tfplan/v2" as tfplan
 
    s3_buckets = filter tfplan.resource_changes as _, rc {
@@ -368,7 +368,7 @@ Apply method: Manual apply
 
 Sentinel policy (mandatory, after a 2-week advisory period showed zero
 false positives):
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import "tfplan/v2" as tfplan
 
 s3_buckets = filter tfplan.resource_changes as _, rc {

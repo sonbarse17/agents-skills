@@ -56,7 +56,7 @@ Agent Identity Blueprint (application)        ← one per agent type/project
 Install-Module Microsoft.Graph.Beta.Applications -Scope CurrentUser -Force
 ```
 
-### [Python](../../Languages/python/SKILL.md) (for programmatic provisioning)
+### [Python](../../Languages/python/python/SKILL.md) (for programmatic provisioning)
 
 ```bash
 pip install azure-identity requests
@@ -96,9 +96,9 @@ $currentUser = (Get-MgContext).Account
 $userId = (Get-MgUser -UserId $currentUser).Id
 ```
 
-### [Python](../../Languages/python/SKILL.md) (application permissions)
+### [Python](../../Languages/python/python/SKILL.md) (application permissions)
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import os
 import requests
 from azure.identity import ClientSecretCredential
@@ -124,7 +124,7 @@ headers = {
 
 Sponsors are required and **must be User objects** — ServicePrincipals and Groups are rejected.
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 import subprocess
 
 # Get sponsor user ID (client_credentials has no user context, so use az CLI)
@@ -155,7 +155,7 @@ blueprint_obj_id = blueprint["id"]
 > service principal. Without this, Agent Identity creation fails with:
 > `400: The Agent Blueprint Principal for the Agent Blueprint does not exist.`
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 sp_body = {
     "@odata.type": "Microsoft.Graph.AgentIdentityBlueprintPrincipal",
     "appId": app_id,
@@ -170,7 +170,7 @@ but crashed before creating the SP).
 
 ### Step 3: Create Agent Identities
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 agent_body = {
     "@odata.type": "Microsoft.Graph.AgentIdentity",
     "displayName": "my-agent-instance-1",
@@ -223,7 +223,7 @@ az ad app permission admin-consent --id <client-id>
 
 ## Cleanup
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 # Delete Agent Identity
 requests.delete(f"{GRAPH}/servicePrincipals/{agent['id']}", headers=headers)
 

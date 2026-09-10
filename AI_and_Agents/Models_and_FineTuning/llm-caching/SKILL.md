@@ -42,7 +42,7 @@ Request → Exact Cache → Semantic Cache → Provider Cache → LLM API
 
 ## Layer 1: Exact Match Cache (Redis)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
 import json
 import redis
@@ -83,7 +83,7 @@ def cached_completion(model: str, messages: list, temperature: float = 0.0,
 
 ## Layer 2: Semantic Cache (GPTCache)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from gptcache import cache, Config
 from gptcache.adapter import openai
 from gptcache.embedding import Onnx
@@ -121,7 +121,7 @@ response = openai.ChatCompletion.create(
 
 ## Custom Semantic Cache (Production-Grade)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, Range
@@ -197,7 +197,7 @@ def smart_llm_call(query: str, model: str = "gpt-4o-mini") -> dict:
 
 ## Layer 3: Provider-Side Prompt Caching
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Anthropic — cache long system prompts (saves 90% on cached input tokens)
 import anthropic
 
@@ -242,7 +242,7 @@ print(f"OpenAI cached {cached} tokens")
 
 ## Cache Warming
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async def warm_cache(common_queries: list[str], model: str):
     """Pre-populate cache with known frequent queries."""
     import asyncio
@@ -269,7 +269,7 @@ asyncio.run(warm_cache(FREQUENT_QUERIES, "gpt-4o-mini"))
 
 ## Cache Metrics
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prometheus_client import Counter, Histogram
 
 cache_hits = Counter("llm_cache_hits_total", "Cache hits", ["cache_layer", "model"])

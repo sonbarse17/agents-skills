@@ -134,7 +134,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Train model
-        run: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) train.py --config configs/production.yaml
+        run: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) train.py --config configs/production.yaml
 
       - name: Package model as OCI artifact
         run: |
@@ -185,7 +185,7 @@ provenance:
   build_environment:
     builder: "[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)"
     runner: "ubuntu-22.04"
-    [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md): "3.11.7"
+    [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): "3.11.7"
     torch: "2.1.2"
     cuda: "12.1"
   build_id: "gh-actions-12345"
@@ -262,7 +262,7 @@ jobs:
 
 ## Promotion Policy Enforcement
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 #!/usr/bin/env python3
 """model_promotion_gate.py - Verify model meets all promotion criteria."""
 

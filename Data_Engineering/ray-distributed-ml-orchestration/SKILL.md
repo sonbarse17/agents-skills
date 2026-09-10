@@ -30,8 +30,8 @@ depends_on:
 
 [kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../DevOps_and_Cloud/Containers_and_Orchestration/kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
 models an ML workflow as a graph of containerized steps; Ray takes a
-fundamentally different approach — it's a [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native distributed
-computing runtime where a cluster of workers executes ordinary [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+fundamentally different approach — it's a [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native distributed
+computing runtime where a cluster of workers executes ordinary [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 functions and classes (tasks and actors) as first-class distributed units,
 with Ray Train, Ray Tune, and Ray Serve as ML-specific libraries built on
 that same runtime for distributed training, hyperparameter search, and
@@ -67,7 +67,7 @@ way Kubeflow's compiled IR is.
 - A [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster ≥ 1.24 with the KubeRay operator installed
   (`helm install kuberay-operator kuberay/kuberay-operator`), which manages
   `RayCluster`, `RayJob`, and `RayService` CRDs.
-- The `ray` [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) package installed in both the client environment
+- The `ray` [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) package installed in both the client environment
   (wherever job submission originates) and baked into the cluster's worker
   images, at the **exact same version** — Ray's wire protocol is not
   guaranteed compatible across even minor version differences, and a
@@ -137,7 +137,7 @@ way Kubeflow's compiled IR is.
 2. **Distribute training with Ray Train**, which wraps PyTorch/TensorFlow
    distributed training loops so the same script scales from a laptop to a
    multi-node GPU cluster without hand-rolled `torch.distributed` setup:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from ray.train.torch import TorchTrainer
    from ray.train import ScalingConfig, RunConfig, CheckpointConfig
 
@@ -169,7 +169,7 @@ way Kubeflow's compiled IR is.
 3. **Run hyperparameter search with Ray Tune**, which parallelizes trials
    across the cluster and supports early-stopping schedulers so
    underperforming trials are killed before consuming their full budget:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from ray import tune
    from ray.tune.schedulers import ASHAScheduler
 
@@ -194,7 +194,7 @@ way Kubeflow's compiled IR is.
    independent scaling and request batching from a single Ray cluster —
    useful when serving several models of different sizes/traffic patterns
    without one [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Deployment per model:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from ray import serve
 
    @serve.deployment(ray_actor_options={"num_gpus": 0.25}, autoscaling_config={"min_replicas": 1, "max_replicas": 10})
@@ -226,7 +226,7 @@ way Kubeflow's compiled IR is.
    metadata:
      name: fraud-training-run-2026-07-28
    spec:
-     entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) train_fraud_model.py --epochs 20
+     entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) train_fraud_model.py --epochs 20
      shutdownAfterJobFinishes: true
      rayClusterSpec:
        rayVersion: "2.34.0"
@@ -354,7 +354,7 @@ kind: RayJob
 metadata:
   name: vision-finetune-2026-07-28
 spec:
-  entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) finetune_vision_model.py --epochs 15 --checkpoint-uri s3://ml-artifacts/vision-model/run-214/
+  entrypoint: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) finetune_vision_model.py --epochs 15 --checkpoint-uri s3://ml-artifacts/vision-model/run-214/
   shutdownAfterJobFinishes: true
   ttlSecondsAfterFinished: 600
   rayClusterSpec:
@@ -384,7 +384,7 @@ spec:
 ```
 
 `finetune_vision_model.py` (abbreviated):
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from ray.train.torch import TorchTrainer
 from ray.train import ScalingConfig, RunConfig
 
@@ -400,7 +400,7 @@ result = trainer.fit()
 Once the `RayJob` completes and the cluster shuts down, serve the
 checkpoint with Ray Serve on a separate, long-lived serving `RayCluster`
 using fractional GPUs:
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 @serve.deployment(ray_actor_options={"num_gpus": 0.5}, autoscaling_config={"min_replicas": 2, "max_replicas": 6})
 class VisionClassifier:
     def __init__(self):

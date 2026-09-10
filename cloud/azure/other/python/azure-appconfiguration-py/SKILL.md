@@ -19,7 +19,7 @@ depends_on:
   - audit
 ---
 
-# Azure App Configuration SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure App Configuration SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Centralized configuration management with feature flags and dynamic settings.
 
@@ -49,7 +49,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.appconfiguration import AzureAppConfigurationClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
@@ -57,7 +57,7 @@ from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with AzureAppConfigurationClient(
@@ -72,14 +72,14 @@ with AzureAppConfigurationClient(
 
 ### Get Setting
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 setting = client.get_configuration_setting(key="app:settings:message")
 print(f"{setting.key} = {setting.value}")
 ```
 
 ### Get with Label
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Labels allow environment-specific values
 setting = client.get_configuration_setting(
     key="app:settings:message",
@@ -89,7 +89,7 @@ setting = client.get_configuration_setting(
 
 ### Set Setting
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.appconfiguration import ConfigurationSetting
 
 setting = ConfigurationSetting(
@@ -105,7 +105,7 @@ client.set_configuration_setting(setting)
 
 ### Delete Setting
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 client.delete_configuration_setting(
     key="app:settings:message",
     label="development"
@@ -116,7 +116,7 @@ client.delete_configuration_setting(
 
 ### All Settings
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 settings = client.list_configuration_settings()
 for setting in settings:
     print(f"{setting.key} [{setting.label}] = {setting.value}")
@@ -124,7 +124,7 @@ for setting in settings:
 
 ### Filter by Key Prefix
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 settings = client.list_configuration_settings(
     key_filter="app:settings:*"
 )
@@ -132,7 +132,7 @@ settings = client.list_configuration_settings(
 
 ### Filter by Label
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 settings = client.list_configuration_settings(
     label_filter="production"
 )
@@ -142,7 +142,7 @@ settings = client.list_configuration_settings(
 
 ### Set Feature Flag
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.appconfiguration import ConfigurationSetting
 import json
 
@@ -163,7 +163,7 @@ client.set_configuration_setting(feature_flag)
 
 ### Get Feature Flag
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 setting = client.get_configuration_setting(
     key=".appconfig.featureflag/beta-feature"
 )
@@ -173,7 +173,7 @@ print(f"Feature enabled: {flag_data['enabled']}")
 
 ### List Feature Flags
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 flags = client.list_configuration_settings(
     key_filter=".appconfig.featureflag/*"
 )
@@ -184,7 +184,7 @@ for flag in flags:
 
 ## Read-Only Settings
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Make setting read-only
 client.set_read_only(
     configuration_setting=setting,
@@ -202,7 +202,7 @@ client.set_read_only(
 
 ### Create Snapshot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.appconfiguration import ConfigurationSnapshot, ConfigurationSettingFilter
 
 snapshot = ConfigurationSnapshot(
@@ -220,7 +220,7 @@ created = client.begin_create_snapshot(
 
 ### List Snapshot Settings
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 settings = client.list_configuration_settings(
     snapshot_name="v1-snapshot"
 )
@@ -228,7 +228,7 @@ settings = client.list_configuration_settings(
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.appconfiguration.aio import AzureAppConfigurationClient
 from azure.identity.aio import DefaultAzureCredential
 

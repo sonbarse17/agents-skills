@@ -44,7 +44,7 @@ Exact user phrases: "APM", "[observability](../../../observability-monitoring-lo
 
 ### Input Context
 Before activating, verify:
-- Stack/language (for SDK selection: Java, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, Node.js, .NET).
+- Stack/language (for SDK selection: Java, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, Node.js, .NET).
 - Infrastructure type ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
 - Existing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools (if migrating from legacy).
 - Budget constraints ([observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tools can be expensive).
@@ -203,8 +203,8 @@ service:
       exporters: [otlp, debug]
 ```
 
-### Step 2: Service Instrumentation ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Example)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Step 2: Service Instrumentation ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Example)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # app/instrumentation.py
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace, metrics
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.resources import Resource
@@ -267,7 +267,7 @@ active_payments = meter.create_up_down_counter(
 )
 ```
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # app/routes.py
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
 from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import metrics

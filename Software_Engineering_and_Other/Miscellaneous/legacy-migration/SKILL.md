@@ -300,8 +300,8 @@ A retail chain migrated a 12TB data warehouse over a long holiday weekend. After
 
 ## Code Examples
 
-### Strangler Fig Routing Proxy ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Strangler Fig Routing Proxy ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import random
 from flask import Flask, request, jsonify
 import requests
@@ -350,8 +350,8 @@ router.add_route("/api/users", 50.0)   # 50/50 split
 # status, data, used_new = router.route_request("/api/orders", "GET", {})
 ```
 
-### Dual-Write Data Comparison ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### Dual-Write Data Comparison ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import hashlib, json
 from dataclasses import dataclass
 

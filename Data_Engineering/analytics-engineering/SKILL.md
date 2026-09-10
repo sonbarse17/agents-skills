@@ -67,8 +67,8 @@ dbt project configuration, model SQL, macro definitions, metric definitions, dat
 ```yaml
 -- dbt project config, schema.yml, metrics definitions
 ```
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
--- [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) dbt models
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+-- [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dbt models
 -- MetricFlow config
 ```
 
@@ -375,8 +375,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
-        with: { [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: "3.11" }
+      - uses: actions/setup-[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
+        with: { [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: "3.11" }
       - name: Install dbt
         run: pip install dbt-{{ target.type }}
       - name: dbt deps
@@ -406,10 +406,10 @@ Data size and update pattern?
     └── Aggregated metrics → Incremental + summary table
 ```
 
-### dbt [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) Models
+### dbt [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Models
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# models/marts/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/customer_segments.py
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# models/marts/[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/customer_segments.py
 import pandas as pd
 from sklearn.cluster import KMeans
 
@@ -476,7 +476,7 @@ Source data characteristics?
 - Implement CI/CD for dbt — build only modified models on PRs
 - Prefer incremental over table refresh for large datasets
 - Version control dbt packages.yml — pin versions
-- Use [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) dbt models for ML logic that can't be expressed in SQL
+- Use [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dbt models for ML logic that can't be expressed in SQL
 - Generate documentation on every deployment
 
 ## References
@@ -492,7 +492,7 @@ Source data characteristics?
 Analytics Engineering Stack
 ├── Transformation tool?
 │   ├── dbt (SQL-first) → dbt Core / dbt Cloud
-│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-heavy → SQLMesh / Dataform
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-heavy → SQLMesh / Dataform
 │   └── Multi-language → Dagster + dbt
 ├── Warehouse target?
 │   ├── Snowflake → dbt-snowflake adapter (native features)
@@ -506,7 +506,7 @@ Analytics Engineering Stack
     └── No → Manual dbt run (not recommended)
 ```
 
-**Decision criteria**: Evaluate team SQL vs [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) skills, warehouse platform, modeling maturity, and CI requirements.
+**Decision criteria**: Evaluate team SQL vs [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) skills, warehouse platform, modeling maturity, and CI requirements.
 
 ## Implementation Patterns
 

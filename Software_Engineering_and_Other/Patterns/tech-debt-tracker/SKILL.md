@@ -328,7 +328,7 @@ Hand off to `[dev-loop-refactor-guide](../refactor-guide/SKILL.md)` for refactor
 
 ### Tech Debt Calculator
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -410,7 +410,7 @@ class DebtTracker:
 
 ### SonarQube Metric Collector
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Languages/python/python/SKILL.md)
 from typing import Dict, Optional
 import requests
 import json

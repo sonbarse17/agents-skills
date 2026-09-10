@@ -313,8 +313,8 @@ CREATE POLICY admin_access ON customer_records
     USING (current_setting('app.user_role') = 'admin');
 ```
 
-### AWS KMS Envelope Encryption ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### AWS KMS Envelope Encryption ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import boto3
 from cryptography.fernet import Fernet
 import base64
@@ -363,7 +363,7 @@ ALTER TABLE users MODIFY COLUMN email SET MASKING POLICY email_mask;
 ```
 
 ### Differential Privacy Example
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import numpy as np
 
 def laplace_mechanism(true_value: float, epsilon: float, sensitivity: float = 1.0) -> float:

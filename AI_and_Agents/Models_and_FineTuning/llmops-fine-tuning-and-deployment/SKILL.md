@@ -121,7 +121,7 @@ leaves cost and latency on the table.
    removed) — and only move to full fine-tuning if PEFT demonstrably
    underperforms for the task after reasonable rank/target-module tuning.
 4. **Configure LoRA/QLoRA concretely:**
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from peft import LoraConfig, get_peft_model
    from transformers import AutoModelForCausalLM, BitsAndBytesConfig
    import torch

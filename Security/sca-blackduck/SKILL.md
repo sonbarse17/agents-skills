@@ -159,7 +159,7 @@ Work through each step systematically. Check off completed items.
 Black Duck Detect automatically identifies and scans:
 
 - **JavaScript/Node**: npm, yarn, pnpm
-- **[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)**: pip, pipenv, poetry
+- **[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)**: pip, pipenv, poetry
 - **Java**: Maven, Gradle
 - **Ruby**: Bundler, gem
 - **.NET**: NuGet

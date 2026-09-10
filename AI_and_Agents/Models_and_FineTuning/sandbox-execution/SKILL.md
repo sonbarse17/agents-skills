@@ -283,12 +283,12 @@ START: Agent requests execution environment
 ## Complete Execution Scenario
 
 ```
-Agent Request: "Execute [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) data analysis with network access to S3"
+Agent Request: "Execute [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) data analysis with network access to S3"
 │
 ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. PARSE REQUEST                                             │
-│    Language: [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11                                     │
+│    Language: [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.11                                     │
 │    Dependencies: pandas, numpy, boto3                        │
 │    Network: Egress to *.amazonaws.com:443                    │
 │    Resource budget: 2 CPU, 2GB RAM, 10GB disk, 600s          │
@@ -310,7 +310,7 @@ Agent Request: "Execute [Python](../../../Software_Engineering_and_Other/Languag
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. EXECUTE with 60s snapshot interval                        │
-│    t=0s   : Launch [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) analysis.py                        │
+│    t=0s   : Launch [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) analysis.py                        │
 │    t=42s  : Snapshot snap-001 captured (fs: 1.2GB)           │
 │    t=104s : Snapshot snap-002 captured (fs: 2.8GB)           │
 │    t=187s : Execution complete, exit code 0                  │
@@ -369,7 +369,7 @@ Agent Request: "Execute [Python](../../../Software_Engineering_and_Other/Languag
 
 ### Sandbox Manager
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Dict, List, Optional, Callable
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -497,7 +497,7 @@ class SandboxManager:
 
 ### Resource Quota Enforcer
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from typing import Dict, Optional
 import time
 

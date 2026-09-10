@@ -19,7 +19,7 @@ depends_on:
   - audit
 ---
 
-# Azure Monitor Ingestion SDK for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Monitor Ingestion SDK for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Send custom logs to Azure Monitor Log Analytics workspace using the Logs Ingestion API.
 
@@ -66,7 +66,7 @@ Before using this SDK, you need:
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.ingestion import LogsIngestionClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 import os
@@ -74,7 +74,7 @@ import os
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with LogsIngestionClient(
@@ -87,7 +87,7 @@ with LogsIngestionClient(
 
 ## Upload Custom Logs
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.ingestion import LogsIngestionClient
 from azure.identity import DefaultAzureCredential
 import os
@@ -110,7 +110,7 @@ with LogsIngestionClient(
 
 ## Upload from JSON File
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import json
 
 with open("logs.json", "r") as f:
@@ -123,7 +123,7 @@ client.upload(rule_id=rule_id, stream_name=stream_name, logs=logs)
 
 Handle partial failures with a callback:
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 failed_logs = []
 
 def on_error(error):
@@ -145,7 +145,7 @@ if failed_logs:
 
 ## Ignore Errors
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def ignore_errors(error):
     pass  # Silently ignore upload failures
 
@@ -159,7 +159,7 @@ client.upload(
 
 ## Async Client
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import asyncio
 from azure.monitor.ingestion.aio import LogsIngestionClient
 from azure.identity.aio import DefaultAzureCredential
@@ -180,7 +180,7 @@ asyncio.run(upload_logs())
 
 ## Sovereign Clouds
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import AzureAuthorityHosts, DefaultAzureCredential
 from azure.monitor.ingestion import LogsIngestionClient
 

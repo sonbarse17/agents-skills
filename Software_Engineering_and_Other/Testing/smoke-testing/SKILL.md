@@ -212,8 +212,8 @@ test.describe("Smoke: Core Business Flow", () => {
 });
 ```
 
-### [Python](../../Languages/python/SKILL.md) — API Health Smoke Tests
-```[python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md) — API Health Smoke Tests
+```[python](../../Languages/python/python/SKILL.md)
 # smoke/test_api_health.py
 import requests
 import sys

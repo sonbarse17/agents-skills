@@ -471,7 +471,7 @@ Data Quality Framework
 ## Implementation Patterns
 
 ### Great Expectations Checkpoint
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_quality/ge_checkpoint.py
 import great_expectations as ge
 from great_expectations.core.batch import RuntimeBatchRequest

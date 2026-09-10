@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# Azure Blob Storage SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Blob Storage SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Client library for Azure Blob Storage — object storage for unstructured data.
 
@@ -52,14 +52,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.blob import BlobServiceClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.blob.core.windows.net"
 
@@ -80,14 +80,14 @@ with BlobServiceClient(account_url, credential=credential) as blob_service_clien
 
 ### Create Container
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 container_client = blob_service_client.get_container_client("mycontainer")
 container_client.create_container()
 ```
 
 ### Upload Blob
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # From file path
 blob_client = blob_service_client.get_blob_client(
     container="mycontainer",
@@ -108,7 +108,7 @@ blob_client.upload_blob(stream, overwrite=True)
 
 ### Download Blob
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 blob_client = blob_service_client.get_blob_client(
     container="mycontainer",
     blob="sample.txt"
@@ -130,7 +130,7 @@ num_bytes = blob_client.download_blob().readinto(stream)
 
 ### List Blobs
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 container_client = blob_service_client.get_container_client("mycontainer")
 
 # List all blobs
@@ -151,7 +151,7 @@ for item in container_client.walk_blobs(delimiter="/"):
 
 ### Delete Blob
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 blob_client.delete_blob()
 
 # Delete with snapshots
@@ -160,7 +160,7 @@ blob_client.delete_blob(delete_snapshots="include")
 
 ## Performance Tuning
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Configure chunk sizes for large uploads/downloads
 with BlobClient(
     account_url=account_url,
@@ -181,7 +181,7 @@ with BlobClient(
 
 Generate SAS tokens with a **user delegation key** signed by Microsoft Entra ID — never with an account key. This keeps SAS issuance tied to Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md)/rotation.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datetime import datetime, timedelta, timezone
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import (
@@ -215,7 +215,7 @@ blob_url = f"{account_url}/mycontainer/sample.txt?{sas_token}"
 
 ## Blob Properties and Metadata
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Get properties
 properties = blob_client.get_blob_properties()
 print(f"Size: {properties.size}")
@@ -234,7 +234,7 @@ blob_client.set_http_headers(
 
 ## Async Client
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity.aio import DefaultAzureCredential
 from azure.storage.blob.aio import BlobServiceClient
 

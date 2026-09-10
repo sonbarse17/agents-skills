@@ -34,7 +34,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ with `pip`
+- [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with `pip`
 - A vector database (Qdrant, Weaviate, Pinecone, or pgvector)
 - An embedding model (OpenAI, Cohere, or local via `sentence-transformers`)
 - An LLM endpoint (OpenAI API or self-hosted vLLM)
@@ -50,7 +50,7 @@ User Query → Embedder → Vector Store (search) → Reranker → LLM → Answe
 
 ## Embedding Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
@@ -86,7 +86,7 @@ def ingest_documents(docs: list[dict]):
 
 ## Chunking Strategies
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def chunk_text(text: str, chunk_size: int = 512, overlap: int = 50) -> list[str]:
@@ -107,7 +107,7 @@ md_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers)
 
 ## Hybrid Search (Dense + Sparse)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from qdrant_client.models import SparseVector, SparseVectorParams, NamedSparseVector
 from fastembed import SparseTextEmbedding
 
@@ -140,7 +140,7 @@ def hybrid_search(query: str, top_k: int = 10) -> list[dict]:
 
 ## Reranking
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import cohere
 
 co = cohere.Client("your-api-key")
@@ -168,7 +168,7 @@ def local_rerank(query: str, candidates: list[str], top_n: int = 5) -> list[str]
 
 ## RAG Query Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from openai import OpenAI
 
 llm = OpenAI(base_url="http://localhost:8000/v1", api_key="your-key")

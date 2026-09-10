@@ -99,7 +99,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **HNSW Indexing**: Hierarchical Navigable Small World graphs for ultra-fast Approximate Nearest Neighbor search.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -148,7 +148,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Cosine Similarity**: Measuring the angle between embeddings to determine semantic closeness.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -223,7 +223,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension

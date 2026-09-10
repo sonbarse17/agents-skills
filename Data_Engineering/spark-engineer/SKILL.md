@@ -57,7 +57,7 @@ Load detailed guidance based on context:
 
 ### Quick-Start Mini-Pipeline (PySpark)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StructField, StringType, LongType, DoubleType
@@ -90,7 +90,7 @@ result.write.mode("overwrite").parquet("s3://bucket/output/")
 
 ### Broadcast Join (small dimension table < 200 MB)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pyspark.sql.functions import broadcast
 
 # Spark will automatically broadcast dim_table; hint makes intent explicit
@@ -99,7 +99,7 @@ enriched = large_fact_df.join(broadcast(dim_df), on="product_id", how="left")
 
 ### Handling Data Skew with Salting
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import pyspark.sql.functions as F
 
 SALT_BUCKETS = 50
@@ -117,7 +117,7 @@ result = skewed_df.join(other_df, on="salted_key", how="inner") \
 
 ### Correct Caching Pattern
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Cache ONLY when the DataFrame is reused multiple times
 df_cleaned = df.filter(...).withColumn(...).cache()
 df_cleaned.count()  # Materialize immediately; check Spark UI for spill

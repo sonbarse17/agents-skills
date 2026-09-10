@@ -19,7 +19,7 @@ depends_on:
   - audit
 ---
 
-# Azure Bot Service Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Bot Service Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Manage Azure Bot Service resources including bots, channels, and connections.
 
@@ -51,7 +51,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.mgmt.botservice import AzureBotService
 import os
@@ -59,7 +59,7 @@ import os
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with AzureBotService(
@@ -72,7 +72,7 @@ with AzureBotService(
 
 ## Create a Bot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.botservice import AzureBotService
 from azure.mgmt.botservice.models import Bot, BotProperties, Sku
 from azure.identity import DefaultAzureCredential
@@ -108,7 +108,7 @@ print(f"Bot created: {bot.name}")
 
 ## Get Bot Details
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 bot = client.bots.get(
     resource_group_name=resource_group,
     resource_name=bot_name
@@ -121,7 +121,7 @@ print(f"SKU: {bot.sku.name}")
 
 ## List Bots in Resource Group
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 bots = client.bots.list_by_resource_group(resource_group_name=resource_group)
 
 for bot in bots:
@@ -130,7 +130,7 @@ for bot in bots:
 
 ## List All Bots in Subscription
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 all_bots = client.bots.list()
 
 for bot in all_bots:
@@ -139,7 +139,7 @@ for bot in all_bots:
 
 ## Update Bot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 bot = client.bots.update(
     resource_group_name=resource_group,
     resource_name=bot_name,
@@ -152,7 +152,7 @@ bot = client.bots.update(
 
 ## Delete Bot
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 client.bots.delete(
     resource_group_name=resource_group,
     resource_name=bot_name
@@ -163,7 +163,7 @@ client.bots.delete(
 
 ### Add Teams Channel
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.botservice.models import (
     BotChannel,
     MsTeamsChannel,
@@ -187,7 +187,7 @@ channel = client.channels.create(
 
 ### Add Direct Line Channel
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.botservice.models import (
     BotChannel,
     DirectLineChannel,
@@ -219,7 +219,7 @@ channel = client.channels.create(
 
 ### Add Web Chat Channel
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.botservice.models import (
     BotChannel,
     WebChatChannel,
@@ -249,7 +249,7 @@ channel = client.channels.create(
 
 ## Get Channel Details
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 channel = client.channels.get(
     resource_group_name=resource_group,
     resource_name=bot_name,
@@ -259,7 +259,7 @@ channel = client.channels.get(
 
 ## List Channel Keys
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 keys = client.channels.list_with_keys(
     resource_group_name=resource_group,
     resource_name=bot_name,
@@ -277,7 +277,7 @@ if hasattr(keys.properties, 'properties'):
 
 ### Create Connection Setting
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.botservice.models import (
     ConnectionSetting,
     ConnectionSettingProperties
@@ -301,7 +301,7 @@ connection = client.bot_connection.create(
 
 ### List Connections
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 connections = client.bot_connection.list_by_bot_service(
     resource_group_name=resource_group,
     resource_name=bot_name

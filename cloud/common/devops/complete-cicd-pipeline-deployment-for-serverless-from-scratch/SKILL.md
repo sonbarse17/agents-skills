@@ -97,8 +97,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
-        with: { [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: "3.12" }
+      - uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
+        with: { [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: "3.12" }
       - run: |
           pip install -r requirements.txt -t package/
           cp -r src/* package/
@@ -282,7 +282,7 @@ back to the prior value, depending on outcome.
 
 ## Worked example
 
-**Scenario:** `payments-webhook`, a [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Lambda function invoked via API
+**Scenario:** `payments-webhook`, a [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Lambda function invoked via API
 Gateway, gets its first full pipeline: PR-time SAST/SCA on the packaged
 dependency tree, zip build, and a SAM deploy with a 10%/5-minute canary
 gated on an error-rate alarm.

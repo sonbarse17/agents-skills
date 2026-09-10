@@ -99,13 +99,13 @@ level: medium
 
 ```bash
 # Convert to Splunk
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend splunk
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend splunk
 
 # Convert to Elasticsearch
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend elasticsearch
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend elasticsearch
 
 # Convert to Microsoft Sentinel
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend sentinel
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py rule.yml --backend sentinel
 ```
 
 ## Core Workflows
@@ -116,7 +116,7 @@ Progress:
 [ ] 1. Identify detection requirement from threat intelligence or compliance
 [ ] 2. Research log sources and field mappings for target environment
 [ ] 3. Create Sigma rule using standard template
-[ ] 4. Validate rule syntax: `[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py rule.yml`
+[ ] 4. Validate rule syntax: `[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_validate.py rule.yml`
 [ ] 5. Test rule against sample logs or historical data
 [ ] 6. Convert to target SIEM format
 [ ] 7. Deploy and tune based on false positive rate
@@ -144,7 +144,7 @@ For proactive threat hunting based on TTPs:
    - Use field modifiers for robust matching (endswith, contains, re)
 
 4. **Validate and Test**
-   - Run validation: `[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py hunting-rule.yml`
+   - Run validation: `[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_validate.py hunting-rule.yml`
    - Test against known-good and known-bad samples
    - Tune detection logic based on results
 
@@ -159,13 +159,13 @@ When migrating between SIEM platforms:
 
 ```bash
 # Validate all rules first
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py --directory rules/ --report validation-report.json
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_validate.py --directory rules/ --report validation-report.json
 
 # Convert entire rule set
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
 
 # Generate deployment report
-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --report conversion-report.md
+[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --report conversion-report.md
 ```
 
 Review conversion report for:
@@ -189,7 +189,7 @@ For implementing compliance [monitoring](../../observability-monitoring-logging/
    - Set appropriate severity levels
 
 3. **Validate Coverage**
-   - Run: `[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/compliance_coverage.py --framework pci-dss`
+   - Run: `[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/compliance_coverage.py --framework pci-dss`
    - Review coverage gaps
    - Create additional rules as needed
 
@@ -204,7 +204,7 @@ For implementing compliance [monitoring](../../observability-monitoring-logging/
 
 ```yaml
 title: Human-readable rule name
-id: UUID (generate with: [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -c "import uuid; print(uuid.uuid4())")
+id: UUID (generate with: [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "import uuid; print(uuid.uuid4())")
 status: stable|test|experimental|deprecated
 description: Detailed description of what this detects
 author: Your Name
@@ -426,10 +426,10 @@ jobs:
       - name: Validate Sigma Rules
         run: |
           pip install pysigma
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_validate.py --directory rules/
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_validate.py --directory rules/
       - name: Convert to Production Format
         run: |
-          [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
+          [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/sigma_convert.py --directory rules/ --backend splunk --output converted/
 ```
 
 ### SIEM Deployment

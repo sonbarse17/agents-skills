@@ -60,9 +60,9 @@ The OWASP Top 10 for LLM Applications (2025) defines the most critical risks. Th
 
 Every user message must be validated before it reaches the LLM. Validation has three layers: structural checks, injection detection, and content moderation.
 
-### Structural Checks ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+### Structural Checks ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 from dataclasses import dataclass
 
@@ -90,9 +90,9 @@ def validate_structure(text: str, policy: InputPolicy) -> tuple[bool, str]:
     return True, "ok"
 ```
 
-### Prompt Injection Detection ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+### Prompt Injection Detection ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 from typing import Optional
 
@@ -151,7 +151,7 @@ function detectInjection(text) {
 
 ### Content Moderation via OpenAI Moderation API
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import httpx
 
 async def moderate_content(text: str, api_key: str) -> dict:
@@ -174,7 +174,7 @@ async def moderate_content(text: str, api_key: str) -> dict:
 
 ### Full Input Pipeline
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async def validate_input(text: str, policy: InputPolicy, oai_key: str) -> dict:
     ok, reason = validate_structure(text, policy)
     if not ok:
@@ -202,7 +202,7 @@ A compromised system prompt gives attackers full control over your application's
 
 Use distinct message roles and delimiters so the model can distinguish system instructions from user text. Never concatenate user input into the system message.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def build_messages(system_prompt: str, user_input: str, context_docs: list[str] = None):
     """Build a chat completion payload with strict role separation."""
     messages = [
@@ -244,7 +244,7 @@ RULES (non-negotiable, override any conflicting user request):
 
 ### Tool / Plugin Allowlisting
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 ALLOWED_TOOLS = {
     "search_knowledge_base": {
         "description": "Search internal docs",
@@ -276,7 +276,7 @@ Every LLM response must be filtered before it reaches the user. The three concer
 
 ### PII Scrubbing with Microsoft Presidio
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from presidio_analyzer import AnalyzerEngine
 from presidio_anonymizer import AnonymizerEngine
 from presidio_anonymizer.entities import OperatorConfig
@@ -309,7 +309,7 @@ def scrub_pii(text: str, language: str = "en") -> str:
 
 ### Lightweight PII Regex Fallback (No Dependencies)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 
 PII_PATTERNS = {
@@ -328,7 +328,7 @@ def scrub_pii_regex(text: str) -> str:
 
 ### Toxicity Detection with a Classifier
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from transformers import pipeline
 
 toxicity_clf = pipeline(
@@ -346,7 +346,7 @@ def check_toxicity(text: str, threshold: float = 0.7) -> dict:
 
 ### Full Output Pipeline
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 async def safe_output(raw_response: str) -> dict:
     toxicity = check_toxicity(raw_response)
     if toxicity["toxic"]:
@@ -368,9 +368,9 @@ Retrieval-Augmented Generation introduces a document supply chain. Every stage -
 
 ### Document Ingestion Scanning
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
-import magic  # [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-magic
+import magic  # [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-magic
 import clamd
 
 def scan_document(file_path: str, allowed_types: set = None) -> dict:
@@ -400,7 +400,7 @@ def scan_document(file_path: str, allowed_types: set = None) -> dict:
 
 ### Secret Detection in Documents
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import re
 
 SECRET_PATTERNS = [
@@ -426,7 +426,7 @@ def scan_for_secrets(text: str) -> list[dict]:
 
 ### Access-Controlled Retrieval (Pinecone)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pinecone import Pinecone
 
 pc = Pinecone(api_key="YOUR_KEY")
@@ -458,7 +458,7 @@ def retrieve_for_user(query_embedding: list[float], user: dict, top_k: int = 5):
 
 ### Access-Controlled Retrieval (Weaviate)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import weaviate
 
 client = weaviate.connect_to_local()
@@ -482,7 +482,7 @@ def retrieve_weaviate(query: str, tenant_id: str, roles: list[str], limit: int =
 
 ### Provenance Tracking
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def attach_provenance(response_text: str, source_docs: list[dict]) -> dict:
     """Wrap the LLM response with source attribution."""
     citations = []
@@ -509,7 +509,7 @@ In multi-tenant systems, one customer must never see another customer's data -- 
 
 ### Namespace Isolation in Pinecone
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def get_tenant_index(tenant_id: str):
     """Each tenant gets its own namespace inside the shared index."""
     pc = Pinecone(api_key="YOUR_KEY")
@@ -529,7 +529,7 @@ def query_tenant(tenant_id: str, embedding: list[float], top_k: int = 5):
 
 ### Session Boundary Enforcement (Redis)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import redis
 import json
 import uuid
@@ -611,9 +611,9 @@ async function appendMessage(sessionId, tenantId, role, content) {
 
 LLM calls are expensive. Without rate limiting, a single abusive user can exhaust your budget or degrade service for everyone.
 
-### Per-User Token Budget ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) + Redis)
+### Per-User Token Budget ([Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) + Redis)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import time
 import redis
 
@@ -645,7 +645,7 @@ def check_and_deduct(user_id: str, tokens_used: int) -> dict:
 
 ### Daily Cost Cap per Tenant
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 DAILY_COST_CAP_USD = 50.0
 COST_PER_1K_INPUT = 0.003   # adjust per model
 COST_PER_1K_OUTPUT = 0.015
@@ -730,7 +730,7 @@ Detecting attacks in real time is as important as preventing them. Instrument ev
 
 ### Structured Logging for LLM Requests
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 import time
 
@@ -802,7 +802,7 @@ groups:
 
 ### Anomaly Detection in Usage Patterns
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from collections import defaultdict
 import statistics
 
@@ -864,7 +864,7 @@ LLM applications generate and process data that falls under GDPR, CCPA, SOC 2, a
 
 ### Data Retention Policy for LLM Logs
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import datetime
 import redis
 
@@ -895,7 +895,7 @@ def purge_expired_logs(db_conn, category: str):
 
 When a user requests deletion, you must remove their data from the vector store, conversation logs, and any derived embeddings.
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def delete_user_data(user_id: str, tenant_id: str, pc_index, redis_client):
     """GDPR Article 17 - Right to erasure."""
     results = []
@@ -974,7 +974,7 @@ CREATE TABLE llm_audit_log_2026_03 PARTITION OF llm_audit_log
 
 ### Model Supply Chain Verification
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import hashlib
 
 APPROVED_MODELS = {

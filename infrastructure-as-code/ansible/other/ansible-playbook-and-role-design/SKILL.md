@@ -70,8 +70,8 @@ a change to every production host at once).
   `community.general`, `amazon.aws`) are installed via
   `[ansible](../ansible/SKILL.md)-galaxy collection install`.
 - SSH key-based access (or WinRM for Windows targets) from the control
-  node to every managed host, and [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) present on managed hosts ([Ansible](../ansible/SKILL.md)
-  executes modules via a remote [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) interpreter by default).
+  node to every managed host, and [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) present on managed hosts ([Ansible](../ansible/SKILL.md)
+  executes modules via a remote [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) interpreter by default).
 - `[ansible](../ansible/SKILL.md)-lint` and `yamllint` for static checks; `molecule` (with a
   [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../../../containers-orchestration/podman/other/podman/SKILL.md) driver) for role testing is recommended for any role
   used beyond a single one-off playbook.
@@ -391,4 +391,4 @@ A follow-up idempotency check confirms convergence:
 - [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md)
 - [aws-[cloudformation](../../../cloudformation/other/cloudformation/SKILL.md)-templates](../[aws-[cloudformation](../cloudformation/SKILL.md)-templates](../aws-[cloudformation](../cloudformation/SKILL.md)-templates/SKILL.md)/SKILL.md)
 - [shell-scripting-best-practices](../[shell-scripting-best-practices](../../../Software_Engineering_and_Other/Languages/shell-scripting-best-practices/SKILL.md)/SKILL.md)
-- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)
+- [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md)

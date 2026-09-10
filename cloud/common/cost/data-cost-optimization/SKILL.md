@@ -64,7 +64,7 @@ Cost optimization plan with warehouse configuration, query tuning, storage lifec
 # BigQuery reservation config
 # S3 lifecycle policies
 ```
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Cost allocation script
 # Budget [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
@@ -265,7 +265,7 @@ LifecycleConfiguration:
 ```
 
 ### Storage Cost Analysis
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import boto3
 
 s3 = boto3.client('s3')
@@ -309,7 +309,7 @@ SET OPTIONS (
 ```
 
 ### Budget [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # budget_config.py
 BUDGET_THRESHOLDS = {
     'snowflake': {

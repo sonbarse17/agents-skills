@@ -15,13 +15,13 @@ depends_on:
   - opentelemetry
 ---
 
-# EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Migration
+# EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) Migration
 
 Read the migration guide before making changes:
 
-- [Migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/migration)
-- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) setup](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/setup)
-- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) configuration](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/configuration)
+- [Migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/migration)
+- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) setup](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/setup)
+- [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) configuration](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/configuration)
 
 ## Guidelines
 
@@ -45,5 +45,5 @@ Read the migration guide before making changes:
 
 ## Examples
 
-See the [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/migration)
+See the [EDOT [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) migration guide](https://www.elastic.co/docs/reference/[opentelemetry](../../other/opentelemetry/SKILL.md)/edot-sdks/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/migration)
 for complete examples.

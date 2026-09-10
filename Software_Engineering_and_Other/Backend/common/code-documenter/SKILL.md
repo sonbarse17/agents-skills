@@ -41,7 +41,7 @@ Applies to any task involving code documentation, API specs, or developer-facing
 3. **Analyze** - Find undocumented code
 4. **Document** - Apply consistent format
 5. **Validate** - Test all code examples compile/run:
-   - [Python](../../../Languages/python/SKILL.md): `[python](../../../Languages/python/SKILL.md) -m doctest file.py` for doctest blocks; `pytest --doctest-modules` for module-wide checks
+   - [Python](../../../Languages/python/python/SKILL.md): `[python](../../../Languages/python/python/SKILL.md) -m doctest file.py` for doctest blocks; `pytest --doctest-modules` for module-wide checks
    - [TypeScript](../../../Frontend/common/typescript/SKILL.md)/JavaScript: `tsc --noEmit` to confirm typed examples compile
    - OpenAPI: validate spec with `npx @redocly/cli lint openapi.yaml`
    - If validation fails: fix examples and re-validate before proceeding to the Report step
@@ -49,8 +49,8 @@ Applies to any task involving code documentation, API specs, or developer-facing
 
 ## Quick-Reference Examples
 
-### Google-style Docstring ([Python](../../../Languages/python/SKILL.md))
-```[python](../../../Languages/python/SKILL.md)
+### Google-style Docstring ([Python](../../../Languages/python/python/SKILL.md))
+```[python](../../../Languages/python/python/SKILL.md)
 def fetch_user(user_id: int, active_only: bool = True) -> dict:
     """Fetch a single user record by ID.
 
@@ -67,8 +67,8 @@ def fetch_user(user_id: int, active_only: bool = True) -> dict:
     """
 ```
 
-### NumPy-style Docstring ([Python](../../../Languages/python/SKILL.md))
-```[python](../../../Languages/python/SKILL.md)
+### NumPy-style Docstring ([Python](../../../Languages/python/python/SKILL.md))
+```[python](../../../Languages/python/python/SKILL.md)
 def compute_similarity(vec_a: np.ndarray, vec_b: np.ndarray) -> float:
     """Compute cosine similarity between two vectors.
 
@@ -119,9 +119,9 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| [Python](../../../Languages/python/SKILL.md) Docstrings | `../../../Global_References/[python](../../../Languages/python/SKILL.md)-docstrings.md` | Google, NumPy, Sphinx styles |
+| [Python](../../../Languages/python/python/SKILL.md) Docstrings | `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-docstrings.md` | Google, NumPy, Sphinx styles |
 | [TypeScript](../../../Frontend/common/typescript/SKILL.md) JSDoc | `../../../Global_References/[typescript](../../../Frontend/common/typescript/SKILL.md)-jsdoc.md` | JSDoc patterns, [TypeScript](../../../Frontend/common/typescript/SKILL.md) |
-| FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | [Python](../../../Languages/python/SKILL.md) API documentation |
+| FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | [Python](../../../Languages/python/python/SKILL.md) API documentation |
 | NestJS/Express API | `../../../Global_References/api-docs-nestjs-express.md` | Node.js API documentation |
 | Coverage Reports | `../../../Global_References/coverage-reports.md` | Generating documentation reports |
 | Documentation Systems | `../../../Global_References/documentation-systems.md` | Doc sites, static generators, search, testing |

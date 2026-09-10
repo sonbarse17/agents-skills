@@ -186,7 +186,7 @@ function getAmount0Delta(
 ```
 
 ### Stableswap Invariant (Curve)
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Curve's stableswap invariant: combination of constant sum and constant product
 # x + y + (x*y) / (D/2) = D + D^2 / (4*amplification_coefficient)
 # A * n^n * sum(x_i) + D = A * D * n^n + D^(n+1) / (n^n * prod(x_i))

@@ -19,7 +19,7 @@ depends_on:
   - azure-ai
 ---
 
-# Azure AI Transcription SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Transcription SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Client library for Azure AI Transcription (speech-to-text) with real-time and batch transcription.
 
@@ -49,7 +49,7 @@ TRANSCRIPTION_KEY=<your-key>  # For key auth; not needed when using DefaultAzure
 
 Use subscription key authentication:
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
@@ -63,7 +63,7 @@ with TranscriptionClient(
 
 ## Transcription (Batch)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
@@ -84,7 +84,7 @@ with TranscriptionClient(
 
 ## Transcription (Real-time)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient

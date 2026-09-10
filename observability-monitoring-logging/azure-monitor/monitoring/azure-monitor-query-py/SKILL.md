@@ -19,7 +19,7 @@ depends_on:
   - audit
 ---
 
-# Azure Monitor Query SDK for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Monitor Query SDK for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Query logs and metrics from Azure Monitor and Log Analytics workspaces.
 
@@ -53,13 +53,13 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 ```
 
@@ -67,7 +67,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 
 ### Basic Query
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query import LogsQueryClient
 from datetime import timedelta
 
@@ -92,7 +92,7 @@ with LogsQueryClient(credential) as client:
 
 ### Query with Time Range
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datetime import datetime, timezone
 
 response = client.query_workspace(
@@ -107,7 +107,7 @@ response = client.query_workspace(
 
 ### Convert to DataFrame
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import pandas as pd
 
 response = client.query_workspace(workspace_id, query, timespan=timedelta(hours=1))
@@ -120,7 +120,7 @@ if response.tables:
 
 ### Batch Query
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query import LogsBatchQuery
 
 queries = [
@@ -137,7 +137,7 @@ for response in responses:
 
 ### Handle Partial Results
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query import LogsQueryStatus
 
 response = client.query_workspace(workspace_id, query, timespan=timedelta(hours=24))
@@ -152,7 +152,7 @@ elif response.status == LogsQueryStatus.FAILURE:
 
 ### Query Resource Metrics
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query import MetricsQueryClient
 from datetime import timedelta
 
@@ -173,7 +173,7 @@ with MetricsQueryClient(credential) as metrics_client:
 
 ### Aggregations
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query import MetricAggregationType
 
 response = metrics_client.query_resource(
@@ -191,7 +191,7 @@ response = metrics_client.query_resource(
 
 ### Filter by Dimension
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 response = metrics_client.query_resource(
     resource_uri=resource_uri,
     metric_names=["Requests"],
@@ -202,7 +202,7 @@ response = metrics_client.query_resource(
 
 ### List Metric Definitions
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 definitions = metrics_client.list_metric_definitions(resource_uri)
 for definition in definitions:
     print(f"{definition.name}: {definition.unit}")
@@ -210,7 +210,7 @@ for definition in definitions:
 
 ### List Metric Namespaces
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 namespaces = metrics_client.list_metric_namespaces(resource_uri)
 for ns in namespaces:
     print(ns.fully_qualified_namespace)
@@ -218,7 +218,7 @@ for ns in namespaces:
 
 ## Async Clients
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.query.aio import LogsQueryClient, MetricsQueryClient
 from azure.identity.aio import DefaultAzureCredential
 

@@ -66,7 +66,7 @@ Load detailed guidance based on context:
 
 The snippet below demonstrates the core MUST DO constraints: env-loaded credentials, `STORAGES` dict, separate media/static locations, and `default_acl=None` on the media backend.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # settings.py
 import os
 
@@ -99,7 +99,7 @@ MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 ```
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # models.py — uploads go straight to S3 on save()
 from django.db import models
 

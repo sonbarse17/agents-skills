@@ -303,7 +303,7 @@ Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expens
 ```
 
 ### Cost Optimization Automation Scripts
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Automated idle resource detection
 import boto3
 from datetime import datetime, timedelta
@@ -390,7 +390,7 @@ resource "aws_organizations_policy" "require_cost_tags" {
 ```
 
 ### Unit Economics Tracking Template
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 class UnitEconomics:
     def __init__(self, service_name):
         self.service = service_name
@@ -453,8 +453,8 @@ deny[msg] {
 }
 ```
 
-### Cost Anomaly Detection ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Cost Anomaly Detection ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import statistics
 from datetime import datetime, timedelta
 

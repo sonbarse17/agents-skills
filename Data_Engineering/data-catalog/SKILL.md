@@ -80,7 +80,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 | Platform | Strengths | Weaknesses | Best For |
 |---|---|---|---|
 | **DataHub** | Column-level lineage, real-time push, GraphQL API | Complex deployment | ML-first orgs, real-time metadata |
-| **Amundsen** | Simple search, good Tableau integration | Limited lineage, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-only | Search-first use cases |
+| **Amundsen** | Simple search, good Tableau integration | Limited lineage, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-only | Search-first use cases |
 | **OpenMetadata** | Ingestion framework, role-based access, UI | Newer ecosystem, smaller community | Organizations wanting all-in-one |
 | **Apache Atlas** | Hadoop-native, tag-based policies | Outdated UX, heavy | Existing Hadoop ecosystem |
 
@@ -200,7 +200,7 @@ Track: `dataset_queries`, `column_access_frequency`, `top_users`, `search_querie
 
 ### Step 8: DataHub API Integration
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datahub.ingestion.graph.client import DataHubGraph
 
 graph = DataHubGraph(
@@ -421,7 +421,7 @@ metadata_model:
 
 #### Catalog API Usage
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # DataHub GraphQL queries for catalog integration
 import requests
 
@@ -472,7 +472,7 @@ Team size and metadata requirements?
 ├── Small team (< 10), need quick data discovery
 │   └── Amundsen (simple, search-focused)
 ├── Mid-size team, need lineage + governance
-│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Spark/Airflow stack → DataHub (best lineage support)
+│   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Spark/Airflow stack → DataHub (best lineage support)
 │   └── dbt-native stack → OpenMetadata (dbt integration)
 ├── Large enterprise, compliance-driven
 │   └── DataHub or Atlan (strong governance, RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md))
@@ -531,7 +531,7 @@ Catalog Platform Selection
 ## Implementation Patterns
 
 ### Metadata Ingestion Pattern
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # data_catalog/ingestion.py
 from dataclasses import dataclass
 from datetime import datetime

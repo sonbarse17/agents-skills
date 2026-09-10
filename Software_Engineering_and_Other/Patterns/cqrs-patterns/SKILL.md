@@ -144,8 +144,8 @@ class OrderAggregate {
 }
 ```
 
-```[python](../../Languages/python/SKILL.md)
-# [Python](../../Languages/python/SKILL.md) write model
+```[python](../../Languages/python/python/SKILL.md)
+# [Python](../../Languages/python/python/SKILL.md) write model
 @dataclass
 class OrderAggregate:
     state: OrderState

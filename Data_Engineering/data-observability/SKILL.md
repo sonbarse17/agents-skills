@@ -200,7 +200,7 @@ Sev1 (Critical): data down, customer-facing impact, financial report wrong. Resp
 
 #### Statistical Process Control (SPC)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # SPC-based volume [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 import numpy as np
 from scipy import stats
@@ -253,7 +253,7 @@ prophet_config:
 
 #### Column-Level Distribution [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
-```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Detect distribution drift on numeric columns
 def detect_distribution_drift(
     current_sample, reference_sample, column_type="numeric"
@@ -426,7 +426,7 @@ quality_score_formula:
 | Freshness [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Automatic | Configurable | Custom | Manual |
 | Volume anomaly | ML-based | Rule-based | Custom | Rule-based |
 | Schema drift | Automatic | Configurable | Manual | Configurable |
-| Quality checks | Built-in | Custom SQL | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) expectations | dbt-based |
+| Quality checks | Built-in | Custom SQL | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) expectations | dbt-based |
 | Lineage | Automatic | Manual | Via dbt | Via dbt |
 | [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) | Slack, PagerDuty, email | Slack, email | Custom | Slack, email |
 | ML anomaly detection | Yes | No | No | No |
@@ -443,7 +443,7 @@ Team size and expertise?
 │   ├── Budget available → Monte Carlo (ML-based, automatic)
 │   └── Budget constrained → Elementary + dbt (OSS, dbt-native)
 └── Deep data testing in CI/CD
-    └── Great Expectations (most flexible, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native)
+    └── Great Expectations (most flexible, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native)
 ```
 
 ### Step 13: Cost of [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)

@@ -53,10 +53,10 @@ Before activating, verify:
 - Existing baseline or prior experiments
 
 ### Output Artifact
-ML pipeline with model selection, hyperparameter configuration, cross-validation strategy, and training code as [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+ML pipeline with model selection, hyperparameter configuration, cross-validation strategy, and training code as [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).
 
 ### Response Format
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Pipeline definition (preprocessing + model)
 # Training and validation code
 # Hyperparameter search configuration
@@ -86,7 +86,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Step 1: Problem Type and Metric Selection
 Regression: MSE/RMSE, MAE, R-squared, MAPE. Binary classification: AUC-ROC, F1, log loss, precision@k, recall. Multiclass: macro/micro/weighted F1. Ranking: NDCG, MAP.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.metrics import (
     mean_squared_error, mean_absolute_error, r2_score,
     roc_auc_score, f1_score, log_loss,
@@ -114,7 +114,7 @@ classification:
 ### Step 3: Preprocessing Pipeline
 scikit-learn Pipeline chains transforms. ColumnTransformer applies different transforms by column type. Numeric: StandardScaler, MinMaxScaler, RobustScaler, PowerTransformer. Categorical: OneHotEncoder, OrdinalEncoder. Missing: SimpleImputer, KNNImputer.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
@@ -148,7 +148,7 @@ pipeline = Pipeline([
 ### Step 4: Cross-Validation
 K-Fold: default for i.i.d. data. StratifiedKFold: classification with imbalanced classes. GroupKFold: no leakage across groups. TimeSeriesSplit: temporal data. Repeated K-Fold: lower variance estimate.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import (
     KFold, StratifiedKFold, GroupKFold,
     TimeSeriesSplit, RepeatedKFold, cross_validate
@@ -174,7 +174,7 @@ scores = cross_validate(
 ### Step 5: Hyperparameter Tuning
 GridSearchCV: exhaustive (small spaces). RandomizedSearchCV: random sampling (large spaces). Optuna: Bayesian optimization with pruning. HalvingGridSearchCV: successive halving for faster search.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.model_selection import RandomizedSearchCV
 from scipy.stats import randint, uniform
 
@@ -197,7 +197,7 @@ random_search.fit(X_train, y_train)
 ### Step 6: Model Interpretation
 Feature importance (tree-based): gain-based, permutation importance, SHAP values. Partial dependence plots. LIME for local explanations. Use permutation importance as the most reliable global method.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import shap
 import matplotlib.pyplot as plt
 
@@ -224,7 +224,7 @@ shap.summary_plot(shap_values, X_val[:100])
 ### Step 7: Imbalanced Data Handling
 Resampling: SMOTE, RandomUnderSampler, SMOTEENN. Algorithmic: class_weight='balanced', scale_pos_weight (XGBoost). Metric: precision-recall curve, AUC-PR. Threshold tuning.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from imblearn.over_sampling import SMOTE
 from imblearn.combine import SMOTEENN
 from imblearn.pipeline import Pipeline as ImbPipeline
@@ -250,7 +250,7 @@ best_threshold = thresholds[f1_scores.argmax()]
 ### Step 8: Model Serialization
 Joblib for numpy-heavy models. ONNX for cross-platform deployment. Native formats: XGBoost .json/.ubj, LightGBM .txt, CatBoost .cbm. Serialize full pipeline, not just model weights.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import joblib
 # Save full pipeline
 joblib.dump(pipeline, "models/churn_pipeline_v2.pkl")
@@ -266,7 +266,7 @@ predictions = loaded.predict(new_data)
 ### Step 9: Ensemble Methods
 Beyond individual models, use ensemble methods: Voting classifier (soft/hard voting), Stacking (meta-model on base model predictions), and Bagging (bootstrap aggregation).
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.ensemble import VotingClassifier, StackingClassifier
 
 # Soft voting
@@ -287,7 +287,7 @@ stacking = StackingClassifier(estimators=[
 ### Step 10: Feature Engineering
 Feature engineering transforms raw data into informative predictors. Include interaction features, polynomial features, binning, and target encoding for high-cardinality categoricals.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.preprocessing import PolynomialFeatures, KBinsDiscretizer
 from sklearn.feature_selection import SelectFromModel
 
@@ -484,7 +484,7 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
 ## Implementation Patterns
 
 ### End-to-End Classification Pipeline
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -514,7 +514,7 @@ print(f'CV F1: {cv_scores.mean():.3f} +/- {cv_scores.std():.3f}')
 `
 
 ### XGBoost with Hyperparameter Tuning
-`[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+`[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import xgboost as xgb
 from sklearn.model_selection import RandomizedSearchCV
 

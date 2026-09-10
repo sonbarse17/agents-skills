@@ -333,8 +333,8 @@ SCIM: automated, standardized, real-time, reduces errors. Manual provisioning: e
 
 ## Code Examples
 
-### OIDC Token Validation ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### OIDC Token Validation ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import jwt, requests
 from datetime import datetime
 
@@ -389,8 +389,8 @@ validator = OIDCTokenValidator(
 # Example usage: validator.validate_id_token(id_token)
 ```
 
-### SCIM 2.0 Provisioning Script ([Python](../../Languages/python/SKILL.md))
-```[python](../../Languages/python/SKILL.md)
+### SCIM 2.0 Provisioning Script ([Python](../../Languages/python/python/SKILL.md))
+```[python](../../Languages/python/python/SKILL.md)
 import requests, json
 
 class SCIMProvisioner:

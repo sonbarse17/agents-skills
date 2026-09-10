@@ -97,7 +97,7 @@ Project language?
 │   ├── New project + ESM → Vitest
 │   └── Existing Jest → Jest
 ├── Java → JUnit 5 + Mockito
-├── [Python](../../Languages/python/SKILL.md) → pytest + pytest-mock
+├── [Python](../../Languages/python/python/SKILL.md) → pytest + pytest-mock
 ├── Go → testing + testify
 ├── Rust → cargo test
 └── C# → xUnit + Moq/NSubstitute
@@ -217,8 +217,8 @@ describe("OrderService", () => {
 });
 ```
 
-### [Python](../../Languages/python/SKILL.md)/pytest — Pure Function Testing
-```[python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md)/pytest — Pure Function Testing
+```[python](../../Languages/python/python/SKILL.md)
 # src/pricing.py
 from dataclasses import dataclass
 from decimal import Decimal
@@ -270,8 +270,8 @@ class TestCalculateDiscount:
         assert calculate_discount(3, breaks) == Decimal("0")
 ```
 
-### [Python](../../Languages/python/SKILL.md)/pytest — Mocking External Service
-```[python](../../Languages/python/SKILL.md)
+### [Python](../../Languages/python/python/SKILL.md)/pytest — Mocking External Service
+```[python](../../Languages/python/python/SKILL.md)
 # tests/test_order_service.py
 from unittest.mock import Mock, patch
 from src.order_service import OrderService

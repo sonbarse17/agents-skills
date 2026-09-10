@@ -30,7 +30,7 @@ depends_on:
   - sentry
 ---
 
-# [Python](../../../Languages/python/SKILL.md) Django Architecture
+# [Python](../../../Languages/python/python/SKILL.md) Django Architecture
 
 ## Purpose
 Structure Django applications with one app per bounded context, service layer for business logic, thin views, DRF serializers as DTOs, and clean separation of concerns.
@@ -132,7 +132,7 @@ project_root/
 ```
 
 ### Step 2: Service Layer (Business Logic Here)
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/services.py
 from dataclasses import dataclass
 from django.db import transaction
@@ -168,7 +168,7 @@ class OrderService:
 ```
 
 ### Step 3: Repository Layer (Query Abstraction)
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/repositories.py
 from django.db.models import Prefetch
 from apps.orders.models import Order, OrderItem
@@ -196,7 +196,7 @@ class OrderRepository:
 ```
 
 ### Step 4: Thin Models
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/models.py
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -226,7 +226,7 @@ class Order(models.Model):
 ```
 
 ### Step 5: DRF Serializers (DTOs)
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/serializers.py
 from rest_framework import serializers
 from apps.orders.models import Order
@@ -247,7 +247,7 @@ class OrderSerializer(serializers.ModelSerializer):
 ```
 
 ### Step 6: Thin Views
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/views.py
 from rest_framework import viewsets, status
 from rest_framework.response import Response
@@ -286,7 +286,7 @@ class OrderViewSet(viewsets.GenericViewSet):
 ```
 
 ### Step 7: Signals Delegate to Services
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -310,7 +310,7 @@ class OrdersConfig(AppConfig):
 ```
 
 ### Step 8: URL Configuration
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # config/urls.py
 from django.urls import path, include
 
@@ -333,7 +333,7 @@ urlpatterns = router.urls
 
 ### Pattern: Soft Delete with Custom Manager
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 class ActiveManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(deleted_at__isnull=True)
@@ -350,7 +350,7 @@ class Order(models.Model):
 
 ### Pattern: Custom Exception Classes
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # shared/exceptions.py
 class AppException(Exception):
     def __init__(self, message: str, code: str = "ERROR"):
@@ -371,14 +371,14 @@ class ConflictException(AppException):
 
 ### Query Performance
 - Use `select_related()` for FK/O2O relationships (single JOIN)
-- Use `prefetch_related()` for M2M/O2M (separate query, merged in [Python](../../../Languages/python/SKILL.md))
+- Use `prefetch_related()` for M2M/O2M (separate query, merged in [Python](../../../Languages/python/python/SKILL.md))
 - Use `only()` / `defer()` to limit loaded columns on large models
 - Use `.iterator()` for memory-efficient iteration of large querysets
 - Add `db_index=True` on all FK fields and frequently filtered columns
 - Use `EXPLAIN ANALYZE` via `connection.queries` in DEBUG mode
 
 ### Celery Configuration
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # config/celery.py
 from celery import Celery
 app = Celery('project')
@@ -408,7 +408,7 @@ app.autodiscover_tasks()
 
 ## Testing Strategies
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # apps/orders/tests/test_services.py
 from django.test import TestCase
 from apps.orders.services import OrderService
@@ -516,7 +516,7 @@ class ConfigBuilder {
 
 ### Pattern: Service Layer with Type Hints
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 from dataclasses import dataclass
 from django.db import transaction
 from django.core.exceptions import ValidationError
@@ -546,7 +546,7 @@ class OrderService:
 
 ### Pattern: Select-Related and Prefetch-Related Optimization
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # Bad: N+1 queries
 orders = Order.objects.filter(user=request.user)
 for order in orders:

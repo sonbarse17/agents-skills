@@ -46,7 +46,7 @@ depends_on:
 
 Grype is an open-source vulnerability scanner that identifies known security flaws in container images,
 filesystems, and Software Bill of Materials (SBOM) documents. It analyzes operating system packages
-(Alpine, Ubuntu, Red Hat, Debian) and language-specific dependencies (Java, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), JavaScript, Ruby,
+(Alpine, Ubuntu, Red Hat, Debian) and language-specific dependencies (Java, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), JavaScript, Ruby,
 Go, PHP, Rust) against vulnerability databases to detect CVEs.
 
 Grype emphasizes actionable security insights through:

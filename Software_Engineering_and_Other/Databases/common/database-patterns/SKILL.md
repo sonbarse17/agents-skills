@@ -177,7 +177,7 @@ for (const user of users) {
 const users = await db.user.findMany({ include: { posts: true } });  // 1 query with JOIN
 ```
 
-```[python](../../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/python/SKILL.md)
 # N+1 — BAD
 users = await User.objects.all()  # 1 query
 for user in users:

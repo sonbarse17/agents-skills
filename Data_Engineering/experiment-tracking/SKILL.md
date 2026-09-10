@@ -76,7 +76,7 @@ versus not.
 1. **Log parameters, metrics, and artifacts for every run** — not just the
    ones that "worked." Cheap runs are cheap to log; expensive ones are
    exactly the ones you'll regret not logging if something looks off later.
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import mlflow
 
    mlflow.set_experiment("fraud-scorer")
@@ -114,7 +114,7 @@ versus not.
    memory.
 4. **Use the tracker for hyperparameter sweeps**, logging each trial as its
    own run under a shared parent/sweep ID:
-   ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import itertools
    import mlflow
 

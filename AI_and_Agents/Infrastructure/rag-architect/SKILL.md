@@ -57,7 +57,7 @@ Load detailed guidance based on context:
 
 ### 1. Chunking Documents
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Evaluate chunk_size on your domain data — never use 512 blindly
@@ -77,7 +77,7 @@ chunks = splitter.create_documents(
 
 ### 2. Generating Embeddings & Indexing
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from openai import OpenAI
 import qdrant_client
 from qdrant_client.models import VectorParams, Distance, PointStruct
@@ -111,7 +111,7 @@ qdrant.upsert(collection_name="knowledge_base", points=points)
 
 ### 3. Hybrid Search (Vector + BM25)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from qdrant_client.models import Filter, FieldCondition, MatchValue, SparseVector
 from rank_bm25 import BM25Okapi
 
@@ -146,7 +146,7 @@ def hybrid_search(query: str, tenant_id: str, top_k: int = 20) -> list:
 
 Load provider API keys from environment variables or a secrets manager; never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) them to source code.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 
 import cohere
@@ -161,9 +161,9 @@ def rerank(query: str, results: list, top_n: int = 5) -> list:
 
 ### 5. Retrieval Evaluation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Run precision@k and recall@k against a labeled evaluation set
-# [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) evaluate.py --metrics precision@10 recall@10 mrr --collection knowledge_base
+# [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) evaluate.py --metrics precision@10 recall@10 mrr --collection knowledge_base
 
 from ragas import evaluate
 from ragas.metrics import context_precision, context_recall, faithfulness, answer_relevancy

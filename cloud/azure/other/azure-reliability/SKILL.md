@@ -323,7 +323,7 @@ After the migration completes, the skill patches the storage SKU in IaC and runs
 After changes are applied (CLI) or deployed (IaC), automatically re-run the assessment and show the **same feature-pivoted table** as Phase 3, with each feature row's status updated to reflect the new state. Briefly call out what changed since the previous run.
 
 ```
-🔄 Reliability Re-Assessment — rg-eventhubs-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-jan13 (eastus)
+🔄 Reliability Re-Assessment — rg-eventhubs-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-jan13 (eastus)
 ───────────────────────────────────────────────────────────────────────────────────────
 Reliability Feature              Status      Resources
 ───────────────────────────────────────────────────────────────────────────────────────

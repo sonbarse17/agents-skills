@@ -278,7 +278,7 @@ Response, in order:
      credential_type=iam_user \
      policy_document=@myapp-prod-policy.json
    ```
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    # settings.py — fetch a short-lived credential at startup instead of
    # embedding one
    import hvac

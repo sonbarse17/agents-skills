@@ -186,19 +186,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ["3.9", "3.10", "3.11", "3.12"]
+        [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-        uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@v5
+      - name: Set up [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+        uses: actions/setup-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@v5
         with:
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version: ${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-version }}
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version: ${{ matrix.[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-version }}
 
       - name: Install dependencies
         run: |
-          [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) -m pip install --upgrade pip
+          [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run tests

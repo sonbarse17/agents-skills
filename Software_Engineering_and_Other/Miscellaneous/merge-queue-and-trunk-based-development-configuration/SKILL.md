@@ -176,7 +176,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 5. **Use feature flags to merge incomplete work safely**, rather than
    keeping a branch open until the feature is "done":
-   ```[python](../../Languages/python/SKILL.md)
+   ```[python](../../Languages/python/python/SKILL.md)
    if feature_flags.is_enabled("new_checkout_flow", user=current_user):
        return new_checkout_handler(request)
    return legacy_checkout_handler(request)

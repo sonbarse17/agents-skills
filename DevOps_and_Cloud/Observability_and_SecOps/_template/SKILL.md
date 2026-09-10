@@ -103,7 +103,7 @@ When validation and iteration are needed:
 
 Executable scripts for deterministic operations. Use scripts for low-freedom operations requiring consistency.
 
-- `example_script.py` - [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) script template with argparse, error handling, and JSON output
+- `example_script.py` - [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) script template with argparse, error handling, and JSON output
 - `example_script.sh` - Bash script template with argument parsing and colored output
 - `validator_example.py` - Validation script demonstrating feedback loop pattern
 

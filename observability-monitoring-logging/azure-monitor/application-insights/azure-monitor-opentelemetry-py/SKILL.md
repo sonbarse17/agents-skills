@@ -19,7 +19,7 @@ depends_on:
   - opentelemetry
 ---
 
-# Azure Monitor [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) Distro for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Monitor [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) Distro for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 One-line setup for Application Insights with [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) auto-instrumentation.
 
@@ -49,7 +49,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Quick Start
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -67,7 +67,7 @@ configure_azure_monitor(
 Pass the connection string explicitly by reading it from the environment variable.
 The value includes both `InstrumentationKey` and `IngestionEndpoint`.
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import os
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -86,7 +86,7 @@ except Exception as exc:
 
 ## With Flask
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from flask import Flask
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 ## With Django
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # settings.py
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -115,7 +115,7 @@ configure_azure_monitor()
 
 ## With FastAPI
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from fastapi import FastAPI
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -130,7 +130,7 @@ async def root():
 
 ## Custom Traces
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from [opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import trace
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -145,7 +145,7 @@ with tracer.start_as_current_span("my-operation") as span:
 
 ## Custom Metrics
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from [opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import metrics
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -159,7 +159,7 @@ counter.add(1, {"dimension": "value"})
 
 ## Custom Logs
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import logging
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
@@ -174,7 +174,7 @@ logger.error("Errors are captured too", exc_info=True)
 
 ## Sampling
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
 # Sample 10% of requests
@@ -187,7 +187,7 @@ configure_azure_monitor(
 
 Set cloud role name for Application Map:
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 from [opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md).sdk.resources import Resource, SERVICE_NAME
 
@@ -198,7 +198,7 @@ configure_azure_monitor(
 
 ## Disable Specific Instrumentations
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor(
@@ -208,7 +208,7 @@ configure_azure_monitor(
 
 ## Enable Live Metrics
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 
 configure_azure_monitor(
@@ -218,14 +218,14 @@ configure_azure_monitor(
 
 ## Azure AD Authentication
 
-```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.monitor.[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) import configure_azure_monitor
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 
 # Local dev: DefaultAzureCredential. In production, set AZURE_TOKEN_CREDENTIALS=prod or use a specific credential.
 credential = DefaultAzureCredential()
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 configure_azure_monitor(

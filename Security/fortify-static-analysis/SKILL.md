@@ -88,7 +88,7 @@ tool with a mature [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail 
   Fortify's translate phase for compiled languages (Java, C/C++, .NET)
   needs to observe a real build (or a close proxy of one) to resolve
   types and build accurate dataflow; interpreted languages (JavaScript,
-  [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)) translate more directly from source without a compile step.
+  [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)) translate more directly from source without a compile step.
 - Fortify [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Workbench (desktop) or Fortify Software Security Center
   (SSC, the server-based centralized results/triage/reporting
   platform) for reviewing scan results — a raw `.fpr` (Fortify Project

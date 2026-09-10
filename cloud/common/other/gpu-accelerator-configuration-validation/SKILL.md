@@ -154,7 +154,7 @@ misconfiguration before hours or days of compute are wasted.
    schedules onto a GPU node but can't actually initialize CUDA (driver/
    library mismatch) fails loudly in its first seconds instead of running
    to completion on CPU:
-   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    import torch, sys
 
    if not torch.cuda.is_available():

@@ -62,7 +62,7 @@ Load detailed guidance based on context:
 
 ### MLflow Experiment Logging (minimal reproducible example)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
@@ -96,11 +96,11 @@ with mlflow.start_run():
 
 ### Kubeflow Pipeline Component (single-step template)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from kfp.v2 import dsl
 from kfp.v2.dsl import component, Input, Output, Dataset, Model, Metrics
 
-@component(base_image="[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.10", packages_to_install=["scikit-learn", "mlflow"])
+@component(base_image="[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.10", packages_to_install=["scikit-learn", "mlflow"])
 def train_model(
     train_data: Input[Dataset],
     model_output: Output[Model],
@@ -132,7 +132,7 @@ def training_pipeline(data_path: str, n_estimators: int = 100):
 
 ### Data Validation Checkpoint (Great Expectations style)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import great_expectations as ge
 
 def validate_training_data(df):

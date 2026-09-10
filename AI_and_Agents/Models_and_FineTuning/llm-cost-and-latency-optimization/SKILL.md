@@ -77,7 +77,7 @@ the same direction.
    prioritize fixes without knowing which stage actually dominates cost or
    latency.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def call_llm(messages, tools=None):
        start = time.monotonic()
        response = client.messages.create(model=MODEL, messages=messages, tools=tools)

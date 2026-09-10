@@ -22,7 +22,7 @@ depends_on:
   - deploy
 ---
 
-# Azure API Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure API Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Manage Azure API Management services, APIs, products, and policies.
 
@@ -53,7 +53,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.apimanagement import ApiManagementClient
 import os
@@ -68,7 +68,7 @@ with ApiManagementClient(
 
 ## Create APIM Service
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import (
     ApiManagementServiceResource,
     ApiManagementServiceSkuProperties,
@@ -94,7 +94,7 @@ print(f"Created APIM: {service.name}")
 
 ## Import API from OpenAPI
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import (
     ApiCreateOrUpdateParameter,
     ContentFormat,
@@ -119,7 +119,7 @@ print(f"Imported API: {api.display_name}")
 
 ## Import API from URL
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 api = client.api.begin_create_or_update(
     resource_group_name="my-resource-group",
     service_name="my-apim",
@@ -136,7 +136,7 @@ api = client.api.begin_create_or_update(
 
 ## List APIs
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 apis = client.api.list_by_service(
     resource_group_name="my-resource-group",
     service_name="my-apim"
@@ -148,7 +148,7 @@ for api in apis:
 
 ## Create Product
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import ProductContract
 
 product = client.product.create_or_update(
@@ -169,7 +169,7 @@ print(f"Created product: {product.display_name}")
 
 ## Add API to Product
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 client.product_api.create_or_update(
     resource_group_name="my-resource-group",
     service_name="my-apim",
@@ -180,7 +180,7 @@ client.product_api.create_or_update(
 
 ## Create Subscription
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import SubscriptionCreateParameters
 
 subscription = client.subscription.create_or_update(
@@ -199,7 +199,7 @@ print(f"Subscription key: {subscription.primary_key}")
 
 ## Set API Policy
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import PolicyContract
 
 policy_xml = """
@@ -232,7 +232,7 @@ client.api_policy.create_or_update(
 
 ## Create Named Value (Secret)
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import NamedValueCreateContract
 
 named_value = client.named_value.begin_create_or_update(
@@ -249,7 +249,7 @@ named_value = client.named_value.begin_create_or_update(
 
 ## Create Backend
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import BackendContract
 
 backend = client.backend.create_or_update(
@@ -266,7 +266,7 @@ backend = client.backend.create_or_update(
 
 ## Create User
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from azure.mgmt.apimanagement.models import UserCreateParameters
 
 user = client.user.create_or_update(

@@ -97,12 +97,12 @@ Use this sub-skill when the user asks about:
 
 | Task | Command |
 |------|---------|
-| Validate SFT data | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
-| Submit SFT job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
-| Monitor job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
-| Analyze curves | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
-| Deploy model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
-| Evaluate model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
+| Validate SFT data | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
+| Submit SFT job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
+| Monitor job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
+| Analyze curves | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
+| Deploy model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
+| Evaluate model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
 
 ## Error Handling
 

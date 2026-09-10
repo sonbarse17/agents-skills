@@ -188,7 +188,7 @@ RESPONDER: On-call AI engineer + ML lead
 6. Increase trace sampling to 100% for affected route:
      [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:
-     [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) run_evals.py --target prod --suite quality --compare baseline
+     [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) run_evals.py --target prod --suite quality --compare baseline
 8. Confirm metrics return to baseline before closing.
 ```
 
